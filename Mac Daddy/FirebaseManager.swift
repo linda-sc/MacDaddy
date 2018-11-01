@@ -54,6 +54,11 @@ class FirebaseManager {
     //This function will be called every time the app launches.
     static func setup() {
         
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        
         //Enables offline capabilities - this messes up some chat stuff
         //Database.database().isPersistenceEnabled = true
         

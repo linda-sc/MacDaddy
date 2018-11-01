@@ -12,7 +12,6 @@ import Firebase
 struct Constants
 {
     //Colors
-    
     struct colors {
         static let lavender = UIColor(red: 0.72, green: 0.46, blue: 0.79, alpha: 1.00)
         static let hotPink = UIColor(red: 0.99, green: 0.24, blue: 0.56, alpha: 1.00)

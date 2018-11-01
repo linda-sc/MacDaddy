@@ -27,7 +27,7 @@ class HomeVC: UIViewController {
         //First remove the old observer if there was one.
         friendRef.removeAllObservers()
         friendRef.observe(.value, with: { snapshot in
-            print("HomeVC - addObserver: friendRef Listener fired")
+            print("👂🏻 HomeVC - addObserver: friendRef Listener fired")
             self.syncFriends()
         })
         
@@ -35,7 +35,7 @@ class HomeVC: UIViewController {
         for friend in DataHandler.friendList {
             let friendConvoRef = friendRef.child(friend.convoID)
             friendConvoRef.observe(.value, with: { snapshot in
-                print("HomeVC - addObserver: friendConvoRef Listener fired")
+                print("👂🏻 HomeVC - addObserver: friendConvoRef Listener fired")
                 self.syncConvos()
             })
             
@@ -57,16 +57,16 @@ class HomeVC: UIViewController {
     
     func syncFriends() {
         //Donwloads and converts Firebase dictionary of friends to DH, then to local list.
-        print("syncFriends beginning")
+        print("💫 syncFriends beginning")
         DataHandler.downloadFriends {
             
             DataHandler.friendList = DataHandler.friendDictionaryToList(friends: DataHandler.friends as! [String : [String : String]])
-            print("syncFriends: Array stored in DataHandler: \(DataHandler.friendList)")
+            print("💫 syncFriends: Array stored in DataHandler: \(DataHandler.friendList)")
             DataHandler.orderFriends()
             
             DispatchQueue.main.async{
                 self.tableView.reloadData()
-                print("syncFriends: Reloading table data")
+                print("💫 syncFriends: Reloading table data")
             }
         }
     }
@@ -112,12 +112,13 @@ extension HomeVC {
         addObserver()
         
         matchBox.isEnabled = true
-        self.matchBox.setTitle( "Find a New Match!", for: .normal)
+        self.matchBox.setTitle("Find a New Match!", for: .normal)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("👁 HomeVC - viewDidLoad")
         DataHandler.updateStatusVariables(active: "y")
         
         addObserver()
@@ -389,7 +390,7 @@ extension HomeVC {
         }
     }
     
-    @IBAction func unwindFromDetail(segue: SegueFromLeft) {
+    @IBAction func unwindFromDetail(segue: SegueToLeft) {
         self.matchBox.isEnabled = true
         self.matchBox.setTitle( "Find a New Match!", for: .normal)
         

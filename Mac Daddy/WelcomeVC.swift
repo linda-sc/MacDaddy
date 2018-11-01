@@ -23,12 +23,20 @@ class WelcomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         background.image = UIImage(named: "MacDaddy Background_Purple")
-        animateLoading()
+        
+        let when = DispatchTime.now() + 2
+        animateLoading{
+            self.automaticLogin {
+                DispatchQueue.main.asyncAfter(deadline: when) {
+                    print("👉🏼 WelcomeVC: \(self.segueIdentifier)")
+                    self.performSegue(withIdentifier: self.segueIdentifier, sender: Any?.self)
+                }
+            }
+        }
         
     }
     
-    func animateLoading(){
-        //var images :NSMutableArray = []
+    func animateLoading(completed: @escaping ()-> ()){
         var images = [UIImage]()
         for count in 1...64 {
             let imageName : String = "Loading\(64 - count)"
@@ -37,20 +45,12 @@ class WelcomeVC: UIViewController {
         }
     
         self.loading.animationImages = images;
-        self.loading.animationDuration = 1.5
+        self.loading.animationDuration = 2
         self.loading.startAnimating()
         
-        let when = DispatchTime.now() + 1.7
-        
-        self.automaticLogin {
-            DispatchQueue.main.asyncAfter(deadline: when) {
-                print(self.segueIdentifier)
-                self.performSegue(withIdentifier: self.segueIdentifier, sender: Any?.self)
-            }
-        }
+        completed()
         
     }
-    
     
     //Make the status bar white.
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -72,41 +72,39 @@ class WelcomeVC: UIViewController {
             //You cannot access the home page without a verified account.
             //Unverified information will not be deleted, but it will not be saved.
             FirebaseManager.loginInfo?.saved = false
-            print("Not logged in")
-            self.segueIdentifier = "goToLogin"
+            print("🔮 Not logged in")
+            self.segueIdentifier = "👉🏼 goToLogin"
             completed()
             
             //If the user is unverified but saved, take them back to the verification page.
         }else if currentUser?.isEmailVerified == false && FirebaseManager.loginInfo?.saved == true {
-            print("Logged in but unverified")
-            self.segueIdentifier = "skipToVerify"
+            print("🔮 Logged in but unverified")
+            self.segueIdentifier = "👉🏼 skipToVerify"
             completed()
             
             //If the user is logged in with a verified account, skip the verification page.
         }else if currentUser?.isEmailVerified == true && FirebaseManager.loginInfo?.saved == true, let info = FirebaseManager.loginInfo{
-            print("User is saved and verified,")
-            print("Automatically logging in")
+            print("🔮 User is saved and verified,")
+            print("👉🏼 Automatically logging in")
             //Automatic login process:
             Auth.auth().signIn(withEmail: info.email, password: info.password) {
                 (user, error) in
                 
                 //Check that user isn't nil
                 if user != nil {
-                    print("User found")
+                    print("🙋🏻 User found")
                     
                     //If they haven't finished the setup yet, send them to where they left off.
                     DataHandler.checkData {
                         
                         //If they haven't entered their name yet, sent them to setup1.
                         if DataHandler.nameExists == false {
-                            print("Name doesn't exist, going to setup1.")
                             print(DataHandler.nameExists)
                             self.segueIdentifier = "skipToSetup1"
                             completed()
                             
                             //If they've entered their name but not their picture, skip to setup2.
                         }else if DataHandler.picExists == false {
-                            print("Picture doesn't exist, going to setup2.")
                             self.segueIdentifier = "skipToSetup2"
                             completed()
                             
@@ -115,14 +113,18 @@ class WelcomeVC: UIViewController {
                             self.segueIdentifier = "skipToSetup3"
                             completed()
                             
-                            //If they've entered everything except their interests, skip to setup4.
-                        }else if DataHandler.interestsExist == false {
-                            self.segueIdentifier = "skipToSetup4"
-                            completed()
-                    
+                            
+                            
+//                            //If they've entered everything except their interests, skip to setup4.
+//                        }else if DataHandler.interestsExist == false {
+//                            self.segueIdentifier = "skipToSetup4"
+//                            completed()
+//                    
+                            
+                            
                             //Otherwise just go to the home screen.
                         }else{
-                            self.segueIdentifier = "goToHome"
+                            self.segueIdentifier = "skipToHome"
                             completed()
                         }
                         //If the user is nil somehow, send them back to the login.

@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cf4-vg-4X7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cf4-vg-4X7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--AboutVC-->
         <scene sceneID="UPg-Nw-IVa">
@@ -46,23 +38,6 @@
                                 <color key="textColor" red="0.96760922953255502" green="1" blue="0.98716419788791765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpc-oF-Kna">
-                                <rect key="frame" x="32" y="535" width="319" height="46"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.60461565429999997" blue="0.1733811455" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="backPressed:" destination="dRt-bZ-zal" eventType="touchUpInside" id="oPD-Im-zfH"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GvU-UP-Gjm">
                                 <rect key="frame" x="28" y="491" width="319" height="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -93,6 +68,23 @@ Or is your meal plan running low? Are you a promising young student who can offe
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.98268546099999998" green="1" blue="0.99130295030000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpc-oF-Kna">
+                                <rect key="frame" x="28" y="535" width="319" height="46"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.60461565429999997" blue="0.1733811455" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="backPressed:" destination="dRt-bZ-zal" eventType="touchUpInside" id="oPD-Im-zfH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -149,7 +141,7 @@ Or is your meal plan running low? Are you a promising young student who can offe
                                                 <rect key="frame" x="99" y="0.0" width="244" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -166,7 +158,7 @@ Or is your meal plan running low? Are you a promising young student who can offe
                                                 <rect key="frame" x="98.5" y="0.0" width="244.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -255,8 +247,7 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <outlet property="passwordTextField" destination="fQ4-30-Q4J" id="X9g-Sl-1hX"/>
                         <outlet property="signinButton" destination="lOt-im-B6w" id="ysa-Dn-Z0G"/>
                         <outlet property="signinSelector" destination="6iq-LD-Kn4" id="IoZ-7Q-I32"/>
-                        <segue destination="tHy-Yp-ZSQ" kind="show" identifier="goToVerify" customClass="SegueFromRight" customModule="Mac_Daddy" customModuleProvider="target" id="FkZ-hJ-jnB"/>
-                        <segue destination="VaT-gO-yOm" kind="show" identifier="goToHome" id="k2b-uZ-b8N"/>
+                        <segue destination="tHy-Yp-ZSQ" kind="show" identifier="goToVerify" customClass="SegueToRight" customModule="Mac_Daddy" customModuleProvider="target" id="FkZ-hJ-jnB"/>
                         <segue destination="cf4-vg-4X7" kind="show" identifier="goToWelcome" id="pTh-eA-FeY"/>
                         <segue destination="dRt-bZ-zal" kind="popoverPresentation" identifier="showAbout" popoverAnchorView="9NU-X3-yce" id="wtk-Fw-9nB">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -279,8 +270,8 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="br2-3p-5Us">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="br2-3p-5Us">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7So-YB-Gvy">
                                 <rect key="frame" x="16" y="333" width="343" height="1.5"/>
@@ -310,18 +301,18 @@ Or is your meal plan running low? Are you a promising young student who can offe
                     <connections>
                         <outlet property="background" destination="br2-3p-5Us" id="Ggt-eW-62i"/>
                         <outlet property="loading" destination="F7q-Oe-gaZ" id="n0T-lk-J5a"/>
-                        <segue destination="tHy-Yp-ZSQ" kind="show" identifier="skipToVerify" animates="NO" id="s7C-Dp-bLL"/>
-                        <segue destination="Wn2-U5-D7J" kind="show" identifier="skipToSetup1" id="8hQ-AU-oIf"/>
-                        <segue destination="So1-rA-1v7" kind="show" identifier="skipToSetup2" id="VGE-ze-dyv"/>
-                        <segue destination="kj7-FY-EfF" kind="show" identifier="skipToSetup3" id="XN1-AG-OlZ"/>
-                        <segue destination="tkW-48-uGh" kind="show" identifier="skipToSetup4" id="g4n-Di-AJJ"/>
-                        <segue destination="VaT-gO-yOm" kind="show" identifier="goToHome" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="gXA-cx-eGP"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToLogin" id="Xyh-di-Mue"/>
+                        <segue destination="tHy-Yp-ZSQ" kind="show" identifier="skipToVerify" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" animates="NO" id="s7C-Dp-bLL"/>
+                        <segue destination="Wn2-U5-D7J" kind="show" identifier="skipToSetup1" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="8hQ-AU-oIf"/>
+                        <segue destination="So1-rA-1v7" kind="show" identifier="skipToSetup2" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="VGE-ze-dyv"/>
+                        <segue destination="kj7-FY-EfF" kind="show" identifier="skipToSetup3" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="XN1-AG-OlZ"/>
+                        <segue destination="tkW-48-uGh" kind="show" identifier="skipToSetup4" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="g4n-Di-AJJ"/>
+                        <segue destination="VaT-gO-yOm" kind="show" identifier="skipToHome" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="gXA-cx-eGP"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToLogin" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="Xyh-di-Mue"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNd-MV-YkB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1984.8" y="-1770.4433497536947"/>
+            <point key="canvasLocation" x="1984.8" y="-1770.7646176911546"/>
         </scene>
         <!--VerifyEmail-->
         <scene sceneID="YlA-Ba-ZJt">
@@ -350,13 +341,13 @@ Or is your meal plan running low? Are you a promising young student who can offe
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="nvy-QM-xBE">
-                                <rect key="frame" x="0.0" y="213" width="0.0" height="241"/>
+                                <rect key="frame" x="61.5" y="263" width="252" height="141"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Muu-K9-bb9">
-                                        <rect key="frame" x="61.5" y="0.0" width="252.5" height="49"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="252" height="49"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sent a verification email to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvn-ix-fI3">
-                                                <rect key="frame" x="0.0" y="0.0" width="252.5" height="21.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="252" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <color key="textColor" red="0.8408663287" green="0.86013278800000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -370,16 +361,16 @@ Or is your meal plan running low? Are you a promising young student who can offe
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Not-kZ-zWr">
-                                        <rect key="frame" x="0.0" y="61" width="0.0" height="36"/>
+                                        <rect key="frame" x="51.5" y="61" width="149" height="36"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click the link we sent," textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hog-fS-N8h">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="18"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="149" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="then press continue." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdG-6g-BDW">
-                                                <rect key="frame" x="117.5" y="18" width="140" height="18"/>
+                                                <rect key="frame" x="4.5" y="18" width="140" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -387,8 +378,11 @@ Or is your meal plan running low? Are you a promising young student who can offe
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sug-km-nIU">
-                                        <rect key="frame" x="0.0" y="109" width="0.0" height="132"/>
+                                        <rect key="frame" x="29" y="109" width="194" height="32"/>
                                         <color key="backgroundColor" red="0.54117448820000003" green="0.5304729078" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="Tr3-Uf-SO1"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Continue">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -412,7 +406,7 @@ Or is your meal plan running low? Are you a promising young student who can offe
                                 <color key="color" red="0.8408663287" green="0.86013278800000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you click the link?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghk-Xf-XkF">
-                                <rect key="frame" x="16" y="491" width="342.5" height="16"/>
+                                <rect key="frame" x="16" y="491" width="343" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="o8B-pd-ouX"/>
                                 </constraints>
@@ -432,7 +426,6 @@ Or is your meal plan running low? Are you a promising young student who can offe
                             <constraint firstItem="0h9-q7-VGq" firstAttribute="top" secondItem="NI5-QC-n7V" secondAttribute="top" id="aI5-9s-DB2"/>
                             <constraint firstItem="Ghk-Xf-XkF" firstAttribute="top" secondItem="KeT-Em-CCm" secondAttribute="bottom" constant="8" symbolic="YES" id="bLZ-bU-p3a"/>
                             <constraint firstItem="Mdj-N8-aRm" firstAttribute="top" secondItem="Ghk-Xf-XkF" secondAttribute="bottom" constant="160" id="cXh-oM-XgY"/>
-                            <constraint firstItem="KeT-Em-CCm" firstAttribute="top" secondItem="nvy-QM-xBE" secondAttribute="bottom" constant="9" id="cen-Zt-aVi"/>
                             <constraint firstItem="KeT-Em-CCm" firstAttribute="centerX" secondItem="NI5-QC-n7V" secondAttribute="centerX" id="dp7-do-kHP"/>
                             <constraint firstItem="Ghk-Xf-XkF" firstAttribute="leading" secondItem="NI5-QC-n7V" secondAttribute="leadingMargin" id="fuO-gJ-gLe"/>
                         </constraints>
@@ -443,7 +436,7 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <outlet property="didYouClick" destination="Ghk-Xf-XkF" id="H9C-Yr-YSF"/>
                         <outlet property="emailAddress" destination="sCu-lE-nQ0" id="Spd-nw-ywg"/>
                         <outlet property="loading" destination="KeT-Em-CCm" id="pqW-vv-qbD"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="backToLogin" customClass="SegueFromLeft" customModule="Mac_Daddy" customModuleProvider="target" id="FLQ-Vw-cxi"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="backToLogin" customClass="SegueToLeft" customModule="Mac_Daddy" customModuleProvider="target" id="FLQ-Vw-cxi"/>
                         <segue destination="Wn2-U5-D7J" kind="show" identifier="goToSetup" customClass="SegueFromRight" customModule="Mac_Daddy" customModuleProvider="target" id="1oA-gg-fF0"/>
                     </connections>
                 </viewController>
@@ -463,8 +456,8 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="HAX-bq-1Dl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="HAX-bq-1Dl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Hw-iG-147">
                                 <rect key="frame" x="64.5" y="262.5" width="246.5" height="104.5"/>
@@ -526,12 +519,12 @@ Or is your meal plan running low? Are you a promising young student who can offe
                     </view>
                     <connections>
                         <outlet property="nameTextField" destination="h1B-GR-SnM" id="zht-Rn-MaD"/>
-                        <segue destination="So1-rA-1v7" kind="show" identifier="goToSetup2" customClass="SegueFromRight" customModule="Mac_Daddy" customModuleProvider="target" animates="NO" id="IaB-MR-lVi"/>
+                        <segue destination="So1-rA-1v7" kind="show" identifier="goToSetup2" customClass="SegueToRight" customModule="Mac_Daddy" customModuleProvider="target" animates="NO" id="IaB-MR-lVi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y0B-Hh-oNq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2236.875" y="-620.07042253521126"/>
+            <point key="canvasLocation" x="2236" y="-620.23988005997012"/>
         </scene>
         <!--PrivateSetup2-->
         <scene sceneID="P8D-Wq-FsN">
@@ -545,8 +538,8 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-Sh-rVW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-Sh-rVW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="LYP-bH-vdi">
                                 <rect key="frame" x="83.5" y="212.5" width="208" height="242.5"/>
@@ -624,12 +617,12 @@ Or is your meal plan running low? Are you a promising young student who can offe
                     <connections>
                         <outlet property="nameLabel" destination="cCv-C9-MU8" id="zkd-VE-FoK"/>
                         <outlet property="profilePicture" destination="hUW-7k-X17" id="Xqq-wE-Sdt"/>
-                        <segue destination="kj7-FY-EfF" kind="show" identifier="goToSetup3" customClass="SegueFromRight" customModule="Mac_Daddy" customModuleProvider="target" id="QKh-Zu-DVi"/>
+                        <segue destination="kj7-FY-EfF" kind="show" identifier="goToSetup3" customClass="SegueToRight" customModule="Mac_Daddy" customModuleProvider="target" id="QKh-Zu-DVi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sE1-2x-LPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3024.8000000000002" y="-619.21182266009851"/>
+            <point key="canvasLocation" x="3024.8000000000002" y="-619.34032983508246"/>
         </scene>
         <!--PreferencesSetup-->
         <scene sceneID="Ctc-U6-qHs">
@@ -643,8 +636,8 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="8Jw-RB-1KJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="8Jw-RB-1KJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Una-oy-136">
                                 <rect key="frame" x="27.5" y="130.5" width="320" height="406"/>
@@ -739,12 +732,12 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <outlet property="nextButton" destination="vra-gz-pHd" id="eps-CT-bQE"/>
                         <outlet property="picker" destination="WI3-4o-oWb" id="A6G-Sd-baD"/>
                         <outlet property="profilePicture" destination="evD-l4-Er8" id="g3o-n4-zpf"/>
-                        <segue destination="tkW-48-uGh" kind="show" identifier="goToSetup4" customClass="SegueFromRight" customModule="Mac_Daddy" customModuleProvider="target" id="uNd-60-OTh"/>
+                        <segue destination="tkW-48-uGh" kind="show" identifier="goToSetup4" customClass="SegueToRight" customModule="Mac_Daddy" customModuleProvider="target" id="uNd-60-OTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kzw-0k-LKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3890.4000000000001" y="-619.21182266009851"/>
+            <point key="canvasLocation" x="3890.4000000000001" y="-619.34032983508246"/>
         </scene>
         <!--InterestsSetup-->
         <scene sceneID="b8y-wu-paN">
@@ -758,8 +751,8 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-Fm-Hxf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-Fm-Hxf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -772,12 +765,12 @@ Or is your meal plan running low? Are you a promising young student who can offe
                     </view>
                     <connections>
                         <outlet property="background" destination="Mug-Fm-Hxf" id="Gxd-yL-qTA"/>
-                        <segue destination="VaT-gO-yOm" kind="show" identifier="finishSetup" customClass="SegueFromRight" customModule="Mac_Daddy" customModuleProvider="target" id="POq-0l-f5P"/>
+                        <segue destination="VaT-gO-yOm" kind="show" identifier="finishSetup" customClass="SegueToRight" customModule="Mac_Daddy" customModuleProvider="target" id="POq-0l-f5P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gmt-hd-3pb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4765.6000000000004" y="-619.21182266009851"/>
+            <point key="canvasLocation" x="4765.6000000000004" y="-619.34032983508246"/>
         </scene>
         <!--Home-->
         <scene sceneID="LZ1-Da-FTQ">
@@ -791,8 +784,8 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="LwG-Hy-0km">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="LwG-Hy-0km">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zH0-pC-a4M">
                                 <rect key="frame" x="21" y="30" width="40" height="40"/>
@@ -911,6 +904,7 @@ Or is your meal plan running low? Are you a promising young student who can offe
                             <constraint firstItem="RaI-4Z-TCf" firstAttribute="top" secondItem="47I-Of-DHz" secondAttribute="bottom" constant="20" id="ilZ-I8-GLR"/>
                             <constraint firstItem="RaI-4Z-TCf" firstAttribute="centerX" secondItem="g59-lB-6dI" secondAttribute="centerX" id="jLs-BH-jMy"/>
                             <constraint firstAttribute="trailing" secondItem="LwG-Hy-0km" secondAttribute="trailing" id="jZm-hS-IdO"/>
+                            <constraint firstAttribute="bottom" secondItem="LwG-Hy-0km" secondAttribute="bottom" id="oV0-il-ObR"/>
                             <constraint firstItem="Gg9-5q-ao7" firstAttribute="top" secondItem="LwG-Hy-0km" secondAttribute="bottom" id="vU5-QK-FmK"/>
                         </constraints>
                     </view>
@@ -918,7 +912,7 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <outlet property="background" destination="LwG-Hy-0km" id="kR0-fq-SUU"/>
                         <outlet property="matchBox" destination="bgM-dX-gBi" id="LOc-43-o0v"/>
                         <outlet property="tableView" destination="SQ9-P7-fEx" id="vN9-Lu-ltp"/>
-                        <segue destination="dfQ-7R-Dmg" kind="show" identifier="goToOptions" customClass="SegueFromLeft" customModule="Mac_Daddy" customModuleProvider="target" id="dEO-0q-bJO"/>
+                        <segue destination="dfQ-7R-Dmg" kind="show" identifier="goToOptions" customClass="SegueToLeft" customModule="Mac_Daddy" customModuleProvider="target" id="dEO-0q-bJO"/>
                         <segue destination="WXt-a3-xWO" kind="presentation" identifier="PresentNewMatch" id="rdI-wE-ddR"/>
                     </connections>
                 </viewController>
@@ -938,8 +932,8 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="5fg-xm-TZc">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="5fg-xm-TZc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -974,7 +968,7 @@ Or is your meal plan running low? Are you a promising young student who can offe
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pWe-9f-f6N" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Bp2-Ep-Os2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4244" y="130.78817733990149"/>
+            <point key="canvasLocation" x="4244" y="129.98500749625188"/>
         </scene>
         <!--MyPreferences-->
         <scene sceneID="cPG-JV-mpJ">
@@ -988,8 +982,8 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="cRL-8z-HGx">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="cRL-8z-HGx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Zry-s1-kag">
                                 <rect key="frame" x="27.5" y="214.5" width="320" height="238"/>
@@ -1058,12 +1052,12 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <outlet property="picker" destination="su9-Ur-0Ax" id="0wI-tV-0HH"/>
                         <outlet property="saveButton" destination="Luw-PH-heR" id="kpb-9q-3ol"/>
                         <outlet property="selector" destination="vNw-Ez-c30" id="bBg-Ur-y5e"/>
-                        <segue destination="dfQ-7R-Dmg" kind="show" identifier="backToOptions" customClass="SegueFromRight" customModule="Mac_Daddy" customModuleProvider="target" action="showDetailViewController:sender:" id="ZRy-Gh-7AQ"/>
+                        <segue destination="dfQ-7R-Dmg" kind="show" identifier="backToOptions" customClass="SegueToRight" customModule="Mac_Daddy" customModuleProvider="target" id="ZRy-Gh-7AQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jsn-uJ-4fT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-778.39999999999998" y="1003.448275862069"/>
+            <point key="canvasLocation" x="-778.39999999999998" y="1003.4482758620691"/>
         </scene>
         <!--Profile OptionsVC-->
         <scene sceneID="oAh-IF-VhL">
@@ -1077,8 +1071,8 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="8LQ-q6-Loi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="8LQ-q6-Loi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="kqT-QX-lOx" userLabel="Profile Picture Stack">
                                 <rect key="frame" x="123.5" y="163.5" width="128" height="153.5"/>
@@ -1201,8 +1195,8 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <outlet property="logOutButton" destination="BNa-Jo-ouK" id="MSb-8n-KoM"/>
                         <outlet property="nameLabel" destination="HK9-dq-Jfr" id="b8b-tL-JZk"/>
                         <outlet property="profilePicture" destination="AQW-pZ-NXY" id="b4P-5u-H7L"/>
-                        <segue destination="5Eq-w6-pvv" kind="show" identifier="goToPreferences" customClass="SegueFromLeft" customModule="Mac_Daddy" customModuleProvider="target" id="lEx-2g-jQh"/>
-                        <segue destination="VaT-gO-yOm" kind="show" identifier="backToHome" customClass="SegueFromRight" customModule="Mac_Daddy" customModuleProvider="target" id="Iuz-nK-l3c"/>
+                        <segue destination="5Eq-w6-pvv" kind="show" identifier="goToPreferences" customClass="SegueToLeft" customModule="Mac_Daddy" customModuleProvider="target" id="lEx-2g-jQh"/>
+                        <segue destination="VaT-gO-yOm" kind="show" identifier="backToHome" customClass="SegueToRight" customModule="Mac_Daddy" customModuleProvider="target" id="Iuz-nK-l3c"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToLogin" id="pB1-pD-5hf"/>
                         <segue destination="dRt-bZ-zal" kind="popoverPresentation" identifier="showAbout" popoverAnchorView="njy-s9-Zqa" id="x35-Nt-B2d">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -1211,7 +1205,7 @@ Or is your meal plan running low? Are you a promising young student who can offe
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zbz-73-sDK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="378.39999999999998" y="641.37931034482756"/>
+            <point key="canvasLocation" x="378.39999999999998" y="640.92953523238384"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FWB-9c-vUb">
@@ -1233,27 +1227,26 @@ Or is your meal plan running low? Are you a promising young student who can offe
         </scene>
     </scenes>
     <resources>
-        <image name="ActiveBubble" width="50" height="50"/>
+        <image name="ActiveBubble" width="24" height="24"/>
         <image name="ChatIcon" width="200" height="200"/>
         <image name="EditProfileButton" width="504" height="504"/>
         <image name="Heart" width="22" height="20"/>
-        <image name="Loading0" width="600" height="600"/>
+        <image name="Loading0" width="288" height="288"/>
         <image name="MacDaddy Background" width="1242" height="2208"/>
         <image name="MacDaddy Background_Purple" width="1242" height="2208"/>
         <image name="MacDaddy FullLogo" width="685" height="505"/>
         <image name="MacDaddyLogo" width="800" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lEx-2g-jQh"/>
-        <segue reference="ReJ-2s-zxr"/>
+        <segue reference="rdI-wE-ddR"/>
         <segue reference="ZRy-Gh-7AQ"/>
-        <segue reference="Iuz-nK-l3c"/>
+        <segue reference="gXA-cx-eGP"/>
         <segue reference="g4n-Di-AJJ"/>
         <segue reference="XN1-AG-OlZ"/>
-        <segue reference="IaB-MR-lVi"/>
+        <segue reference="VGE-ze-dyv"/>
         <segue reference="8hQ-AU-oIf"/>
-        <segue reference="FkZ-hJ-jnB"/>
-        <segue reference="pB1-pD-5hf"/>
-        <segue reference="x35-Nt-B2d"/>
+        <segue reference="s7C-Dp-bLL"/>
+        <segue reference="Xyh-di-Mue"/>
+        <segue reference="wtk-Fw-9nB"/>
     </inferredMetricsTieBreakers>
 </document>

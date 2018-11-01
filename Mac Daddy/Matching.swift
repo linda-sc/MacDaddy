@@ -33,14 +33,14 @@ class Matching {
                 if true {
                     var newFriend = Friend()
                     
-                    newFriend.anon = user.anon
-                    newFriend.convoID = user.convoID
-                    newFriend.grade = user.grade
-                    newFriend.macStatus = user.macStatus
-                    newFriend.name = user.name
-                    newFriend.uid = user.uid
-                    newFriend.weight = user.weight
-                    newFriend.active = user.active
+                    newFriend.anon = user.friendInfo.anon
+                    newFriend.convoID = user.friendInfo.convoID
+                    newFriend.grade = user.friendInfo.grade
+                    newFriend.macStatus = user.friendInfo.macStatus
+                    newFriend.name = user.friendInfo.name
+                    newFriend.uid = user.friendInfo.uid
+                    newFriend.weight = user.friendInfo.weight
+                    newFriend.active = user.friendInfo.active
                     
                     candidates.append(newFriend)
                 }
@@ -156,7 +156,8 @@ class Matching {
                 ref.setValue(status)
                 
                 //Update availibility locally and in Firebase.
-                DataHandler.updatePrimaryAvailibility(primaryAvailibility: "n")
+                
+                DataHandler.updatePrimaryA(primaryA: "n")
                 DataHandler.updateFriendData(friend: chosenCandidate, newMatch: true)
                 //Update your own current match:
                 DataHandler.updateCurrentMatchID(currentMatchID: chosenCandidate.uid)

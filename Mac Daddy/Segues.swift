@@ -42,8 +42,8 @@ class UnwindFromLeft: UIStoryboardSegue {
     }
 }
 
-//Like moving towards the right.
-class SegueFromRight: UIStoryboardSegue {
+//Like sliding towards the right.
+class SegueToRight: UIStoryboardSegue {
     override func perform(){
         let src = self.source as UIViewController
         let dst = self.destination as UIViewController
@@ -51,17 +51,19 @@ class SegueFromRight: UIStoryboardSegue {
         src.view.superview?.insertSubview(dst.view, aboveSubview: src.view)
         dst.view.transform = CGAffineTransform(translationX: src.view.frame.size.width, y: 0)
             
-        UIView.animate(withDuration: 0.25,
+        UIView.animate(withDuration: 0.3,
                 delay: 0.0,
                 options: UIViewAnimationOptions.curveEaseInOut,
-                animations:{dst.view.transform = CGAffineTransform(translationX: 0, y: 0)},
+                animations:{dst.view.transform = CGAffineTransform(translationX: 0, y: 0);
+                            src.view.transform = CGAffineTransform(translationX: -src.view.frame.size.width, y: 0)
+                },
                 completion: { finished in src.present(dst, animated: false, completion: nil)}
         )
     }
 }
 
-
-class SegueFromLeft: UIStoryboardSegue{
+//Like sliding towards the left.
+class SegueToLeft: UIStoryboardSegue{
     override func perform() {
         let src = self.source
         let dst = self.destination
@@ -69,10 +71,12 @@ class SegueFromLeft: UIStoryboardSegue{
         src.view.superview?.insertSubview(dst.view, aboveSubview: src.view)
         dst.view.transform = CGAffineTransform(translationX: -src.view.frame.size.width, y: 0)
         
-        UIView.animate(withDuration: 0.25,
+        UIView.animate(withDuration: 0.3,
                        delay: 0.0,
                        options: UIViewAnimationOptions.curveEaseInOut,
-                       animations:{dst.view.transform = CGAffineTransform(translationX: 0, y: 0)},
+                       animations:{dst.view.transform = CGAffineTransform(translationX: 0, y: 0);
+                         src.view.transform = CGAffineTransform(translationX: src.view.frame.size.width, y: 0)
+        },
                        completion: {finished in src.present(dst, animated: false, completion:nil)}
         )
     }
@@ -80,16 +84,15 @@ class SegueFromLeft: UIStoryboardSegue{
 
 class CrossFadeSegue: UIStoryboardSegue {
     override func perform() {
+
         let window = UIApplication.shared.keyWindow!
-        
-        destination.view.alpha = 0.0
         window.insertSubview(destination.view, belowSubview: source.view)
         
         UIView.animate(withDuration: 0.5, animations: { () -> Void in
             self.source.view.alpha = 0.0
             self.destination.view.alpha = 1.0
         }) { (finished) -> Void in
-            self.source.view.alpha = 1.0
+            self.source.view.alpha = 0
             self.source.present(self.destination, animated: false, completion: nil)
         }
     }

@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     
@@ -23,7 +22,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.emailTextField.delegate = self
+        self.emailTextField.tag = 0
         self.passwordTextField.delegate = self
+        self.passwordTextField.tag = 1
+        
     }
     
     //Make the status bar white.
@@ -31,24 +33,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         return .lightContent
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
-    
     
     //Makes the keyboard disappear when you press done.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
-        
         self.view.endEditing(true)
         return false
-        // signinButtonTapped(<#T##sender: UIButton##UIButton#>)
-        // return true
     }
     
     @IBAction func signinSelectorChanged(_ sender: UISegmentedControl) {
@@ -84,7 +74,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func signinButtonTapped(_ sender: UIButton) {
+    
+    func signIn() {
         let email = emailTextField.text
         let password = passwordTextField.text
         
@@ -116,19 +107,19 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 }
             }
             
-        //If it's not sign in, it's register.
+            //If it's not sign in, it's register.
         } else if isValidSchoolEmail(email: email!) {
             print("Registering...")
             //Register the user with Firebase if the information is valid
-                Auth.auth().createUser(withEmail: email!, password: password!) {
+            Auth.auth().createUser(withEmail: email!, password: password!) {
                 (user, error) in
                 
-                user?.sendEmailVerification(completion: { (error:Error?) in
+                Auth.auth().currentUser?.sendEmailVerification(completion: { (error:Error?) in
                     if error == nil{
                         print("Verification email sent!")
                     }
                 })
-
+                
                 if error == nil {
                     self.performSegue(withIdentifier: "goToVerify", sender:nil)
                     FirebaseManager.isLoggedIn = true
@@ -146,6 +137,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }else{
             showErrorAlert(error: "Make sure you use a valid school email.")
         }
+    }
+    
+    
+    
+    @IBAction func signinButtonTapped(_ sender: UIButton) {
+        signIn()
     }
     
     @IBAction func forgotPasswordTapped(_ sender:UIButton){

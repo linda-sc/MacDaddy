@@ -18,7 +18,6 @@ class PrivateSetup1VC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        databaseRef = Database.database().reference()
         self.nameTextField.delegate = self
         self.nameTextField.autocapitalizationType = .words
     }

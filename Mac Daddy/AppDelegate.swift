@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseManager.setup()
         
         DataHandler.updateStatusVariables(active: "y")
-        print(FirebaseManager.loginInfo ?? "No login info saved")
+        print("👩🏻‍💻 \(FirebaseManager.loginInfo?.email)" )
 
         return true
     }

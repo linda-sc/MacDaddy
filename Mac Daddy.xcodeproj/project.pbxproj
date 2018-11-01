@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		336908F08FB99B3C4B0B9AC7 /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6089FA6BD1C3BF4D9FA4C8 /* Pods_Mac_Daddy.framework */; };
+		AF5C07CED336B007363A0855 /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DCF460ADDC47C8625FE514 /* Pods_Mac_Daddy.framework */; };
 		BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */; };
+		BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */; };
+		BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */; };
 		BF0A9A6C20169FE400AC1E48 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A9A6B20169FE400AC1E48 /* Structs.swift */; };
 		BF1082761ED4C793000677A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1082751ED4C793000677A3 /* AppDelegate.swift */; };
 		BF1082781ED4C793000677A3 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1082771ED4C793000677A3 /* LoginVC.swift */; };
@@ -24,10 +27,14 @@
 		BF3B2E171EE43A67002796DE /* VerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B2E161EE43A67002796DE /* VerifyVC.swift */; };
 		BF4247F21EF70E1B003BEEA8 /* PrivateSetup2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4247F11EF70E1B003BEEA8 /* PrivateSetup2VC.swift */; };
 		BF43C5DC1EE72AAC00602357 /* MyPreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43C5DB1EE72AAC00602357 /* MyPreferencesVC.swift */; };
+		BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C29D0218909B100589E1B /* DataHandler_Friends.swift */; };
+		BF4C29D5218B60EA00589E1B /* DataHandler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C29D4218B60EA00589E1B /* DataHandler_Tests.swift */; };
 		BF5408252057619D00E5A1BB /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5408242057619D00E5A1BB /* AboutVC.swift */; };
 		BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */; };
 		BF628E041FCE1FA200824E87 /* Matching.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF628E031FCE1FA100824E87 /* Matching.swift */; };
+		BF85923520606F200065C8AD /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85923420606F200065C8AD /* Chatting.swift */; };
 		BF8A0E3B1FBB6FF7009EEF4E /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8A0E3A1FBB6FF7009EEF4E /* EditProfile.swift */; };
+		BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */; };
 		BF99DDBB1F183F710069F2C5 /* ProfileOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99DDBA1F183F710069F2C5 /* ProfileOptionsVC.swift */; };
 		BF99DDC01F1846AB0069F2C5 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99DDBF1F1846AB0069F2C5 /* Segues.swift */; };
 		BFB2E5481F71D4A40096D562 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2E5471F71D4A40096D562 /* Constants.swift */; };
@@ -43,6 +50,8 @@
 		932D81F25F287B3F2DE76581 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
 		B46FB924C860507234B9D7DE /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
 		BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendChatCell.swift; sourceTree = "<group>"; };
+		BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Express.swift; sourceTree = "<group>"; };
+		BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Core.swift; sourceTree = "<group>"; };
 		BF0A9A6B20169FE400AC1E48 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		BF1082721ED4C793000677A3 /* Mac Daddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mac Daddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1082751ED4C793000677A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,10 +69,14 @@
 		BF3B2E161EE43A67002796DE /* VerifyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyVC.swift; sourceTree = "<group>"; };
 		BF4247F11EF70E1B003BEEA8 /* PrivateSetup2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateSetup2VC.swift; sourceTree = "<group>"; };
 		BF43C5DB1EE72AAC00602357 /* MyPreferencesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPreferencesVC.swift; sourceTree = "<group>"; };
+		BF4C29D0218909B100589E1B /* DataHandler_Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Friends.swift; sourceTree = "<group>"; };
+		BF4C29D4218B60EA00589E1B /* DataHandler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Tests.swift; sourceTree = "<group>"; };
 		BF5408242057619D00E5A1BB /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF628E031FCE1FA100824E87 /* Matching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matching.swift; sourceTree = "<group>"; };
+		BF85923420606F200065C8AD /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 		BF8A0E3A1FBB6FF7009EEF4E /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingAlerts.swift; sourceTree = "<group>"; };
 		BF99DDBA1F183F710069F2C5 /* ProfileOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileOptionsVC.swift; sourceTree = "<group>"; };
 		BF99DDBF1F1846AB0069F2C5 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		BFB2E5461F71D31E0096D562 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -80,6 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				336908F08FB99B3C4B0B9AC7 /* Pods_Mac_Daddy.framework in Frameworks */,
+				AF5C07CED336B007363A0855 /* Pods_Mac_Daddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,10 +144,11 @@
 			isa = PBXGroup;
 			children = (
 				BF10827C1ED4C793000677A3 /* Assets.xcassets */,
-				BF1082751ED4C793000677A3 /* AppDelegate.swift */,
 				BF1082791ED4C793000677A3 /* Main.storyboard */,
+				BF1082751ED4C793000677A3 /* AppDelegate.swift */,
 				BF0A9A6B20169FE400AC1E48 /* Structs.swift */,
 				BFB2E5471F71D4A40096D562 /* Constants.swift */,
+				BF4C29D6218B654D00589E1B /* DataHandler */,
 				BF99DDBD1F1845140069F2C5 /* Launch */,
 				BF005BE01FB9FE7300CFE337 /* Home */,
 				BF1EDC501EE4A027006CB610 /* Login */,
@@ -154,6 +169,18 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		BF4C29D6218B654D00589E1B /* DataHandler */ = {
+			isa = PBXGroup;
+			children = (
+				BF2652EE1F18057F0013873F /* DataHandler.swift */,
+				BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */,
+				BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */,
+				BF4C29D0218909B100589E1B /* DataHandler_Friends.swift */,
+				BF4C29D4218B60EA00589E1B /* DataHandler_Tests.swift */,
+			);
+			name = DataHandler;
+			sourceTree = "<group>";
+		};
 		BF99DDBC1F1842DD0069F2C5 /* Profile Editing */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */,
-				BF2652EE1F18057F0013873F /* DataHandler.swift */,
 				BF1EDC511EE60CAF006CB610 /* WelcomeVC.swift */,
 			);
 			name = Launch;
@@ -188,6 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */,
+				BF85923420606F200065C8AD /* Chatting.swift */,
+				BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */,
 				BF628E031FCE1FA100824E87 /* Matching.swift */,
 				BFEB30381F68891E00CD4173 /* UserData.swift */,
 			);
@@ -250,7 +278,7 @@
 					BF1082711ED4C793000677A3 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = GTCC98NN7E;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -308,9 +336,34 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -323,13 +376,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mac Daddy-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -342,12 +398,16 @@
 				BF628E041FCE1FA200824E87 /* Matching.swift in Sources */,
 				BFB2E54A1F71D4FD0096D562 /* ChatInterfaceVC.swift in Sources */,
 				BF1EDC521EE60CAF006CB610 /* WelcomeVC.swift in Sources */,
+				BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */,
+				BF85923520606F200065C8AD /* Chatting.swift in Sources */,
 				BFB2E5481F71D4A40096D562 /* Constants.swift in Sources */,
 				BFEB30391F68891E00CD4173 /* UserData.swift in Sources */,
 				BF2652EB1F16B2090013873F /* HomeVC.swift in Sources */,
 				BF5408252057619D00E5A1BB /* AboutVC.swift in Sources */,
 				BF1082781ED4C793000677A3 /* LoginVC.swift in Sources */,
 				BF99DDC01F1846AB0069F2C5 /* Segues.swift in Sources */,
+				BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */,
+				BF4C29D5218B60EA00589E1B /* DataHandler_Tests.swift in Sources */,
 				BF99DDBB1F183F710069F2C5 /* ProfileOptionsVC.swift in Sources */,
 				BF2652EF1F18057F0013873F /* DataHandler.swift in Sources */,
 				BFCC3BF61EE89C5600BD1F1C /* PrivateSetup1VC.swift in Sources */,
@@ -360,7 +420,9 @@
 				BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */,
 				BF3B2E171EE43A67002796DE /* VerifyVC.swift in Sources */,
 				BF2652F11F1821F30013873F /* InterestsSetupVC.swift in Sources */,
+				BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */,
 				BF1082761ED4C793000677A3 /* AppDelegate.swift in Sources */,
+				BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */,
 				BF4247F21EF70E1B003BEEA8 /* PrivateSetup2VC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,7 +558,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.synestha.Mac-Daddy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -512,7 +575,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.synestha.Mac-Daddy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

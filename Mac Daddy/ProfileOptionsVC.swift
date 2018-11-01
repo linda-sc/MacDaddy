@@ -32,19 +32,19 @@ class ProfileOptionsVC: UIViewController, UIImagePickerControllerDelegate, UINav
         // Format buttons:
         
         //changeProfilePictureButton.layer.borderWidth = 2.0
-        changeProfilePictureButton.layer.cornerRadius = 15
+        changeProfilePictureButton.layer.cornerRadius = 6
         //changeProfilePictureButton.layer.borderColor = UIColor.white.cgColor
         
         //editProfileSettingsButton.layer.borderWidth = 2.0
-        editProfileSettingsButton.layer.cornerRadius = 15
+        editProfileSettingsButton.layer.cornerRadius = 6
         //editProfileSettingsButton.layer.borderColor = UIColor.white.cgColor
         
         //editInterestsButton.layer.borderWidth = 2.0
-        editInterestsButton.layer.cornerRadius = 15
+        editInterestsButton.layer.cornerRadius = 6
         //editInterestsButton.layer.borderColor = UIColor.white.cgColor
   
         //logOutButton.layer.borderWidth = 2.0
-        logOutButton.layer.cornerRadius = 15
+        logOutButton.layer.cornerRadius = 6
         //logOutButton.layer.borderColor = UIColor.white.cgColor
         
         profilePicture.layer.borderWidth = 4.0

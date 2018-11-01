@@ -85,16 +85,16 @@ class PreferencesSetupVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         if row == 0{
-            return NSAttributedString(string: "Freshman", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return NSAttributedString(string: "Freshman", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             
         } else if row == 1{
-            return NSAttributedString(string: "Sophomore", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return NSAttributedString(string: "Sophomore", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             
         }else if row == 2{
-            return NSAttributedString(string: "Junior", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return NSAttributedString(string: "Junior", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             
         }else{
-            return NSAttributedString(string: "Senior", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return NSAttributedString(string: "Senior", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             
         }
     }

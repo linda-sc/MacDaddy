@@ -16,6 +16,12 @@ class AboutVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    
+    //Make the status bar white.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     @IBAction func backPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

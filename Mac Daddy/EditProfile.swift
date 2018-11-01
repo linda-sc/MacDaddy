@@ -30,17 +30,28 @@ class EditProfile {
                         return
                     }
                     
-                    if let profilePictureURL = metadata?.downloadURL()?.absoluteString {
-                        let values = ["Profile Picture": profilePictureURL]
-                        //Register into Firebase:
-                        DataHandler.updateUserData(uid: uid, values: values)
-                        //Register into DataHandler local variables:
-                        DataHandler.picURL = profilePictureURL
-                        //DataHandler.picture = newPicture
-                        DataHandler.picExists = true
-                        //Save into defaults.
-                        DataHandler.saveDefaults()
+                    // Fetch the download URL
+                    ppStorageRef.downloadURL { url, error in
+                        if let error = error {
+                            // Handle any errors
+                            print(error)
+                        } else {
+                            // Get the download URL for 'images/stars.jpg'
+                            
+                            if let profilePictureURL = url?.absoluteString {
+                                let values = ["Profile Picture": profilePictureURL]
+                                //Register into Firebase:
+                                DataHandler.updateUserData(uid: uid, values: values)
+                                //Register into DataHandler local variables:
+                                DataHandler.picURL = profilePictureURL
+                                //DataHandler.picture = newPicture
+                                DataHandler.picExists = true
+                                //Save into defaults.
+                                DataHandler.saveDefaults()
+                            }
+                        }
                     }
+                
                     print(metadata!)
             })
         }

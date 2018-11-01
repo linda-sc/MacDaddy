@@ -27,11 +27,24 @@ class PrivateSetup2VC: UIViewController, UIImagePickerControllerDelegate, UINavi
         //Get the name from the DataHandler
         self.nameLabel.text = DataHandler.name
         //To double check:
+        
+        
+        ////////////////////////////////////////////
+        /////////  UPDATE FOR FIRESTORE  ///////////
+        ////////////////////////////////////////////
+        
         //Retrieve the name data from Firebase to show the name underneath the profile picture.
         self.databaseRef?.child("users").child((user?.uid)!).observeSingleEvent(of: .value) { (snapshot: DataSnapshot) in
             let snapshotValue = snapshot.value as? NSDictionary
             self.nameLabel.text = snapshotValue?["Name"] as? String
         }
+        
+        
+        
+        
+        
+        
+        
     }
 
     //Make the status bar white.
@@ -87,7 +100,7 @@ class PrivateSetup2VC: UIViewController, UIImagePickerControllerDelegate, UINavi
     //Prepare for the segue to Preferences:
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "goToSetup3" {
-            let destination = segue.destination as! PreferencesSetupVC
+            //let destination = segue.destination as! PreferencesSetupVC
             //destination.profilePicture.image = self.profilePicture.image
         }
     }

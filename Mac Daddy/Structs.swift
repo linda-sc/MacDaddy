@@ -25,32 +25,19 @@ struct Friend {
     var lastActive = "n"
 }
 
+struct DownloadedUser {
+    //Basically just a friend with additional info:
+    var friendInfo = Friend()
+    var secondaryA = ""
+    
+}
+
 struct Convo {
     var friendUID = ""
     var lastChat = ""
     var seen = ""
 }
 
-struct DownloadedUser {
-    //Candidate Info
-    var uid = ""
-    var convoID = ""
-    var name = ""
-    var anon = "y"
-    
-    //Sorting Info
-    var macStatus = ""
-    var grade = ""
-    var weight = 0
-    
-    //Status Info
-    var active = "n"
-    var lastActive = "n"
-    
-    //Basically just a friend with additional info:
-    var secondaryA = ""
-    
-}
 
 
 

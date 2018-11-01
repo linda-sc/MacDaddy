@@ -6,11 +6,12 @@ target 'Mac Daddy' do
   use_frameworks!
 
   # Pods for Mac Daddy
-	
+
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Storage'
+    	pod 'Firebase/Firestore'
 	pod 'Firebase/Messaging'
 	pod 'JSQMessagesViewController'
 

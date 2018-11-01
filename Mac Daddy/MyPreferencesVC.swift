@@ -110,16 +110,16 @@ class MyPreferencesVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         if row == 0{
-            return NSAttributedString(string: "Freshman", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return NSAttributedString(string: "Freshman", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             
         } else if row == 1{
-            return NSAttributedString(string: "Sophomore", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return NSAttributedString(string: "Sophomore", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             
         }else if row == 2{
-            return NSAttributedString(string: "Junior", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return NSAttributedString(string: "Junior", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             
         }else{
-            return NSAttributedString(string: "Senior", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return NSAttributedString(string: "Senior", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
 
         }
     }
@@ -145,18 +145,20 @@ class MyPreferencesVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     }
     
     
+    ////////////////////////////////////////////
+    /////////  UPDATE FOR FIRESTORE  ///////////
+    ////////////////////////////////////////////
+    
+    
     @IBAction func saveButtonTapped(_sender:UIButton){
         DataHandler.macStatus = macStatus
         print(DataHandler.macStatus)
         
         DataHandler.grade = grade
         let values = ["Grade": grade, "Mac Status": macStatus]
-        let user = Auth.auth().currentUser
-        let ref = Database.database().reference(fromURL: "https://mac-daddy-df79e.firebaseio.com/")
-        let usersReference = ref.child("users").child((user?.uid)!)
-        
-        usersReference.updateChildValues(values)
-        print ("Grade successfully saved")
+        let uid = Auth.auth().currentUser?.uid
+        DataHandler.updateUserData(uid: uid!, values: values)
+        print ("Grade and status successfully saved")
         self.performSegue(withIdentifier: "backToOptions", sender: self)
     }
 }

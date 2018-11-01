@@ -8,7 +8,6 @@
 
 import Foundation
 import Firebase
-import FirebaseDatabase
 
 class UserData {
     
@@ -22,42 +21,50 @@ class UserData {
     //1. Download from Firebase like we did in DataHander.checkData
     //2. Reformat this dictionary into an array of users
     //3. Pass it to Matching functions that will choose a friend and initiate a conversation.
+
     
     static func downloadAllUsers(completed: @escaping ()-> ()) {
+        print("🦋 Downloading all users...")
         
         //Overwrite previous data.
         allUsers = [DownloadedUser]()
         
-        let databaseRef = Database.database().reference()
-        if let _ = Auth.auth().currentUser {
-            
-            databaseRef.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                if let usersSnapshot = snapshot.value as? NSDictionary {
-
-                    for (key, value) in usersSnapshot {
-                        let dict = value as? [String: Any]
-                        var user = DownloadedUser()
-                        user.uid = key as! String
-                        user.anon = "y"
-                        user.convoID = ""
-                        user.grade = dict?["Grade"] as? String ?? ""
-                        user.macStatus = dict?["Mac Status"] as? String ?? ""
-                        user.name = ""
-                        user.secondaryA = dict?["SecondaryA"] as? String ?? ""
-                        user.weight = 0
-                        user.active = dict?["Active"] as? String ?? ""
-                    
-                        allUsers.append(user)
-                    }
+        
+        DataHandler.db.collection("users").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("💥 Error getting users: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    //print("\(document.documentID) => \(document.data())")
+                    let userObject = userDictionaryToList(uid: document.documentID, data: document.data() as! [String : String])
+                    allUsers.append(userObject)
                 }
-
-                print("Here are the users: \(allUsers)")
-             completed()
-            }) //End of Firebase snapshot
-        }//End of if let user condition
+                print("🦋 Downloaded all users: \(allUsers)")
+            }
+        }
+        
     }//End of downloading users.
     
+
+    //Converts a dictionary back into a list of user structs for easy use locally.
+    static func userDictionaryToList(uid: String, data: [String:String]) -> DownloadedUser {
+        var userStruct = DownloadedUser()
+        var friendStruct = Friend()
+        
+        friendStruct.uid = uid
+        friendStruct.name = data["Name"] ?? ""
+        friendStruct.convoID = data["ConvoID"] ?? ""
+        friendStruct.anon = data["Anon"] ?? ""
+        friendStruct.macStatus = data["MacStatus"] ?? ""
+        friendStruct.grade = data["Grade"] ?? ""
+        friendStruct.active = data["Active"] ?? ""
+        friendStruct.lastActive = data["LastActive"] ?? ""
+        
+        userStruct.friendInfo = friendStruct
+        userStruct.secondaryA = data["SecondaryA"] ?? ""
+    
+        return userStruct
+    }
 }//End of user data.
 
 

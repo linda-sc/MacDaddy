@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/AppDelegate.swift"
-            timestampString = "537247274.03052"
+            timestampString = "562791253.547622"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
@@ -184,7 +184,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/AppDelegate.swift"
-            timestampString = "537247274.03492"
+            timestampString = "562791253.547681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.2803"
+            timestampString = "562791253.547727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
             landmarkName = "LoginVC"
             landmarkType = "3">
             <Locations>
@@ -278,11 +278,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.289618"
+            timestampString = "562791253.54777"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "LoginVC"
             landmarkType = "3">
             <Locations>
@@ -356,11 +356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.2905869"
+            timestampString = "562791253.5478081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "LoginVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -372,11 +372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.2917"
+            timestampString = "562791253.5478441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
             landmarkName = "LoginVC"
             landmarkType = "3">
             <Locations>
@@ -450,11 +450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.632717"
+            timestampString = "562791253.547895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "sendPasswordReset(email:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -466,11 +466,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.632845"
+            timestampString = "562791253.547946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "setup()"
             landmarkType = "7">
          </BreakpointContent>
@@ -482,7 +482,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.632911"
+            timestampString = "562791253.5479831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -498,7 +498,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.632957"
+            timestampString = "562791253.5480191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -514,11 +514,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.2927721"
+            timestampString = "562791253.548056"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
             landmarkName = "LoginVC"
             landmarkType = "3">
             <Locations>
@@ -607,11 +607,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.293766"
+            timestampString = "562791253.548111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "signinButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -623,11 +623,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.633042"
+            timestampString = "562791253.548152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "loginInfo"
             landmarkType = "24">
          </BreakpointContent>
@@ -639,11 +639,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.633116"
+            timestampString = "562791253.548192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "FirebaseManager"
             landmarkType = "3">
          </BreakpointContent>
@@ -655,11 +655,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.63318"
+            timestampString = "562791253.548229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "sendPasswordReset(email:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -671,11 +671,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.633297"
+            timestampString = "562791253.5482841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "deleteUnverifiedUser()"
             landmarkType = "7">
          </BreakpointContent>
@@ -687,11 +687,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.633395"
+            timestampString = "562791253.548322"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "sendPasswordReset(email:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -703,11 +703,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.63347"
+            timestampString = "562791253.548378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "deleteUser()"
             landmarkType = "7">
          </BreakpointContent>
@@ -719,77 +719,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.294987"
+            timestampString = "562791253.548416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "signinButtonTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.29584"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "isValidSchoolEmail(email:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.2968889"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "signinButtonTapped(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mac_Daddy.LoginVC.signinButtonTapped (__ObjC.UIButton) -&gt; ()"
-                  moduleName = "Mac Daddy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Linda/Desktop/My%20Apps/Mac%20Daddy/Mac%20Daddy/LoginVC.swift"
-                  timestampString = "518397239.753138"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "114"
-                  endingLineNumber = "114"
-                  offsetFromSymbolStart = "1292">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mac_Daddy.LoginVC.(signinButtonTapped (__ObjC.UIButton) -&gt; ()).(closure #2)"
-                  moduleName = "Mac Daddy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Linda/Desktop/My%20Apps/Mac%20Daddy/Mac%20Daddy/LoginVC.swift"
-                  timestampString = "518397239.755411"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "114"
-                  endingLineNumber = "114"
-                  offsetFromSymbolStart = "888">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1093,28 +1029,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.298099"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "signinButtonTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.633783"
+            timestampString = "562791253.548517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "loginInfo"
             landmarkType = "24">
             <Locations>
@@ -1158,11 +1078,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.633914"
+            timestampString = "562791253.548558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "logout()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1174,7 +1094,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/FirebaseManager.swift"
-            timestampString = "534140156.634052"
+            timestampString = "562791253.548597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -1190,11 +1110,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.2992049"
+            timestampString = "562791253.548635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "forgotPasswordTapped(_:)"
             landmarkType = "7">
             <Locations>
@@ -1285,22 +1205,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mac Daddy/LoginVC.swift"
-            timestampString = "540498721.300377"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "signinButtonTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Mac Daddy/PrivateSetupVC.swift"
             timestampString = "519506303.056"
             startingColumnNumber = "9223372036854775807"
@@ -1371,7 +1275,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "changePictureTapped(_sender:)"
+            landmarkName = "didReceiveMemoryWarning()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1618,7 +1522,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/ProfileOptionsVC.swift"
-            timestampString = "542644804.92765"
+            timestampString = "548282332.540414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
@@ -1682,7 +1586,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/ProfileOptionsVC.swift"
-            timestampString = "542644804.9277591"
+            timestampString = "548282332.540583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
@@ -1698,7 +1602,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/ProfileOptionsVC.swift"
-            timestampString = "542644804.927821"
+            timestampString = "548282332.540681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -1714,7 +1618,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/ProfileOptionsVC.swift"
-            timestampString = "542644804.927868"
+            timestampString = "548282332.54075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -1730,7 +1634,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/ProfileOptionsVC.swift"
-            timestampString = "542644804.927912"
+            timestampString = "548282332.540851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
@@ -1810,93 +1714,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Daddy/DataHandler.swift"
-            timestampString = "538357910.412985"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "clearDefaults()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mac Daddy/UserData.swift"
-            timestampString = "537247274.0381891"
+            timestampString = "562791253.5490071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
             endingLineNumber = "59"
-            landmarkName = "downloadAllUsers(completed:)"
+            landmarkName = "clearDefaults()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mac Daddy/ChatInterfaceVC.swift"
-            timestampString = "542644804.9280699"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
-            landmarkName = "getFriendsRealName(completed:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mac Daddy/ChatInterfaceVC.swift"
-            timestampString = "542644804.928111"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
-            landmarkName = "getFriendsRealName(completed:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in Mac_Daddy.ChatInterfaceVC.getFriendsRealName(completed: () -&gt; ()) -&gt; ()"
-                  moduleName = "Mac Daddy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Linda/Desktop/My%20Apps/Mac%20Daddy/Mac%20Daddy/ChatInterfaceVC.swift"
-                  timestampString = "534106162.624319"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "271"
-                  endingLineNumber = "271"
-                  offsetFromSymbolStart = "1448">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.String in closure #1 (__ObjC.DataSnapshot) -&gt; () in Mac_Daddy.ChatInterfaceVC.getFriendsRealName(completed: () -&gt; ()) -&gt; ()"
-                  moduleName = "Mac Daddy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Linda/Desktop/My%20Apps/Mac%20Daddy/Mac%20Daddy/ChatInterfaceVC.swift"
-                  timestampString = "534106162.629411"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "271"
-                  endingLineNumber = "271"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
