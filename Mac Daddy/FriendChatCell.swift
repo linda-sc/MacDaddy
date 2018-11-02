@@ -34,7 +34,7 @@ class FriendChatCell: UITableViewCell {
         
         //If the friend is anonymous, use one of the default pictures.
         //We haven't implemented pictures yet so let's just leave it like this.
-        //if friend.anon == "y" {
+        //if friend.anon == "1" {
         if true {
             if friend.macStatus == "Daddy" {
                 friendPic.image = UIImage(named: "MacDaddyLogo_Purple")
@@ -44,7 +44,7 @@ class FriendChatCell: UITableViewCell {
         }
         
         //Show active indicator
-        if friend.active == "n" {
+        if friend.active == "0" {
             activeBubble.isHidden = true
         } else {
             activeBubble.isHidden = false
@@ -57,7 +57,7 @@ class FriendChatCell: UITableViewCell {
         friendChatPreview.text = "is now chatting with you!"
         
         //So you see if you liked them already or not.
-        if (friend.anon == "n") {
+        if (friend.anon == "0") {
             self.heart.isHidden = false
         } else {
           self.heart.isHidden = true

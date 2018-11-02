@@ -151,10 +151,20 @@ class FirebaseManager {
                     print("User successfully deleted")
                 }
             }
-        //Delete user from database:
+        
+        //Delete user from RTDB:
         let ref = Database.database().reference()
         let usersReference = ref.child("users").child((user?.uid)!)
         usersReference.removeValue()
+        
+        //Delete user from Firestore:
+        DataHandler.db.collection("users").document((user?.uid)!).delete() { err in
+            if let err = err {
+                print("‼️ Error removing user from Firestore: \(err)")
+            } else {
+                print("👋🏻 User successfully removed from Firestore.")
+            }
+        }
 
     }
     

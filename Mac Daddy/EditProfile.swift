@@ -39,7 +39,7 @@ class EditProfile {
                             // Get the download URL for 'images/stars.jpg'
                             
                             if let profilePictureURL = url?.absoluteString {
-                                let values = ["Profile Picture": profilePictureURL]
+                                let values = ["ProfPic": profilePictureURL]
                                 //Register into Firebase:
                                 DataHandler.updateUserData(uid: uid, values: values)
                                 //Register into DataHandler local variables:

@@ -17,8 +17,10 @@ extension DataHandler {
     //Update the user's data in Cloud Firestore
     static func updateUserData(uid: String, values: [String:String]) {
         print("💁‍♀️ Updating user data with values \(values)")
-        let userRef = db.collection("users").document(uid)
-        updateFirestoreData(ref: userRef, values: values)
+        if let uid = Auth.auth().currentUser?.uid {
+            let userRef = db.collection("users").document(uid)
+            updateFirestoreData(ref: userRef, values: values)
+        }
     }
     
     
@@ -41,7 +43,23 @@ extension DataHandler {
                     print("‼️ New values not updating: \(values)")
                 } else {
                     print("🔥☝🏼 Updating Firestore Data at document \(ref.documentID)")
-                    print("🔥☝🏼 New values: \(values)")
+                    print("     New values: \(values)")
+                }
+            }
+        }
+    }
+
+    
+    //Create data at any document in Cloud Firestore
+    static func setFirestoreData(ref: DocumentReference, values: [String:String]) {
+        if uid != "" {
+            ref.setData(values, merge: true) { (error) in
+                if let error = error {
+                    print("‼️ ERROR: setting new data: \(error.localizedDescription)")
+                    print("‼️ New data not uploading: \(values)")
+                } else {
+                    print("🔥☝🏼 Creating Firestore Data at document \(ref.documentID)")
+                    print("      New values: \(values)")
                 }
             }
         }
@@ -57,10 +75,10 @@ extension DataHandler {
                 let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                 
                 print("🔥 Reading Firestore Data...")
-                print("🔥 Data: \(dataDescription)")
+                print("   Data: \(dataDescription)")
                 
             } else {
-                print("Data does not exist")
+                print("🍅 Data does not exist")
             }
         }
     }

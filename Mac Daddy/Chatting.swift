@@ -64,14 +64,14 @@ extension ChatInterfaceVC {
                     let mySavedStatus = myStatus["saved"] as! String
                     let friendSavedStatus = friendStatus["saved"] as! String
                     
-                    if (mySavedStatus == "y") {
+                    if (mySavedStatus == "1") {
                         print("I saved the chat, my firebase status is y.")
                         self.heartButton.tintColor = UIColor(red: 0.99, green: 0.24, blue: 0.56, alpha: 1.00)
                         self.iSaved = true
                     } else {
                         self.heartButton.tintColor = UIColor.white
                     }
-                    if (friendSavedStatus == "y") {
+                    if (friendSavedStatus == "1") {
                         print("They saved the chat!")
                         self.theySaved = true
                     }
@@ -105,7 +105,7 @@ extension ChatInterfaceVC {
             
             if let isTyping = snapshot.value as? String {
                 //Now just listen for typing:
-                if (isTyping == "y") {
+                if (isTyping == "1") {
                     self.friendTyping = true
                 } else {
                     self.showTypingIndicator = false
@@ -159,7 +159,7 @@ extension ChatInterfaceVC {
                 let selfRef = ref.child("users").child(DataHandler.uid!)
                 let myFriendRef = selfRef.child("Friends").child(self.friend.uid)
                 
-                let update = ["Name": self.friendsRealName, "Anon": "n"]
+                let update = ["Name": self.friendsRealName, "Anon": "0"]
                 
                 myFriendRef.updateChildValues(update)
                 print("Name and anon status updated")

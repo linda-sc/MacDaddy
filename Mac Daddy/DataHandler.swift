@@ -27,16 +27,18 @@ class DataHandler {
     static var interestsExist:Bool = false
     
     //Profile information saved locally
+    static var organization = ""
+    static var email = ""
     static var name = ""
+    static var macStatus = ""
     static var picURL = ""
     static var grade = ""
-    static var macStatus = ""
     
     //Variables for local matching function
+    static var currentMatchID = ""
     static var interests = NSDictionary()
     static var friends = NSDictionary()
     static var friendList = [Friend]()
-    static var currentMatchID = ""
     static var convos = [Convo]()
 
     
@@ -107,6 +109,33 @@ class DataHandler {
         convos = [Convo]()
     }
 
+    static func moveVerifiedUserToFirestore(){
+        print("👉🏻 Moving verified user to Cloud Firestore...")
+        if let refreshUid = Auth.auth().currentUser?.uid {
+            db.collection("users").document(refreshUid).setData(["8: Active": "1"]) { err in
+                if let err = err {
+                    print("Error moving user: \(err)")
+                } else {
+                    print("User successfully moved!")
+                }
+                
+                //Delete user from RTDB:
+                let ref = Database.database().reference()
+                let usersReference = ref.child("users").child((user?.uid)!)
+                usersReference.removeValue(){
+                    (error:Error?, ref:DatabaseReference) in
+                    if let error = error {
+                        print("User could not be deleted in RTDB: \(error).")
+                    } else {
+                        print("User deleted in RTBD successfully!")
+                    }
+                }
+            }
+        } else {
+            print("User ID not found.")
+        }
+    }
+    
     //Download the data from Firebase:
     static func checkData(completed: @escaping ()-> ()) {
         
@@ -127,7 +156,7 @@ class DataHandler {
                          print("🔥👀 Data: \(dataDescription)")
                         
                         //1. Checks to see whether or not the user has completed setup1 and entered their name.
-                        if let name = snapshot?["Name"] as? String {
+                        if let name = snapshot?["5: Name"] as? String {
                             if name == "" {
                                 self.nameExists = false
                                 print("👋🏼 Check Data: Name field is empty")
@@ -143,14 +172,14 @@ class DataHandler {
                         
                         
                         //2. Checks to see whether or not the user has completed setup2 and selected a picture.
-                        if let picURL = snapshot?["Profile Picture"] as? String {
+                        if let picURL = snapshot?["ProfPic"] as? String {
                             
                             if picURL == "" {
                                 self.picExists = false
                                 print("👋🏼 Check Data: Picture field is empty")
                             } else {
                                 self.picExists = true
-                                self.picURL = (snapshot?["Profile Picture"] as? String)!
+                                self.picURL = (snapshot?["ProfPic"] as? String)!
                                 print("👍🏼 Check Data: Picture exists - \(self.picURL)")
                             }
                         }else{
@@ -160,13 +189,13 @@ class DataHandler {
                         
                         //3. Checks to see whether or not the user has completed setup2 and selected a grade.
                         
-                        if let grade = snapshot?["Grade"] as? String {
+                        if let grade = snapshot?["9: Grade"] as? String {
                             if grade == "" {
                                 self.gradeExists = false
                                 print("👋🏼 Check Data: Grade is empty")
                             } else {
                                 self.gradeExists = true
-                                self.grade = (snapshot?["Grade"] as? String)!
+                                self.grade = (snapshot?["9: Grade"] as? String)!
                                 print("👍🏼 Check Data: Grade exists - \(self.grade)")
                             }
                             
@@ -176,12 +205,12 @@ class DataHandler {
                         }
                         
                         //4. Checks to see whether or not the user has completed setup2 and selected a Mac Status.
-                        if let macStatus = snapshot?["Mac Status"] as? String {
+                        if let macStatus = snapshot?["6: MacStatus"] as? String {
                             if macStatus == "" {
                                 self.macStatus = ""
                                 print("👋🏼 Check Data: Mac Status is empty")
                             } else {
-                                self.macStatus = (snapshot?["Mac Status"] as? String)!
+                                self.macStatus = (snapshot?["6: MacStatus"] as? String)!
                                 print("👍🏼 Check Data: Mac Status exists - \(self.macStatus)")
                             }
                             
@@ -191,18 +220,7 @@ class DataHandler {
                         }
                         
                         
-                        //5. Download friends.
-                        if let friends = snapshot?["friends"] as! NSDictionary? {
-                            self.friendList = self.friendDictionaryToList(friends: friends as! [String : [String : String]])
-                            print("Check Data: Friends exist")
-                            print(self.friends)
-                            print("👍🏼 Check Data: Friend check complete")
-                        } else {
-                            self.friends = NSDictionary()
-                            print("🤦🏻‍♀️ Check Data: Friends don't exist")
-                        }
-                        
-                        //6. Download interests.
+                        //5. Download interests.
                         if let interests = snapshot?["Interests"] as! NSDictionary? {
                             self.interests = interests
                             print("👍🏼 Check Data: Interests exist - \(self.interests)")
@@ -211,14 +229,14 @@ class DataHandler {
                             print("🤦🏻‍♀️ Check Data: Interests don't exist")
                         }
                         
-                        //7. Download current match's conversation ID:
-                        if let currentMatchID = snapshot?["Current Match ID"] as? String {
+                        //6. Download current match's conversation ID:
+                        if let currentMatchID = snapshot?["7: MatchID"] as? String {
                             if currentMatchID == "" {
                                 self.currentMatchID = ""
                                 print("👋🏼 Check Data: Current match is empty")
                                 completed()
                             } else {
-                                self.currentMatchID = (snapshot?["Current Match ID"] as? String)!
+                                self.currentMatchID = (snapshot?["7: MatchID"] as? String)!
                                 print("👍🏼 Check Data: Current match exists - \(self.currentMatchID)")
                                 completed()
                             }
@@ -231,7 +249,7 @@ class DataHandler {
                         }
                         
                     } else {
-                        print("Data does not exist")
+                        print("‼️ Data does not exist")
                         completed()
                     }
                 

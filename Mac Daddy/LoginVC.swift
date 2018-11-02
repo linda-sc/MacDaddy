@@ -56,8 +56,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     func isValidSchoolEmail(email:String) -> Bool{
-        return email.hasSuffix("@bc.edu")
-        //return true
+        //return email.hasSuffix("@bc.edu")
+        return true
     }
     
     func showErrorAlert(error:String){
@@ -86,6 +86,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             Auth.auth().signIn(withEmail: email!, password: password!) {
                 (user, error) in
                 
+                //Sync everything up from Firebase
                 DataHandler.checkData{}
                 
                 if error == nil {
@@ -94,8 +95,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         FirebaseManager.loginInfo = LoginInfo.init(email:email!, password:password!)
                         
                         self.performSegue(withIdentifier: "goToWelcome", sender: self)
-                        print("Successfully logged in with info:")
-                        print(FirebaseManager.loginInfo ?? "")
+                        print("👩🏻‍💻 Successfully logged in with info:")
+                        print(FirebaseManager.loginInfo?.email ?? "Email not found")
                         
                     }
                     
@@ -138,7 +139,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             showErrorAlert(error: "Make sure you use a valid school email.")
         }
     }
-    
     
     
     @IBAction func signinButtonTapped(_ sender: UIButton) {

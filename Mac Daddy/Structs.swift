@@ -8,21 +8,24 @@
 
 import Foundation
 
+///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
+
+
 struct Friend {
-    //Candidate Info
+    //Identifying Info
     var uid = ""
-    var convoID = ""
+    var organization = ""
+    var email = ""
     var name = ""
-    var anon = "y"
-    
-    //Sorting Info
     var macStatus = ""
     var grade = ""
-    var weight = 0
     
-    //Status Info
-    var active = "n"
-    var lastActive = "n"
+    //Reference Info
+    var convoID = ""
+    var anon = "1"
+    var weight = 0
+    var active = "0"
+    var lastActive = "0"
 }
 
 struct DownloadedUser {

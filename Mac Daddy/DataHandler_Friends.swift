@@ -12,43 +12,40 @@ import Firebase
 extension DataHandler {
     
     //Download the data from Firebase:
+    
     static func downloadFriends(completed: @escaping ()-> ()) {
+        print("🔥👯‍♀️ Downloading Friend Data only...")
+        self.friendList = [Friend]()
         
         if let user = Auth.auth().currentUser {
             
             DataHandler.user = user
             DataHandler.uid = user.uid
             
-            db.collection("users").document(uid!).getDocument { (document, error) in
+            db.collection("users").document(uid!).collection("friends").getDocuments() { (querySnapshot, err) in
                 
-                if let document = document, document.exists {
-                    
-                    print("🔥👯‍♀️ Downloading Friend Data only...")
-                    let snapshot = document.data()
-                    
-                    //Download friends.
-                    if let friends = snapshot?["friends"] as! NSDictionary? {
-                        self.friendList = self.friendDictionaryToList(friends: friends as! [String : [String : String]])
-                        print("👯‍♀️ downloadFriends: Friends exist:")
-                        print(self.friends)
-                        print("👯‍♀️ downloadFriends: Friends exist:")
-                        completed()
-                    } else {
-                        self.friends = NSDictionary()
-                         print("👯‍♀️ downloadFriends: Friends dont exist")
-                        completed()
-                    }
-                    
+                if let err = err {
+                    print("‼️ Error getting friends: \(err)")
                 } else {
-                    print("👯‍♀️ downloadFriends: Data does not exist")
-                    completed()
+                    print("     👯‍♀️ downloadFriends: Friends exist:")
+                    var newFriendList = [Friend]()
+                    for document in querySnapshot!.documents {
+                        //print("\(document.documentID) => \(document.data())")
+                        
+                        let friendObject = friendDictionaryToObject(uid: document.documentID, data: document.data() as! [String : String])
+                        newFriendList.append(friendObject)
+   
+                    }
+                    self.friendList = newFriendList
+                    print(self.friendList)
                 }
                 
             } //End of Firestore snapshot
         }//End of if let user condition
     }//End of downloadFriends.
     
-    
+
+    ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
     //Converts a list of friend objects into a dictionary for Firebase
     static func friendListToDictionary(friends:[Friend]) -> [String:[String:String]] {
         var friendDict = [String:[String:String]]()
@@ -66,6 +63,7 @@ extension DataHandler {
     }
     
     
+    ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
     //Converts a dictionary back into a list of friend structs for easy use locally.
     static func friendDictionaryToList(friends:[String:[String:String]]) -> [Friend] {
         var friendList = [Friend]()
@@ -85,6 +83,24 @@ extension DataHandler {
         }
         return friendList
     }
+    
+    
+    ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
+    //Converts a dictionary back into a friend struct for easy use locally.
+    static func friendDictionaryToObject(uid: String, data: [String:String]) -> Friend {
+        var friendStruct = Friend()
+        friendStruct.uid = uid
+        friendStruct.name = data["Name"] ?? ""
+        friendStruct.convoID = data["ConvoID"] ?? ""
+        friendStruct.anon = data["Anon"] ?? ""
+        friendStruct.macStatus = data["MacStatus"] ?? ""
+        friendStruct.grade = data["Grade"] ?? ""
+        friendStruct.active = data["Active"] ?? ""
+        friendStruct.lastActive = data["LastActive"] ?? ""
+
+        return friendStruct
+    }
+
     
     
     
@@ -134,13 +150,13 @@ extension DataHandler {
         if anon {
             if (friend.uid == currentMatchID) {
                 //If its an anonymous conversation you initiated:
-                selfRef.updateData(["PrimaryA" : "y"])
-                friendRef.updateData(["SecondaryA": "y"])
+                selfRef.updateData(["1: PrimaryA" : "1"])
+                friendRef.updateData(["2: SecondaryA": "1"])
                 
             } else {
                 //If its an anonymous conversation someone else intiated:
-                selfRef.updateData(["SecondaryA" : "y"])
-                friendRef.updateData(["PrimaryA": "y"])
+                selfRef.updateData(["2: SecondaryA" : "1"])
+                friendRef.updateData(["1: PrimaryA": "1"])
             }
         }
     }
@@ -165,54 +181,60 @@ extension DataHandler {
         if newMatch {
             
             //Change availability:
-            DataHandler.updateFirestoreData(ref: selfRef, values: ["PrimaryA" : "n"])
-            DataHandler.updateFirestoreData(ref: friendRef, values: ["SecondaryA" : "n"])
+            DataHandler.updateFirestoreData(ref: selfRef, values: ["1: PrimaryA" : "0"])
+            DataHandler.updateFirestoreData(ref: friendRef, values: ["2: SecondaryA" : "0"])
             
+            
+            ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
             //Add yourself to their friend list and make sure you are anonymous.
             let anonName = "Anonymous " + Matching.fakeNames[Int(arc4random_uniform(UInt32(Matching.fakeNames.count)))]
             
             myInfo = ["ConvoID": friend.convoID ,
                       "Name": anonName,
-                      "Anon": "y",
+                      "Anon": "1",
                       "MacStatus": self.macStatus,
                       "Grade": self.grade,
             ]
             
             friendInfo = ["ConvoID": friend.convoID ,
                           "Name": friend.name,
-                          "Anon": "y",
+                          "Anon": "1",
                           "MacStatus": friend.macStatus,
                           "Grade": friend.grade,
             ]
             
         } else {
             
+            ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
             //Otherwise add yourself as a normal friend, or update your information.
-            friendInfo = ["ConvoID": friend.convoID ,
-                          "Name": friend.name,
-                          "Anon": "n",
-                          "MacStatus": friend.macStatus,
-                          "Grade": friend.grade,
+            friendInfo = ["3: Organization": friend.organization,
+                          "4: Email": friend.email,
+                          "5: Name": friend.name,
+                          "6: MacStatus": friend.macStatus,
+                          "7: ConvoID": friend.convoID ,
+                          "Anon": "0",
+                          "9: Grade": friend.grade,
             ]
             
             
-            myInfo = ["ConvoID": friend.convoID ,
-                      "Name": DataHandler.name,
-                      "Anon": "n",
-                      "MacStatus": self.macStatus,
-                      "Grade": self.grade,
+            myInfo = ["3: Organization": DataHandler.organization,
+                      "4: Email": user?.email,
+                      "5: Name": DataHandler.name,
+                      "6: MacStatus": self.macStatus,
+                      "7: ConvoID": friend.convoID,
+                      "Anon": "0",
+                      "9: Grade": self.grade,
             ]
             
             //Change availability:
-            DataHandler.updateFirestoreData(ref: selfRef, values: ["PrimaryA" : "y"])
-            DataHandler.updateFirestoreData(ref: friendRef, values: ["SecondaryA" : "y"])
+            DataHandler.updateFirestoreData(ref: selfRef, values: ["1: PrimaryA" : "1"])
+            DataHandler.updateFirestoreData(ref: friendRef, values: ["2: SecondaryA" : "1"])
             
         }
         
         //Add yourself to their friend list, and vice versa.
-        
-        DataHandler.updateFirestoreData(ref: selfInFriendsOfFriendsRef, values: myInfo as! [String : String])
-        DataHandler.updateFirestoreData(ref: friendInFriendsListRef, values: friendInfo as! [String : String])
+        DataHandler.setFirestoreData(ref: selfInFriendsOfFriendsRef, values: myInfo as! [String : String])
+        DataHandler.setFirestoreData(ref: friendInFriendsListRef, values: friendInfo as! [String : String])
         
     }
     
@@ -225,13 +247,13 @@ extension DataHandler {
         
         //For now let's just put anonymous friends first.
         for friend in self.friendList {
-            if friend.anon == "y" {
+            if friend.anon == "1" {
                 orderedFriendList.append(friend)
             }
         }
         
         for friend in self.friendList {
-            if friend.anon == "n" {
+            if friend.anon == "0" {
                 orderedFriendList.append(friend)
             }
         }

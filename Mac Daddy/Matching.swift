@@ -27,10 +27,12 @@ class Matching {
             
             var filteredCandidates = [Friend]()
             
+            
+            ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
             for user in UserData.allUsers {
                 //Download all availible users and convert them to Friends in candidates.
-                //if user.secondaryA == "y" {
-                if true {
+                if user.secondaryA == "1" {
+                //if true {
                     var newFriend = Friend()
                     
                     newFriend.anon = user.friendInfo.anon
@@ -47,34 +49,42 @@ class Matching {
             }//All users have been filtered and converted to candidates.
             
             //Important initial steps:
-            //Take yourself out of the list with some JAVA LOOKING LOOPS
+            //1. Take yourself, out of the list with some JAVA LOOKING LOOPS
             var i = 0
             while (i < candidates.count) {
                 if candidates[i].uid == DataHandler.uid! {
                     candidates.remove(at: i)
                     print("Removing self")
                     i = i - 1
-                    
-                    //Take out your current friends too.
-                    //Remember to look at DataHandler!!
-                    
-                    //Leave it to me to write trash n squared code...
-                    var j = 0
-                    while (j < candidates.count
-                            && j < DataHandler.friendList.count
-                            && DataHandler.friendList.count != 0
-                            && candidates.count != 0) {
-                                
-                        if candidates[i].uid == DataHandler.friendList[j].uid {
-                            candidates.remove(at: i)
-                            print("Removing current friends")
-                            i = i - 1
-                        }
-                        j = j + 1
-                    }
                 }
                 i = i + 1
             }
+            
+            //2. Take out your current friends.
+            i = 0
+            while (i < candidates.count) {
+                //Leave it to me to write trash n squared code...
+                var j = 0
+                var remove = false
+                while ( j < DataHandler.friendList.count
+                    && DataHandler.friendList.count != 0
+                    && candidates.count != 0
+                    && remove == false) {
+                        
+                        print("Checking Candidate i = \(i)")
+                        if candidates[i].uid == DataHandler.friendList[j].uid {
+                            remove = true
+                        } //End of checking against friend at j
+                        j = j + 1
+                } // End of checking candidate at i
+                if remove {
+                    print("❄️ Removing current friend: \(candidates[i])")
+                    candidates.remove(at: i)
+                    i = i - 1
+                }
+                i = i + 1
+            }//End of checking all candidates
+            
             
             //Next:
             //Refine weights based on criteria
@@ -111,6 +121,7 @@ class Matching {
                     maxWeight = candidate.weight
                 }
             }
+             print("❄️ Max weight = \(maxWeight)")
             
             //Clear out the filtered candidates:
             filteredCandidates = [Friend]()
@@ -152,12 +163,12 @@ class Matching {
                 let ref = Constants.refs.databaseConversations.child(chosenCandidate.convoID).child("status")
                 let myUID = DataHandler.uid!
                 let friendUID = chosenCandidate.uid
-                let status = [myUID: ["saved": "n"], friendUID: ["saved": "n"]]
+                let status = [myUID: ["saved": "0"], friendUID: ["saved": "0"]]
                 ref.setValue(status)
                 
                 //Update availibility locally and in Firebase.
                 
-                DataHandler.updatePrimaryA(primaryA: "n")
+                DataHandler.updatePrimaryA(primaryA: "0")
                 DataHandler.updateFriendData(friend: chosenCandidate, newMatch: true)
                 //Update your own current match:
                 DataHandler.updateCurrentMatchID(currentMatchID: chosenCandidate.uid)
@@ -187,7 +198,7 @@ class Matching {
     static func saveCurrentMatch(friend:Friend) {
         let ref = Constants.refs.databaseConversations.child(friend.convoID).child("status")
         let myUID = DataHandler.uid!
-        let status = [myUID: ["saved": "y"]]
+        let status = [myUID: ["saved": "1"]]
         ref.updateChildValues(status)
     }
 }

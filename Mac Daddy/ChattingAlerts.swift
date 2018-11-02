@@ -20,10 +20,10 @@ extension ChatInterfaceVC {
         
         convoStillExists {
             if self.convoExists {
-                if (self.friend.anon == "y" && self.iSaved == true) {
+                if (self.friend.anon == "1" && self.iSaved == true) {
                     //If you're still waiting on your match, show an alert.
                     self.showWaitingAlert()
-                } else if (self.friend.anon == "y" && self.iSaved == false) {
+                } else if (self.friend.anon == "1" && self.iSaved == false) {
                     //If you're about to like a new match, show an alert.
                     self.showLikingAlert()
                 }

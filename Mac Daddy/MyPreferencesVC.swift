@@ -144,20 +144,11 @@ class MyPreferencesVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         }
     }
     
-    
-    ////////////////////////////////////////////
-    /////////  UPDATE FOR FIRESTORE  ///////////
-    ////////////////////////////////////////////
-    
-    
     @IBAction func saveButtonTapped(_sender:UIButton){
         DataHandler.macStatus = macStatus
-        print(DataHandler.macStatus)
-        
         DataHandler.grade = grade
-        let values = ["Grade": grade, "Mac Status": macStatus]
-        let uid = Auth.auth().currentUser?.uid
-        DataHandler.updateUserData(uid: uid!, values: values)
+        DataHandler.updateMacStatus(status: macStatus)
+        DataHandler.updateGrade(grade: grade)
         print ("Grade and status successfully saved")
         self.performSegue(withIdentifier: "backToOptions", sender: self)
     }

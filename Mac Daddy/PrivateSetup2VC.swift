@@ -27,24 +27,7 @@ class PrivateSetup2VC: UIViewController, UIImagePickerControllerDelegate, UINavi
         //Get the name from the DataHandler
         self.nameLabel.text = DataHandler.name
         //To double check:
-        
-        
-        ////////////////////////////////////////////
-        /////////  UPDATE FOR FIRESTORE  ///////////
-        ////////////////////////////////////////////
-        
-        //Retrieve the name data from Firebase to show the name underneath the profile picture.
-        self.databaseRef?.child("users").child((user?.uid)!).observeSingleEvent(of: .value) { (snapshot: DataSnapshot) in
-            let snapshotValue = snapshot.value as? NSDictionary
-            self.nameLabel.text = snapshotValue?["Name"] as? String
-        }
-        
-        
-        
-        
-        
-        
-        
+         
     }
 
     //Make the status bar white.

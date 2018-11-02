@@ -40,28 +40,36 @@ class UserData {
                     allUsers.append(userObject)
                 }
                 print("🦋 Downloaded all users: \(allUsers)")
+                completed()
             }
         }
         
     }//End of downloading users.
     
 
+    
+    ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
     //Converts a dictionary back into a list of user structs for easy use locally.
     static func userDictionaryToList(uid: String, data: [String:String]) -> DownloadedUser {
         var userStruct = DownloadedUser()
         var friendStruct = Friend()
         
         friendStruct.uid = uid
-        friendStruct.name = data["Name"] ?? ""
-        friendStruct.convoID = data["ConvoID"] ?? ""
+        //Skip 1: PrimaryA
+        userStruct.secondaryA = data["2: SecondaryA"] ?? ""
+        
+        friendStruct.organization = data["3: Organization"] ?? ""
+        //Skip 4: Email
+        friendStruct.name = data["5: Name"] ?? ""
+        friendStruct.macStatus = data["6: MacStatus"] ?? ""
+        friendStruct.convoID = data["7: ConvoID"] ?? ""
+        friendStruct.active = data["8: Active"] ?? ""
+        
         friendStruct.anon = data["Anon"] ?? ""
-        friendStruct.macStatus = data["MacStatus"] ?? ""
-        friendStruct.grade = data["Grade"] ?? ""
-        friendStruct.active = data["Active"] ?? ""
+        friendStruct.grade = data["9: Grade"] ?? ""
         friendStruct.lastActive = data["LastActive"] ?? ""
         
         userStruct.friendInfo = friendStruct
-        userStruct.secondaryA = data["SecondaryA"] ?? ""
     
         return userStruct
     }

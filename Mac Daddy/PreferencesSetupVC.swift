@@ -36,7 +36,7 @@ class PreferencesSetupVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.databaseRef.child("users").child((user?.uid)!).observeSingleEvent(of: .value) { (snapshot: DataSnapshot) in
             let snapshotValue = snapshot.value as? NSDictionary
             self.nameLabel.text = snapshotValue?["Name"] as? String
-         //   self.profilePicture.image = snapshotValue?["Profile Picture"] as? String
+         //   self.profilePicture.image = snapshotValue?["ProfPic"] as? String
         }
         
         // Connect data:
@@ -45,6 +45,10 @@ class PreferencesSetupVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         // Input data into the Array:
         pickerData = ["Freshman", "Sophomore", "Junior", "Senior"]
+        
+        //Set DataHandler defaults:
+        DataHandler.macStatus = "Daddy"
+        DataHandler.grade = "Freshman"
     }
     
     //Make the status bar white.
@@ -120,18 +124,11 @@ class PreferencesSetupVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
     
     @IBAction func nextButtonTapped(_sender:UIButton){
-        DataHandler.grade = grade
-        DataHandler.saveDefaults()
-        let values = ["Grade": grade, "Mac Status": DataHandler.macStatus]
-        let user = Auth.auth().currentUser
-        let ref = Database.database().reference(fromURL: "https://mac-daddy-df79e.firebaseio.com/")
-        let usersReference = ref.child("users").child((user?.uid)!)
-        
-        usersReference.updateChildValues(values)
-        print ("Grade successfully saved")
+        DataHandler.updateMacStatus(status: DataHandler.macStatus)
+        DataHandler.updateGrade(grade: DataHandler.grade)
+        print ("Grade and status successfully saved")
         //After they reach this point, they are eligible to be matched.
-        DataHandler.updateUserData(uid: (user?.uid)!, values: ["PrimaryA" : "y", "SecondaryA" : "y"])
-        
+        DataHandler.updateUserData(uid: (user?.uid)!, values: ["1: PrimaryA" : "1", "2: SecondaryA" : "1"])
         self.performSegue(withIdentifier: "goToSetup4", sender: self)
     }
 }

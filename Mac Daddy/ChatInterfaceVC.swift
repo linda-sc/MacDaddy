@@ -53,14 +53,14 @@ class ChatInterfaceVC: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataHandler.updateStatusVariables(active: "y")
+        DataHandler.updateActive(active: "1")
         
         convoStillExists {
             if self.convoExists {
                 self.addTypingObserver()
                 self.addDeletionObserver()
                 
-                if self.friend.anon == "y" {
+                if self.friend.anon == "1" {
                    self.addSavedObserver()
                 } else {
                     self.heartButton.tintColor = Constants.colors.hotPink

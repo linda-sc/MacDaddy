@@ -48,13 +48,19 @@ class VerifyVC: UIViewController, UITextFieldDelegate {
     @IBAction func continueButtonTapped(_ sender:UIButton) {
         self.didYouClick.text = ""
         self.loading.startAnimating()
+        
+        //Update DataHandler
         Auth.auth().currentUser?.reload()
+        DataHandler.user = Auth.auth().currentUser
+        DataHandler.uid = Auth.auth().currentUser?.uid
+        
         let when = DispatchTime.now() + 1 //seconds
         DispatchQueue.main.asyncAfter(deadline: when) {
-            print("Email verification status =")
+            print("Email verification status: ")
             print(Auth.auth().currentUser?.isEmailVerified ?? "default")
             
             if (Auth.auth().currentUser?.isEmailVerified) == true {
+                DataHandler.moveVerifiedUserToFirestore()
                 DataHandler.updateEmail(email: (Auth.auth().currentUser?.email)!)
                 self.performSegue(withIdentifier: "goToSetup", sender: self)
                 FirebaseManager.isEmailVerified = true

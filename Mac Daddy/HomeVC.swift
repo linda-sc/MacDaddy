@@ -23,24 +23,37 @@ class HomeVC: UIViewController {
 
     let friendRef = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("Friends")
 
+    
     func addObserver() {
-        //First remove the old observer if there was one.
-        friendRef.removeAllObservers()
-        friendRef.observe(.value, with: { snapshot in
-            print("👂🏻 HomeVC - addObserver: friendRef Listener fired")
-            self.syncFriends()
-        })
+        //Remove old listeners:
+        let listener = DataHandler.db.collection("users").addSnapshotListener { querySnapshot, error in }
+        listener.remove()
         
-        //Adding new observer
+        
+        //Listen for new incoming matches
+    DataHandler.db.collection("users").document(DataHandler.uid!).collection("friends").whereField("Active", isEqualTo: "1")
+            .addSnapshotListener { querySnapshot, error in
+                guard let _ = querySnapshot?.documents else {
+                    print("Error adding friend listeners: \(error!)")
+                    return
+                }
+//                let cities = documents.map { $0["name"]! }
+//                print("Current cities in CA: \(cities)")
+                print("👂🏻 HomeVC - addObserver: friend Listeners fired")
+                self.syncFriends()
+                
+        }
+        
+        //Listen for changes in conversations
         for friend in DataHandler.friendList {
             let friendConvoRef = friendRef.child(friend.convoID)
             friendConvoRef.observe(.value, with: { snapshot in
                 print("👂🏻 HomeVC - addObserver: friendConvoRef Listener fired")
                 self.syncConvos()
             })
-            
         }
     }
+    
     
     func syncConvos() {
         //Builds a parallel array of conversations in DataHandler
@@ -52,7 +65,6 @@ class HomeVC: UIViewController {
             
             //DataHandler.convos.append(Convo.init(friendUID: friendUID, lastChat: lastChat, seen: seen))
         }
-        
     }
     
     func syncFriends() {
@@ -91,7 +103,7 @@ class HomeVC: UIViewController {
         // 2. Then syncFriends calls on DataHander.downloadFriends:
         // 3. DataHandler takes a snapshot of all your friends.
         // 4. DataHandler.friendDictionaryToList converts them to a list of Friend structs.
-        // 5. The friend data is immediately stored in the HomeVC variable friends.
+        // 5. The friend data is immediately stored in the DataHandler variable friendList.
         // 6. tableView.reloadData() displays them on your friends list.
         
         // 1. So if we're adding new variables, we first have to upload them to Firebase.
@@ -119,8 +131,7 @@ extension HomeVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("👁 HomeVC - viewDidLoad")
-        DataHandler.updateStatusVariables(active: "y")
-        
+        DataHandler.updateActive(active: "1")
         addObserver()
         
         //Set up delegates and data sources
@@ -146,8 +157,8 @@ extension HomeVC {
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
         
-        
-        self.tableView.reloadData()
+        self.syncFriends()
+        //self.tableView.reloadData()
     }
     
     
@@ -193,7 +204,7 @@ extension HomeVC {
         
         var matched = false
         for friend in DataHandler.friendList {
-            if (DataHandler.currentMatchID == friend.uid) && (friend.anon == "y") {
+            if (DataHandler.currentMatchID == friend.uid) && (friend.anon == "1") {
                 //This will be used for reference in deletion.
                 self.currentMatch = friend
                 matched = true
@@ -296,7 +307,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     //Which cell goes in what row?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendChatCell
-    
+        print("🍱 Loading friend \(DataHandler.friendList[indexPath.row])")
         cell.update(with: DataHandler.friendList[indexPath.row])
         
         cell.textLabel?.textColor = UIColor.white
@@ -313,7 +324,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         //Take out the word "Anonymous"
         var nickname = ""
         
-        if friend.anon == "y" {
+        if friend.anon == "1" {
             nickname = friend.name.substring(from: 10)
         } else {
             nickname = friend.name
@@ -327,7 +338,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         let okAction = UIAlertAction(title: "Goodbye, \(nickname).", style: UIAlertActionStyle.default) {
             UIAlertAction in
             
-            let isAnon = (friend.anon == "y")
+            let isAnon = (friend.anon == "1")
 
             DataHandler.friendList.remove(at: indexPath.row)
             
