@@ -65,7 +65,7 @@ extension ChatInterfaceVC {
                     let friendSavedStatus = friendStatus["saved"] as! String
                     
                     if (mySavedStatus == "1") {
-                        print("I saved the chat, my firebase status is y.")
+                        print("I saved the chat, my firebase status is 1.")
                         self.heartButton.tintColor = UIColor(red: 0.99, green: 0.24, blue: 0.56, alpha: 1.00)
                         self.iSaved = true
                     } else {
@@ -78,7 +78,7 @@ extension ChatInterfaceVC {
                     
                     //This only happens once, when you check and see that both chats are saved:
                     //Might not work, depends on how the code here executes.
-                    if (self.iSaved && self.theySaved) {
+                    if (self.iSaved && self.theySaved && self.anon) {
                         print("Both are saved")
                         //You're friends! Show an alert here.
                         self.anon = false
@@ -92,10 +92,6 @@ extension ChatInterfaceVC {
         }) //End of snapshot
     }
     
-    
-    ////////////////////////////////////////////
-    /////////  UPDATE FOR FIRESTORE  ///////////
-    ////////////////////////////////////////////
     
     //Shorter, faster function for just listening to typing:
     func addTypingObserver() {
@@ -141,34 +137,26 @@ extension ChatInterfaceVC {
         }//End of if let user condition
     }
     
-    ////////////////////////////////////////////
-    /////////  UPDATE FOR FIRESTORE  ///////////
-    ////////////////////////////////////////////
-    
+
     func getFriendsRealName(completed: @escaping ()-> ()) {
-        let databaseRef = Database.database().reference()
-        databaseRef.child("users").child(self.friend.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let friend = snapshot.value as? NSDictionary {
-                
-                self.friendsRealName = friend["Name"] as? String ?? ""
-                
-                //Now save that name into your friend list in the database:
-                
-                let ref = Database.database().reference(fromURL: "https://mac-daddy-df79e.firebaseio.com/")
-                let selfRef = ref.child("users").child(DataHandler.uid!)
-                let myFriendRef = selfRef.child("Friends").child(self.friend.uid)
-                
+        
+        DataHandler.db.collection("users").document(self.friend.uid).getDocument { (document, error) in
+            if let document = document, document.exists {
+                if let friendData = document.data() {
+                    self.friendsRealName = friendData["5: Name"] as? String ?? ""
+                }                
                 let update = ["Name": self.friendsRealName, "Anon": "0"]
-                
-                myFriendRef.updateChildValues(update)
-                print("Name and anon status updated")
-                
-                
+                let myFriendsRef = DataHandler.db.collection("users").document(DataHandler.uid!).collection("friends").document(self.friend.uid)
+                DataHandler.updateFirestoreData(ref: myFriendsRef, values: update)
+                DataHandler.freeUpAvailability(friend: self.friend)
+                print("Name, anon, and availiability updated.")
                 completed()
+                
+            } else {
+                print("🍅 Cannot get user's real name")
             }
-        })
+        }
     }
-    
+
     
 }

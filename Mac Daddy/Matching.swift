@@ -53,8 +53,8 @@ class Matching {
             var i = 0
             while (i < candidates.count) {
                 if candidates[i].uid == DataHandler.uid! {
+                    print("Removing self: \(candidates[i])")
                     candidates.remove(at: i)
-                    print("Removing self")
                     i = i - 1
                 }
                 i = i + 1
@@ -168,7 +168,7 @@ class Matching {
                 
                 //Update availibility locally and in Firebase.
                 
-                DataHandler.updatePrimaryA(primaryA: "0")
+                DataHandler.updatePrimaryA(primaryA: "1")
                 DataHandler.updateFriendData(friend: chosenCandidate, newMatch: true)
                 //Update your own current match:
                 DataHandler.updateCurrentMatchID(currentMatchID: chosenCandidate.uid)

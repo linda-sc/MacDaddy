@@ -59,11 +59,14 @@ class ChatInterfaceVC: JSQMessagesViewController {
             if self.convoExists {
                 self.addTypingObserver()
                 self.addDeletionObserver()
+                self.addSavedObserver()
                 
-                if self.friend.anon == "1" {
-                   self.addSavedObserver()
-                } else {
+                if self.friend.anon == "0" {
+                    print("💖 Heart is pink because friend is not anon")
                     self.heartButton.tintColor = Constants.colors.hotPink
+                } else {
+                    self.addSavedObserver()
+                    print("💟 Heart is white because friend is anon")
                 }
                 
             } else {

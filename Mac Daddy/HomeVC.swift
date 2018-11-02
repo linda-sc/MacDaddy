@@ -20,28 +20,27 @@ class HomeVC: UIViewController {
     @IBOutlet weak var matchBox:UIButton!
 
     var currentMatch = Friend()
-
+    
     let friendRef = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("Friends")
 
     
     func addObserver() {
         //Remove old listeners:
-        let listener = DataHandler.db.collection("users").addSnapshotListener { querySnapshot, error in }
-        listener.remove()
-        
+//        listener.remove()
+//
         
         //Listen for new incoming matches
-//    DataHandler.db.collection("users").document(DataHandler.uid!).collection("friends").whereField("Active", isEqualTo: "1")
-//            .addSnapshotListener { querySnapshot, error in
-//                guard let _ = querySnapshot?.documents else {
-//                    print("Error adding friend listeners: \(error!)")
-//                    return
-//                }
-//                print("👂🏻 HomeVC - addObserver: friend Listeners fired")
-//                print("querySnapshot documents: \(querySnapshot?.documents)")
-//                self.syncFriends()
-//                
-//        }
+        let listener = DataHandler.db.collection("users").document(DataHandler.uid!)
+            .addSnapshotListener { querySnapshot, error in
+                guard let _ = querySnapshot?.documentID else {
+                    print("Error adding friend listeners: \(error!)")
+                    return
+                }
+                print("👂🏻 HomeVC - addObserver: friend Listeners fired")
+                print("querySnapshot documents: \(String(describing: querySnapshot?.documentID))")
+                self.syncFriends()
+                
+        }
         
         //Listen for changes in conversations
         for friend in DataHandler.friendList {
@@ -131,10 +130,8 @@ extension HomeVC {
         super.viewDidLoad()
         print("👁 HomeVC - viewDidLoad")
         DataHandler.updateActive(active: "1")
-        addObserver()
-        
-        self.syncFriends()
-        self.tableView.reloadData()
+        //addObserver()
+        //self.syncFriends()
         print("🍱 Here are our friends \(DataHandler.friendList)")
         
         
@@ -189,7 +186,7 @@ extension HomeVC {
         
         // If there is no current match, find a new one!
         // We changed the structure so that your current match is now added to your friends list.
-        // The Data Handler remembers your current match ID.
+        // DataHandler remembers your current match ID.
         // If you delete your current match, then DataHandler forgets it.
         // If you friend your match, they're a friend, but not a match anymore.
         //
@@ -247,8 +244,7 @@ extension HomeVC {
     func deleteCurrentMatch() {
         //Remove friendship in Firebase
         DataHandler.deleteFriend(friend: currentMatch, anon: true)
-        
-        //Actually you should just sync friends here.
+        //Sync friends here to update the local list
         self.syncFriends()
     }
     
@@ -267,8 +263,8 @@ extension HomeVC {
             UIAlertAction in
             
             print("Friend passed")
-            DataHandler.updateCurrentMatchID(currentMatchID: "")
             self.deleteCurrentMatch()
+            DataHandler.updateCurrentMatchID(currentMatchID: "")
             
             print("Friend deleted in Firebase")
             self.searchForNewMatch()
@@ -343,8 +339,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             let isAnon = (friend.anon == "1")
 
             DataHandler.friendList.remove(at: indexPath.row)
-            
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
             DataHandler.deleteFriend(friend: friend, anon: isAnon)
             
             //If that was your current match, take it out, and remove your current match ID.

@@ -149,18 +149,42 @@ extension DataHandler {
         convoRef.removeValue()
         
         if anon {
+            print("🌹 Deleting anon friend")
             if (friend.uid == currentMatchID) {
+                print("🌹 Deleting my match")
                 //If its an anonymous conversation you initiated:
                 selfRef.updateData(["1: PrimaryA" : "1"])
                 friendRef.updateData(["2: SecondaryA": "1"])
                 
             } else {
+                print("🌹 Deleting someone who matched with me")
                 //If its an anonymous conversation someone else intiated:
                 selfRef.updateData(["2: SecondaryA" : "1"])
                 friendRef.updateData(["1: PrimaryA": "1"])
             }
         }
     }
+    
+    static func freeUpAvailability(friend: Friend){
+        print("💕 Matched with: \(friend.uid)!")
+        let selfRef = db.collection("users").document(self.uid!)
+        let friendRef = db.collection("users").document(friend.uid)
+    
+        if self.currentMatchID == friend.uid {
+            print("🌹 Saving my match")
+            //If its an anonymous conversation you initiated:
+            selfRef.updateData(["1: PrimaryA" : "1"])
+            friendRef.updateData(["2: SecondaryA": "1"])
+                
+        } else {
+            print("🌹 Saving someone who matched with me")
+            //If its an anonymous conversation someone else intiated:
+            selfRef.updateData(["2: SecondaryA" : "1"])
+            friendRef.updateData(["1: PrimaryA": "1"])
+            
+        }
+    }
+    
     
     //Update friend's data in Firebase.
     static func updateFriendData(friend: Friend, newMatch: Bool) {
