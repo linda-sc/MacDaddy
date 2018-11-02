@@ -144,9 +144,15 @@ extension ChatInterfaceVC {
             if let document = document, document.exists {
                 if let friendData = document.data() {
                     self.friendsRealName = friendData["5: Name"] as? String ?? ""
-                }                
-                let update = ["Name": self.friendsRealName, "Anon": "0"]
+                }
+                
+                let update = [
+                                "Name": self.friendsRealName,
+                                "Anon": "0"
+                             ]
+                
                 let myFriendsRef = DataHandler.db.collection("users").document(DataHandler.uid!).collection("friends").document(self.friend.uid)
+                
                 DataHandler.updateFirestoreData(ref: myFriendsRef, values: update)
                 DataHandler.freeUpAvailability(friend: self.friend)
                 print("Name, anon, and availiability updated.")

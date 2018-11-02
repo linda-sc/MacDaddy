@@ -14,5 +14,6 @@ target 'Mac Daddy' do
     	pod 'Firebase/Firestore'
 	pod 'Firebase/Messaging'
 	pod 'JSQMessagesViewController'
+	pod 'NWPusher', '~> 0.7.0'
 
 end
