@@ -38,6 +38,7 @@ extension DataHandler {
                     }
                     self.friendList = newFriendList
                     print(self.friendList)
+                    completed()
                 }
                 
             } //End of Firestore snapshot

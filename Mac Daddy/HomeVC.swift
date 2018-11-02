@@ -31,18 +31,17 @@ class HomeVC: UIViewController {
         
         
         //Listen for new incoming matches
-    DataHandler.db.collection("users").document(DataHandler.uid!).collection("friends").whereField("Active", isEqualTo: "1")
-            .addSnapshotListener { querySnapshot, error in
-                guard let _ = querySnapshot?.documents else {
-                    print("Error adding friend listeners: \(error!)")
-                    return
-                }
-//                let cities = documents.map { $0["name"]! }
-//                print("Current cities in CA: \(cities)")
-                print("👂🏻 HomeVC - addObserver: friend Listeners fired")
-                self.syncFriends()
-                
-        }
+//    DataHandler.db.collection("users").document(DataHandler.uid!).collection("friends").whereField("Active", isEqualTo: "1")
+//            .addSnapshotListener { querySnapshot, error in
+//                guard let _ = querySnapshot?.documents else {
+//                    print("Error adding friend listeners: \(error!)")
+//                    return
+//                }
+//                print("👂🏻 HomeVC - addObserver: friend Listeners fired")
+//                print("querySnapshot documents: \(querySnapshot?.documents)")
+//                self.syncFriends()
+//                
+//        }
         
         //Listen for changes in conversations
         for friend in DataHandler.friendList {
@@ -71,8 +70,8 @@ class HomeVC: UIViewController {
         //Donwloads and converts Firebase dictionary of friends to DH, then to local list.
         print("💫 syncFriends beginning")
         DataHandler.downloadFriends {
-            
-            DataHandler.friendList = DataHandler.friendDictionaryToList(friends: DataHandler.friends as! [String : [String : String]])
+            //Firestore function directly loads into the friendList, and skips the NSDictionary
+            //DataHandler.friendList = DataHandler.friendDictionaryToList(friends: DataHandler.friends as! [String : [String : String]])
             print("💫 syncFriends: Array stored in DataHandler: \(DataHandler.friendList)")
             DataHandler.orderFriends()
             
@@ -134,6 +133,11 @@ extension HomeVC {
         DataHandler.updateActive(active: "1")
         addObserver()
         
+        self.syncFriends()
+        self.tableView.reloadData()
+        print("🍱 Here are our friends \(DataHandler.friendList)")
+        
+        
         //Set up delegates and data sources
         tableView.delegate = self
         tableView.dataSource = self
@@ -156,9 +160,7 @@ extension HomeVC {
         
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
-        
-        self.syncFriends()
-        //self.tableView.reloadData()
+    
     }
     
     

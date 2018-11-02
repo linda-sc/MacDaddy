@@ -27,9 +27,11 @@ class WelcomeVC: UIViewController {
         let when = DispatchTime.now() + 2
         animateLoading{
             self.automaticLogin {
-                DispatchQueue.main.asyncAfter(deadline: when) {
-                    print("👉🏼 WelcomeVC: \(self.segueIdentifier)")
-                    self.performSegue(withIdentifier: self.segueIdentifier, sender: Any?.self)
+                DataHandler.downloadFriends {
+                    DispatchQueue.main.asyncAfter(deadline: when) {
+                        print("👉🏼 WelcomeVC: \(self.segueIdentifier)")
+                        self.performSegue(withIdentifier: self.segueIdentifier, sender: Any?.self)
+                    }
                 }
             }
         }
