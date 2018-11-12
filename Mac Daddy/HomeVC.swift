@@ -20,16 +20,27 @@ class HomeVC: UIViewController {
     @IBOutlet weak var matchBox:UIButton!
 
     var currentMatch = Friend()
+    var listener:ListenerRegistration? = nil
     
     let friendRef = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("Friends")
 
     
+    func removeObserver() {
+        if listener != nil {
+            listener!.remove()
+            print("🙉 Removing old listener")
+        }
+    }
+    
     func addObserver() {
-        //Remove old listeners:
-//        listener.remove()
+        //Remove old listeners if there are any
+        if listener != nil {
+            listener!.remove()
+            print("🙉 Removing old listener")
+        }
  
         //Listen for new incoming matches
-        let listener = DataHandler.db.collection("users").document(DataHandler.uid!)
+        listener = DataHandler.db.collection("users").document(DataHandler.uid!)
             .addSnapshotListener { querySnapshot, error in
                 guard let _ = querySnapshot?.documentID else {
                     print("Error adding friend listeners: \(error!)")
@@ -118,10 +129,15 @@ extension HomeVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        removeObserver()
         addObserver()
         
         matchBox.isEnabled = true
         self.matchBox.setTitle("Find a New Match!", for: .normal)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        removeObserver()
     }
     
     
@@ -130,8 +146,6 @@ extension HomeVC {
         self.navigationController?.isNavigationBarHidden = true
         print("👁 HomeVC - viewDidLoad")
         DataHandler.updateActive(active: "1")
-        //addObserver()
-        //self.syncFriends()
         print("🍱 Here are our friends \(DataHandler.friendList)")
         
         
@@ -245,7 +259,8 @@ extension HomeVC {
         //Remove friendship in Firebase
         DataHandler.deleteFriend(friend: currentMatch, anon: true)
         //Sync friends here to update the local list
-        self.syncFriends()
+        //self.syncFriends()
+        //This is redundant because the observer will pick up on this anyway and sync the friends
     }
     
     func newMatchAlert() {
@@ -393,6 +408,7 @@ extension HomeVC {
             //let navVC = segue.destination as? UINavigationController
             //let destination = navVC?.viewControllers.first as! ChatInterfaceVC
             let destination = segue.destination as! ChatSceneVC
+            self.currentMatch.anon = "1"
             destination.friend = self.currentMatch
 
         } else {

@@ -54,10 +54,10 @@ class ChatInterfaceVC: JSQMessagesViewController {
         //Background
         self.collectionView.backgroundView = background
         if DataHandler.macStatus == "Daddy" {
-            //background.image = UIImage(named: "MacDaddy Background_Purple")
+            background.image = UIImage(named: "MacDaddy Background_Purple")
             
         }else if DataHandler.macStatus == "Baby" {
-            //background.image = UIImage(named: "MacDaddy Background")
+            background.image = UIImage(named: "MacDaddy Background")
         }
         self.collectionView.backgroundView = background
         

@@ -254,6 +254,9 @@ class DataHandler {
                     }
                 
             } //End of Firestore snapshot
+        } else {
+            print("🤦🏻‍♀️ Check Data: No current user")
+            completed()
         }//End of if let user condition
     }//End of checkData.
 }//End of DataHandler

@@ -136,7 +136,6 @@ class WelcomeVC: UIViewController {
                         // Let's convert it into a list while we're loading.
                         
                         DataHandler.friendList = DataHandler.friendDictionaryToList(friends: DataHandler.friends as! [String : [String : String]])
-                        
                     }
                     
                 }else{

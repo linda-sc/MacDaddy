@@ -17,7 +17,7 @@ extension ChatSceneVC {
     }
     
     @IBAction func heartPressed(_ sender: UIButton) {
-        
+        print("HEART BUTTON PRESSED")
         convoStillExists {
             if self.convoExists {
                 if (self.friend.anon == "1" && self.iSaved == true) {
@@ -26,6 +26,8 @@ extension ChatSceneVC {
                 } else if (self.friend.anon == "1" && self.iSaved == false) {
                     //If you're about to like a new match, show an alert.
                     self.showLikingAlert()
+                } else {
+                    print("Friend variables aren't initailized, these checks don't pass.")
                 }
             } else {
                 //If the conversation is gone, show that you have been unfriended.

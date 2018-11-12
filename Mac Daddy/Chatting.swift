@@ -62,10 +62,10 @@ extension ChatSceneVC {
                     
                     if (mySavedStatus == "1") {
                         print("I saved the chat, my firebase status is 1.")
-                        self.heartButton.tintColor = UIColor(red: 0.99, green: 0.24, blue: 0.56, alpha: 1.00)
+                        self.heartButton.setImage(UIImage(named: "Heart_Pink"), for: .normal)
                         self.iSaved = true
                     } else {
-                        self.heartButton.tintColor = UIColor.white
+                        self.heartButton.setImage(UIImage(named: "Heart"), for: .normal)
                     }
                     if (friendSavedStatus == "1") {
                         print("They saved the chat!")
@@ -131,7 +131,11 @@ extension ChatSceneVC {
                     completed()
                 }
             }) //End of snapshot
-        }//End of if let user condition
+        } else {
+            print("Error: Current user is nil, convo does not exist.")
+            completed()
+        }
+        //End of if let user condition
     }
     
 

@@ -41,6 +41,9 @@ extension DataHandler {
                 }
                 
             } //End of Firestore snapshot
+        } else {
+            print("     👯‍♀️ downloadFriends: No current user")
+            completed()
         }//End of if let user condition
     }//End of downloadFriends.
     
