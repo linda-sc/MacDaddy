@@ -113,6 +113,7 @@ class Matching {
             
             //NOW only keep the candidates of max weight.
             //Status is most important, then availibility, then everything else is extra.
+            //Add some noise into this function for randomness?
             
             //First find what the max weight is:
             var maxWeight = 0
@@ -190,7 +191,7 @@ class Matching {
     
     static func createConvoID() -> String {
         let newConvoID = Constants.refs.databaseConversations.childByAutoId()
-        return newConvoID.key
+        return newConvoID.key!
     }
     
     

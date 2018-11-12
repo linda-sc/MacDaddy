@@ -9,12 +9,8 @@
 import Foundation
 import Firebase
 
-////////////////////////////////////////////
-/////////  UPDATE FOR FIRESTORE  ///////////
-////////////////////////////////////////////
-
 //All the Firebase stuff:
-extension ChatInterfaceVC {
+extension ChatSceneVC {
     
     //Remove the in-chat observers when the view is gone.
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,6 +78,7 @@ extension ChatInterfaceVC {
                         print("Both are saved")
                         //You're friends! Show an alert here.
                         self.anon = false
+                        
                         //Change your names in each other's friend lists and update the current friend's name.
                         self.getFriendsRealName {
                             self.showFriendAlert()
@@ -104,7 +101,7 @@ extension ChatInterfaceVC {
                 if (isTyping == "1") {
                     self.friendTyping = true
                 } else {
-                    self.showTypingIndicator = false
+                    //self.showTypingIndicator = false
                 }
             }
         })
@@ -139,7 +136,6 @@ extension ChatInterfaceVC {
     
 
     func getFriendsRealName(completed: @escaping ()-> ()) {
-        
         DataHandler.db.collection("users").document(self.friend.uid).getDocument { (document, error) in
             if let document = document, document.exists {
                 if let friendData = document.data() {

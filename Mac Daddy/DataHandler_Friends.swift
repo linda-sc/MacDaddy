@@ -15,7 +15,6 @@ extension DataHandler {
     
     static func downloadFriends(completed: @escaping ()-> ()) {
         print("🔥👯‍♀️ Downloading Friend Data only...")
-        self.friendList = [Friend]()
         
         if let user = Auth.auth().currentUser {
             
@@ -102,8 +101,6 @@ extension DataHandler {
         return friendStruct
     }
 
-    
-    
     
     //Update your own friend list
     static func updateFriendList(friends:[String:[String:String]]) {

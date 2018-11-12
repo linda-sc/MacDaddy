@@ -27,8 +27,7 @@ class HomeVC: UIViewController {
     func addObserver() {
         //Remove old listeners:
 //        listener.remove()
-//
-        
+ 
         //Listen for new incoming matches
         let listener = DataHandler.db.collection("users").document(DataHandler.uid!)
             .addSnapshotListener { querySnapshot, error in
@@ -128,6 +127,7 @@ extension HomeVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         print("👁 HomeVC - viewDidLoad")
         DataHandler.updateActive(active: "1")
         //addObserver()
@@ -373,8 +373,9 @@ extension HomeVC {
 
         if segue.identifier == "ChatWithFriend" {
             //You're going through the navigation controller first.
-            let navVC = segue.destination as? UINavigationController
-            let destination = navVC?.viewControllers.first as! ChatInterfaceVC
+//            let navVC = segue.destination as? UINavigationController
+//            let destination = navVC?.viewControllers.first as! ChatInterfaceVC
+            let destination = segue.destination as! ChatSceneVC
             
             //If you're going from the table, just do it normally.
             //If you're going from the alert controller, go to your current match.
@@ -386,10 +387,12 @@ extension HomeVC {
             }
         }
 
-        else if segue.identifier == "PresentNewMatch" || segue.identifier == "ChatWithAnon" {
+        else if segue.identifier == "PresentNewMatch" {
             //You're also going through the navigation controller first.
-            let navVC = segue.destination as? UINavigationController
-            let destination = navVC?.viewControllers.first as! ChatInterfaceVC
+            
+            //let navVC = segue.destination as? UINavigationController
+            //let destination = navVC?.viewControllers.first as! ChatInterfaceVC
+            let destination = segue.destination as! ChatSceneVC
             destination.friend = self.currentMatch
 
         } else {
@@ -403,7 +406,7 @@ extension HomeVC {
         self.matchBox.isEnabled = true
         self.matchBox.setTitle( "Find a New Match!", for: .normal)
         
-        let source = segue.source as! ChatInterfaceVC
+        let source = segue.source as! ChatSceneVC
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
             DataHandler.friendList[selectedIndexPath.row] = source.friend
             tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
@@ -425,10 +428,6 @@ extension HomeVC {
             }
         }
     }
-    
-//    override func segueForUnwinding(to toViewController: UIViewController, from fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue? {
-//        return UnwindFromLeft(identifier: "UnwindFromFriendChat", source: fromViewController, destination: toViewController)
-//    }
     
     
 }

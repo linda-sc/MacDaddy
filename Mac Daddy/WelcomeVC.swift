@@ -22,6 +22,7 @@ class WelcomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         background.image = UIImage(named: "MacDaddy Background_Purple")
         
         let when = DispatchTime.now() + 2

@@ -12,22 +12,10 @@ import JSQMessagesViewController
 import Firebase
 
 class ChatInterfaceVC: JSQMessagesViewController {
-
-    @IBOutlet weak var background:UIImageView!
-    @IBOutlet weak var backButton:UIBarButtonItem!
-    @IBOutlet weak var heartButton: UIBarButtonItem!
     
+     @IBOutlet weak var background : UIImageView!
     var messages = [JSQMessage]()
     var friend = Friend()
-    
-    var friendsRealName = ""
-    
-    var convoExists = true
-    var iSaved = false
-    var theySaved = false
-    var anon = true
-    var friendTyping = false
-    
     
     //Message Bubble Colors
     lazy var outgoingBubble: JSQMessagesBubbleImage = {
@@ -51,47 +39,27 @@ class ChatInterfaceVC: JSQMessagesViewController {
     }()
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        DataHandler.updateActive(active: "1")
-        
-        convoStillExists {
-            if self.convoExists {
-                self.addTypingObserver()
-                self.addDeletionObserver()
-                self.addSavedObserver()
-                
-                if self.friend.anon == "0" {
-                    print("💖 Heart is pink because friend is not anon")
-                    self.heartButton.tintColor = Constants.colors.hotPink
-                } else {
-                    self.addSavedObserver()
-                    print("💟 Heart is white because friend is anon")
-                }
-                
-            } else {
-                self.showUnfriendAlert()
-            }
-        }
+    override func viewWillAppear(_ animated: Bool) {
         
         senderId = DataHandler.uid
         senderDisplayName = DataHandler.name
-        self.title = friend.name
-        
+
         print("You are now chatting with \(self.friend)")
         
         inputToolbar.contentView.leftBarButtonItem = nil
-        self.collectionView.backgroundView = background
+        
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
         //Background
+        self.collectionView.backgroundView = background
         if DataHandler.macStatus == "Daddy" {
-            background.image = UIImage(named: "MacDaddy Background_Purple")
+            //background.image = UIImage(named: "MacDaddy Background_Purple")
             
         }else if DataHandler.macStatus == "Baby" {
-            background.image = UIImage(named: "MacDaddy Background")
+            //background.image = UIImage(named: "MacDaddy Background")
         }
+        self.collectionView.backgroundView = background
         
         
         //Displaying the messages from Firebase
@@ -112,7 +80,6 @@ class ChatInterfaceVC: JSQMessagesViewController {
             }
         })
     }
-    
     
     //Bubble Factory
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData!
@@ -147,10 +114,6 @@ class ChatInterfaceVC: JSQMessagesViewController {
         return messages[indexPath.item].senderId == senderId ? 0 : 15
     }
     
-    
-    ////////////////////////////////////////////
-    /////////  UPDATE FOR FIRESTORE  ///////////
-    ////////////////////////////////////////////
     
     //Sending messages
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!)

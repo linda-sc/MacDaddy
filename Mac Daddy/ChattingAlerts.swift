@@ -9,14 +9,14 @@
 import Foundation
 
 //All the alert controller stuff:
-extension ChatInterfaceVC {
+extension ChatSceneVC {
     
     //Use a custom segue here.
-    @IBAction func backPressed(_ sender: UIBarButtonItem) {
-        // self.performSegue(withIdentifier: "UnwindFromFriendChat", sender: nil)
+    @IBAction func backPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "unwindFromFriendChat", sender: nil)
     }
     
-    @IBAction func heartPressed(_ sender: UIBarButtonItem) {
+    @IBAction func heartPressed(_ sender: UIButton) {
         
         convoStillExists {
             if self.convoExists {
@@ -122,14 +122,14 @@ extension ChatInterfaceVC {
         self.present(alert, animated: true, completion: nil)
     }
     
-    //Back to the table:
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //Data in friend array for time and previous message = time and previous message
-        //Resort the friend array based on time
-        
-        if segue.identifier == "UnwindFromFriendChat" {
-            
-        }
-    }
+//    //Back to the table:
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        //Data in friend array for time and previous message = time and previous message
+//        //Resort the friend array based on time
+//
+//        if segue.identifier == "UnwindFromFriendChat" {
+//
+//        }
+//    }
     
 }

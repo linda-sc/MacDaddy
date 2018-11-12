@@ -13,6 +13,7 @@
 		BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */; };
 		BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */; };
 		BF0A9A6C20169FE400AC1E48 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A9A6B20169FE400AC1E48 /* Structs.swift */; };
+		BF0F0942218D59E400036842 /* ChatSceneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0F0941218D59E300036842 /* ChatSceneVC.swift */; };
 		BF1082761ED4C793000677A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1082751ED4C793000677A3 /* AppDelegate.swift */; };
 		BF1082781ED4C793000677A3 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1082771ED4C793000677A3 /* LoginVC.swift */; };
 		BF10827B1ED4C793000677A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF1082791ED4C793000677A3 /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Core.swift; sourceTree = "<group>"; };
 		BF0A9A6B20169FE400AC1E48 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		BF0F0940218CED5D00036842 /* Mac Daddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Mac Daddy.entitlements"; sourceTree = "<group>"; };
+		BF0F0941218D59E300036842 /* ChatSceneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSceneVC.swift; sourceTree = "<group>"; };
 		BF1082721ED4C793000677A3 /* Mac Daddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mac Daddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1082751ED4C793000677A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF1082771ED4C793000677A3 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -152,8 +154,8 @@
 				BFB2E5471F71D4A40096D562 /* Constants.swift */,
 				BF4C29D6218B654D00589E1B /* DataHandler */,
 				BF99DDBD1F1845140069F2C5 /* Launch */,
-				BF005BE01FB9FE7300CFE337 /* Home */,
 				BF1EDC501EE4A027006CB610 /* Login */,
+				BF005BE01FB9FE7300CFE337 /* Home */,
 				BF99DDBC1F1842DD0069F2C5 /* Profile Editing */,
 				BF99DDC11F1E85C30069F2C5 /* Messenger */,
 				BF99DDBE1F1846960069F2C5 /* Effects */,
@@ -215,9 +217,10 @@
 		BF99DDC11F1E85C30069F2C5 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				BF0F0941218D59E300036842 /* ChatSceneVC.swift */,
 				BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */,
-				BF85923420606F200065C8AD /* Chatting.swift */,
 				BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */,
+				BF85923420606F200065C8AD /* Chatting.swift */,
 				BF628E031FCE1FA100824E87 /* Matching.swift */,
 				BFEB30381F68891E00CD4173 /* UserData.swift */,
 			);
@@ -427,6 +430,7 @@
 				BF8A0E3B1FBB6FF7009EEF4E /* EditProfile.swift in Sources */,
 				BF0A9A6C20169FE400AC1E48 /* Structs.swift in Sources */,
 				BF1EDC4F1EE4A015006CB610 /* FirebaseManager.swift in Sources */,
+				BF0F0942218D59E400036842 /* ChatSceneVC.swift in Sources */,
 				BF2652ED1F16BB9F0013873F /* PreferencesSetupVC.swift in Sources */,
 				BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */,
 				BF3B2E171EE43A67002796DE /* VerifyVC.swift in Sources */,
