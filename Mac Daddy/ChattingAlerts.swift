@@ -48,6 +48,7 @@ extension ChatSceneVC {
             
             UIAlertAction in
             self.friend.name = self.friendsRealName
+            self.friend.anon = "0"
             self.title = self.friendsRealName
             print("Accept pressed")
         }

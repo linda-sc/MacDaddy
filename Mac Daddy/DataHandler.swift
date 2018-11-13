@@ -109,6 +109,7 @@ class DataHandler {
         convos = [Convo]()
     }
 
+    
     static func moveVerifiedUserToFirestore(){
         print("👉🏻 Moving verified user to Cloud Firestore...")
         if let refreshUid = Auth.auth().currentUser?.uid {

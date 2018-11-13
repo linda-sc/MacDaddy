@@ -193,7 +193,7 @@ extension HomeVC {
     
     //IB Actions
     @IBAction func editProfileTapped(_ sender:UIButton){
-        self.performSegue(withIdentifier: "goToOptions", sender: nil)
+        self.navigationController?.performSegue(withIdentifier: "goToOptions", sender: nil)
     }
     
     @IBAction func findMatchButtonPressed(_ sender: Any) {

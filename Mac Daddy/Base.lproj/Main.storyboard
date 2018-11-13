@@ -307,7 +307,7 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <segue destination="kj7-FY-EfF" kind="show" identifier="skipToSetup3" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="XN1-AG-OlZ"/>
                         <segue destination="tkW-48-uGh" kind="show" identifier="skipToSetup4" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="g4n-Di-AJJ"/>
                         <segue destination="BYZ-38-t0r" kind="custom" identifier="goToLogin" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="Xyh-di-Mue"/>
-                        <segue destination="Sau-1F-GMe" kind="presentation" identifier="skipToHome" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="4Tk-rk-aKb"/>
+                        <segue destination="Sau-1F-GMe" kind="custom" identifier="skipToHome" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="4Tk-rk-aKb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNd-MV-YkB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -913,7 +913,6 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <outlet property="background" destination="LwG-Hy-0km" id="kR0-fq-SUU"/>
                         <outlet property="matchBox" destination="bgM-dX-gBi" id="LOc-43-o0v"/>
                         <outlet property="tableView" destination="SQ9-P7-fEx" id="vN9-Lu-ltp"/>
-                        <segue destination="dfQ-7R-Dmg" kind="presentation" identifier="goToOptions" modalTransitionStyle="crossDissolve" id="dEO-0q-bJO"/>
                         <segue destination="gQl-5B-Gbj" kind="show" identifier="PresentNewMatch" id="mJ5-XA-FbT"/>
                     </connections>
                 </viewController>
@@ -1242,12 +1241,12 @@ Or is your meal plan running low? Are you a promising young student who can offe
                         <segue destination="dRt-bZ-zal" kind="popoverPresentation" identifier="showAbout" popoverAnchorView="njy-s9-Zqa" id="x35-Nt-B2d">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
-                        <segue destination="Sau-1F-GMe" kind="custom" identifier="backToHome" customClass="CrossFadeSegue" customModule="Mac_Daddy" customModuleProvider="target" id="ntS-Mu-n21"/>
+                        <segue destination="Sau-1F-GMe" kind="custom" identifier="backToHome" customClass="SegueToRight" customModule="Mac_Daddy" customModuleProvider="target" id="ntS-Mu-n21"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zbz-73-sDK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-660" y="1764"/>
+            <point key="canvasLocation" x="-396" y="1030"/>
         </scene>
         <!--Chat Interface-->
         <scene sceneID="jnw-eK-P6n">
@@ -1287,6 +1286,7 @@ Or is your meal plan running low? Are you a promising young student who can offe
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="VaT-gO-yOm" kind="relationship" relationship="rootViewController" id="SNl-fU-gYN"/>
+                        <segue destination="dfQ-7R-Dmg" kind="custom" identifier="goToOptions" customClass="SegueToLeft" customModule="Mac_Daddy" customModuleProvider="target" id="sfm-fq-Nna"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yRC-wB-qzw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1306,15 +1306,15 @@ Or is your meal plan running low? Are you a promising young student who can offe
         <image name="MacDaddyLogo" width="800" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sn7-P4-q7i"/>
-        <segue reference="dEO-0q-bJO"/>
+        <segue reference="ntS-Mu-n21"/>
+        <segue reference="sfm-fq-Nna"/>
         <segue reference="mJ5-XA-FbT"/>
         <segue reference="uNd-60-OTh"/>
         <segue reference="XN1-AG-OlZ"/>
         <segue reference="VGE-ze-dyv"/>
         <segue reference="8hQ-AU-oIf"/>
         <segue reference="s7C-Dp-bLL"/>
-        <segue reference="Xyh-di-Mue"/>
+        <segue reference="pB1-pD-5hf"/>
         <segue reference="x35-Nt-B2d"/>
     </inferredMetricsTieBreakers>
 </document>

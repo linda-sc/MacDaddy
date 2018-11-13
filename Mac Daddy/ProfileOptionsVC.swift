@@ -78,7 +78,7 @@ class ProfileOptionsVC: UIViewController, UIImagePickerControllerDelegate, UINav
             URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
                 
                 DispatchQueue.main.async(execute: {
-                    self.profilePicture.image = UIImage(data: data!)
+                    //self.profilePicture.image = UIImage(data: data!)
                 })
             } .resume()
     }
