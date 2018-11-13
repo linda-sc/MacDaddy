@@ -11,32 +11,6 @@ import Foundation
 //All the alert controller stuff:
 extension ChatSceneVC {
     
-    //Use a custom segue here.
-    @IBAction func backPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "unwindFromFriendChat", sender: nil)
-    }
-    
-    @IBAction func heartPressed(_ sender: UIButton) {
-        print("HEART BUTTON PRESSED")
-        convoStillExists {
-            if self.convoExists {
-                if (self.friend.anon == "1" && self.iSaved == true) {
-                    //If you're still waiting on your match, show an alert.
-                    self.showWaitingAlert()
-                } else if (self.friend.anon == "1" && self.iSaved == false) {
-                    //If you're about to like a new match, show an alert.
-                    self.showLikingAlert()
-                } else {
-                    print("Friend variables aren't initailized, these checks don't pass.")
-                }
-            } else {
-                //If the conversation is gone, show that you have been unfriended.
-                self.showUnfriendAlert()
-            }
-        }
-    }
-    
-    
     func showFriendAlert() {
         
         //Set up the alert controller

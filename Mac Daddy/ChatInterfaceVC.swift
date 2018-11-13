@@ -38,6 +38,9 @@ class ChatInterfaceVC: JSQMessagesViewController {
         return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: UIColor(red: 0.99, green: 0.6, blue: 0, alpha: 1.00))
     }()
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.messages = [JSQMessage]()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         

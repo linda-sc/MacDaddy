@@ -133,7 +133,7 @@ extension HomeVC {
         addObserver()
         
         matchBox.isEnabled = true
-        self.matchBox.setTitle("Find a New Match!", for: .normal)
+        self.matchBox.setTitle("Find a match!", for: .normal)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -420,7 +420,7 @@ extension HomeVC {
     
     @IBAction func unwindFromDetail(segue: SegueToLeft) {
         self.matchBox.isEnabled = true
-        self.matchBox.setTitle( "Find a New Match!", for: .normal)
+        self.matchBox.setTitle( "Find a match!", for: .normal)
         
         let source = segue.source as! ChatSceneVC
         if let selectedIndexPath = tableView.indexPathForSelectedRow {

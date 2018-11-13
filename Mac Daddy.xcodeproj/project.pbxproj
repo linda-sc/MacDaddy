@@ -41,6 +41,8 @@
 		BFB2E5481F71D4A40096D562 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2E5471F71D4A40096D562 /* Constants.swift */; };
 		BFB2E54A1F71D4FD0096D562 /* ChatInterfaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */; };
 		BFCC3BF61EE89C5600BD1F1C /* PrivateSetup1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC3BF51EE89C5600BD1F1C /* PrivateSetup1VC.swift */; };
+		BFD2CD72219B36D900337148 /* GraphicEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2CD71219B36D900337148 /* GraphicEffects.swift */; };
+		BFD2CD77219B44FA00337148 /* FriendDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2CD76219B44FA00337148 /* FriendDetailVC.swift */; };
 		BFEB30391F68891E00CD4173 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEB30381F68891E00CD4173 /* UserData.swift */; };
 		BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE185C1FD493960011A34A /* String+Subtring.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +88,8 @@
 		BFB2E5471F71D4A40096D562 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceVC.swift; sourceTree = "<group>"; };
 		BFCC3BF51EE89C5600BD1F1C /* PrivateSetup1VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateSetup1VC.swift; sourceTree = "<group>"; };
+		BFD2CD71219B36D900337148 /* GraphicEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicEffects.swift; sourceTree = "<group>"; };
+		BFD2CD76219B44FA00337148 /* FriendDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailVC.swift; sourceTree = "<group>"; };
 		BFEB30381F68891E00CD4173 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BFEE185C1FD493960011A34A /* String+Subtring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subtring.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,9 +192,9 @@
 		BF99DDBC1F1842DD0069F2C5 /* Profile Editing */ = {
 			isa = PBXGroup;
 			children = (
-				BF8A0E3A1FBB6FF7009EEF4E /* EditProfile.swift */,
 				BF43C5DB1EE72AAC00602357 /* MyPreferencesVC.swift */,
 				BF99DDBA1F183F710069F2C5 /* ProfileOptionsVC.swift */,
+				BF8A0E3A1FBB6FF7009EEF4E /* EditProfile.swift */,
 				BFCC3BF41EE89BDA00BD1F1C /* Profile Setup */,
 			);
 			name = "Profile Editing";
@@ -209,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				BF99DDBF1F1846AB0069F2C5 /* Segues.swift */,
+				BFD2CD71219B36D900337148 /* GraphicEffects.swift */,
 				BFEE185C1FD493960011A34A /* String+Subtring.swift */,
 			);
 			name = Effects;
@@ -218,9 +223,10 @@
 			isa = PBXGroup;
 			children = (
 				BF0F0941218D59E300036842 /* ChatSceneVC.swift */,
+				BF85923420606F200065C8AD /* Chatting.swift */,
 				BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */,
 				BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */,
-				BF85923420606F200065C8AD /* Chatting.swift */,
+				BFD2CD75219B44DA00337148 /* FriendDetail */,
 				BF628E031FCE1FA100824E87 /* Matching.swift */,
 				BFEB30381F68891E00CD4173 /* UserData.swift */,
 			);
@@ -236,6 +242,14 @@
 				BF2652F01F1821F30013873F /* InterestsSetupVC.swift */,
 			);
 			name = "Profile Setup";
+			sourceTree = "<group>";
+		};
+		BFD2CD75219B44DA00337148 /* FriendDetail */ = {
+			isa = PBXGroup;
+			children = (
+				BFD2CD76219B44FA00337148 /* FriendDetailVC.swift */,
+			);
+			name = FriendDetail;
 			sourceTree = "<group>";
 		};
 		E127216DF36F5A46B3A93FEC /* Frameworks */ = {
@@ -412,6 +426,7 @@
 				BF628E041FCE1FA200824E87 /* Matching.swift in Sources */,
 				BFB2E54A1F71D4FD0096D562 /* ChatInterfaceVC.swift in Sources */,
 				BF1EDC521EE60CAF006CB610 /* WelcomeVC.swift in Sources */,
+				BFD2CD72219B36D900337148 /* GraphicEffects.swift in Sources */,
 				BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */,
 				BF85923520606F200065C8AD /* Chatting.swift in Sources */,
 				BFB2E5481F71D4A40096D562 /* Constants.swift in Sources */,
@@ -426,6 +441,7 @@
 				BF2652EF1F18057F0013873F /* DataHandler.swift in Sources */,
 				BFCC3BF61EE89C5600BD1F1C /* PrivateSetup1VC.swift in Sources */,
 				BF43C5DC1EE72AAC00602357 /* MyPreferencesVC.swift in Sources */,
+				BFD2CD77219B44FA00337148 /* FriendDetailVC.swift in Sources */,
 				BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */,
 				BF8A0E3B1FBB6FF7009EEF4E /* EditProfile.swift in Sources */,
 				BF0A9A6C20169FE400AC1E48 /* Structs.swift in Sources */,

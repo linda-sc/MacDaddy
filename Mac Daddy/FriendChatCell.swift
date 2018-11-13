@@ -46,8 +46,10 @@ class FriendChatCell: UITableViewCell {
         //Show active indicator
         if friend.active == "0" {
             activeBubble.isHidden = true
-        } else {
+        } else if friend.active == "1" {
             activeBubble.isHidden = false
+        } else {
+            activeBubble.isHidden = true
         }
         
         

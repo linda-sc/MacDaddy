@@ -47,7 +47,7 @@ class ProfileOptionsVC: UIViewController, UIImagePickerControllerDelegate, UINav
         logOutButton.layer.cornerRadius = 6
         //logOutButton.layer.borderColor = UIColor.white.cgColor
         
-        profilePicture.layer.borderWidth = 4.0
+        profilePicture.layer.borderWidth = 0
         //profilePicture.layer.borderColor = UIColor.white.cgColor
   
         //Set background:
@@ -57,7 +57,7 @@ class ProfileOptionsVC: UIViewController, UIImagePickerControllerDelegate, UINav
             editProfileSettingsButton.backgroundColor = Constants.colors.neonCarrot
             editInterestsButton.backgroundColor = Constants.colors.neonCarrot
             logOutButton.layer.borderColor = Constants.colors.neonCarrot.cgColor
-            profilePicture.layer.borderColor = Constants.colors.neonCarrot.cgColor
+            //profilePicture.layer.borderColor = Constants.colors.neonCarrot.cgColor
             logOutButton.layer.backgroundColor = Constants.colors.hotPink.cgColor
         }else {
             background.image = UIImage(named: "MacDaddy Background")
@@ -65,7 +65,7 @@ class ProfileOptionsVC: UIViewController, UIImagePickerControllerDelegate, UINav
             editProfileSettingsButton.backgroundColor = Constants.colors.fadedBlue
             editInterestsButton.backgroundColor = Constants.colors.fadedBlue
             logOutButton.layer.borderColor = Constants.colors.fadedBlue.cgColor
-            profilePicture.layer.borderColor = Constants.colors.fadedBlue.cgColor
+            //profilePicture.layer.borderColor = Constants.colors.fadedBlue.cgColor
             logOutButton.layer.backgroundColor = Constants.colors.neonCarrot.cgColor
         }
         
