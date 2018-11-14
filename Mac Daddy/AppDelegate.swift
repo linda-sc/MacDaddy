@@ -12,7 +12,7 @@ import Firebase
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
 
     var window: UIWindow?
@@ -21,14 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        Messaging.messaging().delegate = self
         FirebaseManager.setup()
         
         DataHandler.updateActive(active: "1")
-        print("👩🏻‍💻 \(String(describing: FirebaseManager.loginInfo?.email))" )
+        print("👩🏻‍💻 \(FirebaseManager.loginInfo?.email ?? "")" )
+        
         //PUSH NOTIFICATIONS
         registerForPushNotifications()
-        
-        
         return true
     }
     
@@ -109,6 +109,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let token = tokenParts.joined()
         print("Device Token: \(token)")
+
+        //REALLY IMPORTANT LOL
+        Messaging.messaging().apnsToken = deviceToken
     }
     
     func application(_ application: UIApplication,
@@ -116,7 +119,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Failed to register: \(error)")
     }
     
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        let dict = userInfo["aps"] as! NSDictionary
+        let message = dict["alert"]
+        print(message!)
+        print("RECIEVED NOTIFICATION")
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching remote instance ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+                //self.instanceIDTokenMessage.text  = "Remote InstanceID token: \(result.token)"
+            }
+        }
+    }
 
+    
     
 }
 
