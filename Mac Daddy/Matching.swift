@@ -14,7 +14,7 @@ class Matching {
     static var candidates = [Friend]()
     static var chosenCandidate = Friend()
     
-    static let fakeNames = ["Chicken Tender", "Cheeseburger", "Pizza", "Chicken Salad Wrap", "Mozzarella Stick", "Omelette", "Bagel", "Bacon", "Sausage", "Meatball", "Mashed Potato", "French Fry", "String Bean", "Panini", "Potato Chip", "Pineapple", "Quinoa Bowl", "Kale Bowl", "Clam Chowder", "Piece of Steak", "Broccoli", "Blueberry Muffin", "Chocolate Cake", "Noodle Bowl", "Spaghetti", "Steak and Cheese", "Sticky Rice", "Pancake", "Waffle", "Tortilla" , "Tortellini" , "Acai Bowl" , "Salmon" , "Cod", "French Toast", "Bread", "Zucchini", "Eggplant", "Banana", "Brownie", "Coconut Water", "Iced Chai Latte", "Chicken Pesto" , "Chicken Wing", "Pork Belly", "Mac and Cheese", "Powerade", "Spinach", "Ice Cream", "Baguette", "Donut", "Corn Dog", "Hot Dog", "Corn", "Beans", "Chicken Parm"]
+    static let fakeNames = ["Chicken Tender", "Cheeseburger", "Pizza", "Chicken Salad", "Mozzarella Stick", "Omelette", "Bagel", "Bacon", "Sausage", "Meatball", "Mashed Potato", "French Fry", "String Bean", "Panini", "Potato Chip", "Pineapple", "Quinoa Bowl", "Kale Bowl", "Clam Chowder", "Piece of Steak", "Broccoli", "Blueberry Muffin", "Chocolate Cake", "Noodle Bowl", "Spaghetti", "Steak and Cheese", "Sticky Rice", "Pancake", "Waffle", "Tortilla" , "Tortellini" , "Acai Bowl" , "Salmon" , "Cod", "French Toast", "Bread", "Zucchini", "Eggplant", "Banana", "Burrito", "Coconut Water", "Iced Chai Latte", "Chicken Pesto" , "Chicken Wing", "Pork Belly", "Mac and Cheese", "Powerade", "Spinach", "Ice Cream", "Baguette", "Donut", "Corn Dog", "Hot Dog", "Corn", "Beans", "Chicken Parm"]
     
     
     //Matching algorithm goes here:

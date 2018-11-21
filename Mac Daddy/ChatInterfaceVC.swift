@@ -128,14 +128,18 @@ class ChatInterfaceVC: JSQMessagesViewController {
         //If there's no status, that means it was deleted.
         
         let chatsRef = Constants.refs.databaseConversations.child(self.friend.convoID).child("chats").childByAutoId()
-        let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
+        let message = ["sender_id": senderId,
+                       //IMPORTANT FOR PUSH NOTIFICATIONS
+                       "reciever_id": friend.uid,
+                       "name": senderDisplayName,
+                       "text": text]
+        
         chatsRef.setValue(message)
         self.finishSendingMessage()
         
         //Also remember what the last chat was:
         let convoRef = Constants.refs.databaseConversations.child(self.friend.convoID)
-        convoRef.updateChildValues(["Last Chat": text])
-
+        convoRef.updateChildValues(["lastChat": text, "lastChatSenderID": senderId])
     }
     
    

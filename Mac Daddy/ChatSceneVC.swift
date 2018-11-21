@@ -46,6 +46,15 @@ class ChatSceneVC: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if (friend.anon == "1") {
+            anon = true
+        } else {
+            anon = false
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true

@@ -131,13 +131,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             if let error = error {
                 print("Error fetching remote instance ID: \(error)")
             } else if let result = result {
+                
+                DataHandler.sendRegistrationToServer(token: result.token)
                 print("Remote instance ID token: \(result.token)")
+                
                 //self.instanceIDTokenMessage.text  = "Remote InstanceID token: \(result.token)"
             }
         }
     }
 
-    
     
 }
 

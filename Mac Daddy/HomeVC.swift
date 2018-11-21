@@ -159,11 +159,11 @@ extension HomeVC {
         
         if DataHandler.macStatus == "Daddy" {
             backgroundImage = UIImage(named: "MacDaddy Background_Purple")
-            buttonImage = UIImage(named: "MacDaddy Background")
+            buttonImage = UIImage(named: "MacDaddy Background_Flipped")
             
         }else {
             backgroundImage = UIImage(named: "MacDaddy Background")
-            buttonImage = UIImage(named: "MacDaddy Background_Purple")
+            buttonImage = UIImage(named: "MacDaddy Background_Purple_Flipped")
         }
         
         background.image = backgroundImage

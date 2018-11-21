@@ -43,8 +43,9 @@ extension ChatSceneVC {
         let okAction = UIAlertAction(title: "Goodbye, \(friend.name).", style: UIAlertActionStyle.cancel) {
             
             UIAlertAction in
-            self.dismiss(animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
             //self.performSegue(withIdentifier: "UnwindFromFriendChat", sender: nil)
+            self.navigationController?.popViewController(animated: true)
             print("Goodbye pressed")
         }
         
