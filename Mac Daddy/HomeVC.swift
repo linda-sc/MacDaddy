@@ -20,27 +20,28 @@ class HomeVC: UIViewController {
     @IBOutlet weak var matchBox:UIButton!
 
     var currentMatch = Friend()
-    var listener:ListenerRegistration? = nil
+    var selfListener:ListenerRegistration? = nil
     
     let friendRef = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("Friends")
 
     
     func removeObserver() {
-        if listener != nil {
-            listener!.remove()
+        if selfListener != nil {
+            selfListener!.remove()
             print("🙉 Removing old listener")
         }
     }
     
-    func addObserver() {
+    func addObservers() {
         //Remove old listeners if there are any
-        if listener != nil {
-            listener!.remove()
+        if selfListener != nil {
+            selfListener!.remove()
             print("🙉 Removing old listener")
         }
  
         //Listen for new incoming matches
-        listener = DataHandler.db.collection("users").document(DataHandler.uid!)
+        //Also delete your current match if it gets deleted in the database
+        selfListener = DataHandler.db.collection("users").document(DataHandler.uid!)
             .addSnapshotListener { querySnapshot, error in
                 guard let _ = querySnapshot?.documentID else {
                     print("Error adding friend listeners: \(error!)")
@@ -52,14 +53,15 @@ class HomeVC: UIViewController {
                 
         }
         
-        //Listen for changes in conversations
-        for friend in DataHandler.friendList {
-            let friendConvoRef = friendRef.child(friend.convoID)
-            friendConvoRef.observe(.value, with: { snapshot in
-                print("👂🏻 HomeVC - addObserver: friendConvoRef Listener fired")
-                self.syncConvos()
-            })
-        }
+
+//        //Listen for changes in conversations
+//        for friend in DataHandler.friendList {
+//            let friendConvoRef = friendRef.child(friend.convoID)
+//            friendConvoRef.observe(.value, with: { snapshot in
+//                print("👂🏻 HomeVC - addObserver: friendConvoRef Listener fired")
+//                self.syncConvos()
+//            })
+//        }
     }
     
     
@@ -78,15 +80,17 @@ class HomeVC: UIViewController {
     func syncFriends() {
         //Donwloads and converts Firebase dictionary of friends to DH, then to local list.
         print("💫 syncFriends beginning")
-        DataHandler.downloadFriends {
-            //Firestore function directly loads into the friendList, and skips the NSDictionary
-            //DataHandler.friendList = DataHandler.friendDictionaryToList(friends: DataHandler.friends as! [String : [String : String]])
-            print("💫 syncFriends: Array stored in DataHandler: \(DataHandler.friendList)")
-            DataHandler.orderFriends()
-            
-            DispatchQueue.main.async{
-                self.tableView.reloadData()
-                print("💫 syncFriends: Reloading table data")
+        DataHandler.checkData {
+            DataHandler.downloadFriends {
+                //Firestore function directly loads into the friendList, and skips the NSDictionary
+                //DataHandler.friendList = DataHandler.friendDictionaryToList(friends: DataHandler.friends as! [String : [String : String]])
+                print("💫 syncFriends: Array stored in DataHandler: \(DataHandler.friendList)")
+                DataHandler.orderFriends()
+                
+                DispatchQueue.main.async{
+                    self.tableView.reloadData()
+                    print("💫 syncFriends: Reloading table data")
+                }
             }
         }
     }
@@ -130,7 +134,7 @@ extension HomeVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         removeObserver()
-        addObserver()
+        addObservers()
         
         matchBox.isEnabled = true
         self.matchBox.setTitle("Find a match!", for: .normal)
@@ -256,16 +260,25 @@ extension HomeVC {
     }
     
     func deleteCurrentMatch() {
+        //Remove match ID locally
+        DataHandler.currentMatchID = ""
+        //Remove match ID in Firebase
+        DataHandler.updateCurrentMatchID(currentMatchID: "")
         //Remove friendship in Firebase
         DataHandler.deleteFriend(friend: currentMatch, anon: true)
+        
         //Sync friends here to update the local list
         //self.syncFriends()
         //This is redundant because the observer will pick up on this anyway and sync the friends
     }
     
+    func deleteIncomingMatch(friend: Friend){
+        DataHandler.updateUserData(uid: friend.uid, values: ["7: MatchID": ""])
+    }
+    
     func newMatchAlert() {
         //Alert controller pops up saying: You can only initiate one match at a time.
-        //You have three options: Friend your old match, delete your old match, or cancel.
+        //You have three options: Friend your current match, delete your current match, or cancel.
         
         let nickname = currentMatch.name.substring(from: 10)
         
@@ -274,6 +287,7 @@ extension HomeVC {
         let alert = UIAlertController(title: "You can only initiate one new match at a time.", message: message, preferredStyle: .alert)
         
         // Create the actions
+        //Pass: Delete your current match
         let passAction = UIAlertAction(title: "Goodbye, \(nickname).", style: UIAlertActionStyle.default) {
             UIAlertAction in
             
@@ -285,6 +299,7 @@ extension HomeVC {
             self.searchForNewMatch()
             
         }
+        //Save your current match by pressing the like button
         let saveAction = UIAlertAction(title: "I want to be friends!", style: UIAlertActionStyle.default) {
             UIAlertAction in
             
@@ -292,6 +307,7 @@ extension HomeVC {
             self.performSegue(withIdentifier: "ChatWithFriend", sender: self)
             print("Save Pressed")
         }
+        //Don't do anything
         let cancelAction = UIAlertAction(title: "I'm not ready to decide.", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
             print("Cancel Pressed")
@@ -348,11 +364,15 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: .alert)
         
         // Create the actions
+        //Delete a friend: could be your current match, an incoming match, or a friend
         let okAction = UIAlertAction(title: "Goodbye, \(nickname).", style: UIAlertActionStyle.default) {
             UIAlertAction in
             
+            print("Goodbye pressed")
+            
             let isAnon = (friend.anon == "1")
 
+            //First just delete them normally
             DataHandler.friendList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
@@ -361,9 +381,13 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             //If that was your current match, take it out, and remove your current match ID.
             if friend.uid == DataHandler.currentMatchID {
                 DataHandler.updateCurrentMatchID(currentMatchID: "")
+                print("Deleting current match")
+            } else if isAnon {
+                //Else, if you were THEIR current match, remove their current match ID.
+                //Any anonymous friend that is not your current match must be an incoming match
+                self.deleteIncomingMatch(friend: friend)
+                print("Deleting incoming match")
             }
-            
-            print("Delete pressed")
             
         }
         let cancelAction = UIAlertAction(title: "No, I like \(nickname).", style: UIAlertActionStyle.cancel) {

@@ -94,7 +94,7 @@ class ChatInterfaceVC: JSQMessagesViewController {
     //Bubble Factory
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData!
     {
-            print("Messages array size: \(ChatHandler.messages.count)")
+            //print("Messages array size: \(ChatHandler.messages.count)")
             return ChatHandler.messages[indexPath.item]
     }
     

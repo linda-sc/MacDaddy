@@ -14,11 +14,12 @@ extension DataHandler {
 
     /////BASIC USER DATA FUNCTIONS////
     
-    //Update the user's data in Cloud Firestore
+    //Update a user's data in Cloud Firestore
     static func updateUserData(uid: String, values: [String:String]) {
         print("💁‍♀️ Updating user data with values \(values)")
-        if let uid = Auth.auth().currentUser?.uid {
+        if let _ = Auth.auth().currentUser?.uid {
             let userRef = db.collection("users").document(uid)
+            print(uid)
             updateFirestoreData(ref: userRef, values: values)
         }
     }

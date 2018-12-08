@@ -15,7 +15,8 @@ class FriendChatCell: UITableViewCell {
     @IBOutlet weak var friendChatPreview:UILabel!
     @IBOutlet weak var heart: UIImageView!
     @IBOutlet weak var activeBubble: UIImageView!
-    @IBOutlet weak var matchLabel: UILabel!
+    @IBOutlet weak var currentMatchLabel: UILabel!
+    @IBOutlet weak var incomingMatchLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,9 +47,17 @@ class FriendChatCell: UITableViewCell {
         
         //Highlight your current match
         if (friend.uid == DataHandler.currentMatchID) {
-            matchLabel.isHidden = false
+            currentMatchLabel.isHidden = false
+            incomingMatchLabel.isHidden = true
+            
+        //Show incoming matches
+        } else if (friend.anon == "1"){
+            currentMatchLabel.isHidden = true
+            incomingMatchLabel.isHidden = false
         } else {
-            matchLabel.isHidden = true
+        //Else if the match is a friend then hide labels
+            currentMatchLabel.isHidden = true
+            incomingMatchLabel.isHidden = true
         }
         
         
