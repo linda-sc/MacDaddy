@@ -11,7 +11,7 @@ import Firebase
 
 class UserData {
     
-    static var allUsers = [DownloadedUser]()
+    static var allUsers = [Friend]()
     
     //Here we're going to write a method exclusively for downloading all the users in Firebase.
     //Is this a good idea? I don't know but let's give it a try.
@@ -27,7 +27,7 @@ class UserData {
         print("🦋 Downloading all users...")
         
         //Overwrite previous data.
-        allUsers = [DownloadedUser]()
+        allUsers = [Friend]()
         
         
         DataHandler.db.collection("users").getDocuments() { (querySnapshot, err) in
@@ -50,14 +50,12 @@ class UserData {
     
     ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
     //Converts a dictionary back into a list of user structs for easy use locally.
-    static func userDictionaryToList(uid: String, data: [String:String]) -> DownloadedUser {
-        var userStruct = DownloadedUser()
+    static func userDictionaryToList(uid: String, data: [String:String]) -> Friend {
         var friendStruct = Friend()
         
         friendStruct.uid = uid
         //Skip 1: PrimaryA
-        userStruct.secondaryA = data["2: SecondaryA"] ?? ""
-        
+        friendStruct.secondaryA = data["2: SecondaryA"] ?? ""
         friendStruct.organization = data["3: Organization"] ?? ""
         //Skip 4: Email
         friendStruct.name = data["5: Name"] ?? ""
@@ -69,9 +67,7 @@ class UserData {
         friendStruct.grade = data["9: Grade"] ?? ""
         friendStruct.lastActive = data["LastActive"] ?? ""
         
-        userStruct.friendInfo = friendStruct
-    
-        return userStruct
+        return friendStruct
     }
 }//End of user data.
 

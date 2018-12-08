@@ -23,7 +23,6 @@ class ChatSceneVC: UIViewController {
     @IBOutlet weak var activeBubble: UIImageView!
     
     
-    
     var friend = Friend()
     var friendsRealName = ""
     
@@ -39,6 +38,7 @@ class ChatSceneVC: UIViewController {
             if let childVC = segue.destination as? ChatInterfaceVC {
                 //Some property on ChildVC that needs to be set
                 childVC.friend = self.friend
+                ChatHandler.messages = [JSQMessage]()
             }
         } else if segue.identifier == "showFriendDetail" {
                 let destination = segue.destination as! FriendDetailVC
@@ -56,6 +56,7 @@ class ChatSceneVC: UIViewController {
     }
     
     override func viewDidLoad() {
+        print("🤪 ChatScene VC - ViewDidLoad")
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         
@@ -66,6 +67,17 @@ class ChatSceneVC: UIViewController {
             activeBubble.isHidden = true
         }
         DataHandler.updateActive(active: "1")
+        
+        //If the friend is anonymous, use one of the default pictures.
+        //We haven't implemented pictures yet so let's just leave it like this.
+        //if friend.anon == "1" {
+        if true {
+            if friend.macStatus == "Daddy" {
+                profilePicture.image = UIImage(named: "MacDaddyLogo_Purple")
+            } else {
+                profilePicture.image = UIImage(named: "MacDaddyLogo")
+            }
+        }
         
         convoStillExists {
             if self.convoExists {
@@ -118,8 +130,10 @@ class ChatSceneVC: UIViewController {
                 } else if (self.friend.anon == "1" && self.iSaved == false) {
                     //If you're about to like a new match, show an alert.
                     self.showLikingAlert()
+                } else if (self.friend.anon == "0") {
+                    print("You're already friends.")
                 } else {
-                    print("Friend variables aren't initailized, these checks don't pass.")
+                    print("Friend variables aren't initialized, these checks don't pass.")
                 }
             } else {
                 //If the conversation is gone, show that you have been unfriended.

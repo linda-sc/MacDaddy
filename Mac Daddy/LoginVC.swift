@@ -18,7 +18,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     var isSignin:Bool = true
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true

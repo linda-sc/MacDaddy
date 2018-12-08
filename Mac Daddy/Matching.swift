@@ -31,21 +31,19 @@ class Matching {
             ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
             for user in UserData.allUsers {
                 //Download all availible users and convert them to Friends in candidates.
-                if user.secondaryA == "1" {
-                //if true {
-                    var newFriend = Friend()
+                var newFriend = Friend()
                     
-                    newFriend.anon = user.friendInfo.anon
-                    newFriend.convoID = user.friendInfo.convoID
-                    newFriend.grade = user.friendInfo.grade
-                    newFriend.macStatus = user.friendInfo.macStatus
-                    newFriend.name = user.friendInfo.name
-                    newFriend.uid = user.friendInfo.uid
-                    newFriend.weight = user.friendInfo.weight
-                    newFriend.active = user.friendInfo.active
-                    
-                    candidates.append(newFriend)
-                }
+                newFriend.anon = user.anon
+                newFriend.convoID = user.convoID
+                newFriend.grade = user.grade
+                newFriend.macStatus = user.macStatus
+                newFriend.name = user.name
+                newFriend.uid = user.uid
+                newFriend.weight = user.weight
+                newFriend.active = user.active
+                newFriend.secondaryA = user.secondaryA
+                
+                candidates.append(newFriend)
             }//All users have been filtered and converted to candidates.
             
             //Important initial steps:
@@ -86,33 +84,26 @@ class Matching {
             }//End of checking all candidates
             
             
-            //Next:
-            //Refine weights based on criteria
-            if DataHandler.macStatus == "Daddy" {
-                for candidate in candidates {
-                    if candidate.macStatus == "Baby" {
-                        var updatedCandidate = candidate
-                        updatedCandidate.weight = candidate.weight + 100
-                        filteredCandidates.append(updatedCandidate)
-                    }
+            //Refine weights based on criteria.
+            //Status is most important, then availibility, then everything else is extra.
+            for candidate in candidates {
+                var updatedCandidate = candidate
+                if DataHandler.macStatus != candidate.macStatus {
+                    updatedCandidate.weight = candidate.weight + 100
                 }
+                
+                if candidate.secondaryA == "1" {
+                    updatedCandidate.weight += 50
+                }
+                
+                filteredCandidates.append(updatedCandidate)
                 candidates = filteredCandidates
                 print("Here are the candidates: \(candidates)")
                 
-            } else {
-                for candidate in candidates {
-                    if candidate.macStatus == "Daddy" {
-                        var updatedCandidate = candidate
-                        updatedCandidate.weight = candidate.weight + 100
-                        filteredCandidates.append(updatedCandidate)
-                    }
-                }
-                candidates = filteredCandidates
-                print("Here are the candidates: \(candidates)")
             }
+
             
             //NOW only keep the candidates of max weight.
-            //Status is most important, then availibility, then everything else is extra.
             //Add some noise into this function for randomness?
             
             //First find what the max weight is:
@@ -202,4 +193,31 @@ class Matching {
         let status = [myUID: ["saved": "1"]]
         ref.updateChildValues(status)
     }
+    
+//    static func downloadSelectUsers(myEmail : String){
+//
+//        let users = [DownloadedUser]()
+//        //need to add email field to db
+//        let userRef = DataHandler.db.collection("users").whereField("Email", isGreaterThan: myEmail).whereField("Email", isLessThan: myEmail)
+//
+//        DataHandler.db.collection("users").document((Auth.auth().currentUser?.uid)!).collection("friends").getDocuments(){ (qs, err) in
+//            for doc in qs?.documents{
+//                userRef.whereField("Email", isGreaterThan: doc.data()[/*need email*/]).whereField("Email", isLessThan: doc.data()[/*need email*/])
+//            }
+//            userRef.getDocuments(){ (qs, err) in
+//                if let err = err {
+//                    print("💥 Error getting users: \(err)")
+//                } else {
+//                    for document in querySnapshot!.documents {
+//
+//                        let userObject = userDictionaryToList(uid: document.documentID, data: document.data() as! [String : String])
+//                        users.append(userObject)
+//                    }
+//                    print("🦋 Downloaded all users: \(users)")
+//                    completed()
+//                }
+//            }
+//        }
+//    }
+
 }

@@ -26,13 +26,7 @@ struct Friend {
     var weight = 0
     var active = "0"
     var lastActive = "0"
-}
-
-struct DownloadedUser {
-    //Basically just a friend with additional info:
-    var friendInfo = Friend()
     var secondaryA = ""
-    
 }
 
 struct Convo {

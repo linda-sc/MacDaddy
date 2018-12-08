@@ -38,6 +38,7 @@
 		BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */; };
 		BF99DDBB1F183F710069F2C5 /* ProfileOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99DDBA1F183F710069F2C5 /* ProfileOptionsVC.swift */; };
 		BF99DDC01F1846AB0069F2C5 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99DDBF1F1846AB0069F2C5 /* Segues.swift */; };
+		BF9F50F521BB47CA000FA5C4 /* ChatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F50F421BB47CA000FA5C4 /* ChatHandler.swift */; };
 		BFA6564621A5EA5B00A9B99B /* DataHandler_FCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6564521A5EA5B00A9B99B /* DataHandler_FCM.swift */; };
 		BFB2E5481F71D4A40096D562 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2E5471F71D4A40096D562 /* Constants.swift */; };
 		BFB2E54A1F71D4FD0096D562 /* ChatInterfaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */; };
@@ -85,6 +86,7 @@
 		BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingAlerts.swift; sourceTree = "<group>"; };
 		BF99DDBA1F183F710069F2C5 /* ProfileOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileOptionsVC.swift; sourceTree = "<group>"; };
 		BF99DDBF1F1846AB0069F2C5 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
+		BF9F50F421BB47CA000FA5C4 /* ChatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHandler.swift; sourceTree = "<group>"; };
 		BFA6564521A5EA5B00A9B99B /* DataHandler_FCM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_FCM.swift; sourceTree = "<group>"; };
 		BFB2E5461F71D31E0096D562 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		BFB2E5471F71D4A40096D562 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				BF0F0941218D59E300036842 /* ChatSceneVC.swift */,
 				BF85923420606F200065C8AD /* Chatting.swift */,
 				BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */,
+				BF9F50F421BB47CA000FA5C4 /* ChatHandler.swift */,
 				BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */,
 				BFD2CD75219B44DA00337148 /* FriendDetail */,
 				BF628E031FCE1FA100824E87 /* Matching.swift */,
@@ -458,6 +461,7 @@
 				BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */,
 				BF1082761ED4C793000677A3 /* AppDelegate.swift in Sources */,
 				BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */,
+				BF9F50F521BB47CA000FA5C4 /* ChatHandler.swift in Sources */,
 				BF4247F21EF70E1B003BEEA8 /* PrivateSetup2VC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

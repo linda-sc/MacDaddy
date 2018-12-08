@@ -14,8 +14,10 @@ import Firebase
 class ChatInterfaceVC: JSQMessagesViewController {
     
      @IBOutlet weak var background : UIImageView!
-    var messages = [JSQMessage]()
+    
+    //var messages = [JSQMessage]()
     var friend = Friend()
+    var query = DatabaseQuery()
     
     //Message Bubble Colors
     lazy var outgoingBubble: JSQMessagesBubbleImage = {
@@ -39,11 +41,13 @@ class ChatInterfaceVC: JSQMessagesViewController {
     }()
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.messages = [JSQMessage]()
+        query.removeAllObservers()
+        print("Removing observers")
     }
     
+
     override func viewWillAppear(_ animated: Bool) {
-        
+        print("🤪 ChatInterfaceVC - ViewWillAppear")
         senderId = DataHandler.uid
         senderDisplayName = DataHandler.name
 
@@ -66,7 +70,9 @@ class ChatInterfaceVC: JSQMessagesViewController {
         
         
         //Displaying the messages from Firebase
-        let query = Constants.refs.databaseConversations.child(friend.convoID).child("chats").queryLimited(toLast: 20)
+        collectionView.reloadData()
+        print("🤪 ChatInterfaceVC - Querying and displaying messages from Firebase")
+        query = Constants.refs.databaseConversations.child(friend.convoID).child("chats").queryLimited(toLast: 20)
         _ = query.observe(.childAdded, with: { [weak self] snapshot in
             
             if  let data        = snapshot.value as? [String: String],
@@ -77,7 +83,8 @@ class ChatInterfaceVC: JSQMessagesViewController {
             {
                 if let message = JSQMessage(senderId: id, displayName: name, text: text)
                 {
-                    self?.messages.append(message)
+                    ChatHandler.messages.append(message)
+                    print("Appending message...")
                     self?.finishReceivingMessage()
                 }
             }
@@ -87,17 +94,18 @@ class ChatInterfaceVC: JSQMessagesViewController {
     //Bubble Factory
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData!
     {
-        return messages[indexPath.item]
+            print("Messages array size: \(ChatHandler.messages.count)")
+            return ChatHandler.messages[indexPath.item]
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return messages.count
+        return ChatHandler.messages.count
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource!
     {
-        return messages[indexPath.item].senderId == senderId ? outgoingBubble : incomingBubble
+        return ChatHandler.messages[indexPath.item].senderId == senderId ? outgoingBubble : incomingBubble
     }
     
     //Hide Avatar Data
@@ -114,7 +122,7 @@ class ChatInterfaceVC: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat
     {
-        return messages[indexPath.item].senderId == senderId ? 0 : 15
+        return ChatHandler.messages[indexPath.item].senderId == senderId ? 0 : 15
     }
     
     

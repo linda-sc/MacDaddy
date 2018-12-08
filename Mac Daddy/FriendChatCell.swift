@@ -15,6 +15,7 @@ class FriendChatCell: UITableViewCell {
     @IBOutlet weak var friendChatPreview:UILabel!
     @IBOutlet weak var heart: UIImageView!
     @IBOutlet weak var activeBubble: UIImageView!
+    @IBOutlet weak var matchLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,6 +43,14 @@ class FriendChatCell: UITableViewCell {
                 friendPic.image = UIImage(named: "MacDaddyLogo")
             }
         }
+        
+        //Highlight your current match
+        if (friend.uid == DataHandler.currentMatchID) {
+            matchLabel.isHidden = false
+        } else {
+            matchLabel.isHidden = true
+        }
+        
         
         //Show active indicator
         if friend.active == "0" {
