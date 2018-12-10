@@ -390,6 +390,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             }
             
         }
+        
         let cancelAction = UIAlertAction(title: "No, I like \(nickname).", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
             print("Cancel Pressed")
@@ -469,6 +470,12 @@ extension HomeVC {
         }
     }
     
-    
+    @IBAction func unwindFromBlock(segue: SegueToLeft) {
+        self.matchBox.isEnabled = true
+        self.matchBox.setTitle( "Find a match!", for: .normal)
+        
+        //let source = segue.source as! FriendDetailVC
+        tableView.reloadData()
+    }
 }
 

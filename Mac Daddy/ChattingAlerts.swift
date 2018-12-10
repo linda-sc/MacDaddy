@@ -67,6 +67,7 @@ extension ChatSceneVC {
             UIAlertAction in
             
             Matching.saveCurrentMatch(friend:self.friend)
+            self.heartButton.setImage(UIImage(named: "Heart_Pink"), for: .normal)
             print("Like pressed")
         }
         

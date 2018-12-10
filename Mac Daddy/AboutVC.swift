@@ -10,9 +10,12 @@ import UIKit
 
 class AboutVC: UIViewController {
 
+    @IBOutlet weak var backButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        backButton.layer.masksToBounds = true
+        backButton.layer.cornerRadius = 20
 
         // Do any additional setup after loading the view.
     }

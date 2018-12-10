@@ -9,8 +9,6 @@
 import Foundation
 
 ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
-
-
 struct Friend {
     //Identifying Info
     var uid = ""
@@ -27,6 +25,9 @@ struct Friend {
     var active = "0"
     var lastActive = "0"
     var secondaryA = ""
+    
+    //Safety Info
+    var blocked = "0"
 }
 
 struct Convo {

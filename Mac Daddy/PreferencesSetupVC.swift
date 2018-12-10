@@ -112,12 +112,14 @@ class PreferencesSetupVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             DataHandler.macStatus = "Daddy"
             DataHandler.saveDefaults()
             background.image = UIImage(named: "MacDaddy Background_Purple")
+            profilePicture.image = UIImage(named: "MacDaddyLogo_Purple")
             self.macSelector.selectedSegmentIndex = 0
         }
         else
         {
             DataHandler.macStatus = "Baby"
             background.image = UIImage(named: "MacDaddy Background")
+            profilePicture.image = UIImage(named: "MacDaddyLogo")
             self.macSelector.selectedSegmentIndex = 1
         }
     }
@@ -129,7 +131,8 @@ class PreferencesSetupVC: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         print ("Grade and status successfully saved")
         //After they reach this point, they are eligible to be matched.
         DataHandler.updateUserData(uid: (user?.uid)!, values: ["1: PrimaryA" : "1", "2: SecondaryA" : "1"])
-        self.performSegue(withIdentifier: "goToSetup4", sender: self)
+        //self.performSegue(withIdentifier: "goToSetup4", sender: self)
+        self.performSegue(withIdentifier: "finishSetup", sender: self)
     }
 }
 

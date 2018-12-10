@@ -15,12 +15,21 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signinButton: UIButton!
+    @IBOutlet weak var termsStack: UIStackView!
+    @IBOutlet weak var checkmarkButton: UIButton!
+    @IBOutlet weak var termsButton: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
     
     var isSignin:Bool = true
+    var termsAgreed:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        infoButton.isHidden = true
         self.navigationController?.isNavigationBarHidden = true
+        
+        termsStack.isHidden = true
+        checkmarkButton.setBackgroundImage(UIImage(named: "RedBubble"), for: .normal)
         
         self.emailTextField.delegate = self
         self.emailTextField.tag = 0
@@ -42,6 +51,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         return false
     }
     
+    @IBAction func checkmarkButtonTapped(_ sender: Any) {
+        termsAgreed = !termsAgreed
+        if termsAgreed {
+            checkmarkButton.setBackgroundImage(UIImage(named: "ActiveBubble"), for: .normal)
+        } else {
+            checkmarkButton.setBackgroundImage(UIImage(named: "RedBubble"), for: .normal)
+        }
+    }
     @IBAction func signinSelectorChanged(_ sender: UISegmentedControl) {
         //Flip the boolean
         isSignin = !isSignin
@@ -49,16 +66,22 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         if isSignin
         {
             signinButton.setTitle("Sign In", for: .normal )
+            termsStack.isHidden = true
         }
         else
         {
             signinButton.setTitle("Register", for: .normal)
+            termsStack.isHidden = false
         }
     }
     
     func isValidSchoolEmail(email:String) -> Bool{
-        //return email.hasSuffix("@bc.edu")
-        return true
+        var valid = false
+        if  email.hasSuffix("@bc.edu")
+            || email.hasSuffix("@besst.io") {
+            valid = true
+        }
+        return valid
     }
     
     func showErrorAlert(error:String){
@@ -110,7 +133,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             }
             
             //If it's not sign in, it's register.
-        } else if isValidSchoolEmail(email: email!) {
+        } else if isValidSchoolEmail(email: email!) && termsAgreed{
             print("Registering...")
             //Register the user with Firebase if the information is valid
             Auth.auth().createUser(withEmail: email!, password: password!) {
@@ -136,8 +159,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     }
                 }
             }
-        }else{
+        }else if !isValidSchoolEmail(email: email!) {
             showErrorAlert(error: "Make sure you use a valid school email.")
+        } else if !termsAgreed {
+            showErrorAlert(error: "Please agree to the privacy policy.")
         }
     }
     

@@ -138,6 +138,7 @@ extension DataHandler {
         let friendInFriendsListRef = selfRef.collection("friends").document(friend.uid)
         
         let convoRef = rtdb.child("conversations").child(friend.convoID)
+        let archivedConvoRef = rtdb.child("archives").child(friend.convoID)
         
         //Take them off of your friend list
         friendInFriendsListRef.delete()
@@ -146,6 +147,23 @@ extension DataHandler {
         selfInFriendsOfFriendsRef.delete()
         
         //Delete your conversation.
+        //Rewrite this function so that you're moving the conversation to a new branch instead of deleting it.
+        //First, take a snapshot of the current conversation in RTDB:
+        convoRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get convo value
+            let convoData = snapshot.value as? NSDictionary
+            archivedConvoRef.setValue(convoData) {
+                (error:Error?, ref:DatabaseReference) in
+                if let error = error {
+                    print("Conversation could not be archived: \(error).")
+                } else {
+                    print("Conversation archived successfully!")
+                }
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
         convoRef.removeValue()
         
         if anon {
@@ -163,6 +181,72 @@ extension DataHandler {
                 friendRef.updateData(["1: PrimaryA": "1"])
             }
         }
+    }
+    
+    
+    static func blockFriend(friend: Friend, report: String) {
+        print("☄️ Blocking friend: \(friend.uid)")
+        let selfRef = db.collection("users").document(self.uid!)
+        let friendInFriendListRef = selfRef.collection("friends").document(friend.uid)
+        let blockedListRef = selfRef.collection("blocked").document(friend.uid)
+        
+        //Read from Firebase
+        friendInFriendListRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                //Perform neccessary conversions
+                let friend = friendDictionaryToObject(uid: document.documentID, data: document.data() as! [String : String])
+
+                let friendDict = ["ConvoID": friend.convoID ,
+                                  "Name": friend.name,
+                                  "Anon": friend.anon,
+                                  "MacStatus": friend.macStatus,
+                                  "Grade": friend.grade,
+                                  "Active": friend.active,
+                                  "LastActive": friend.lastActive,
+                                  //Just add in the report here cuz it might help
+                                  "Report": report
+                 ]
+                
+                //Immediately write back to Firebase
+                DataHandler.setFirestoreData(ref: blockedListRef, values: friendDict)
+                self.sendReport(friend: friend, report: report)
+                
+                //Only remove them as a friend if you successfully blocked them and sent a report
+                let isAnon = (friend.anon == "1")
+                deleteFriend(friend: friend, anon: isAnon)
+
+            } else {
+                print("Friend does not exist")
+            }
+        }
+    }
+    
+    static func sendReport(friend: Friend, report: String) {
+        print("👮🏾 Sending report on: \(friend.uid)")
+    
+        //Generate a data and time for the report
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        let convertedDate = formatter.string(from: currentDate)
+        
+        //Push the report data to the reports collection
+        //Sorted by date and time:
+        let reportRef = db.collection("reports").document(convertedDate)
+        
+        let reportData = ["ConvoID": friend.convoID ,
+                          "Name": friend.name,
+                          "Anon": friend.anon,
+                          "MacStatus": friend.macStatus,
+                          "Grade": friend.grade,
+                          "Active": friend.active,
+                          "LastActive": friend.lastActive,
+                          //Just add in the report here cuz it might help
+                            "Report": report
+        ]
+        
+        DataHandler.setFirestoreData(ref: reportRef, values: reportData)
+        
     }
     
     static func freeUpAvailability(friend: Friend){
@@ -212,7 +296,7 @@ extension DataHandler {
             
             ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
             //Add yourself to their friend list and make sure you are anonymous.
-            let anonName = "Anonymous " + Matching.fakeNames[Int(arc4random_uniform(UInt32(Matching.fakeNames.count)))]
+            let anonName = "Anonymous " + Constants.fakeNames[Int(arc4random_uniform(UInt32(Constants.fakeNames.count)))]
             
             myInfo = ["ConvoID": friend.convoID ,
                       "Name": anonName,
@@ -262,7 +346,6 @@ extension DataHandler {
         DataHandler.setFirestoreData(ref: friendInFriendsListRef, values: friendInfo as! [String : String])
         
     }
-    
     
     
     static func orderFriends() {

@@ -28,45 +28,40 @@ class ProfileOptionsVC: UIViewController, UIImagePickerControllerDelegate, UINav
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profilePicture.isHidden = true
         
         // Format buttons:
         
         //changeProfilePictureButton.layer.borderWidth = 2.0
-        changeProfilePictureButton.layer.cornerRadius = 6
         //changeProfilePictureButton.layer.borderColor = UIColor.white.cgColor
+        changeProfilePictureButton.layer.cornerRadius = 20
+        changeProfilePictureButton.clipsToBounds = true
+        changeProfilePictureButton.setTitle("Show screenshot to developer", for: .normal)
+
+        editProfileSettingsButton.layer.cornerRadius = 20
+        editProfileSettingsButton.clipsToBounds = true
         
-        //editProfileSettingsButton.layer.borderWidth = 2.0
-        editProfileSettingsButton.layer.cornerRadius = 6
-        //editProfileSettingsButton.layer.borderColor = UIColor.white.cgColor
-        
-        //editInterestsButton.layer.borderWidth = 2.0
-        editInterestsButton.layer.cornerRadius = 6
-        //editInterestsButton.layer.borderColor = UIColor.white.cgColor
+        editInterestsButton.layer.cornerRadius = 20
+        editInterestsButton.clipsToBounds = true
   
-        //logOutButton.layer.borderWidth = 2.0
-        logOutButton.layer.cornerRadius = 6
-        //logOutButton.layer.borderColor = UIColor.white.cgColor
+        logOutButton.layer.cornerRadius = 20
+        logOutButton.clipsToBounds = true
         
         profilePicture.layer.borderWidth = 0
-        //profilePicture.layer.borderColor = UIColor.white.cgColor
   
         //Set background:
         if DataHandler.macStatus == "Daddy" {
             background.image = UIImage(named: "MacDaddy Background_Purple")
-            changeProfilePictureButton.backgroundColor = Constants.colors.neonCarrot
-            editProfileSettingsButton.backgroundColor = Constants.colors.neonCarrot
-            editInterestsButton.backgroundColor = Constants.colors.neonCarrot
-            logOutButton.layer.borderColor = Constants.colors.neonCarrot.cgColor
-            //profilePicture.layer.borderColor = Constants.colors.neonCarrot.cgColor
-            logOutButton.layer.backgroundColor = Constants.colors.hotPink.cgColor
+            changeProfilePictureButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
+            editProfileSettingsButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
+            editInterestsButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
+            logOutButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
         }else {
             background.image = UIImage(named: "MacDaddy Background")
-            changeProfilePictureButton.backgroundColor = Constants.colors.fadedBlue
-            editProfileSettingsButton.backgroundColor = Constants.colors.fadedBlue
-            editInterestsButton.backgroundColor = Constants.colors.fadedBlue
-            logOutButton.layer.borderColor = Constants.colors.fadedBlue.cgColor
-            //profilePicture.layer.borderColor = Constants.colors.fadedBlue.cgColor
-            logOutButton.layer.backgroundColor = Constants.colors.neonCarrot.cgColor
+            changeProfilePictureButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
+            editProfileSettingsButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
+            editInterestsButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
+            logOutButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
         }
         
         nameLabel.text = DataHandler.name
@@ -98,8 +93,8 @@ class ProfileOptionsVC: UIViewController, UIImagePickerControllerDelegate, UINav
     
     @IBAction func editInterestsTapped(_ sender:UIButton) {
             //Feature is not ready yet.
-        let alert = UIAlertController(title: "Coming soon...", message: "We are still working on this feature!", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "I'm hyped.", style: .default, handler: nil)
+        let alert = UIAlertController(title: "Coming soon", message: "Still working on this feature", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok.", style: .default, handler: nil)
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
     }
@@ -140,6 +135,8 @@ class ProfileOptionsVC: UIViewController, UIImagePickerControllerDelegate, UINav
         //Update the image view.
         profilePicture.image = chosenImage
         //Dismiss the picker.
+        profilePicture.isHidden = false
+        changeProfilePictureButton.setTitle("Screenshot shared!", for: .normal)
         EditProfile.updatePicture(newPicture: self.profilePicture.image!)
         dismiss(animated: true, completion: nil)
     }

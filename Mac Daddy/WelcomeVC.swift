@@ -107,9 +107,9 @@ class WelcomeVC: UIViewController {
                             completed()
                             
                             //If they've entered their name but not their picture, skip to setup2.
-                        }else if DataHandler.picExists == false {
-                            self.segueIdentifier = "skipToSetup2"
-                            completed()
+//                        }else if DataHandler.picExists == false {
+//                            self.segueIdentifier = "skipToSetup2"
+//                            completed()
                             
                             //If they've entered their name and picture, skip to setup3.
                         }else if DataHandler.gradeExists == false {

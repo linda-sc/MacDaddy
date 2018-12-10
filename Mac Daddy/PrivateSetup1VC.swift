@@ -38,8 +38,26 @@ class PrivateSetup1VC: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         
         self.view.endEditing(true)
-        showAlert()
+        
+        var badWordFound = false
+        for badWord in Constants.badWords {
+            if (self.nameTextField.text?.containsIgnoringCase(find: badWord))! {
+                badWordFound = true
+                showBadWordAlert()
+            }
+        }
+        
+        if !badWordFound {
+            showAlert()
+        }
         return false
+    }
+    
+    func showBadWordAlert() {
+        let alert = UIAlertController(title: "Hmmm...", message: "That name contains some inapprorpriate text. Try again.", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Oops.", style: .default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showAlert(){
@@ -58,7 +76,7 @@ class PrivateSetup1VC: UIViewController, UITextFieldDelegate {
             DataHandler.saveDefaults()
             //Save the new name to both the data handler and the user defaults.
             
-            self.performSegue(withIdentifier: "goToSetup2", sender: self)
+            self.performSegue(withIdentifier: "goToSetup3", sender: self)
         }else{
             print("Come on, don't leave your name blank...")
         }

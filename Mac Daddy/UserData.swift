@@ -12,6 +12,7 @@ import Firebase
 class UserData {
     
     static var allUsers = [Friend]()
+    static var blockedUsers = [Friend]()
     
     //Here we're going to write a method exclusively for downloading all the users in Firebase.
     //Is this a good idea? I don't know but let's give it a try.
@@ -34,16 +35,54 @@ class UserData {
             if let err = err {
                 print("💥 Error getting users: \(err)")
             } else {
-                for document in querySnapshot!.documents {
-                    //print("\(document.documentID) => \(document.data())")
-                    let userObject = userDictionaryToList(uid: document.documentID, data: document.data() as! [String : String])
-                    allUsers.append(userObject)
-                }
-                print("🦋 Downloaded all users: \(allUsers)")
-                completed()
+                //First download all the blocked users
+                downloadBlockedUsers {
+                    //Then don't download any new users that have been blocked
+                    for document in querySnapshot!.documents {
+                        //print("\(document.documentID) => \(document.data())")
+                        let userObject = userDictionaryToList(uid: document.documentID, data: document.data() as! [String : String])
+                    
+                        var blocked = false
+                        for blockedUser in blockedUsers {
+                            if blockedUser.uid == document.documentID {
+                                blocked = true
+                            }
+                        }
+                        
+                        if !blocked {
+                            allUsers.append(userObject)
+                        }
+                        
+                    }//End of querySnapshot
+                    print("🦋 Downloaded all users: \(allUsers)")
+                    completed()
+                }//End of blockedUsers closure
             }
         }
         
+    }//End of downloading users.
+    
+    static func downloadBlockedUsers(completed: @escaping ()-> ()) {
+        print("😳 Downloading blocked users...")
+        
+        //Overwrite previous data.
+        blockedUsers = [Friend]()
+        if let uid = Auth.auth().currentUser?.uid {
+            DataHandler.db.collection("users").document(uid).collection("blocked").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("💥 Error getting blocked users: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        //print("\(document.documentID) => \(document.data())")
+                        let userObject = userDictionaryToList(uid: document.documentID, data: document.data() as! [String : String])
+                        blockedUsers.append(userObject)
+                    }
+                    print("😳 Downloaded all blocked: \(blockedUsers)")
+                    completed()
+                }
+            }
+            
+        } //End of if let uid condition
     }//End of downloading users.
     
 
@@ -65,7 +104,7 @@ class UserData {
         
         friendStruct.anon = data["Anon"] ?? ""
         friendStruct.grade = data["9: Grade"] ?? ""
-        friendStruct.lastActive = data["LastActive"] ?? ""
+        friendStruct.lastActive = data["LastActive"] ?? "" 
         
         return friendStruct
     }

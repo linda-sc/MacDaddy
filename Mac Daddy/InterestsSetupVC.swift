@@ -26,6 +26,7 @@ class InterestsSetupVC: UIViewController {
         
         //If the user is logged in they finished the setup:
         if Auth.auth().currentUser != nil {
+            print("Performing finishSetup segue")
             self.performSegue(withIdentifier: "finishSetup", sender: self)
             
         }

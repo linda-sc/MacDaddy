@@ -197,9 +197,9 @@
 		BF99DDBC1F1842DD0069F2C5 /* Profile Editing */ = {
 			isa = PBXGroup;
 			children = (
-				BF43C5DB1EE72AAC00602357 /* MyPreferencesVC.swift */,
 				BF99DDBA1F183F710069F2C5 /* ProfileOptionsVC.swift */,
 				BF8A0E3A1FBB6FF7009EEF4E /* EditProfile.swift */,
+				BF43C5DB1EE72AAC00602357 /* MyPreferencesVC.swift */,
 				BFCC3BF41EE89BDA00BD1F1C /* Profile Setup */,
 			);
 			name = "Profile Editing";

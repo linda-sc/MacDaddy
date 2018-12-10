@@ -27,20 +27,19 @@ class MyPreferencesVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //saveButton.layer.borderWidth = 2.0
-        saveButton.layer.cornerRadius = 6
-        //saveButton.layer.borderColor = UIColor.white.cgColor
+        saveButton.layer.cornerRadius = 20
+        saveButton.clipsToBounds = true
         
         
         //Set background, put the selector on the previous setting:
         if DataHandler.macStatus == "Daddy" {
             background.image = UIImage(named: "MacDaddy Background_Purple")
-            saveButton.backgroundColor = Constants.colors.neonCarrot
+            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
             self.selector.selectedSegmentIndex = 0
             
         }else {
             background.image = UIImage(named: "MacDaddy Background")
-            saveButton.backgroundColor = Constants.colors.fadedBlue
+            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
             self.selector.selectedSegmentIndex = 1
         }
         
@@ -132,15 +131,15 @@ class MyPreferencesVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         {
             macStatus = "Daddy"
             background.image = UIImage(named: "MacDaddy Background_Purple")
-            saveButton.backgroundColor = Constants.colors.neonCarrot
-            label.text = macStatus
+             saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
+            label.text = "I want to feed another student."
         }
         else
         {
             macStatus = "Baby"
             background.image = UIImage(named: "MacDaddy Background")
-            saveButton.backgroundColor = Constants.colors.fadedBlue
-            label.text = macStatus
+             saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
+            label.text = "I am looking for a free meal."
         }
     }
     

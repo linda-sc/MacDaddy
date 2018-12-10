@@ -14,9 +14,6 @@ class Matching {
     static var candidates = [Friend]()
     static var chosenCandidate = Friend()
     
-    static let fakeNames = ["Chicken Tender", "Cheeseburger", "Pizza", "Chicken Salad", "Mozzarella Stick", "Omelette", "Bagel", "Bacon", "Sausage", "Meatball", "Mashed Potato", "French Fry", "String Bean", "Panini", "Potato Chip", "Pineapple", "Quinoa Bowl", "Kale Bowl", "Clam Chowder", "Piece of Steak", "Broccoli", "Blueberry Muffin", "Chocolate Cake", "Noodle Bowl", "Spaghetti", "Steak and Cheese", "Sticky Rice", "Pancake", "Waffle", "Tortilla" , "Tortellini" , "Acai Bowl" , "Salmon" , "Cod", "French Toast", "Bread", "Zucchini", "Eggplant", "Banana", "Burrito", "Coconut Water", "Iced Chai Latte", "Chicken Pesto" , "Chicken Wing", "Pork Belly", "Mac and Cheese", "Powerade", "Spinach", "Ice Cream", "Baguette", "Donut", "Corn Dog", "Hot Dog", "Corn", "Beans", "Chicken Parm"]
-    
-    
     //Matching algorithm goes here:
     static func filterCandidates(finished: @escaping ()-> ()){
         //Takes all eligible users from UserData.
@@ -92,15 +89,15 @@ class Matching {
                     updatedCandidate.weight = candidate.weight + 100
                 }
                 
-                if candidate.secondaryA == "1" {
-                    updatedCandidate.weight += 50
-                }
+//                if candidate.secondaryA == "1" {
+//                    updatedCandidate.weight += 50
+//                }
                 
                 filteredCandidates.append(updatedCandidate)
-                candidates = filteredCandidates
-                print("Here are the candidates: \(candidates)")
-                
             }
+            
+            candidates = filteredCandidates
+            print("Here are the candidates: \(candidates)")
 
             
             //NOW only keep the candidates of max weight.
@@ -147,7 +144,7 @@ class Matching {
                 self.chosenCandidate = candidates[randomIndex]
                 
                 //Assign a random name!
-                let anonName = "Anonymous " + fakeNames[Int(arc4random_uniform(UInt32(fakeNames.count)))]
+                let anonName = "Anonymous " + Constants.fakeNames[Int(arc4random_uniform(UInt32(Constants.fakeNames.count)))]
                 self.chosenCandidate.name = anonName
                 self.chosenCandidate.convoID = createConvoID()
                 
