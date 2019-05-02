@@ -11,7 +11,6 @@ import Firebase
 
 extension DataHandler {
     
-
     /////BASIC USER DATA FUNCTIONS////
     
     //Update a user's data in Cloud Firestore

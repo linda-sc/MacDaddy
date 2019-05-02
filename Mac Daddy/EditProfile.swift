@@ -57,7 +57,4 @@ class EditProfile {
         }
     } //End of updating picture
     
-    
-    
-    
 }
