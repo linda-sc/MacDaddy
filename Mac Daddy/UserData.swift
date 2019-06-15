@@ -12,6 +12,7 @@ import Firebase
 class UserData {
     
     static var allUsers = [Friend]()
+    static var allUserObjects = [UserObject]()
     static var blockedUsers = [Friend]()
     
     //Here we're going to write a method exclusively for downloading all the users in Firebase.

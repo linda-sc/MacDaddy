@@ -138,6 +138,19 @@ extension HomeVC {
         
         matchBox.isEnabled = true
         self.matchBox.setTitle("Find a match!", for: .normal)
+        
+        
+        //Lets make some code execute whenever the homescreen appears.
+        //Then i can hand off the function to kevin
+//        let userID = Auth.auth().currentUser?.uid
+//        let ref = Database.database().reference()
+//
+//        ref.child("conversations").observeSingleEvent(of: .value, with: { (snapshot) in
+//            let value = snapshot.value as? NSDictionary
+//            let count = value?.count
+//            print("We have \(count ?? 0) conversations.")
+//        })
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -151,6 +164,10 @@ extension HomeVC {
         print("👁 HomeVC - viewDidLoad")
         DataHandler.updateActive(active: "1")
         print("🍱 Here are our friends \(DataHandler.friendList)")
+        
+        //Testing this out
+        UserManager.shared.importCurrentUserFromDataHandler()
+        UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
         
         
         //Set up delegates and data sources

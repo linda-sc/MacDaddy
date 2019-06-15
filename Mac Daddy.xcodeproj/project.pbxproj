@@ -19,6 +19,8 @@
 		BF10827B1ED4C793000677A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF1082791ED4C793000677A3 /* Main.storyboard */; };
 		BF10827D1ED4C793000677A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF10827C1ED4C793000677A3 /* Assets.xcassets */; };
 		BF1082881ED4C7A7000677A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF1082871ED4C7A7000677A3 /* GoogleService-Info.plist */; };
+		BF16F49F22ADBBF800BCF369 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF16F49E22ADBBF800BCF369 /* NetworkConstants.swift */; };
+		BF16F4A122ADBE1700BCF369 /* UserRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF16F4A022ADBE1700BCF369 /* UserRequests.swift */; };
 		BF1EDC4F1EE4A015006CB610 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDC4E1EE4A015006CB610 /* FirebaseManager.swift */; };
 		BF1EDC521EE60CAF006CB610 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDC511EE60CAF006CB610 /* WelcomeVC.swift */; };
 		BF2652EB1F16B2090013873F /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2652EA1F16B2090013873F /* HomeVC.swift */; };
@@ -31,8 +33,14 @@
 		BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C29D0218909B100589E1B /* DataHandler_Friends.swift */; };
 		BF4C29D5218B60EA00589E1B /* DataHandler_Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C29D4218B60EA00589E1B /* DataHandler_Observers.swift */; };
 		BF5408252057619D00E5A1BB /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5408242057619D00E5A1BB /* AboutVC.swift */; };
+		BF57B64D228F481C00D500A2 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B64C228F481C00D500A2 /* UserObject.swift */; };
+		BF57B650228F487000D500A2 /* FriendshipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B64F228F487000D500A2 /* FriendshipObject.swift */; };
+		BF57B652228F49D800D500A2 /* InterestsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B651228F49D800D500A2 /* InterestsObject.swift */; };
+		BF57B654228F4B2C00D500A2 /* CommunityObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B653228F4B2C00D500A2 /* CommunityObject.swift */; };
+		BF57B656228F51A600D500A2 /* MatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B655228F51A600D500A2 /* MatchManager.swift */; };
 		BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */; };
 		BF628E041FCE1FA200824E87 /* Matching.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF628E031FCE1FA100824E87 /* Matching.swift */; };
+		BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7066FB22AD5A5800129EA9 /* UserManager.swift */; };
 		BF85923520606F200065C8AD /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85923420606F200065C8AD /* Chatting.swift */; };
 		BF8A0E3B1FBB6FF7009EEF4E /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8A0E3A1FBB6FF7009EEF4E /* EditProfile.swift */; };
 		BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */; };
@@ -67,6 +75,8 @@
 		BF10827C1ED4C793000677A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF1082811ED4C793000677A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Mac Daddy/Info.plist"; sourceTree = "<group>"; };
 		BF1082871ED4C7A7000677A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Mac Daddy/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BF16F49E22ADBBF800BCF369 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		BF16F4A022ADBE1700BCF369 /* UserRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequests.swift; sourceTree = "<group>"; };
 		BF1EDC4E1EE4A015006CB610 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		BF1EDC511EE60CAF006CB610 /* WelcomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		BF2652EA1F16B2090013873F /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -79,8 +89,14 @@
 		BF4C29D0218909B100589E1B /* DataHandler_Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Friends.swift; sourceTree = "<group>"; };
 		BF4C29D4218B60EA00589E1B /* DataHandler_Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Observers.swift; sourceTree = "<group>"; };
 		BF5408242057619D00E5A1BB /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		BF57B64C228F481C00D500A2 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
+		BF57B64F228F487000D500A2 /* FriendshipObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipObject.swift; sourceTree = "<group>"; };
+		BF57B651228F49D800D500A2 /* InterestsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsObject.swift; sourceTree = "<group>"; };
+		BF57B653228F4B2C00D500A2 /* CommunityObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityObject.swift; sourceTree = "<group>"; };
+		BF57B655228F51A600D500A2 /* MatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchManager.swift; sourceTree = "<group>"; };
 		BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF628E031FCE1FA100824E87 /* Matching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matching.swift; sourceTree = "<group>"; };
+		BF7066FB22AD5A5800129EA9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		BF85923420606F200065C8AD /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 		BF8A0E3A1FBB6FF7009EEF4E /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingAlerts.swift; sourceTree = "<group>"; };
@@ -160,6 +176,8 @@
 				BF1082751ED4C793000677A3 /* AppDelegate.swift */,
 				BF0A9A6B20169FE400AC1E48 /* Structs.swift */,
 				BFB2E5471F71D4A40096D562 /* Constants.swift */,
+				BF16F49D22ADBBBD00BCF369 /* Network Calls */,
+				BF57B64E228F482700D500A2 /* Model Objects */,
 				BF4C29D6218B654D00589E1B /* DataHandler */,
 				BF99DDBD1F1845140069F2C5 /* Launch */,
 				BF1EDC501EE4A027006CB610 /* Login */,
@@ -169,6 +187,15 @@
 				BF99DDBE1F1846960069F2C5 /* Effects */,
 			);
 			path = "Mac Daddy";
+			sourceTree = "<group>";
+		};
+		BF16F49D22ADBBBD00BCF369 /* Network Calls */ = {
+			isa = PBXGroup;
+			children = (
+				BF16F49E22ADBBF800BCF369 /* NetworkConstants.swift */,
+				BF16F4A022ADBE1700BCF369 /* UserRequests.swift */,
+			);
+			name = "Network Calls";
 			sourceTree = "<group>";
 		};
 		BF1EDC501EE4A027006CB610 /* Login */ = {
@@ -192,6 +219,19 @@
 				BF4C29D4218B60EA00589E1B /* DataHandler_Observers.swift */,
 			);
 			name = DataHandler;
+			sourceTree = "<group>";
+		};
+		BF57B64E228F482700D500A2 /* Model Objects */ = {
+			isa = PBXGroup;
+			children = (
+				BF57B64C228F481C00D500A2 /* UserObject.swift */,
+				BF7066FB22AD5A5800129EA9 /* UserManager.swift */,
+				BF57B651228F49D800D500A2 /* InterestsObject.swift */,
+				BF57B653228F4B2C00D500A2 /* CommunityObject.swift */,
+				BF57B64F228F487000D500A2 /* FriendshipObject.swift */,
+				BF57B655228F51A600D500A2 /* MatchManager.swift */,
+			);
+			name = "Model Objects";
 			sourceTree = "<group>";
 		};
 		BF99DDBC1F1842DD0069F2C5 /* Profile Editing */ = {
@@ -303,6 +343,7 @@
 					BF1082711ED4C793000677A3 = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0930;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -316,6 +357,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -366,35 +408,29 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/NWPusher/NWPusher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NWPusher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -441,6 +477,7 @@
 				BFA6564621A5EA5B00A9B99B /* DataHandler_FCM.swift in Sources */,
 				BF1082781ED4C793000677A3 /* LoginVC.swift in Sources */,
 				BF99DDC01F1846AB0069F2C5 /* Segues.swift in Sources */,
+				BF57B64D228F481C00D500A2 /* UserObject.swift in Sources */,
 				BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */,
 				BF4C29D5218B60EA00589E1B /* DataHandler_Observers.swift in Sources */,
 				BF99DDBB1F183F710069F2C5 /* ProfileOptionsVC.swift in Sources */,
@@ -449,8 +486,13 @@
 				BF43C5DC1EE72AAC00602357 /* MyPreferencesVC.swift in Sources */,
 				BFD2CD77219B44FA00337148 /* FriendDetailVC.swift in Sources */,
 				BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */,
+				BF16F4A122ADBE1700BCF369 /* UserRequests.swift in Sources */,
+				BF57B652228F49D800D500A2 /* InterestsObject.swift in Sources */,
 				BF8A0E3B1FBB6FF7009EEF4E /* EditProfile.swift in Sources */,
 				BF0A9A6C20169FE400AC1E48 /* Structs.swift in Sources */,
+				BF57B656228F51A600D500A2 /* MatchManager.swift in Sources */,
+				BF57B650228F487000D500A2 /* FriendshipObject.swift in Sources */,
+				BF57B654228F4B2C00D500A2 /* CommunityObject.swift in Sources */,
 				BF1EDC4F1EE4A015006CB610 /* FirebaseManager.swift in Sources */,
 				BF0F0942218D59E400036842 /* ChatSceneVC.swift in Sources */,
 				BF2652ED1F16BB9F0013873F /* PreferencesSetupVC.swift in Sources */,
@@ -460,7 +502,9 @@
 				BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */,
 				BF1082761ED4C793000677A3 /* AppDelegate.swift in Sources */,
 				BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */,
+				BF16F49F22ADBBF800BCF369 /* NetworkConstants.swift in Sources */,
 				BF9F50F521BB47CA000FA5C4 /* ChatHandler.swift in Sources */,
+				BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */,
 				BF4247F21EF70E1B003BEEA8 /* PrivateSetup2VC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,11 +635,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Mac Daddy/Mac Daddy.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GTCC98NN7E;
 				INFOPLIST_FILE = "Mac Daddy/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.synestha.Mac-Daddy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -609,11 +655,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Mac Daddy/Mac Daddy.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GTCC98NN7E;
 				INFOPLIST_FILE = "Mac Daddy/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.synestha.Mac-Daddy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
