@@ -41,6 +41,7 @@
 		BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */; };
 		BF628E041FCE1FA200824E87 /* Matching.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF628E031FCE1FA100824E87 /* Matching.swift */; };
 		BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7066FB22AD5A5800129EA9 /* UserManager.swift */; };
+		BF76918622B6882500D7A5EC /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76918522B6882500D7A5EC /* CodableExtensions.swift */; };
 		BF85923520606F200065C8AD /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85923420606F200065C8AD /* Chatting.swift */; };
 		BF8A0E3B1FBB6FF7009EEF4E /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8A0E3A1FBB6FF7009EEF4E /* EditProfile.swift */; };
 		BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */; };
@@ -97,6 +98,7 @@
 		BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF628E031FCE1FA100824E87 /* Matching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matching.swift; sourceTree = "<group>"; };
 		BF7066FB22AD5A5800129EA9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		BF76918522B6882500D7A5EC /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
 		BF85923420606F200065C8AD /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 		BF8A0E3A1FBB6FF7009EEF4E /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingAlerts.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		BF16F49D22ADBBBD00BCF369 /* Network Calls */ = {
 			isa = PBXGroup;
 			children = (
+				BF76918522B6882500D7A5EC /* CodableExtensions.swift */,
 				BF16F49E22ADBBF800BCF369 /* NetworkConstants.swift */,
 				BF16F4A022ADBE1700BCF369 /* UserRequests.swift */,
 			);
@@ -503,6 +506,7 @@
 				BF1082761ED4C793000677A3 /* AppDelegate.swift in Sources */,
 				BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */,
 				BF16F49F22ADBBF800BCF369 /* NetworkConstants.swift in Sources */,
+				BF76918622B6882500D7A5EC /* CodableExtensions.swift in Sources */,
 				BF9F50F521BB47CA000FA5C4 /* ChatHandler.swift in Sources */,
 				BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */,
 				BF4247F21EF70E1B003BEEA8 /* PrivateSetup2VC.swift in Sources */,

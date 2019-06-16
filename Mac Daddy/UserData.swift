@@ -25,6 +25,52 @@ class UserData {
     //3. Pass it to Matching functions that will choose a friend and initiate a conversation.
 
     
+    static func downloadAllUserObjects(completed: @escaping ()-> ()) {
+        print("🦋 Downloading all UserObjects...")
+        
+        //Overwrite previous data.
+        allUserObjects = [UserObject]()
+        
+        
+        DataHandler.db.collection("UserObjects").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("💥 Error getting users: \(err)")
+            } else {
+                //First download all the blocked users
+                downloadBlockedUsers {
+                    //Then don't download any new users that have been blocked
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                        let data = document.data() as NSDictionary
+                        
+                        if (!JSONSerialization.isValidJSONObject(data)) {
+                            print("is not a valid json object")
+                            return
+                        }
+                        
+                        let userObject = decode(json: data, obj: UserObject.self)
+                        
+                        
+                        var blocked = false
+                        for blockedUser in blockedUsers {
+                            if blockedUser.uid == document.documentID {
+                                blocked = true
+                            }
+                        }
+                        if !blocked {
+                            allUserObjects.append(userObject!)
+                        }
+                        
+                    }//End of querySnapshot
+                    print("🦋 Downloaded all UserObjects: \(allUserObjects)")
+                    completed()
+                }//End of blockedUsers closure
+            }
+        }
+        
+    }//End of downloading user objects.
+    
+    
     static func downloadAllUsers(completed: @escaping ()-> ()) {
         print("🦋 Downloading all users...")
         

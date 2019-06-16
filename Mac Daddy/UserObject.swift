@@ -108,7 +108,7 @@ class UserObject: NSObject, Codable {
     var communities: [String]?
     var interests: [String]?
     var majors: [String]?
-
+    
 
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
@@ -205,14 +205,16 @@ class UserObject: NSObject, Codable {
         credentialsProvider = try container.decodeIfPresent(String.self, forKey: .credentialsProvider)
         
         //Convert the date string into a date object.
-        let accountCreationDateString = try container.decode(String.self, forKey: .accountCreationDate)
+        let accountCreationDateString = try container.decodeIfPresent(String.self, forKey: .accountCreationDate)
         let dateFormatter = DateFormatter.yyyyMMdd
-        if let date = dateFormatter.date(from: accountCreationDateString) {
+        if let date = dateFormatter.date(from: accountCreationDateString ?? "") {
             accountCreationDate = date
         } else {
-            throw DecodingError.dataCorruptedError(forKey: .accountCreationDate,
-                                                   in: container,
-                                                   debugDescription: "Account creation date string does not match format expected by formatter.")
+            if accountCreationDateString != nil {
+                throw DecodingError.dataCorruptedError(forKey: .accountCreationDate,
+                                                       in: container,
+                                                       debugDescription: "Account creation date string does not match format expected by formatter.")
+            }
         }
         
         
@@ -242,14 +244,16 @@ class UserObject: NSObject, Codable {
         message = try container.decodeIfPresent(String.self, forKey: .message)
         
         //Convert the date string into a date object.
-        let lastActiveDateString = try container.decode(String.self, forKey: .lastActive)
+        let lastActiveDateString = try container.decodeIfPresent(String.self, forKey: .lastActive)
         let dateTimeFormatter = DateFormatter.iso8601Full
-        if let date = dateTimeFormatter.date(from: lastActiveDateString) {
+        if let date = dateTimeFormatter.date(from: lastActiveDateString ?? "") {
             lastActive = date
         } else {
-            throw DecodingError.dataCorruptedError(forKey: .accountCreationDate,
-                                                   in: container,
-                                                   debugDescription: "Last active date string does not match format expected by formatter.")
+            if lastActiveDateString != nil {
+                throw DecodingError.dataCorruptedError(forKey: .lastActive,
+                                                       in: container,
+                                                       debugDescription: "Last active date string does not match format expected by formatter.")
+            }
         }
         
         //5. Stats information
@@ -310,7 +314,9 @@ class UserObject: NSObject, Codable {
         //4. Realtime Information
         try container.encodeIfPresent(currentMatchID, forKey: .currentMatchID)
         try container.encodeIfPresent(active, forKey: .active)
-        try container.encodeIfPresent(lastActive, forKey: .lastActive)
+        //Convert the date into a string to make it JSON encodable
+        let lastActiveString = lastActive?.dateToDateTimeString()
+        try container.encodeIfPresent(lastActiveString, forKey: .lastActive)
         try container.encodeIfPresent(latitude, forKey: .latitude)
         try container.encodeIfPresent(longitude, forKey: .longitude)
         try container.encodeIfPresent(message, forKey: .message)

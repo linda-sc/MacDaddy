@@ -30,18 +30,9 @@ import Firebase
 
 class UserRequests: NSObject {
     
-    
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     // MARK: 1. Insert a new user object into firestore.
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-    
-    //Primary insert user function
-    
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-    // MARK: Inserts user object into Firestore
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     func insertUserInFirestore(userObject: UserObject) {
@@ -62,6 +53,9 @@ class UserRequests: NSObject {
         self.updateFirestoreData(ref: ref, values: userData)
     }
     
+    //////////////////////////////////////////////////
+    // MARK: 1.1. Inserting data anywhere in Firestore
+    //////////////////////////////////////////////////
     
     //Update data at any document in Cloud Firestore
     func updateFirestoreData(ref: DocumentReference, values: RawJSON) {
@@ -77,7 +71,6 @@ class UserRequests: NSObject {
             }
         }
     }
-    
     
     //Create data at any document in Cloud Firestore
     func setFirestoreData(ref: DocumentReference, values: RawJSON) {
