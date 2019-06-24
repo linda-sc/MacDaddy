@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 ///////❤️ 🧡 💛 💚 💙 💜 UPDATE USER OBJECT INFORMATION HERE ❤️ 🧡 💛 💚 💙 💜
 struct Friend {
     //Identifying Info

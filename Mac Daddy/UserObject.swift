@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+import MapKit
 
 //Codable means you can easily switch between object and JSON.
 //Structs are value types, and classes are reference types.
@@ -319,6 +321,7 @@ class UserObject: NSObject, Codable {
         try container.encodeIfPresent(lastActiveString, forKey: .lastActive)
         try container.encodeIfPresent(latitude, forKey: .latitude)
         try container.encodeIfPresent(longitude, forKey: .longitude)
+        
         try container.encodeIfPresent(message, forKey: .message)
         
         //5. Stats information
