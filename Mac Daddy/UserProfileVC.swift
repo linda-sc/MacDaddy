@@ -39,7 +39,7 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
 
 extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -47,20 +47,20 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
         // aka decide which cell we render based on the row of the table
         switch indexPath.row {
             //In case we are looking at row 3, then execute this code
-        case 3:
-            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "LogoutCell", for: indexPath) as! LogoutCell
-            cell.parentViewController = self
+        case 0:
+            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "BasicInfoCell", for: indexPath) as! BasicInfoCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
             return cell
-        case 10:
+        case 1:
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "BioCell", for: indexPath) as! BioCell
             //cell.parentViewController = self
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
             return cell
         default:
-            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "BasicInfoCell", for: indexPath) as! BasicInfoCell
+            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "LogoutCell", for: indexPath) as! LogoutCell
+            cell.parentViewController = self
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
             return cell
@@ -75,9 +75,16 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.bounds.width - 16
-        let height: CGFloat = 164
-        return CGSize(width: width, height: height)
+        switch indexPath.row {
+        case 0:
+            let width = view.bounds.width - 16
+            let height: CGFloat = 164
+            return CGSize(width: width, height: height)
+        default:
+            let width = view.bounds.width - 16
+            let height: CGFloat = 164
+            return CGSize(width: width, height: height)
+        }
     }
     
     /****************************************************************/
@@ -96,3 +103,5 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
         return NSString(string: text).boundingRect(with: size, options: options, attributes: attributes, context: nil)
     }
 }
+
+

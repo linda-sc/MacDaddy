@@ -233,12 +233,12 @@
 			children = (
 				BF42392522BD564900340E83 /* Profile.storyboard */,
 				BF42392A22C12CA800340E83 /* UserProfileVC.swift */,
+				BF42392E22C132F800340E83 /* BasicInfoCell.swift */,
 				BF42392822BD593100340E83 /* BasicInfoCell.xib */,
 				BF8603BF22C19F6F00BA2608 /* BioCell.swift */,
 				BF8603C022C19F6F00BA2608 /* BioCell.xib */,
-				BF42392E22C132F800340E83 /* BasicInfoCell.swift */,
-				BF42393122C144A500340E83 /* LogoutCell.xib */,
 				BF42393022C144A500340E83 /* LogoutCell.swift */,
+				BF42393122C144A500340E83 /* LogoutCell.xib */,
 				BF42392C22C130D000340E83 /* CollectionViewFlowLayout.swift */,
 			);
 			name = "User Profile";

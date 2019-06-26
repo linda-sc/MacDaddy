@@ -35,20 +35,72 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlV-y0-ZEs">
+                        <rect key="frame" x="166" y="73.5" width="229" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="r1n-P1-zal"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.38091188234885098" blue="0.50694390689568491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXh-h6-rDs">
+                        <rect key="frame" x="166" y="48" width="229" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="dU5-ZM-xjV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.64131776105701732" blue="0.54660096776986111" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAr-gY-EeB">
+                        <rect key="frame" x="166" y="124.5" width="229" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="BQ1-mt-6MC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.56727200560284174" blue="0.90711315974370454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MacStatus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQn-NH-AeM">
+                        <rect key="frame" x="166" y="99" width="229" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="682-Dv-vzf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.30039176114632415" blue="0.59844483710931085" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.15711856118421993" green="0.16001308268558725" blue="0.71276173857868019" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="tXh-h6-rDs" firstAttribute="top" secondItem="7C4-Qs-9Tg" secondAttribute="bottom" constant="3" id="3xo-zF-Ebo"/>
                 <constraint firstItem="Yeb-d6-yc2" firstAttribute="leading" secondItem="z5C-eR-Wxy" secondAttribute="leading" constant="20" id="99E-Ok-5XR"/>
+                <constraint firstItem="tXh-h6-rDs" firstAttribute="leading" secondItem="Yeb-d6-yc2" secondAttribute="trailing" constant="20" id="FDo-CA-wHe"/>
                 <constraint firstItem="Yeb-d6-yc2" firstAttribute="top" secondItem="z5C-eR-Wxy" secondAttribute="top" constant="20" id="HJJ-Jc-2N4"/>
+                <constraint firstAttribute="trailing" secondItem="tXh-h6-rDs" secondAttribute="trailing" constant="20" id="IfF-UA-QtB"/>
+                <constraint firstItem="hQn-NH-AeM" firstAttribute="leading" secondItem="Yeb-d6-yc2" secondAttribute="trailing" constant="20" id="OXH-mf-ZHi"/>
+                <constraint firstItem="hQn-NH-AeM" firstAttribute="top" secondItem="ZlV-y0-ZEs" secondAttribute="bottom" constant="0.5" id="Ot9-ed-6OE"/>
                 <constraint firstAttribute="trailing" secondItem="7C4-Qs-9Tg" secondAttribute="trailing" constant="20" id="RdC-cx-4v2"/>
+                <constraint firstAttribute="trailing" secondItem="hQn-NH-AeM" secondAttribute="trailing" constant="20" id="Vda-kX-WAk"/>
                 <constraint firstItem="7C4-Qs-9Tg" firstAttribute="leading" secondItem="Yeb-d6-yc2" secondAttribute="trailing" constant="20" id="YAd-hc-Qky"/>
+                <constraint firstItem="ZlV-y0-ZEs" firstAttribute="leading" secondItem="Yeb-d6-yc2" secondAttribute="trailing" constant="20" id="gFg-fT-v0q"/>
+                <constraint firstItem="kAr-gY-EeB" firstAttribute="leading" secondItem="Yeb-d6-yc2" secondAttribute="trailing" constant="20" id="gbk-bg-1np"/>
                 <constraint firstItem="7C4-Qs-9Tg" firstAttribute="top" secondItem="Yeb-d6-yc2" secondAttribute="top" id="iZ7-3T-vbJ"/>
+                <constraint firstItem="ZlV-y0-ZEs" firstAttribute="top" secondItem="tXh-h6-rDs" secondAttribute="bottom" constant="0.5" id="mQF-5b-ReT"/>
+                <constraint firstAttribute="trailing" secondItem="ZlV-y0-ZEs" secondAttribute="trailing" constant="20" id="nJm-QT-GDd"/>
+                <constraint firstAttribute="trailing" secondItem="kAr-gY-EeB" secondAttribute="trailing" constant="20" id="nMy-IY-vvr"/>
                 <constraint firstAttribute="bottom" secondItem="Yeb-d6-yc2" secondAttribute="bottom" constant="20" id="sfB-BX-vlL"/>
+                <constraint firstItem="kAr-gY-EeB" firstAttribute="top" secondItem="hQn-NH-AeM" secondAttribute="bottom" constant="0.5" id="uYq-md-Q6v"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Ddg-EL-tKJ"/>
             <size key="customSize" width="415" height="166"/>
             <connections>
+                <outlet property="emailTag" destination="ZlV-y0-ZEs" id="EGH-mb-TKa"/>
+                <outlet property="gradeTag" destination="kAr-gY-EeB" id="czu-34-E9i"/>
+                <outlet property="macStatusTag" destination="hQn-NH-AeM" id="Shr-da-rLQ"/>
+                <outlet property="nameTag" destination="tXh-h6-rDs" id="2bd-7i-DNw"/>
                 <outlet property="orgTag" destination="7C4-Qs-9Tg" id="toX-2F-B3i"/>
                 <outlet property="profilePicture" destination="Yeb-d6-yc2" id="jqt-7l-d89"/>
             </connections>
