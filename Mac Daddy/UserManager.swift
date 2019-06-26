@@ -21,7 +21,8 @@ class UserManager: NSObject {
     }()
 
     var currentUser: UserObject?
-    //let locationManager = CLLocationManager()
+    var locationManager: CLLocationManager!
+    var currentLocation: CLLocation!
     
     //Register new user
     //Sign in user
@@ -61,17 +62,6 @@ class UserManager: NSObject {
             return ("None")
         }
     }
-    
-    
-    //////////////////////////////////////////////////
-    // MARK: Update current location
-    //////////////////////////////////////////////////
-    func updateCurrentLocation(){
-        UserManager.shared.currentUser!.latitude = CLLocationCoordinate2D().latitude
-        UserManager.shared.currentUser!.latitude = CLLocationCoordinate2D().longitude
-    }
-    
-    
 }
 
 
@@ -84,10 +74,8 @@ class UserManager: NSObject {
 extension UserManager {
     
     //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
     // MARK: 1. Function that creates a currentUser
     // object from the DataHandler variables.
-    //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     func importCurrentUserFromDataHandler(){
         //Note: even though we are updating the data of userCopy, the reference never changes.
@@ -120,4 +108,68 @@ extension UserManager {
     }
     
     
+}
+
+
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+// MARK: UserManager also handles location
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+extension UserManager: CLLocationManagerDelegate {
+    
+    func getLocation(){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+    }
+    
+    func handleLocationAuthorizationStatus(status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.requestLocation()
+        case .denied:
+            showAlertToPrivacySettings(title: "User has not authorized location services", message: "Select 'Settings' below to open device settings and enable location services for this app.")
+        case .restricted:
+            print("Location services denied.")
+            //showAlert(title: "Location services denied", message: "It may be that parental controls are restricting location use in this app")
+        }
+    }
+    
+    func showAlertToPrivacySettings(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        guard let settingsURL = URL(string: UIApplicationOpenSettingsURLString) else {
+            print("Something went wrong getting the UIApplicationOpenSettingsURLString")
+            return
+        }
+        let settingsActions = UIAlertAction(title: "Settings", style: .default) { value in
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(settingsActions)
+        alertController.addAction(cancelAction)
+        //present(alertController, animated: true, completion: nil)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        handleLocationAuthorizationStatus(status: status)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = locations.last
+        UserManager.shared.currentUser?.latitude = currentLocation?.coordinate.latitude
+        UserManager.shared.currentUser?.longitude = currentLocation?.coordinate.longitude
+        print("CURRENT LOCATION = \(currentLocation?.coordinate.latitude) \(currentLocation?.coordinate.longitude)")
+        UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
+        //sortBasedOnSegmentPressed()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to get user location.")
+    }
 }

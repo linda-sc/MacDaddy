@@ -50,6 +50,10 @@ class UserData {
                         
                         let userObject = decode(json: data, obj: UserObject.self)
                         
+                        //Immediately convert the coordinates into a location object.
+                        if let latitude = userObject?.latitude, let longitude = userObject?.longitude {
+                            userObject?.currentLocation = CLLocation(latitude: latitude, longitude: longitude)
+                        }
                         
                         var blocked = false
                         for blockedUser in blockedUsers {

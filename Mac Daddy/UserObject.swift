@@ -77,6 +77,7 @@ class UserObject: NSObject, Codable {
     var latitude: Double?
     var longitude: Double?
     var message: String?
+    var currentLocation: CLLocation?
 
     //5. Stats information
     //////////////////////////////////

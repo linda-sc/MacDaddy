@@ -27,7 +27,7 @@ class HomeVC: UIViewController {
     func testing() {
         //Testing this out
         UserManager.shared.importCurrentUserFromDataHandler()
-        UserManager.shared.updateCurrentLocation()
+        UserManager.shared.getLocation()
         UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
         
         UserData.downloadAllUserObjects {
