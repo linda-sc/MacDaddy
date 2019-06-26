@@ -62,16 +62,6 @@ class UserManager: NSObject {
             return ("None")
         }
     }
-    
-    
-    //////////////////////////////////////////////////
-    // MARK: Update current location
-    //////////////////////////////////////////////////
-    func updateCurrentLocation(){
-        
-    }
-    
-    
 }
 
 
@@ -84,10 +74,8 @@ class UserManager: NSObject {
 extension UserManager {
     
     //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
     // MARK: 1. Function that creates a currentUser
     // object from the DataHandler variables.
-    //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     func importCurrentUserFromDataHandler(){
         //Note: even though we are updating the data of userCopy, the reference never changes.
