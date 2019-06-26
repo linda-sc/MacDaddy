@@ -23,19 +23,18 @@ class HomeVC: UIViewController {
     var selfListener:ListenerRegistration? = nil
     
     let friendRef = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("Friends")
-
     
     func testing() {
         //Testing this out
-        //UserManager.shared.importCurrentUserFromDataHandler()
-        //UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
+        UserManager.shared.importCurrentUserFromDataHandler()
+        UserManager.shared.updateCurrentLocation()
+        UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
         
         UserData.downloadAllUserObjects {
             //let lastActive = UserData.allUserObjects.first?.lastActive?.timeIntervalSinceNow
             //print("Active \(lastActive?.stringTimeAgo)")
         }
     }
-    
     
     func removeObserver() {
         if selfListener != nil {
@@ -223,7 +222,10 @@ extension HomeVC {
     
     //IB Actions
     @IBAction func editProfileTapped(_ sender:UIButton){
-        self.navigationController?.performSegue(withIdentifier: "goToOptions", sender: nil)
+        
+        self.navigationController?.performSegue(withIdentifier: "GoToProfile", sender: nil)
+        
+        //self.navigationController?.performSegue(withIdentifier: "goToOptions", sender: nil)
     }
     
     @IBAction func findMatchButtonPressed(_ sender: Any) {

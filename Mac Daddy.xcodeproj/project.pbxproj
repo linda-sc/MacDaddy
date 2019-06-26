@@ -27,6 +27,14 @@
 		BF2652EF1F18057F0013873F /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2652EE1F18057F0013873F /* DataHandler.swift */; };
 		BF2652F11F1821F30013873F /* InterestsSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2652F01F1821F30013873F /* InterestsSetupVC.swift */; };
 		BF3B2E171EE43A67002796DE /* VerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B2E161EE43A67002796DE /* VerifyVC.swift */; };
+		BF42392422B7ECC400340E83 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42392322B7ECC400340E83 /* LocationManager.swift */; };
+		BF42392622BD564900340E83 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF42392522BD564900340E83 /* Profile.storyboard */; };
+		BF42392922BD593100340E83 /* BasicInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF42392822BD593100340E83 /* BasicInfoCell.xib */; };
+		BF42392B22C12CA800340E83 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42392A22C12CA800340E83 /* UserProfileVC.swift */; };
+		BF42392D22C130D000340E83 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42392C22C130D000340E83 /* CollectionViewFlowLayout.swift */; };
+		BF42392F22C132F800340E83 /* BasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42392E22C132F800340E83 /* BasicInfoCell.swift */; };
+		BF42393222C144A500340E83 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42393022C144A500340E83 /* LogoutCell.swift */; };
+		BF42393322C144A500340E83 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF42393122C144A500340E83 /* LogoutCell.xib */; };
 		BF4247F21EF70E1B003BEEA8 /* PrivateSetup2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4247F11EF70E1B003BEEA8 /* PrivateSetup2VC.swift */; };
 		BF43C5DC1EE72AAC00602357 /* MyPreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43C5DB1EE72AAC00602357 /* MyPreferencesVC.swift */; };
 		BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C29D0218909B100589E1B /* DataHandler_Friends.swift */; };
@@ -42,6 +50,8 @@
 		BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7066FB22AD5A5800129EA9 /* UserManager.swift */; };
 		BF76918622B6882500D7A5EC /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76918522B6882500D7A5EC /* CodableExtensions.swift */; };
 		BF85923520606F200065C8AD /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85923420606F200065C8AD /* Chatting.swift */; };
+		BF8603C122C19F6F00BA2608 /* BioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8603BF22C19F6F00BA2608 /* BioCell.swift */; };
+		BF8603C222C19F6F00BA2608 /* BioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF8603C022C19F6F00BA2608 /* BioCell.xib */; };
 		BF8A0E3B1FBB6FF7009EEF4E /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8A0E3A1FBB6FF7009EEF4E /* EditProfile.swift */; };
 		BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */; };
 		BF99DDBB1F183F710069F2C5 /* ProfileOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99DDBA1F183F710069F2C5 /* ProfileOptionsVC.swift */; };
@@ -83,6 +93,14 @@
 		BF2652EE1F18057F0013873F /* DataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		BF2652F01F1821F30013873F /* InterestsSetupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsSetupVC.swift; sourceTree = "<group>"; };
 		BF3B2E161EE43A67002796DE /* VerifyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyVC.swift; sourceTree = "<group>"; };
+		BF42392322B7ECC400340E83 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		BF42392522BD564900340E83 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		BF42392822BD593100340E83 /* BasicInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicInfoCell.xib; sourceTree = "<group>"; };
+		BF42392A22C12CA800340E83 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
+		BF42392C22C130D000340E83 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		BF42392E22C132F800340E83 /* BasicInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoCell.swift; sourceTree = "<group>"; };
+		BF42393022C144A500340E83 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
+		BF42393122C144A500340E83 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
 		BF4247F11EF70E1B003BEEA8 /* PrivateSetup2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateSetup2VC.swift; sourceTree = "<group>"; };
 		BF43C5DB1EE72AAC00602357 /* MyPreferencesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPreferencesVC.swift; sourceTree = "<group>"; };
 		BF4C29D0218909B100589E1B /* DataHandler_Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Friends.swift; sourceTree = "<group>"; };
@@ -98,6 +116,8 @@
 		BF7066FB22AD5A5800129EA9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		BF76918522B6882500D7A5EC /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
 		BF85923420606F200065C8AD /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
+		BF8603BF22C19F6F00BA2608 /* BioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioCell.swift; sourceTree = "<group>"; };
+		BF8603C022C19F6F00BA2608 /* BioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BioCell.xib; sourceTree = "<group>"; };
 		BF8A0E3A1FBB6FF7009EEF4E /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingAlerts.swift; sourceTree = "<group>"; };
 		BF99DDBA1F183F710069F2C5 /* ProfileOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileOptionsVC.swift; sourceTree = "<group>"; };
@@ -170,8 +190,9 @@
 			children = (
 				BF0F0940218CED5D00036842 /* Mac Daddy.entitlements */,
 				BF10827C1ED4C793000677A3 /* Assets.xcassets */,
-				BF1082791ED4C793000677A3 /* Main.storyboard */,
 				BF1082751ED4C793000677A3 /* AppDelegate.swift */,
+				BF1082791ED4C793000677A3 /* Main.storyboard */,
+				BF42392722BD582200340E83 /* User Profile */,
 				BF0A9A6B20169FE400AC1E48 /* Structs.swift */,
 				BFB2E5471F71D4A40096D562 /* Constants.swift */,
 				BF16F49D22ADBBBD00BCF369 /* Network Calls */,
@@ -207,6 +228,22 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		BF42392722BD582200340E83 /* User Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BF42392522BD564900340E83 /* Profile.storyboard */,
+				BF42392A22C12CA800340E83 /* UserProfileVC.swift */,
+				BF42392822BD593100340E83 /* BasicInfoCell.xib */,
+				BF8603BF22C19F6F00BA2608 /* BioCell.swift */,
+				BF8603C022C19F6F00BA2608 /* BioCell.xib */,
+				BF42392E22C132F800340E83 /* BasicInfoCell.swift */,
+				BF42393122C144A500340E83 /* LogoutCell.xib */,
+				BF42393022C144A500340E83 /* LogoutCell.swift */,
+				BF42392C22C130D000340E83 /* CollectionViewFlowLayout.swift */,
+			);
+			name = "User Profile";
+			sourceTree = "<group>";
+		};
 		BF4C29D6218B654D00589E1B /* DataHandler */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +262,7 @@
 			children = (
 				BF57B64C228F481C00D500A2 /* UserObject.swift */,
 				BF7066FB22AD5A5800129EA9 /* UserManager.swift */,
+				BF42392322B7ECC400340E83 /* LocationManager.swift */,
 				BF57B651228F49D800D500A2 /* InterestsObject.swift */,
 				BF57B653228F4B2C00D500A2 /* CommunityObject.swift */,
 				BF57B64F228F487000D500A2 /* FriendshipObject.swift */,
@@ -377,8 +415,12 @@
 			files = (
 				BF1082881ED4C7A7000677A3 /* GoogleService-Info.plist in Resources */,
 				BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */,
+				BF42392922BD593100340E83 /* BasicInfoCell.xib in Resources */,
+				BF42392622BD564900340E83 /* Profile.storyboard in Resources */,
 				BF10827D1ED4C793000677A3 /* Assets.xcassets in Resources */,
 				BF10827B1ED4C793000677A3 /* Main.storyboard in Resources */,
+				BF8603C222C19F6F00BA2608 /* BioCell.xib in Resources */,
+				BF42393322C144A500340E83 /* LogoutCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,12 +511,15 @@
 				BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */,
 				BF4C29D5218B60EA00589E1B /* DataHandler_Observers.swift in Sources */,
 				BF99DDBB1F183F710069F2C5 /* ProfileOptionsVC.swift in Sources */,
+				BF8603C122C19F6F00BA2608 /* BioCell.swift in Sources */,
 				BF2652EF1F18057F0013873F /* DataHandler.swift in Sources */,
 				BFCC3BF61EE89C5600BD1F1C /* PrivateSetup1VC.swift in Sources */,
 				BF43C5DC1EE72AAC00602357 /* MyPreferencesVC.swift in Sources */,
+				BF42392D22C130D000340E83 /* CollectionViewFlowLayout.swift in Sources */,
 				BFD2CD77219B44FA00337148 /* FriendDetailVC.swift in Sources */,
 				BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */,
 				BF16F4A122ADBE1700BCF369 /* UserRequests.swift in Sources */,
+				BF42392B22C12CA800340E83 /* UserProfileVC.swift in Sources */,
 				BF57B652228F49D800D500A2 /* InterestsObject.swift in Sources */,
 				BF8A0E3B1FBB6FF7009EEF4E /* EditProfile.swift in Sources */,
 				BF0A9A6C20169FE400AC1E48 /* Structs.swift in Sources */,
@@ -487,8 +532,11 @@
 				BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */,
 				BF3B2E171EE43A67002796DE /* VerifyVC.swift in Sources */,
 				BF2652F11F1821F30013873F /* InterestsSetupVC.swift in Sources */,
+				BF42393222C144A500340E83 /* LogoutCell.swift in Sources */,
 				BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */,
+				BF42392422B7ECC400340E83 /* LocationManager.swift in Sources */,
 				BF1082761ED4C793000677A3 /* AppDelegate.swift in Sources */,
+				BF42392F22C132F800340E83 /* BasicInfoCell.swift in Sources */,
 				BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */,
 				BF16F49F22ADBBF800BCF369 /* NetworkConstants.swift in Sources */,
 				BF76918622B6882500D7A5EC /* CodableExtensions.swift in Sources */,
