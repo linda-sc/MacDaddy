@@ -1,4 +1,4 @@
-//
+//#hello???? this is Kevin???
 //  HomeVC.swift
 //  Mac Daddy
 //
@@ -27,12 +27,12 @@ class HomeVC: UIViewController {
     
     func testing() {
         //Testing this out
-        UserManager.shared.importCurrentUserFromDataHandler()
-        UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
+        //UserManager.shared.importCurrentUserFromDataHandler()
+        //UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
         
         UserData.downloadAllUserObjects {
-            let lastActive = UserData.allUserObjects.first?.lastActive?.timeIntervalSinceNow
-            print("Active \(lastActive?.stringTimeAgo)")
+            //let lastActive = UserData.allUserObjects.first?.lastActive?.timeIntervalSinceNow
+            //print("Active \(lastActive?.stringTimeAgo)")
         }
     }
     
