@@ -39,15 +39,23 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
 
 extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        // Switch the outcome based on the value of indexPath.row
+        // aka decide which cell we render based on the row of the table
         switch indexPath.row {
-        case 2:
+            //In case we are looking at row 3, then execute this code
+        case 3:
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "LogoutCell", for: indexPath) as! LogoutCell
             cell.parentViewController = self
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.setStructure(for: cell)
+            return cell
+        case 10:
+            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "BioCell", for: indexPath) as! BioCell
+            //cell.parentViewController = self
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
             return cell
