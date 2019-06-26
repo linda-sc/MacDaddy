@@ -28,7 +28,6 @@
 		BF2652EF1F18057F0013873F /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2652EE1F18057F0013873F /* DataHandler.swift */; };
 		BF2652F11F1821F30013873F /* InterestsSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2652F01F1821F30013873F /* InterestsSetupVC.swift */; };
 		BF3B2E171EE43A67002796DE /* VerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B2E161EE43A67002796DE /* VerifyVC.swift */; };
-		BF42392422B7ECC400340E83 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42392322B7ECC400340E83 /* LocationManager.swift */; };
 		BF42392622BD564900340E83 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF42392522BD564900340E83 /* Profile.storyboard */; };
 		BF42392922BD593100340E83 /* BasicInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF42392822BD593100340E83 /* BasicInfoCell.xib */; };
 		BF42392B22C12CA800340E83 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42392A22C12CA800340E83 /* UserProfileVC.swift */; };
@@ -95,7 +94,6 @@
 		BF2652EE1F18057F0013873F /* DataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		BF2652F01F1821F30013873F /* InterestsSetupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsSetupVC.swift; sourceTree = "<group>"; };
 		BF3B2E161EE43A67002796DE /* VerifyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyVC.swift; sourceTree = "<group>"; };
-		BF42392322B7ECC400340E83 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BF42392522BD564900340E83 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		BF42392822BD593100340E83 /* BasicInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicInfoCell.xib; sourceTree = "<group>"; };
 		BF42392A22C12CA800340E83 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 			children = (
 				BF57B64C228F481C00D500A2 /* UserObject.swift */,
 				BF7066FB22AD5A5800129EA9 /* UserManager.swift */,
-				BF42392322B7ECC400340E83 /* LocationManager.swift */,
 				BF57B651228F49D800D500A2 /* InterestsObject.swift */,
 				BF57B653228F4B2C00D500A2 /* CommunityObject.swift */,
 				BF57B64F228F487000D500A2 /* FriendshipObject.swift */,
@@ -549,7 +546,6 @@
 				BF2652F11F1821F30013873F /* InterestsSetupVC.swift in Sources */,
 				BF42393222C144A500340E83 /* LogoutCell.swift in Sources */,
 				BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */,
-				BF42392422B7ECC400340E83 /* LocationManager.swift in Sources */,
 				BF1082761ED4C793000677A3 /* AppDelegate.swift in Sources */,
 				BF42392F22C132F800340E83 /* BasicInfoCell.swift in Sources */,
 				BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */,
