@@ -37,4 +37,8 @@ class BasicInfoCell: UICollectionViewCell {
         macStatusTag.text = UserManager.shared.currentUser?.status
         gradeTag.text = UserManager.shared.currentUser?.grade
     }
+    
+    @IBAction func cellTapped(recognizer: UITapGestureRecognizer) {
+        
+    }
 }

@@ -74,6 +74,7 @@
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.15711856118421993" green="0.16001308268558725" blue="0.71276173857868019" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="tXh-h6-rDs" firstAttribute="top" secondItem="7C4-Qs-9Tg" secondAttribute="bottom" constant="3" id="3xo-zF-Ebo"/>
                 <constraint firstItem="Yeb-d6-yc2" firstAttribute="leading" secondItem="z5C-eR-Wxy" secondAttribute="leading" constant="20" id="99E-Ok-5XR"/>
@@ -103,9 +104,15 @@
                 <outlet property="nameTag" destination="tXh-h6-rDs" id="2bd-7i-DNw"/>
                 <outlet property="orgTag" destination="7C4-Qs-9Tg" id="toX-2F-B3i"/>
                 <outlet property="profilePicture" destination="Yeb-d6-yc2" id="jqt-7l-d89"/>
+                <outletCollection property="gestureRecognizers" destination="ZZW-ck-p0T" appends="YES" id="P3a-pB-6Vb"/>
             </connections>
             <point key="canvasLocation" x="-550" y="-257.8125"/>
         </collectionViewCell>
+        <tapGestureRecognizer id="ZZW-ck-p0T">
+            <connections>
+                <action selector="cellTappedWithRecognizer:" destination="z5C-eR-Wxy" id="nIo-rV-nBk"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="JustLinda" width="330" height="348"/>
