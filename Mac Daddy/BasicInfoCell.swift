@@ -28,5 +28,7 @@ class BasicInfoCell: UICollectionViewCell {
         profilePicture.clipsToBounds = true
         orgTag.layer.cornerRadius = 12
         orgTag.clipsToBounds = true
+        orgTag.text = "Yolo"
+        orgTag.text = UserManager.shared.currentUser?.organization
     }
 }

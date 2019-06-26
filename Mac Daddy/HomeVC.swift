@@ -1,4 +1,4 @@
-//
+//#hello???? this is Kevin???
 //  HomeVC.swift
 //  Mac Daddy
 //
@@ -31,8 +31,8 @@ class HomeVC: UIViewController {
         UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
         
         UserData.downloadAllUserObjects {
-            let lastActive = UserData.allUserObjects.first?.lastActive?.timeIntervalSinceNow
-            print("Active \(lastActive?.stringTimeAgo)")
+            //let lastActive = UserData.allUserObjects.first?.lastActive?.timeIntervalSinceNow
+            //print("Active \(lastActive?.stringTimeAgo)")
         }
     }
     
