@@ -104,15 +104,9 @@
                 <outlet property="nameTag" destination="tXh-h6-rDs" id="2bd-7i-DNw"/>
                 <outlet property="orgTag" destination="7C4-Qs-9Tg" id="toX-2F-B3i"/>
                 <outlet property="profilePicture" destination="Yeb-d6-yc2" id="jqt-7l-d89"/>
-                <outletCollection property="gestureRecognizers" destination="ZZW-ck-p0T" appends="YES" id="P3a-pB-6Vb"/>
             </connections>
             <point key="canvasLocation" x="-550" y="-257.8125"/>
         </collectionViewCell>
-        <tapGestureRecognizer id="ZZW-ck-p0T">
-            <connections>
-                <action selector="cellTappedWithRecognizer:" destination="z5C-eR-Wxy" id="nIo-rV-nBk"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="JustLinda" width="330" height="348"/>

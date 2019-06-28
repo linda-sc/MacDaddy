@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import Firebase
-import FirebaseDatabase
 
 class PrivateSetup1VC: UIViewController, UITextFieldDelegate {
     
@@ -54,7 +53,7 @@ class PrivateSetup1VC: UIViewController, UITextFieldDelegate {
     }
     
     func showBadWordAlert() {
-        let alert = UIAlertController(title: "Hmmm...", message: "That name contains some inapprorpriate text. Try again.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Hmmm...", message: "That name contains some inappropriate text. Try again.", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "Oops.", style: .default, handler: nil)
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)

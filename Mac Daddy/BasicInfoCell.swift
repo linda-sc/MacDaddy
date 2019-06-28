@@ -23,6 +23,10 @@ class BasicInfoCell: UICollectionViewCell {
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
         //This is important.
         if #available(iOS 12, *) { setupSelfSizingForiOS12(contentView: contentView)}
+        
+       // let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))) /
+       // self.addGestureRecognizer(tap) // new
+    
     }
     
     override func layoutSubviews() {
@@ -36,9 +40,5 @@ class BasicInfoCell: UICollectionViewCell {
         emailTag.text = UserManager.shared.currentUser?.email
         macStatusTag.text = UserManager.shared.currentUser?.status
         gradeTag.text = UserManager.shared.currentUser?.grade
-    }
-    
-    @IBAction func cellTapped(recognizer: UITapGestureRecognizer) {
-        
     }
 }

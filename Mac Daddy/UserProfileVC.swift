@@ -17,7 +17,8 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         super.viewDidLoad()
         optionsCollection.delegate = self
         optionsCollection.dataSource = self
-
+        self.navigationController?.isNavigationBarHidden = false
+        
         /*** Register cell nibs ***/
         optionsCollection.register(UINib.init(nibName: "BasicInfoCell", bundle: nil), forCellWithReuseIdentifier: "BasicInfoCell")
          optionsCollection.register(UINib.init(nibName: "BioCell", bundle: nil), forCellWithReuseIdentifier: "BioCell")
@@ -32,7 +33,6 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         //Disappearing cells
         let flowLayout = BouncyLayout(style: .prominent)
         self.optionsCollection.setCollectionViewLayout(flowLayout, animated: true)
-        
     }
 
 }
@@ -102,6 +102,18 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         return NSString(string: text).boundingRect(with: size, options: options, attributes: attributes, context: nil)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            performSegue(withIdentifier: "goToEditBasicInfo", sender: collectionView.cellForItem(at: indexPath))
+        case 1:
+            performSegue(withIdentifier: "goToEditShortBio", sender: collectionView.cellForItem(at: indexPath))
+        default:
+            print("Did select item at index path")
+        }
+    }
+    
 }
 
 
