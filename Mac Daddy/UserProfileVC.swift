@@ -12,9 +12,11 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var optionsCollection: UICollectionView!
     @IBOutlet weak var optionsCollectionLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var background: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("UserProfile viewDidLoaded!~")
         optionsCollection.delegate = self
         optionsCollection.dataSource = self
         self.navigationController?.isNavigationBarHidden = true
@@ -33,6 +35,15 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         //Disappearing cells
         let flowLayout = BouncyLayout(style: .prominent)
         self.optionsCollection.setCollectionViewLayout(flowLayout, animated: true)
+        
+        //Set background based on Mac Status
+        if UserManager.shared.currentUser?.status == "Daddy" {
+            background.image = UIImage(named: "MacDaddy Background_Purple")
+            
+        }else {
+            background.image = UIImage(named: "MacDaddy Background")
+
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

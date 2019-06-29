@@ -12,18 +12,40 @@ import Firebase
 
 class EditBasicInfoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    @IBOutlet weak var iAmALabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var statusSelector: UISegmentedControl!
+    
+    var grade = UserManager.shared.currentUser?.grade ?? "Freshman"
+    var macStatus = UserManager.shared.currentUser?.status ?? "Daddy"
+    var isDaddy = true
+    var initialIndex = 2
     
     @IBOutlet weak var picker: UIPickerView!
     var pickerData: [String] = [String]()
     
-    var grade = DataHandler.grade
-    var macStatus = DataHandler.macStatus
-    var isDaddy = true
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ViewLoaded")
-        // Do any additional setup after loading the view.
+        
+        saveButton.layer.cornerRadius = 20
+        saveButton.clipsToBounds = true
+        
+        //note: every time you see datahandler, changer
+        //Set background, put the selector on the previous setting:
+        print("STATUS")
+        print(UserManager.shared.currentUser?.status ?? "ERROR")
+        
+        if UserManager.shared.currentUser?.status == "Daddy" {
+            background.image = UIImage(named: "MacDaddy Background_Purple")
+            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
+            self.statusSelector.selectedSegmentIndex = 0
+            
+        }else {
+            background.image = UIImage(named: "MacDaddy Background")
+            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
+            self.statusSelector.selectedSegmentIndex = 1
+        }
         
         // Connect data:
         self.picker.delegate = self
@@ -53,7 +75,83 @@ class EditBasicInfoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             isDaddy = true
         }
     }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        print("ViewLoaded")
     
+//        saveButton.layer.cornerRadius = 20
+//        saveButton.clipsToBounds = true
+    
+    
+//        // Do any additional setup after loading the view.
+    
+//        //Set background, put the selector on the previous setting:
+//        if UserManager.shared.currentUser?.status == "Daddy" {
+//            background.image = UIImage(named: "MacDaddy Background_Purple")
+//            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
+//            self.statusSelector.selectedSegmentIndex = 0
+//
+//        }else {
+//            background.image = UIImage(named: "MacDaddy Background")
+//            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
+//            self.statusSelector.selectedSegmentIndex = 1
+//        }
+//
+//
+//        // Connect data:
+//        self.picker.delegate = self
+//        self.picker.dataSource = self
+//
+//        // Input data into the Array:
+//        pickerData = ["Freshman", "Sophomore", "Junior", "Senior"]
+//
+//        var previousRow = 0
+//
+//        //Keep the picker on the previous option:
+//        if grade == "Freshman" {
+//            previousRow = 0
+//        } else if grade == "Sophomore" {
+//            previousRow = 1
+//        } else if grade == "Junior" {
+//            previousRow = 2
+//        } else {
+//            previousRow = 3
+//        }
+//
+//        picker.selectRow(previousRow, inComponent: 0, animated: false)
+//
+//        if macStatus == "Baby" {
+//            isDaddy = false
+//        }else{
+//            isDaddy = true
+//        }
+//    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        print ("EditBasicInfo - viewWillAppear ACTIVATED!!!")
+//        //Set background, put the selector on the previous setting:
+//        if UserManager.shared.currentUser?.status == "Daddy" {
+//            background.image = UIImage(named: "MacDaddy Background_Purple")
+//            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
+//            self.statusSelector.selectedSegmentIndex = 0
+//
+//        }else {
+//            background.image = UIImage(named: "MacDaddy Background")
+//            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
+//            self.statusSelector.selectedSegmentIndex = 1
+//        }
+//    }
+    
+    //Make the status bar white.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     // The number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -105,10 +203,35 @@ class EditBasicInfoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     func saveButtonAction(completed: @escaping()-> ()) {
         UserManager.shared.currentUser?.status = macStatus
         UserManager.shared.currentUser?.grade = grade
-        // DataHandler.updateMacStatus(status: macStatus)
-        //DataHandler.updateGrade(grade: grade)
+        DataHandler.updateMacStatus(status: macStatus)
+        DataHandler.updateGrade(grade: grade)
         print ("Grade and status successfully saved")
         completed()
     }
+    
+    @IBAction func macSelectorChanged(_ sender: UISegmentedControl) {
+        //Flip the boolean
+        isDaddy = !isDaddy
+        //Check the boolean and set the button and labels
+        
+        switch statusSelector.selectedSegmentIndex {
+        
+        case 0:
+            macStatus = "Daddy"
+            background.image = UIImage(named: "MacDaddy Background_Purple")
+            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
+            iAmALabel.text = "I want to feed another student."
+            initialIndex = 0
 
+        case 1:
+            macStatus = "Baby"
+            background.image = UIImage(named: "MacDaddy Background")
+            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
+            iAmALabel.text = "I am looking for a free meal."
+            initialIndex = 1
+            
+        default:
+            print("Default selector")
+        }
+    }
 }

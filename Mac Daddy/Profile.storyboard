@@ -54,6 +54,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="uyu-Ha-13b"/>
                     <connections>
+                        <outlet property="background" destination="Idg-PT-gNn" id="1Ks-WP-rTi"/>
                         <outlet property="optionsCollection" destination="3Z2-zd-84y" id="U6J-2W-sJs"/>
                         <outlet property="optionsCollectionLayout" destination="S9c-a7-L5R" id="T2Z-Ml-Uiv"/>
                         <segue destination="pQI-3L-dwP" kind="show" identifier="goToEditBasicInfo" id="3Jt-A0-vij"/>
@@ -72,47 +73,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="jJw-YH-YJ4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="yo4-9A-T2n">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-15" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nsE-da-zqG">
-                                <rect key="frame" x="47" y="294" width="320" height="268"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="2Pe-1E-NCV">
+                                <rect key="frame" x="47" y="343" width="320" height="210"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="41j-cH-maV">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="X5e-VX-L5e">
+                                        <rect key="frame" x="76.5" y="0.0" width="167" height="29"/>
                                         <segments>
                                             <segment title="Mac Daddy"/>
                                             <segment title="Mac Baby"/>
                                         </segments>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="macSelectorChanged:" destination="pQI-3L-dwP" eventType="valueChanged" id="PqX-xS-CZM"/>
+                                        </connections>
                                     </segmentedControl>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLr-QS-fC4">
-                                        <rect key="frame" x="0.0" y="4" width="320" height="264"/>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHM-1r-PyH" userLabel="Year Picker">
+                                        <rect key="frame" x="0.0" y="39" width="320" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="mrF-6t-P86"/>
+                                        </constraints>
                                     </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-FV-tLi">
+                                        <rect key="frame" x="30" y="170" width="260" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="2YX-Ve-e3h"/>
+                                            <constraint firstAttribute="width" constant="260" id="zBH-r3-NOS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="pQI-3L-dwP" eventType="touchUpInside" id="p2O-r1-L3E"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CKe-FV-tLi" secondAttribute="trailing" constant="30" id="V12-F2-YUw"/>
+                                    <constraint firstItem="CKe-FV-tLi" firstAttribute="leading" secondItem="2Pe-1E-NCV" secondAttribute="leading" constant="30" id="vkN-cB-MEB"/>
+                                </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecR-Ay-Jby">
-                                <rect key="frame" x="47" y="497" width="320" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="pQI-3L-dwP" eventType="touchUpInside" id="B3b-KK-vbz"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tID-G0-uKN">
+                                <rect key="frame" x="178" y="300.5" width="58.5" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nsE-da-zqG" firstAttribute="centerX" secondItem="VDe-7j-QoB" secondAttribute="centerX" id="CSy-N0-XIr"/>
-                            <constraint firstItem="nsE-da-zqG" firstAttribute="top" secondItem="VDe-7j-QoB" secondAttribute="top" constant="250" id="JTg-Od-1jP"/>
-                            <constraint firstItem="VDe-7j-QoB" firstAttribute="bottom" secondItem="nsE-da-zqG" secondAttribute="bottom" constant="300" id="O26-1a-15Z"/>
+                            <constraint firstItem="tID-G0-uKN" firstAttribute="centerX" secondItem="jzJ-lo-tvF" secondAttribute="centerX" id="9SH-aO-JTS"/>
+                            <constraint firstItem="2Pe-1E-NCV" firstAttribute="centerY" secondItem="jzJ-lo-tvF" secondAttribute="centerY" id="B8d-Nx-cAQ"/>
+                            <constraint firstItem="2Pe-1E-NCV" firstAttribute="top" secondItem="tID-G0-uKN" secondAttribute="bottom" constant="15" id="P88-5w-se1"/>
+                            <constraint firstItem="2Pe-1E-NCV" firstAttribute="centerX" secondItem="jzJ-lo-tvF" secondAttribute="centerX" id="bDp-Oh-fDU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VDe-7j-QoB"/>
                     </view>
                     <connections>
-                        <outlet property="picker" destination="mLr-QS-fC4" id="pu2-wE-3Sm"/>
+                        <outlet property="background" destination="yo4-9A-T2n" id="XRI-ev-bz3"/>
+                        <outlet property="iAmALabel" destination="tID-G0-uKN" id="J5b-KL-EQk"/>
+                        <outlet property="picker" destination="bHM-1r-PyH" id="h91-kY-Yva"/>
+                        <outlet property="saveButton" destination="CKe-FV-tLi" id="qDP-mG-mVf"/>
+                        <outlet property="statusSelector" destination="X5e-VX-L5e" id="sHe-dw-5mM"/>
                         <segue destination="lO6-al-Io9" kind="show" identifier="goToUserProfile" id="bfa-Zd-cTb"/>
                     </connections>
                 </viewController>
