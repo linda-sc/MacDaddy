@@ -1,47 +1,29 @@
 //
-//  MyPreferences.swift
+//  EditBasicInfoVC.swift
 //  Mac Daddy
 //
-//  Created by Linda Chen on 6/6/17.
-//  Copyright © 2017 Synestha. All rights reserved.
+//  Created by Kevin Li on 6/28/19.
+//  Copyright © 2019 Synestha. All rights reserved.
 //
 
 import Foundation
 import UIKit
 import Firebase
 
-class MyPreferencesVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class EditBasicInfoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet weak var saveButton:UIButton!
-    @IBOutlet weak var label:UILabel!
-    @IBOutlet weak var background:UIImageView!
-    @IBOutlet weak var selector:UISegmentedControl!
+    
+    @IBOutlet weak var picker: UIPickerView!
+    var pickerData: [String] = [String]()
     
     var grade = DataHandler.grade
     var macStatus = DataHandler.macStatus
     var isDaddy = true
     
-    @IBOutlet weak var picker:UIPickerView!
-    var pickerData: [String] = [String]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        saveButton.layer.cornerRadius = 20
-        saveButton.clipsToBounds = true
-        
-        
-        //Set background, put the selector on the previous setting:
-        if DataHandler.macStatus == "Daddy" {
-            background.image = UIImage(named: "MacDaddy Background_Purple")
-            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
-            self.selector.selectedSegmentIndex = 0
-            
-        }else {
-            background.image = UIImage(named: "MacDaddy Background")
-            saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
-            self.selector.selectedSegmentIndex = 1
-        }
+        print("ViewLoaded")
+        // Do any additional setup after loading the view.
         
         // Connect data:
         self.picker.delegate = self
@@ -70,17 +52,6 @@ class MyPreferencesVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         }else{
             isDaddy = true
         }
-    }
-    
-    
-    //Make the status bar white.
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -120,37 +91,24 @@ class MyPreferencesVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             
         }else{
             return NSAttributedString(string: "Senior", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
-
+            
         }
     }
     
-    @IBAction func macSelectorChanged(_ sender: UISegmentedControl) {
-        //Flip the boolean
-        isDaddy = !isDaddy
-        //Check the boolean and set the button and labels
-        if isDaddy
-        {
-            macStatus = "Daddy"
-            background.image = UIImage(named: "MacDaddy Background_Purple")
-             saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Flipped"), for: .normal)
-            label.text = "I want to feed another student."
-        }
-        else
-        {
-            macStatus = "Baby"
-            background.image = UIImage(named: "MacDaddy Background")
-             saveButton.setBackgroundImage(UIImage(named: "MacDaddy Background_Purple_Flipped"), for: .normal)
-            label.text = "I am looking for a free meal."
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        saveButtonAction {
+            self.performSegue(withIdentifier: "goToUserProfile", sender: UIButton.self)
         }
     }
     
-    @IBAction func saveButtonTapped(_sender:UIButton){
-        DataHandler.macStatus = macStatus
-        DataHandler.grade = grade
-        DataHandler.updateMacStatus(status: macStatus)
-        DataHandler.updateGrade(grade: grade)
+    //could have everything under saveButtonAction func put into saveButtonTapped
+    func saveButtonAction(completed: @escaping()-> ()) {
+        UserManager.shared.currentUser?.status = macStatus
+        UserManager.shared.currentUser?.grade = grade
+        // DataHandler.updateMacStatus(status: macStatus)
+        //DataHandler.updateGrade(grade: grade)
         print ("Grade and status successfully saved")
-        self.performSegue(withIdentifier: "backToOptions", sender: self)
+        completed()
     }
-}
 
+}

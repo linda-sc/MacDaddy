@@ -17,7 +17,7 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         super.viewDidLoad()
         optionsCollection.delegate = self
         optionsCollection.dataSource = self
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = true
         
         /*** Register cell nibs ***/
         optionsCollection.register(UINib.init(nibName: "BasicInfoCell", bundle: nil), forCellWithReuseIdentifier: "BasicInfoCell")
@@ -34,7 +34,12 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         let flowLayout = BouncyLayout(style: .prominent)
         self.optionsCollection.setCollectionViewLayout(flowLayout, animated: true)
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.optionsCollection!.reloadData()
+        print ("viewWillAppear ACTIVATED!!!")
+    }
 }
 
 extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -113,7 +118,6 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
             print("Did select item at index path")
         }
     }
-    
 }
 
 

@@ -54,7 +54,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="uyu-Ha-13b"/>
                     <connections>
-                        <outlet property="optionsCollection" destination="3Z2-zd-84y" id="Zkj-AB-ocV"/>
+                        <outlet property="optionsCollection" destination="3Z2-zd-84y" id="U6J-2W-sJs"/>
+                        <outlet property="optionsCollectionLayout" destination="S9c-a7-L5R" id="T2Z-Ml-Uiv"/>
                         <segue destination="pQI-3L-dwP" kind="show" identifier="goToEditBasicInfo" id="3Jt-A0-vij"/>
                         <segue destination="SyZ-Xn-91d" kind="show" identifier="goToEditShortBio" id="ktt-M3-gEg"/>
                     </connections>
@@ -63,35 +64,82 @@
             </objects>
             <point key="canvasLocation" x="1031.8840579710145" y="82.366071428571431"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Basic InfoVC-->
         <scene sceneID="toY-Ya-cmW">
             <objects>
-                <viewController id="pQI-3L-dwP" sceneMemberID="viewController">
+                <viewController id="pQI-3L-dwP" customClass="EditBasicInfoVC" customModule="Mac_Daddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jzJ-lo-tvF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="jJw-YH-YJ4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-15" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nsE-da-zqG">
+                                <rect key="frame" x="47" y="294" width="320" height="268"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="41j-cH-maV">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                        <segments>
+                                            <segment title="Mac Daddy"/>
+                                            <segment title="Mac Baby"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLr-QS-fC4">
+                                        <rect key="frame" x="0.0" y="4" width="320" height="264"/>
+                                    </pickerView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecR-Ay-Jby">
+                                <rect key="frame" x="47" y="497" width="320" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="pQI-3L-dwP" eventType="touchUpInside" id="B3b-KK-vbz"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nsE-da-zqG" firstAttribute="centerX" secondItem="VDe-7j-QoB" secondAttribute="centerX" id="CSy-N0-XIr"/>
+                            <constraint firstItem="nsE-da-zqG" firstAttribute="top" secondItem="VDe-7j-QoB" secondAttribute="top" constant="250" id="JTg-Od-1jP"/>
+                            <constraint firstItem="VDe-7j-QoB" firstAttribute="bottom" secondItem="nsE-da-zqG" secondAttribute="bottom" constant="300" id="O26-1a-15Z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VDe-7j-QoB"/>
                     </view>
+                    <connections>
+                        <outlet property="picker" destination="mLr-QS-fC4" id="pu2-wE-3Sm"/>
+                        <segue destination="lO6-al-Io9" kind="show" identifier="goToUserProfile" id="bfa-Zd-cTb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4w1-qv-wCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896" y="-321"/>
+            <point key="canvasLocation" x="1895.6521739130437" y="-321.42857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Short BioVC-->
         <scene sceneID="zwD-Do-Mzf">
             <objects>
-                <viewController id="SyZ-Xn-91d" sceneMemberID="viewController">
+                <viewController id="SyZ-Xn-91d" customClass="EditShortBioVC" customModule="Mac_Daddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tab-3d-VuV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="orx-kH-HcF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Txn-zj-vfS"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MuW-dv-SUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896" y="362"/>
+            <point key="canvasLocation" x="1895.6521739130437" y="361.60714285714283"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B3E-m0-L7N">
@@ -115,4 +163,7 @@
     <resources>
         <image name="MacDaddy Background_Purple" width="1242" height="2208"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="bfa-Zd-cTb"/>
+    </inferredMetricsTieBreakers>
 </document>

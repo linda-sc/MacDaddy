@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		239727502D784AAB463CF690 /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AB1BDFF31B40DB3061AF90 /* Pods_Mac_Daddy.framework */; };
+		B373D4C222C6FC8D0051896F /* EditBasicInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B373D4C122C6FC8D0051896F /* EditBasicInfoVC.swift */; };
 		BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */; };
 		BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */; };
 		BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		32AB1BDFF31B40DB3061AF90 /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BDADD715B12F166A0B0C147 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
+		B373D4C122C6FC8D0051896F /* EditBasicInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBasicInfoVC.swift; sourceTree = "<group>"; };
 		BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendChatCell.swift; sourceTree = "<group>"; };
 		BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Express.swift; sourceTree = "<group>"; };
 		BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Core.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				BF42392A22C12CA800340E83 /* UserProfileVC.swift */,
 				BF42392E22C132F800340E83 /* BasicInfoCell.swift */,
 				BF42392822BD593100340E83 /* BasicInfoCell.xib */,
+				B373D4C122C6FC8D0051896F /* EditBasicInfoVC.swift */,
 				BF8603BF22C19F6F00BA2608 /* BioCell.swift */,
 				BF8603C022C19F6F00BA2608 /* BioCell.xib */,
 				BF42393022C144A500340E83 /* LogoutCell.swift */,
@@ -519,6 +522,7 @@
 				BF57B652228F49D800D500A2 /* InterestsObject.swift in Sources */,
 				BF8A0E3B1FBB6FF7009EEF4E /* EditProfile.swift in Sources */,
 				BF0A9A6C20169FE400AC1E48 /* Structs.swift in Sources */,
+				B373D4C222C6FC8D0051896F /* EditBasicInfoVC.swift in Sources */,
 				BF57B656228F51A600D500A2 /* MatchManager.swift in Sources */,
 				BF57B650228F487000D500A2 /* FriendshipObject.swift in Sources */,
 				BF57B654228F4B2C00D500A2 /* CommunityObject.swift in Sources */,

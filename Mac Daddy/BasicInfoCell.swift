@@ -23,9 +23,6 @@ class BasicInfoCell: UICollectionViewCell {
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
         //This is important.
         if #available(iOS 12, *) { setupSelfSizingForiOS12(contentView: contentView)}
-        
-       // let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))) /
-       // self.addGestureRecognizer(tap) // new
     
     }
     
