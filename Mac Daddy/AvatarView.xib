@@ -16,7 +16,7 @@
                 <outlet property="face" destination="85V-o0-X3u" id="YO6-NT-57M"/>
                 <outlet property="faceShadow" destination="iVO-yw-t0q" id="sJt-E7-F9B"/>
                 <outlet property="hair" destination="ZIi-8o-eIM" id="IlS-I5-HPA"/>
-                <outlet property="hairBottom" destination="KGI-IW-ymB" id="7jI-mp-aUy"/>
+                <outlet property="hairBack" destination="KGI-IW-ymB" id="7jI-mp-aUy"/>
                 <outlet property="leftArm" destination="iYC-81-aHT" id="Mfe-r7-mgf"/>
                 <outlet property="leftArmShadow" destination="EOh-JU-7Mh" id="rUl-FY-Bg9"/>
                 <outlet property="mouth" destination="oqR-7c-F2X" id="SE6-0g-I27"/>

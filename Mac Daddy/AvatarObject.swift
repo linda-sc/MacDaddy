@@ -8,15 +8,25 @@
 
 import Foundation
 
-class AvatarObject: NSObject, Codable {
+struct avatarColorScheme {
+    var colorTone: UIColor?
+    var hairTone: UIColor?
+    var skinTone: UIColor?
+    var skinShadow: UIColor?
+    var eyeTone: UIColor?
+    var eyebrowTone: UIColor?
+}
 
+
+class AvatarObject: NSObject, Codable {
+    
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     // MARK: I. Variables
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
-    
     var uid: String?
+    
     var colorTone: String?
     var hairTone: String?
     var skinTone: String?
@@ -62,6 +72,7 @@ class AvatarObject: NSObject, Codable {
     enum UserCodingKeys: String, CodingKey {
         
         case uid
+        
         case colorTone
         case hairTone
         case skinTone
@@ -103,10 +114,12 @@ class AvatarObject: NSObject, Codable {
     // MARK: III. Normal Initialization
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
-    init(uid: String, email: String) {
+    init(uid: String) {
         super.init()
         self.uid = uid
     }
+    
+     override init() {}
     
     
     //////////////////////////////////////////////////
@@ -121,6 +134,7 @@ class AvatarObject: NSObject, Codable {
         let container = try decoder.container(keyedBy: UserCodingKeys.self)
         
         uid = try container.decodeIfPresent(String.self, forKey: .uid)
+        
         colorTone = try container.decodeIfPresent(String.self, forKey: .colorTone)
         hairTone = try container.decodeIfPresent(String.self, forKey: .hairTone)
         skinTone = try container.decodeIfPresent(String.self, forKey: .skinTone)
@@ -169,6 +183,7 @@ class AvatarObject: NSObject, Codable {
         var container = encoder.container(keyedBy: UserCodingKeys.self)
         
         try container.encodeIfPresent(uid, forKey: .uid)
+        
         try container.encodeIfPresent(colorTone, forKey: .colorTone)
         try container.encodeIfPresent(hairTone, forKey: .hairTone)
         try container.encodeIfPresent(skinTone, forKey: .skinTone)
@@ -206,3 +221,65 @@ class AvatarObject: NSObject, Codable {
     }
     
 }
+
+
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+// MARK: Functions
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+extension AvatarObject {
+    
+    //Orange
+    //Cyan
+    //Magenta
+    //Lavender
+    //Indigo
+    
+    static func loadDefaultAvatar() -> AvatarObject {
+        let newAvatar = AvatarObject()
+        
+        var uid: String?
+        
+        newAvatar.colorTone = "002fff"
+        newAvatar.hairTone = "fc1ec9"
+        newAvatar.skinTone = "f754d2"
+        newAvatar.skinShadow = "#f046c9"
+        newAvatar.eyeTone = ""
+        newAvatar.eyebrowTone = ""
+        
+        newAvatar.hair = "hair1"
+        newAvatar.hairShadow = "hairShadow1"
+        newAvatar.hairBack = "hairBack1"
+        
+        newAvatar.eyes = ""
+        newAvatar.irises = ""
+        newAvatar.eyeBags = ""
+        newAvatar.eyeSize = 1.0
+        newAvatar.eyeHeight = 1.0
+        newAvatar.eyeWidth = 1.0
+        
+        newAvatar.nose = "nose1"
+        newAvatar.noseSize = 1.0
+        
+        newAvatar.mouth = "mouth1"
+        newAvatar.mouthShadow = "mouthShadow1"
+        newAvatar.mouthSize = 1.0
+        
+        newAvatar.face = "face1"
+        newAvatar.faceShadow = "faceShadow1"
+        newAvatar.neck = "neck1"
+        
+        newAvatar.shirt = "shirt1"
+        newAvatar.leftArm = "leftArm1"
+        newAvatar.leftArmShadow = "leftArmShadow1"
+        newAvatar.rightArm = "rightArm1"
+        newAvatar.rightArmShadow = "rightArmShadow1"
+        
+        return newAvatar
+    }
+    
+}
+
+
