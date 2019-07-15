@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		239727502D784AAB463CF690 /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AB1BDFF31B40DB3061AF90 /* Pods_Mac_Daddy.framework */; };
 		B373D4C222C6FC8D0051896F /* EditBasicInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B373D4C122C6FC8D0051896F /* EditBasicInfoVC.swift */; };
 		BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */; };
 		BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */; };
@@ -27,6 +26,10 @@
 		BF2652ED1F16BB9F0013873F /* PreferencesSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2652EC1F16BB9F0013873F /* PreferencesSetupVC.swift */; };
 		BF2652EF1F18057F0013873F /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2652EE1F18057F0013873F /* DataHandler.swift */; };
 		BF2652F11F1821F30013873F /* InterestsSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2652F01F1821F30013873F /* InterestsSetupVC.swift */; };
+		BF310E1822DC0D5D006C7D6D /* AvatarCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF310E1722DC0D5D006C7D6D /* AvatarCreatorVC.swift */; };
+		BF310E1A22DC10C1006C7D6D /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF310E1922DC10C1006C7D6D /* AvatarView.xib */; };
+		BF310E1C22DC122B006C7D6D /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF310E1B22DC122B006C7D6D /* AvatarView.swift */; };
+		BF310E1E22DC2601006C7D6D /* AvatarObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF310E1D22DC2601006C7D6D /* AvatarObject.swift */; };
 		BF3B2E171EE43A67002796DE /* VerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B2E161EE43A67002796DE /* VerifyVC.swift */; };
 		BF42392622BD564900340E83 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF42392522BD564900340E83 /* Profile.storyboard */; };
 		BF42392922BD593100340E83 /* BasicInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF42392822BD593100340E83 /* BasicInfoCell.xib */; };
@@ -48,6 +51,8 @@
 		BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */; };
 		BF628E041FCE1FA200824E87 /* Matching.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF628E031FCE1FA100824E87 /* Matching.swift */; };
 		BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7066FB22AD5A5800129EA9 /* UserManager.swift */; };
+		BF741E5922CCFCC500F9CACE /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF741E5722CCFCC500F9CACE /* MapCell.swift */; };
+		BF741E5A22CCFCC500F9CACE /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF741E5822CCFCC500F9CACE /* MapCell.xib */; };
 		BF76918622B6882500D7A5EC /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76918522B6882500D7A5EC /* CodableExtensions.swift */; };
 		BF85923520606F200065C8AD /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85923420606F200065C8AD /* Chatting.swift */; };
 		BF8603C122C19F6F00BA2608 /* BioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8603BF22C19F6F00BA2608 /* BioCell.swift */; };
@@ -65,11 +70,13 @@
 		BFD2CD77219B44FA00337148 /* FriendDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2CD76219B44FA00337148 /* FriendDetailVC.swift */; };
 		BFEB30391F68891E00CD4173 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEB30381F68891E00CD4173 /* UserData.swift */; };
 		BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE185C1FD493960011A34A /* String+Subtring.swift */; };
+		FDA3F1FB3524D3B7C6E0D506 /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29912DAA3F2A7BFBA17AB3AF /* Pods_Mac_Daddy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		32AB1BDFF31B40DB3061AF90 /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9BDADD715B12F166A0B0C147 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
+		14DC7512ABC749E41BB33AFF /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
+		29912DAA3F2A7BFBA17AB3AF /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFE9CD662F3407BC8FC89239 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
 		B373D4C122C6FC8D0051896F /* EditBasicInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBasicInfoVC.swift; sourceTree = "<group>"; };
 		BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendChatCell.swift; sourceTree = "<group>"; };
 		BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Express.swift; sourceTree = "<group>"; };
@@ -92,6 +99,10 @@
 		BF2652EC1F16BB9F0013873F /* PreferencesSetupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesSetupVC.swift; sourceTree = "<group>"; };
 		BF2652EE1F18057F0013873F /* DataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		BF2652F01F1821F30013873F /* InterestsSetupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsSetupVC.swift; sourceTree = "<group>"; };
+		BF310E1722DC0D5D006C7D6D /* AvatarCreatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCreatorVC.swift; sourceTree = "<group>"; };
+		BF310E1922DC10C1006C7D6D /* AvatarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarView.xib; sourceTree = "<group>"; };
+		BF310E1B22DC122B006C7D6D /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		BF310E1D22DC2601006C7D6D /* AvatarObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarObject.swift; sourceTree = "<group>"; };
 		BF3B2E161EE43A67002796DE /* VerifyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyVC.swift; sourceTree = "<group>"; };
 		BF42392522BD564900340E83 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		BF42392822BD593100340E83 /* BasicInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicInfoCell.xib; sourceTree = "<group>"; };
@@ -113,6 +124,8 @@
 		BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF628E031FCE1FA100824E87 /* Matching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matching.swift; sourceTree = "<group>"; };
 		BF7066FB22AD5A5800129EA9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		BF741E5722CCFCC500F9CACE /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
+		BF741E5822CCFCC500F9CACE /* MapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
 		BF76918522B6882500D7A5EC /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
 		BF85923420606F200065C8AD /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 		BF8603BF22C19F6F00BA2608 /* BioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioCell.swift; sourceTree = "<group>"; };
@@ -131,7 +144,6 @@
 		BFD2CD76219B44FA00337148 /* FriendDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailVC.swift; sourceTree = "<group>"; };
 		BFEB30381F68891E00CD4173 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BFEE185C1FD493960011A34A /* String+Subtring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subtring.swift"; sourceTree = "<group>"; };
-		F39144ACAECAA47BC8693D16 /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				239727502D784AAB463CF690 /* Pods_Mac_Daddy.framework in Frameworks */,
+				FDA3F1FB3524D3B7C6E0D506 /* Pods_Mac_Daddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,7 +177,7 @@
 				BF1082871ED4C7A7000677A3 /* GoogleService-Info.plist */,
 				BF1082731ED4C793000677A3 /* Products */,
 				C4FAAD85A879054E020BFE13 /* Pods */,
-				C700763026A376B948F57654 /* Frameworks */,
+				EFC8EA0C03879FA8CA4A085E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -220,18 +232,27 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		BF310E1F22DC2606006C7D6D /* Avatar */ = {
+			isa = PBXGroup;
+			children = (
+				BF310E1922DC10C1006C7D6D /* AvatarView.xib */,
+				BF310E1B22DC122B006C7D6D /* AvatarView.swift */,
+				BF310E1722DC0D5D006C7D6D /* AvatarCreatorVC.swift */,
+				BF310E1D22DC2601006C7D6D /* AvatarObject.swift */,
+			);
+			name = Avatar;
+			sourceTree = "<group>";
+		};
 		BF42392722BD582200340E83 /* User Profile */ = {
 			isa = PBXGroup;
 			children = (
 				BF42392522BD564900340E83 /* Profile.storyboard */,
 				BF42392A22C12CA800340E83 /* UserProfileVC.swift */,
-				BF42392E22C132F800340E83 /* BasicInfoCell.swift */,
-				BF42392822BD593100340E83 /* BasicInfoCell.xib */,
-				B373D4C122C6FC8D0051896F /* EditBasicInfoVC.swift */,
-				BF8603BF22C19F6F00BA2608 /* BioCell.swift */,
-				BF8603C022C19F6F00BA2608 /* BioCell.xib */,
-				BF42393022C144A500340E83 /* LogoutCell.swift */,
-				BF42393122C144A500340E83 /* LogoutCell.xib */,
+				BF310E1F22DC2606006C7D6D /* Avatar */,
+				BF741E5122CCFC1B00F9CACE /* Basic Info */,
+				BF741E5222CCFC3300F9CACE /* Bio */,
+				BF741E5422CCFC6100F9CACE /* Map */,
+				BF741E5322CCFC4000F9CACE /* Logout */,
 				BF42392C22C130D000340E83 /* CollectionViewFlowLayout.swift */,
 			);
 			name = "User Profile";
@@ -261,6 +282,43 @@
 				BF57B655228F51A600D500A2 /* MatchManager.swift */,
 			);
 			name = "Model Objects";
+			sourceTree = "<group>";
+		};
+		BF741E5122CCFC1B00F9CACE /* Basic Info */ = {
+			isa = PBXGroup;
+			children = (
+				BF42392E22C132F800340E83 /* BasicInfoCell.swift */,
+				BF42392822BD593100340E83 /* BasicInfoCell.xib */,
+				B373D4C122C6FC8D0051896F /* EditBasicInfoVC.swift */,
+			);
+			name = "Basic Info";
+			sourceTree = "<group>";
+		};
+		BF741E5222CCFC3300F9CACE /* Bio */ = {
+			isa = PBXGroup;
+			children = (
+				BF8603BF22C19F6F00BA2608 /* BioCell.swift */,
+				BF8603C022C19F6F00BA2608 /* BioCell.xib */,
+			);
+			name = Bio;
+			sourceTree = "<group>";
+		};
+		BF741E5322CCFC4000F9CACE /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				BF42393022C144A500340E83 /* LogoutCell.swift */,
+				BF42393122C144A500340E83 /* LogoutCell.xib */,
+			);
+			name = Logout;
+			sourceTree = "<group>";
+		};
+		BF741E5422CCFC6100F9CACE /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				BF741E5722CCFCC500F9CACE /* MapCell.swift */,
+				BF741E5822CCFCC500F9CACE /* MapCell.xib */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		BF99DDBC1F1842DD0069F2C5 /* Profile Editing */ = {
@@ -330,16 +388,16 @@
 		C4FAAD85A879054E020BFE13 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F39144ACAECAA47BC8693D16 /* Pods-Mac Daddy.debug.xcconfig */,
-				9BDADD715B12F166A0B0C147 /* Pods-Mac Daddy.release.xcconfig */,
+				14DC7512ABC749E41BB33AFF /* Pods-Mac Daddy.debug.xcconfig */,
+				AFE9CD662F3407BC8FC89239 /* Pods-Mac Daddy.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C700763026A376B948F57654 /* Frameworks */ = {
+		EFC8EA0C03879FA8CA4A085E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				32AB1BDFF31B40DB3061AF90 /* Pods_Mac_Daddy.framework */,
+				29912DAA3F2A7BFBA17AB3AF /* Pods_Mac_Daddy.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -351,11 +409,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF1082841ED4C793000677A3 /* Build configuration list for PBXNativeTarget "Mac Daddy" */;
 			buildPhases = (
-				CB9621B3658385311676D636 /* [CP] Check Pods Manifest.lock */,
+				20B62CCEA1CD65DD883467DE /* [CP] Check Pods Manifest.lock */,
 				BF10826E1ED4C793000677A3 /* Sources */,
 				BF10826F1ED4C793000677A3 /* Frameworks */,
 				BF1082701ED4C793000677A3 /* Resources */,
-				A5F55568B92E8892EAD1AF3D /* [CP] Embed Pods Frameworks */,
+				121B9412F9D9F9F76DCF3FF7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -415,18 +473,20 @@
 				BF1082881ED4C7A7000677A3 /* GoogleService-Info.plist in Resources */,
 				BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */,
 				BF42392922BD593100340E83 /* BasicInfoCell.xib in Resources */,
+				BF310E1A22DC10C1006C7D6D /* AvatarView.xib in Resources */,
 				BF42392622BD564900340E83 /* Profile.storyboard in Resources */,
 				BF10827D1ED4C793000677A3 /* Assets.xcassets in Resources */,
 				BF10827B1ED4C793000677A3 /* Main.storyboard in Resources */,
 				BF8603C222C19F6F00BA2608 /* BioCell.xib in Resources */,
 				BF42393322C144A500340E83 /* LogoutCell.xib in Resources */,
+				BF741E5A22CCFCC500F9CACE /* MapCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A5F55568B92E8892EAD1AF3D /* [CP] Embed Pods Frameworks */ = {
+		121B9412F9D9F9F76DCF3FF7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -464,7 +524,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CB9621B3658385311676D636 /* [CP] Check Pods Manifest.lock */ = {
+		20B62CCEA1CD65DD883467DE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -504,10 +564,13 @@
 				BF2652EB1F16B2090013873F /* HomeVC.swift in Sources */,
 				BF5408252057619D00E5A1BB /* AboutVC.swift in Sources */,
 				BFA6564621A5EA5B00A9B99B /* DataHandler_FCM.swift in Sources */,
+				BF310E1822DC0D5D006C7D6D /* AvatarCreatorVC.swift in Sources */,
 				BF1082781ED4C793000677A3 /* LoginVC.swift in Sources */,
 				BF99DDC01F1846AB0069F2C5 /* Segues.swift in Sources */,
 				BF57B64D228F481C00D500A2 /* UserObject.swift in Sources */,
+				BF741E5922CCFCC500F9CACE /* MapCell.swift in Sources */,
 				BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */,
+				BF310E1C22DC122B006C7D6D /* AvatarView.swift in Sources */,
 				BF4C29D5218B60EA00589E1B /* DataHandler_Observers.swift in Sources */,
 				BF99DDBB1F183F710069F2C5 /* ProfileOptionsVC.swift in Sources */,
 				BF8603C122C19F6F00BA2608 /* BioCell.swift in Sources */,
@@ -534,6 +597,7 @@
 				BF2652F11F1821F30013873F /* InterestsSetupVC.swift in Sources */,
 				BF42393222C144A500340E83 /* LogoutCell.swift in Sources */,
 				BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */,
+				BF310E1E22DC2601006C7D6D /* AvatarObject.swift in Sources */,
 				BF1082761ED4C793000677A3 /* AppDelegate.swift in Sources */,
 				BF42392F22C132F800340E83 /* BasicInfoCell.swift in Sources */,
 				BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */,
@@ -672,7 +736,7 @@
 		};
 		BF1082851ED4C793000677A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F39144ACAECAA47BC8693D16 /* Pods-Mac Daddy.debug.xcconfig */;
+			baseConfigurationReference = 14DC7512ABC749E41BB33AFF /* Pods-Mac Daddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Mac Daddy/Mac Daddy.entitlements";
@@ -692,7 +756,7 @@
 		};
 		BF1082861ED4C793000677A3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9BDADD715B12F166A0B0C147 /* Pods-Mac Daddy.release.xcconfig */;
+			baseConfigurationReference = AFE9CD662F3407BC8FC89239 /* Pods-Mac Daddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Mac Daddy/Mac Daddy.entitlements";

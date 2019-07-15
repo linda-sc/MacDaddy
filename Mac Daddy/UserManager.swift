@@ -32,10 +32,10 @@ class UserManager: NSObject {
     //////////////////////////////////////////////////
     func organizationFromEmail(email: String) -> String {
         if email.hasSuffix("@bc.edu") {
-            return ("BC")
+            return ("Boston College")
         
         } else if email.hasSuffix("@bu.edu") {
-            return ("BU")
+            return ("Boston University")
             
         } else if email.hasSuffix("@harvard.edu") {
             return ("Harvard")
@@ -78,6 +78,11 @@ extension UserManager {
     // object from the DataHandler variables.
     //////////////////////////////////////////////////
     func importCurrentUserFromDataHandler(){
+        
+        guard UserManager.shared.currentUser == nil else {
+            print("UserObject already exists")
+            return
+        }
         //Note: even though we are updating the data of userCopy, the reference never changes.
         // That's why it should be a let constant instead of a var variable.
         let userCopy = UserObject()
@@ -164,7 +169,10 @@ extension UserManager: CLLocationManagerDelegate {
         currentLocation = locations.last
         UserManager.shared.currentUser?.latitude = currentLocation?.coordinate.latitude
         UserManager.shared.currentUser?.longitude = currentLocation?.coordinate.longitude
+        UserManager.shared.currentUser?.currentLocation = locations.last
+        
         print("CURRENT LOCATION = \(currentLocation?.coordinate.latitude) \(currentLocation?.coordinate.longitude)")
+        
         UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
         //sortBasedOnSegmentPressed()
     }

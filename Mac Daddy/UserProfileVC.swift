@@ -24,6 +24,7 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         /*** Register cell nibs ***/
         optionsCollection.register(UINib.init(nibName: "BasicInfoCell", bundle: nil), forCellWithReuseIdentifier: "BasicInfoCell")
          optionsCollection.register(UINib.init(nibName: "BioCell", bundle: nil), forCellWithReuseIdentifier: "BioCell")
+        optionsCollection.register(UINib.init(nibName: "MapCell", bundle: nil), forCellWithReuseIdentifier: "MapCell")
         optionsCollection.register(UINib.init(nibName: "LogoutCell", bundle: nil), forCellWithReuseIdentifier: "LogoutCell")
         
         
@@ -55,7 +56,7 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
 
 extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -71,6 +72,11 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
         case 1:
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "BioCell", for: indexPath) as! BioCell
             //cell.parentViewController = self
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.setStructure(for: cell)
+            return cell
+        case 2:
+            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "MapCell", for: indexPath) as! MapCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
             return cell

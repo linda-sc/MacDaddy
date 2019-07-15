@@ -17,6 +17,8 @@ class BasicInfoCell: UICollectionViewCell {
     @IBOutlet weak var emailTag: UILabel!
     @IBOutlet weak var macStatusTag: UILabel!
     @IBOutlet weak var gradeTag: UILabel!
+    @IBOutlet weak var avatarView: UIView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

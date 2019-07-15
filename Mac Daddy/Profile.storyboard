@@ -59,11 +59,51 @@
                         <outlet property="optionsCollectionLayout" destination="S9c-a7-L5R" id="T2Z-Ml-Uiv"/>
                         <segue destination="pQI-3L-dwP" kind="show" identifier="goToEditBasicInfo" id="3Jt-A0-vij"/>
                         <segue destination="SyZ-Xn-91d" kind="show" identifier="goToEditShortBio" id="ktt-M3-gEg"/>
+                        <segue destination="m6s-Rl-hhJ" kind="show" identifier="goToEditAvatar" id="DXb-Sf-lUc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K00-Kz-RjV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031.8840579710145" y="82.366071428571431"/>
+        </scene>
+        <!--Avatar CreatorVC-->
+        <scene sceneID="g6U-eC-E7X">
+            <objects>
+                <viewController id="m6s-Rl-hhJ" customClass="AvatarCreatorVC" customModule="Mac_Daddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2HM-R0-4H7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background" translatesAutoresizingMaskIntoConstraints="NO" id="xWv-Aa-Kz1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5j-UM-hAO" customClass="AvatarView" customModule="Mac_Daddy" customModuleProvider="target">
+                                <rect key="frame" x="20" y="108" width="374" height="374"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="c5j-UM-hAO" secondAttribute="height" multiplier="1:1" id="tSA-G5-I98"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="xWv-Aa-Kz1" secondAttribute="bottom" id="0kM-vA-Bre"/>
+                            <constraint firstItem="xWv-Aa-Kz1" firstAttribute="top" secondItem="2HM-R0-4H7" secondAttribute="top" id="9La-zf-qIS"/>
+                            <constraint firstItem="xWv-Aa-Kz1" firstAttribute="leading" secondItem="SbR-rE-RB4" secondAttribute="leading" id="Fwf-Qy-MoE"/>
+                            <constraint firstItem="c5j-UM-hAO" firstAttribute="top" secondItem="SbR-rE-RB4" secondAttribute="top" constant="20" id="HML-MT-nqV"/>
+                            <constraint firstItem="xWv-Aa-Kz1" firstAttribute="trailing" secondItem="SbR-rE-RB4" secondAttribute="trailing" id="Jj2-MD-1gU"/>
+                            <constraint firstItem="c5j-UM-hAO" firstAttribute="leading" secondItem="SbR-rE-RB4" secondAttribute="leading" constant="20" id="aco-u9-4cX"/>
+                            <constraint firstItem="SbR-rE-RB4" firstAttribute="trailing" secondItem="c5j-UM-hAO" secondAttribute="trailing" constant="20" id="qwm-GY-zOc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SbR-rE-RB4"/>
+                    </view>
+                    <connections>
+                        <outlet property="avatarView" destination="c5j-UM-hAO" id="N82-bo-8Rg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGq-hJ-OLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1647.826086956522" y="-810.26785714285711"/>
         </scene>
         <!--Edit Basic InfoVC-->
         <scene sceneID="toY-Ya-cmW">
@@ -144,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4w1-qv-wCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895.6521739130437" y="-321.42857142857139"/>
+            <point key="canvasLocation" x="2907" y="-324"/>
         </scene>
         <!--Edit Short BioVC-->
         <scene sceneID="zwD-Do-Mzf">
@@ -165,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MuW-dv-SUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895.6521739130437" y="361.60714285714283"/>
+            <point key="canvasLocation" x="2907" y="387"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B3E-m0-L7N">
@@ -187,9 +227,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MacDaddy Background" width="1242" height="2208"/>
         <image name="MacDaddy Background_Purple" width="1242" height="2208"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bfa-Zd-cTb"/>
+        <segue reference="sq2-CR-JMO"/>
     </inferredMetricsTieBreakers>
 </document>
