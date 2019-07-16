@@ -8,16 +8,6 @@
 
 import Foundation
 
-struct avatarColorScheme {
-    var colorTone: UIColor?
-    var hairTone: UIColor?
-    var skinTone: UIColor?
-    var skinShadow: UIColor?
-    var eyeTone: UIColor?
-    var eyebrowTone: UIColor?
-}
-
-
 class AvatarObject: NSObject, Codable {
     
     //////////////////////////////////////////////////
@@ -27,7 +17,11 @@ class AvatarObject: NSObject, Codable {
     //////////////////////////////////////////////////
     var uid: String?
     
-    var colorTone: String?
+    var baseColor: String?
+    var hairLuminosity: Int?
+    var skinLuminosity: Int?
+    var browLuminosity: Int?
+    
     var hairTone: String?
     var skinTone: String?
     var skinShadow: String?
@@ -73,7 +67,11 @@ class AvatarObject: NSObject, Codable {
         
         case uid
         
-        case colorTone
+        case baseColor
+        case hairLuminosity
+        case skinLuminosity
+        case browLuminosity
+        
         case hairTone
         case skinTone
         case skinShadow
@@ -135,7 +133,11 @@ class AvatarObject: NSObject, Codable {
         
         uid = try container.decodeIfPresent(String.self, forKey: .uid)
         
-        colorTone = try container.decodeIfPresent(String.self, forKey: .colorTone)
+        baseColor = try container.decodeIfPresent(String.self, forKey: .baseColor)
+        hairLuminosity = try container.decodeIfPresent(Int.self, forKey: .hairLuminosity)
+        skinLuminosity = try container.decodeIfPresent(Int.self, forKey: .skinLuminosity)
+        browLuminosity = try container.decodeIfPresent(Int.self, forKey: .browLuminosity)
+        
         hairTone = try container.decodeIfPresent(String.self, forKey: .hairTone)
         skinTone = try container.decodeIfPresent(String.self, forKey: .skinTone)
         skinShadow = try container.decodeIfPresent(String.self, forKey: .skinShadow)
@@ -184,7 +186,12 @@ class AvatarObject: NSObject, Codable {
         
         try container.encodeIfPresent(uid, forKey: .uid)
         
-        try container.encodeIfPresent(colorTone, forKey: .colorTone)
+        try container.encodeIfPresent(baseColor, forKey: .baseColor)
+        try container.encodeIfPresent(hairLuminosity, forKey: .hairLuminosity)
+        try container.encodeIfPresent(skinLuminosity, forKey: .skinLuminosity)
+        try container.encodeIfPresent(browLuminosity, forKey: .browLuminosity)
+        
+        
         try container.encodeIfPresent(hairTone, forKey: .hairTone)
         try container.encodeIfPresent(skinTone, forKey: .skinTone)
         try container.encodeIfPresent(skinShadow, forKey: .skinShadow)
@@ -229,6 +236,24 @@ class AvatarObject: NSObject, Codable {
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 
+public enum ColorStyle {
+    case strawberry
+    case mango
+    case lavender
+    case royal
+    case icy
+    
+    var baseColor: String {
+        switch self {
+        case .strawberry: return "f54284"
+        case .mango: return "faa82d"
+        case .lavender: return "7f64fa"
+        case .royal: return "494cfc"
+        case .icy: return "5acafa"
+        }
+    }
+}
+
 extension AvatarObject {
     
     //Orange
@@ -238,14 +263,35 @@ extension AvatarObject {
     //Indigo
     
     static func loadDefaultAvatar() -> AvatarObject {
+        
         let newAvatar = AvatarObject()
         
         var uid: String?
+    
+        //newAvatar.baseColor = "002fff"
+        let random = Int.randomIntInRange(lower: 0, upper: 4)
+        switch random {
+        case 0:
+            newAvatar.baseColor = ColorStyle.strawberry.baseColor
+        case 1:
+            newAvatar.baseColor = ColorStyle.mango.baseColor
+        case 2:
+            newAvatar.baseColor = ColorStyle.lavender.baseColor
+        case 3:
+            newAvatar.baseColor = ColorStyle.royal.baseColor
+        case 4:
+            newAvatar.baseColor = ColorStyle.icy.baseColor
+        default:
+            print("Error picking base color")
+        }
+    
+        newAvatar.hairLuminosity = -20
+        newAvatar.skinLuminosity = 20
+        newAvatar.browLuminosity = -20
         
-        newAvatar.colorTone = "002fff"
-        newAvatar.hairTone = "fc1ec9"
-        newAvatar.skinTone = "f754d2"
-        newAvatar.skinShadow = "#f046c9"
+        newAvatar.hairTone = ""
+        newAvatar.skinTone = ""
+        newAvatar.skinShadow = ""
         newAvatar.eyeTone = ""
         newAvatar.eyebrowTone = ""
         
@@ -279,6 +325,8 @@ extension AvatarObject {
         
         return newAvatar
     }
+    
+    
     
 }
 

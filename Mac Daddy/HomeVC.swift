@@ -186,7 +186,8 @@ extension HomeVC {
         var backgroundImage:UIImage?
         var buttonImage:UIImage?
         
-        if DataHandler.macStatus == "Daddy" {
+        //if DataHandler.macStatus == "Daddy" {
+        if UserManager.shared.currentUser?.status == "Daddy" {
             backgroundImage = UIImage(named: "MacDaddy Background_Purple")
             buttonImage = UIImage(named: "MacDaddy Background_Flipped")
             

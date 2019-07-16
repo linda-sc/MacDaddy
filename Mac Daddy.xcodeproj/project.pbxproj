@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B373D4C222C6FC8D0051896F /* EditBasicInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B373D4C122C6FC8D0051896F /* EditBasicInfoVC.swift */; };
+		B373D4C222C6FC8D0051896F /* EditGradeStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */; };
 		BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */; };
 		BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */; };
 		BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */; };
@@ -49,6 +49,8 @@
 		BF57B654228F4B2C00D500A2 /* CommunityObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B653228F4B2C00D500A2 /* CommunityObject.swift */; };
 		BF57B656228F51A600D500A2 /* MatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B655228F51A600D500A2 /* MatchManager.swift */; };
 		BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */; };
+		BF58F4D522DE317A008F69FF /* GradeStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58F4D322DE317A008F69FF /* GradeStatusCell.swift */; };
+		BF58F4D622DE317A008F69FF /* GradeStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF58F4D422DE317A008F69FF /* GradeStatusCell.xib */; };
 		BF628E041FCE1FA200824E87 /* Matching.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF628E031FCE1FA100824E87 /* Matching.swift */; };
 		BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7066FB22AD5A5800129EA9 /* UserManager.swift */; };
 		BF741E5922CCFCC500F9CACE /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF741E5722CCFCC500F9CACE /* MapCell.swift */; };
@@ -66,6 +68,8 @@
 		BFB2E5481F71D4A40096D562 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2E5471F71D4A40096D562 /* Constants.swift */; };
 		BFB2E54A1F71D4FD0096D562 /* ChatInterfaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */; };
 		BFCC3BF61EE89C5600BD1F1C /* PrivateSetup1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC3BF51EE89C5600BD1F1C /* PrivateSetup1VC.swift */; };
+		BFD28E5B22DE253600FA48B7 /* NearbyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD28E5922DE253600FA48B7 /* NearbyCell.swift */; };
+		BFD28E5C22DE253600FA48B7 /* NearbyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD28E5A22DE253600FA48B7 /* NearbyCell.xib */; };
 		BFD2CD72219B36D900337148 /* GraphicEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2CD71219B36D900337148 /* GraphicEffects.swift */; };
 		BFD2CD77219B44FA00337148 /* FriendDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2CD76219B44FA00337148 /* FriendDetailVC.swift */; };
 		BFEB30391F68891E00CD4173 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEB30381F68891E00CD4173 /* UserData.swift */; };
@@ -77,7 +81,7 @@
 		14DC7512ABC749E41BB33AFF /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
 		29912DAA3F2A7BFBA17AB3AF /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE9CD662F3407BC8FC89239 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
-		B373D4C122C6FC8D0051896F /* EditBasicInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBasicInfoVC.swift; sourceTree = "<group>"; };
+		B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGradeStatusVC.swift; sourceTree = "<group>"; };
 		BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendChatCell.swift; sourceTree = "<group>"; };
 		BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Express.swift; sourceTree = "<group>"; };
 		BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Core.swift; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 		BF57B653228F4B2C00D500A2 /* CommunityObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityObject.swift; sourceTree = "<group>"; };
 		BF57B655228F51A600D500A2 /* MatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchManager.swift; sourceTree = "<group>"; };
 		BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BF58F4D322DE317A008F69FF /* GradeStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeStatusCell.swift; sourceTree = "<group>"; };
+		BF58F4D422DE317A008F69FF /* GradeStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradeStatusCell.xib; sourceTree = "<group>"; };
 		BF628E031FCE1FA100824E87 /* Matching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matching.swift; sourceTree = "<group>"; };
 		BF7066FB22AD5A5800129EA9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		BF741E5722CCFCC500F9CACE /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
@@ -140,6 +146,8 @@
 		BFB2E5471F71D4A40096D562 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceVC.swift; sourceTree = "<group>"; };
 		BFCC3BF51EE89C5600BD1F1C /* PrivateSetup1VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateSetup1VC.swift; sourceTree = "<group>"; };
+		BFD28E5922DE253600FA48B7 /* NearbyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyCell.swift; sourceTree = "<group>"; };
+		BFD28E5A22DE253600FA48B7 /* NearbyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearbyCell.xib; sourceTree = "<group>"; };
 		BFD2CD71219B36D900337148 /* GraphicEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicEffects.swift; sourceTree = "<group>"; };
 		BFD2CD76219B44FA00337148 /* FriendDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailVC.swift; sourceTree = "<group>"; };
 		BFEB30381F68891E00CD4173 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -235,9 +243,9 @@
 		BF310E1F22DC2606006C7D6D /* Avatar */ = {
 			isa = PBXGroup;
 			children = (
+				BF310E1722DC0D5D006C7D6D /* AvatarCreatorVC.swift */,
 				BF310E1922DC10C1006C7D6D /* AvatarView.xib */,
 				BF310E1B22DC122B006C7D6D /* AvatarView.swift */,
-				BF310E1722DC0D5D006C7D6D /* AvatarCreatorVC.swift */,
 				BF310E1D22DC2601006C7D6D /* AvatarObject.swift */,
 			);
 			name = Avatar;
@@ -250,6 +258,7 @@
 				BF42392A22C12CA800340E83 /* UserProfileVC.swift */,
 				BF310E1F22DC2606006C7D6D /* Avatar */,
 				BF741E5122CCFC1B00F9CACE /* Basic Info */,
+				BF58F4D722DE3464008F69FF /* Grade Status */,
 				BF741E5222CCFC3300F9CACE /* Bio */,
 				BF741E5422CCFC6100F9CACE /* Map */,
 				BF741E5322CCFC4000F9CACE /* Logout */,
@@ -284,12 +293,21 @@
 			name = "Model Objects";
 			sourceTree = "<group>";
 		};
+		BF58F4D722DE3464008F69FF /* Grade Status */ = {
+			isa = PBXGroup;
+			children = (
+				BF58F4D322DE317A008F69FF /* GradeStatusCell.swift */,
+				BF58F4D422DE317A008F69FF /* GradeStatusCell.xib */,
+				B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */,
+			);
+			name = "Grade Status";
+			sourceTree = "<group>";
+		};
 		BF741E5122CCFC1B00F9CACE /* Basic Info */ = {
 			isa = PBXGroup;
 			children = (
 				BF42392E22C132F800340E83 /* BasicInfoCell.swift */,
 				BF42392822BD593100340E83 /* BasicInfoCell.xib */,
-				B373D4C122C6FC8D0051896F /* EditBasicInfoVC.swift */,
 			);
 			name = "Basic Info";
 			sourceTree = "<group>";
@@ -317,6 +335,8 @@
 			children = (
 				BF741E5722CCFCC500F9CACE /* MapCell.swift */,
 				BF741E5822CCFCC500F9CACE /* MapCell.xib */,
+				BFD28E5922DE253600FA48B7 /* NearbyCell.swift */,
+				BFD28E5A22DE253600FA48B7 /* NearbyCell.xib */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -473,11 +493,13 @@
 				BF1082881ED4C7A7000677A3 /* GoogleService-Info.plist in Resources */,
 				BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */,
 				BF42392922BD593100340E83 /* BasicInfoCell.xib in Resources */,
+				BF58F4D622DE317A008F69FF /* GradeStatusCell.xib in Resources */,
 				BF310E1A22DC10C1006C7D6D /* AvatarView.xib in Resources */,
 				BF42392622BD564900340E83 /* Profile.storyboard in Resources */,
 				BF10827D1ED4C793000677A3 /* Assets.xcassets in Resources */,
 				BF10827B1ED4C793000677A3 /* Main.storyboard in Resources */,
 				BF8603C222C19F6F00BA2608 /* BioCell.xib in Resources */,
+				BFD28E5C22DE253600FA48B7 /* NearbyCell.xib in Resources */,
 				BF42393322C144A500340E83 /* LogoutCell.xib in Resources */,
 				BF741E5A22CCFCC500F9CACE /* MapCell.xib in Resources */,
 			);
@@ -581,11 +603,13 @@
 				BFD2CD77219B44FA00337148 /* FriendDetailVC.swift in Sources */,
 				BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */,
 				BF16F4A122ADBE1700BCF369 /* UserRequests.swift in Sources */,
+				BFD28E5B22DE253600FA48B7 /* NearbyCell.swift in Sources */,
 				BF42392B22C12CA800340E83 /* UserProfileVC.swift in Sources */,
 				BF57B652228F49D800D500A2 /* InterestsObject.swift in Sources */,
 				BF8A0E3B1FBB6FF7009EEF4E /* EditProfile.swift in Sources */,
 				BF0A9A6C20169FE400AC1E48 /* Structs.swift in Sources */,
-				B373D4C222C6FC8D0051896F /* EditBasicInfoVC.swift in Sources */,
+				BF58F4D522DE317A008F69FF /* GradeStatusCell.swift in Sources */,
+				B373D4C222C6FC8D0051896F /* EditGradeStatusVC.swift in Sources */,
 				BF57B656228F51A600D500A2 /* MatchManager.swift in Sources */,
 				BF57B650228F487000D500A2 /* FriendshipObject.swift in Sources */,
 				BF57B654228F4B2C00D500A2 /* CommunityObject.swift in Sources */,

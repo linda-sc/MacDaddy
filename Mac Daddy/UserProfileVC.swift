@@ -23,6 +23,7 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         
         /*** Register cell nibs ***/
         optionsCollection.register(UINib.init(nibName: "BasicInfoCell", bundle: nil), forCellWithReuseIdentifier: "BasicInfoCell")
+        optionsCollection.register(UINib.init(nibName: "GradeStatusCell", bundle: nil), forCellWithReuseIdentifier: "GradeStatusCell")
          optionsCollection.register(UINib.init(nibName: "BioCell", bundle: nil), forCellWithReuseIdentifier: "BioCell")
         optionsCollection.register(UINib.init(nibName: "MapCell", bundle: nil), forCellWithReuseIdentifier: "MapCell")
         optionsCollection.register(UINib.init(nibName: "LogoutCell", bundle: nil), forCellWithReuseIdentifier: "LogoutCell")
@@ -45,6 +46,9 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
             background.image = UIImage(named: "MacDaddy Background")
 
         }
+        //Just dark mode.
+        background.image = UIImage(named: "MacDaddy Background_DarkMode")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +60,7 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
 
 extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,12 +74,17 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
             self.setStructure(for: cell)
             return cell
         case 1:
+            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "GradeStatusCell", for: indexPath) as! GradeStatusCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.setStructure(for: cell)
+            return cell
+        case 2:
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "BioCell", for: indexPath) as! BioCell
             //cell.parentViewController = self
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
             return cell
-        case 2:
+        case 3:
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "MapCell", for: indexPath) as! MapCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
@@ -99,9 +108,26 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
         case 0:
+            //Basic Info Cell
             let width = view.bounds.width - 16
-            let height: CGFloat = 164
+            let height: CGFloat = 200
             return CGSize(width: width, height: height)
+        case 1:
+            //Grade Status Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 60
+            return CGSize(width: width, height: height)
+        case 2:
+            //Bio Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 100
+            return CGSize(width: width, height: height)
+        case 3:
+            //Map Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 300
+            return CGSize(width: width, height: height)
+            //Logout Cell
         default:
             let width = view.bounds.width - 16
             let height: CGFloat = 164
@@ -128,8 +154,10 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            performSegue(withIdentifier: "goToEditBasicInfo", sender: collectionView.cellForItem(at: indexPath))
+            performSegue(withIdentifier: "goToEditAvatar", sender: collectionView.cellForItem(at: indexPath))
         case 1:
+            performSegue(withIdentifier: "goToEditGradeStatus", sender: collectionView.cellForItem(at: indexPath))
+        case 2:
             performSegue(withIdentifier: "goToEditShortBio", sender: collectionView.cellForItem(at: indexPath))
         default:
             print("Did select item at index path")

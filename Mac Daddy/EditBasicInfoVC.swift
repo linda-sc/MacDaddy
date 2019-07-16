@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 
-class EditBasicInfoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class EditGradeStatusVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var iAmALabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!

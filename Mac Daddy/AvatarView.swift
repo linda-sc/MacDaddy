@@ -65,32 +65,113 @@ class AvatarView: UIView {
         
         if avatarObject != nil {
             
-            hair.image = UIImage(named: avatarObject?.hair ?? "hair1")
-            nose.image = UIImage(named: avatarObject?.nose ?? "nose1")
-            mouth.image = UIImage(named: avatarObject?.mouth ?? "mouth1")
-            mouthShadow.image = UIImage(named: avatarObject?.mouthShadow ?? "mouthShadow1")
-            face.image = UIImage(named: avatarObject?.face ?? "face1")
-            faceShadow.image = UIImage(named: avatarObject?.faceShadow ?? "faceShadow")
-            shirt.image = UIImage(named: avatarObject?.shirt ?? "shirt1")
-            leftArmShadow.image = UIImage(named: avatarObject?.leftArmShadow ?? "leftArmShadow1")
-            leftArm.image = UIImage(named: avatarObject?.leftArm ?? "leftArm1")
-            rightArmShadow.image = UIImage(named: avatarObject?.rightArmShadow ?? "rightArmShadow1")
-            rightArm.image = UIImage(named: avatarObject?.rightArm ?? "rightArm1")
-            neck.image = UIImage(named: avatarObject?.neck ?? "neck1")
-            nose.image = UIImage(named: avatarObject?.nose ?? "nose1")
-            hairBack.image = UIImage(named: avatarObject?.hairBack ?? "nose1")
+            //avatarObject?.baseColor = UIColor.random().toHex()
+            //RANDOM TIME
             
-            print(avatarObject?.hairTone?.toRGB())
-            hair.setImageColor(color: avatarObject?.hairTone?.toRGB() ?? .random())
-            face.setImageColor(color: avatarObject?.skinTone?.toRGB() ?? .random())
-            nose.setImageColor(color: avatarObject?.skinShadow?.toRGB() ?? .random())
+            avatarObject?.hairLuminosity = Int.randomIntInRange(lower: -50, upper: 50)
+            avatarObject?.skinLuminosity = Int.randomIntInRange(lower: -30, upper: 30)
+            
+            let randomHair = Int.randomIntInRange(lower: 1, upper: 4)
+            switch randomHair {
+            case 1:
+                hair.image = UIImage(named: avatarObject?.hair ?? "hair1")
+                hairBack.image = UIImage(named: avatarObject?.hairBack ?? "hairBack1")
+            case 2:
+                hair.image = UIImage(named: "hair2")
+                hairBack.image = nil
+            case 3:
+                hair.image = UIImage(named: "hair3")
+                hairBack.image = nil
+            default:
+                hair.image = UIImage(named: "hair4")
+                hairBack.image = nil
+            }
+            
+            let randomFace = Int.randomIntInRange(lower: 1, upper: 3)
+            switch randomFace {
+            case 1:
+                face.image = UIImage(named: avatarObject?.face ?? "face1")
+                faceShadow.image = UIImage(named: avatarObject?.faceShadow ?? "faceShadow1")
+            case 2:
+                face.image = UIImage(named: "face2")
+                faceShadow.image = UIImage(named: "faceShadow2")
+            default:
+                face.image = UIImage(named: "face3")
+                faceShadow.image = UIImage(named: "faceShadow3")
+            }
+            
+            //Note: left and right correspond to the body of the avatar, not the viewer.
+            let randomBody = Int.randomIntInRange(lower: 1, upper: 2)
+            switch randomBody {
+            case 1:
+                shirt.image = UIImage(named: avatarObject?.shirt ?? "shirt1")
+                leftArm.image = UIImage(named: avatarObject?.leftArm ?? "leftArm1")
+                leftArmShadow.image = UIImage(named: avatarObject?.leftArmShadow ?? "leftArmShadow1")
+                rightArm.image = UIImage(named: avatarObject?.rightArm ?? "rightArm1")
+                rightArmShadow.image = UIImage(named: avatarObject?.rightArmShadow ?? "rightArmShadow1")
+            default:
+                shirt.image = UIImage(named: "shirt3")
+                leftArm.image = UIImage(named: "leftArm3")
+                leftArmShadow.image = UIImage(named: "leftArmShadow3")
+                rightArm.image = UIImage(named: "rightArm3")
+                rightArmShadow.image = UIImage(named: "rightArmShadow3")
+            }
+      
+            
+            let randomMouth = Int.randomIntInRange(lower: 1, upper: 3)
+            switch randomMouth {
+            case 1:
+                mouth.image = UIImage(named: "mouth1")
+                mouthShadow.image = UIImage(named: "mouthShadow1")
+            case 2:
+                mouth.image = UIImage(named: "mouth2")
+                mouthShadow.image = UIImage(named: "mouthShadow2")
+            default:
+                mouth.image = UIImage(named: "mouth3")
+                mouthShadow.image = UIImage(named: "mouthShadow3")
+            }
+            
+            //hair.image = UIImage(named: avatarObject?.hair ?? "hair1")
+            //hairBack.image = UIImage(named: avatarObject?.hairBack ?? "hairBack1")
+            
+            nose.image = UIImage(named: avatarObject?.nose ?? "nose1")
+            //mouth.image = UIImage(named: avatarObject?.mouth ?? "mouth1")
+            //mouthShadow.image = UIImage(named: avatarObject?.mouthShadow ?? "mouthShadow1")
+            
+//            face.image = UIImage(named: avatarObject?.face ?? "face1")
+//            faceShadow.image = UIImage(named: avatarObject?.faceShadow ?? "faceShadow")
+            
+            //shirt.image = UIImage(named: avatarObject?.shirt ?? "shirt1")
+            //leftArmShadow.image = UIImage(named: avatarObject?.leftArmShadow ?? "leftArmShadow1")
+            //leftArm.image = UIImage(named: avatarObject?.leftArm ?? "leftArm1")
+            //rightArmShadow.image = UIImage(named: avatarObject?.rightArmShadow ?? "rightArmShadow1")
+            //rightArm.image = UIImage(named: avatarObject?.rightArm ?? "rightArm1")
+            
+            neck.image = UIImage(named: avatarObject?.neck ?? "neck1")
+            
+            if let hairColor = avatarObject?.baseColor?.toRGB()?.adjust(by: CGFloat(avatarObject?.hairLuminosity ?? 0)) {
+                avatarObject?.hairTone = hairColor.toHex()
+                avatarObject?.eyebrowTone = hairColor.darker(by: 10)?.toHex()
+                hair.setImageColor(color: hairColor)
+                hairBack.setImageColor(color: hairColor.darker(by: 5) ?? hairColor)
+            }
+  
+            if let skinColor = avatarObject?.baseColor?.toRGB()?.adjust(by: CGFloat(avatarObject?.skinLuminosity ?? 0)) {
+                avatarObject?.skinTone = skinColor.toHex()
+                avatarObject?.skinShadow = skinColor.darker(by: 10)?.toHex()
+                
+                face.setImageColor(color: skinColor)
+                neck.setImageColor(color: skinColor)
+                leftArm.setImageColor(color: skinColor)
+                rightArm.setImageColor(color: skinColor)
+                nose.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
+                mouthShadow.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
+                faceShadow.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
+                leftArmShadow.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
+                rightArmShadow.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
+            }
             mouth.setImageColor(color: UIColor.white)
             
-//            shirt.setImageColor(color: .random())
-//            hair.setImageColor(color: .random())
-//            face.setImageColor(color: .random())
-//            nose.setImageColor(color: .random())
-            hairBack.setImageColor(color: avatarObject?.hairTone?.toRGB() ?? .random())
             
         } else {
             print("Avatar object is nil")

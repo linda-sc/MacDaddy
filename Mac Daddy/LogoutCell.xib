@@ -19,9 +19,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="400" height="164"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_DarkMode" translatesAutoresizingMaskIntoConstraints="NO" id="zVD-tC-dld">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="164"/>
+                    </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ev-r9-UuU">
                         <rect key="frame" x="39.5" y="40.5" width="321" height="17.5"/>
-                        <color key="backgroundColor" red="0.30325236948499634" green="0.31436034020815784" blue="0.8970693210659898" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.32587264249999998" green="0.32457951600000001" blue="0.57140307739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <state key="normal" title="Log out">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -57,22 +60,27 @@
             <constraints>
                 <constraint firstItem="wr0-g3-TrS" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="1.3" id="4m3-OU-8Q1"/>
                 <constraint firstItem="wr0-g3-TrS" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="6KQ-Fe-l5g"/>
+                <constraint firstAttribute="bottom" secondItem="zVD-tC-dld" secondAttribute="bottom" id="BDs-sq-3G7"/>
                 <constraint firstItem="2Ev-r9-UuU" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Bid-9C-YYp"/>
                 <constraint firstItem="2Ev-r9-UuU" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" multiplier="0.2" id="DYs-6E-Lp2"/>
+                <constraint firstItem="zVD-tC-dld" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="HaJ-m9-ENP"/>
                 <constraint firstItem="2Ev-r9-UuU" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" multiplier="0.8" constant="1" id="Tbc-cx-vrN"/>
                 <constraint firstItem="2Ev-r9-UuU" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.6" id="Ue2-5H-B2e"/>
+                <constraint firstItem="zVD-tC-dld" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="nht-yM-fow"/>
                 <constraint firstItem="wr0-g3-TrS" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" multiplier="0.8" id="vHc-AV-fkS"/>
                 <constraint firstItem="wr0-g3-TrS" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" multiplier="0.3" id="vIJ-iq-GL7"/>
+                <constraint firstAttribute="trailing" secondItem="zVD-tC-dld" secondAttribute="trailing" id="wjL-k4-b9N"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="330" height="249"/>
             <connections>
                 <outlet property="backButton" destination="wr0-g3-TrS" id="1Mn-nB-wL7"/>
             </connections>
-            <point key="canvasLocation" x="192.75362318840581" y="60.602678571428569"/>
+            <point key="canvasLocation" x="192.75362318840581" y="60.267857142857139"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="MacDaddy Background_DarkMode" width="1242" height="2208"/>
         <image name="MacDaddy Background_Flipped" width="1226" height="1087"/>
     </resources>
 </document>

@@ -57,7 +57,7 @@
                         <outlet property="background" destination="Idg-PT-gNn" id="1Ks-WP-rTi"/>
                         <outlet property="optionsCollection" destination="3Z2-zd-84y" id="U6J-2W-sJs"/>
                         <outlet property="optionsCollectionLayout" destination="S9c-a7-L5R" id="T2Z-Ml-Uiv"/>
-                        <segue destination="pQI-3L-dwP" kind="show" identifier="goToEditBasicInfo" id="3Jt-A0-vij"/>
+                        <segue destination="pQI-3L-dwP" kind="show" identifier="goToEditGradeStatus" id="3Jt-A0-vij"/>
                         <segue destination="SyZ-Xn-91d" kind="show" identifier="goToEditShortBio" id="ktt-M3-gEg"/>
                         <segue destination="m6s-Rl-hhJ" kind="show" identifier="goToEditAvatar" id="DXb-Sf-lUc"/>
                     </connections>
@@ -103,12 +103,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CGq-hJ-OLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1647.826086956522" y="-810.26785714285711"/>
+            <point key="canvasLocation" x="-1223" y="809"/>
         </scene>
-        <!--Edit Basic InfoVC-->
+        <!--Edit Grade StatusVC-->
         <scene sceneID="toY-Ya-cmW">
             <objects>
-                <viewController id="pQI-3L-dwP" customClass="EditBasicInfoVC" customModule="Mac_Daddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pQI-3L-dwP" customClass="EditGradeStatusVC" customModule="Mac_Daddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jzJ-lo-tvF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,12 +179,11 @@
                         <outlet property="picker" destination="bHM-1r-PyH" id="h91-kY-Yva"/>
                         <outlet property="saveButton" destination="CKe-FV-tLi" id="qDP-mG-mVf"/>
                         <outlet property="statusSelector" destination="X5e-VX-L5e" id="sHe-dw-5mM"/>
-                        <segue destination="lO6-al-Io9" kind="show" identifier="goToUserProfile" id="bfa-Zd-cTb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4w1-qv-wCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2907" y="-324"/>
+            <point key="canvasLocation" x="-6" y="1382"/>
         </scene>
         <!--Edit Short BioVC-->
         <scene sceneID="zwD-Do-Mzf">
@@ -205,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MuW-dv-SUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2907" y="387"/>
+            <point key="canvasLocation" x="1032" y="1382"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B3E-m0-L7N">
@@ -223,14 +222,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jf4-en-dbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121.73913043478262" y="82.366071428571431"/>
+            <point key="canvasLocation" x="1032" y="-658"/>
         </scene>
     </scenes>
     <resources>
         <image name="MacDaddy Background" width="1242" height="2208"/>
         <image name="MacDaddy Background_Purple" width="1242" height="2208"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="sq2-CR-JMO"/>
-    </inferredMetricsTieBreakers>
 </document>

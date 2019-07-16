@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GradeStatusCell" customModule="Mac_Daddy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="56"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="335" height="56"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_DarkMode" translatesAutoresizingMaskIntoConstraints="NO" id="tJk-V4-YZb">
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="56"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haT-x6-Jnd">
+                        <rect key="frame" x="20" y="19.5" width="39" height="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" red="0.66939986330598389" green="0.72335834671631716" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="looking for a meal." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDR-BI-7ah">
+                        <rect key="frame" x="110.5" y="19.5" width="115.5" height="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="senior" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Od8-Mh-KRq">
+                        <rect key="frame" x="64" y="19.5" width="41.5" height="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="gDR-BI-7ah" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4Wc-w5-dGe"/>
+                <constraint firstAttribute="bottom" secondItem="tJk-V4-YZb" secondAttribute="bottom" id="9ix-hf-Dlc"/>
+                <constraint firstItem="Od8-Mh-KRq" firstAttribute="bottom" secondItem="haT-x6-Jnd" secondAttribute="bottom" id="HvR-pu-j2F"/>
+                <constraint firstItem="Od8-Mh-KRq" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="P6C-GU-W0b"/>
+                <constraint firstItem="gDR-BI-7ah" firstAttribute="bottom" secondItem="haT-x6-Jnd" secondAttribute="bottom" id="R44-dx-2uD"/>
+                <constraint firstItem="tJk-V4-YZb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SOj-n1-3Kl"/>
+                <constraint firstItem="haT-x6-Jnd" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="d7V-k3-E1Z"/>
+                <constraint firstItem="Od8-Mh-KRq" firstAttribute="leading" secondItem="haT-x6-Jnd" secondAttribute="trailing" constant="5" id="fsY-UD-JbK"/>
+                <constraint firstItem="haT-x6-Jnd" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="jSH-WR-kjj"/>
+                <constraint firstAttribute="trailing" secondItem="tJk-V4-YZb" secondAttribute="trailing" id="jSP-JG-TcU"/>
+                <constraint firstItem="tJk-V4-YZb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="joE-ka-2WK"/>
+                <constraint firstItem="gDR-BI-7ah" firstAttribute="bottom" secondItem="Od8-Mh-KRq" secondAttribute="bottom" id="k9v-61-ioC"/>
+                <constraint firstItem="gDR-BI-7ah" firstAttribute="leading" secondItem="Od8-Mh-KRq" secondAttribute="trailing" constant="5" id="o1t-t3-lc8"/>
+                <constraint firstItem="haT-x6-Jnd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="q3d-GU-1G2"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="335" height="56"/>
+            <connections>
+                <outlet property="gradeLabel" destination="Od8-Mh-KRq" id="lD1-tH-qBQ"/>
+                <outlet property="statusLabel" destination="gDR-BI-7ah" id="84u-5k-DXz"/>
+            </connections>
+            <point key="canvasLocation" x="254.34782608695653" y="62.946428571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="MacDaddy Background_DarkMode" width="1242" height="2208"/>
+    </resources>
+</document>

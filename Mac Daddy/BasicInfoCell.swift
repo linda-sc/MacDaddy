@@ -12,11 +12,8 @@ class BasicInfoCell: UICollectionViewCell {
  
     @IBOutlet weak var viewWidth: NSLayoutConstraint!
     @IBOutlet weak var orgTag: UILabel!
-    @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var nameTag: UILabel!
     @IBOutlet weak var emailTag: UILabel!
-    @IBOutlet weak var macStatusTag: UILabel!
-    @IBOutlet weak var gradeTag: UILabel!
     @IBOutlet weak var avatarView: UIView!
     
     
@@ -30,14 +27,12 @@ class BasicInfoCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        profilePicture.layer.cornerRadius = 20
-        profilePicture.clipsToBounds = true
         orgTag.layer.cornerRadius = 12
         orgTag.clipsToBounds = true
         orgTag.text = UserManager.shared.currentUser?.organization
         nameTag.text = UserManager.shared.currentUser?.firstName //Last name not available atm
         emailTag.text = UserManager.shared.currentUser?.email
-        macStatusTag.text = UserManager.shared.currentUser?.status
-        gradeTag.text = UserManager.shared.currentUser?.grade
+        //macStatusTag.text = UserManager.shared.currentUser?.status
+        //gradeTag.text = UserManager.shared.currentUser?.grade
     }
 }
