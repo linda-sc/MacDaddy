@@ -54,12 +54,14 @@ open class BouncyLayout: UICollectionViewFlowLayout {
         case subtle
         case regular
         case prominent
+        case crazy
         
         var damping: CGFloat {
             switch self {
             case .subtle: return 0.9
             case .regular: return 0.7
             case .prominent: return 0.5
+            case .crazy: return 0.2
             }
         }
         
@@ -68,6 +70,7 @@ open class BouncyLayout: UICollectionViewFlowLayout {
             case .subtle: return 3
             case .regular: return 1.5
             case .prominent: return 1
+            case .crazy: return 0.5
             }
         }
     }

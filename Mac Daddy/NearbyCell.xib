@@ -20,10 +20,9 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWi-rf-fve" customClass="AvatarView" customModule="Mac_Daddy" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="107" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="pWi-rf-fve" secondAttribute="height" multiplier="104:97" id="4Ia-zk-iTu"/>
                             <constraint firstAttribute="height" constant="100" id="nId-JK-Dmp"/>
                             <constraint firstAttribute="width" constant="100" id="x9p-uH-yVy"/>
                         </constraints>

@@ -188,13 +188,15 @@ extension HomeVC {
         
         //if DataHandler.macStatus == "Daddy" {
         if UserManager.shared.currentUser?.status == "Daddy" {
-            backgroundImage = UIImage(named: "MacDaddy Background_Purple")
+            //backgroundImage = UIImage(named: "MacDaddy Background_Purple")
             buttonImage = UIImage(named: "MacDaddy Background_Flipped")
             
         }else {
-            backgroundImage = UIImage(named: "MacDaddy Background")
+            //backgroundImage = UIImage(named: "MacDaddy Background")
             buttonImage = UIImage(named: "MacDaddy Background_Purple_Flipped")
         }
+        backgroundImage = UIImage(named: "MacDaddy Background_DarkMode")
+        
         
         background.image = backgroundImage
         matchBox.setBackgroundImage(buttonImage, for: .normal)

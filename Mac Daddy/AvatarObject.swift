@@ -238,29 +238,23 @@ class AvatarObject: NSObject, Codable {
 
 public enum ColorStyle {
     case strawberry
-    case mango
-    case lavender
+    case magic
+    case dream
     case royal
     case icy
     
     var baseColor: String {
         switch self {
         case .strawberry: return "f54284"
-        case .mango: return "faa82d"
-        case .lavender: return "7f64fa"
-        case .royal: return "494cfc"
-        case .icy: return "5acafa"
+        case .magic: return "e26ee6"
+        case .dream: return "7f64fa"
+        case .royal: return "595cff"
+        case .icy: return "36d3ff"
         }
     }
 }
 
 extension AvatarObject {
-    
-    //Orange
-    //Cyan
-    //Magenta
-    //Lavender
-    //Indigo
     
     static func loadDefaultAvatar() -> AvatarObject {
         
@@ -274,9 +268,9 @@ extension AvatarObject {
         case 0:
             newAvatar.baseColor = ColorStyle.strawberry.baseColor
         case 1:
-            newAvatar.baseColor = ColorStyle.mango.baseColor
+            newAvatar.baseColor = ColorStyle.magic.baseColor
         case 2:
-            newAvatar.baseColor = ColorStyle.lavender.baseColor
+            newAvatar.baseColor = ColorStyle.dream.baseColor
         case 3:
             newAvatar.baseColor = ColorStyle.royal.baseColor
         case 4:

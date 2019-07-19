@@ -32,12 +32,19 @@ class ChatInterfaceVC: JSQMessagesViewController {
             //Mango background, lavender bubbles
             return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: Constants.colors.fadedBlue)
         }
+        
+        //Dark mode:
+        let lightShadow = "AAB9FF"
+        return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: lightShadow.toRGB())
 
     }()
     
     lazy var incomingBubble: JSQMessagesBubbleImage = {
         //return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
-        return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: UIColor(red: 0.99, green: 0.6, blue: 0, alpha: 1.00))
+//        return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: UIColor(red: 0.99, green: 0.6, blue: 0, alpha: 1.00))
+        let darkShadow = "3F4392"
+        return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: darkShadow.toRGB())
+        
     }()
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,6 +73,7 @@ class ChatInterfaceVC: JSQMessagesViewController {
         }else if DataHandler.macStatus == "Baby" {
             background.image = UIImage(named: "MacDaddy Background")
         }
+        background.image = UIImage(named: "MacDaddy Background_DarkMode")
         self.collectionView.backgroundView = background
         
         
@@ -95,7 +103,11 @@ class ChatInterfaceVC: JSQMessagesViewController {
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData!
     {
             //print("Messages array size: \(ChatHandler.messages.count)")
+        if ChatHandler.messages.count > indexPath.item {
             return ChatHandler.messages[indexPath.item]
+        } else {
+            return nil
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int

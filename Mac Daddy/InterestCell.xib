@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="InterestCell" customModule="Mac_Daddy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="443" height="58"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="443" height="58"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_DarkMode" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-83-GS1">
+                        <rect key="frame" x="0.0" y="0.0" width="443" height="58"/>
+                        <color key="backgroundColor" red="0.24705882352941178" green="0.2627450980392157" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOH-rd-CFJ">
+                        <rect key="frame" x="50" y="20.5" width="36" height="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" red="0.66666666666666663" green="0.72549019607843135" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EditProfileButton" translatesAutoresizingMaskIntoConstraints="NO" id="efR-Sa-Kbf">
+                        <rect key="frame" x="20" y="19" width="20" height="20"/>
+                        <color key="tintColor" red="0.33804786580000001" green="0.3504303768" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="6iI-QF-cbx"/>
+                            <constraint firstAttribute="width" constant="20" id="T5O-3U-H6T"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackButton" translatesAutoresizingMaskIntoConstraints="NO" id="N8l-cp-oay">
+                        <rect key="frame" x="408" y="21.5" width="15" height="15"/>
+                        <color key="tintColor" red="0.33804786580000001" green="0.3504303768" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="0J3-Ht-ssE"/>
+                            <constraint firstAttribute="height" constant="15" id="YMJ-hq-QdN"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Computer Science" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDd-ae-OFv">
+                        <rect key="frame" x="274" y="20.5" width="124" height="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="LOH-rd-CFJ" firstAttribute="leading" secondItem="efR-Sa-Kbf" secondAttribute="trailing" constant="10" id="10J-mR-ne9"/>
+                <constraint firstAttribute="trailing" secondItem="OZA-83-GS1" secondAttribute="trailing" id="2XK-uV-bp3"/>
+                <constraint firstItem="N8l-cp-oay" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Fco-Rf-YuX"/>
+                <constraint firstItem="N8l-cp-oay" firstAttribute="leading" secondItem="JDd-ae-OFv" secondAttribute="trailing" constant="10" id="GQH-FO-bCk"/>
+                <constraint firstItem="JDd-ae-OFv" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="GQi-9Q-BBK"/>
+                <constraint firstItem="OZA-83-GS1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="HEo-O4-gOI"/>
+                <constraint firstItem="efR-Sa-Kbf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="Tu8-6b-p1W"/>
+                <constraint firstItem="LOH-rd-CFJ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="VQd-kq-OsX"/>
+                <constraint firstAttribute="bottom" secondItem="OZA-83-GS1" secondAttribute="bottom" id="ckg-tG-TP3"/>
+                <constraint firstAttribute="trailing" secondItem="N8l-cp-oay" secondAttribute="trailing" constant="20" id="kad-ci-uvd"/>
+                <constraint firstItem="OZA-83-GS1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="pOy-ub-3rl"/>
+                <constraint firstItem="efR-Sa-Kbf" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="sn3-Dy-sGD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="443" height="58"/>
+            <connections>
+                <outlet property="interestField" destination="JDd-ae-OFv" id="DLB-cy-8WG"/>
+                <outlet property="interestIcon" destination="efR-Sa-Kbf" id="nKz-FP-WnM"/>
+                <outlet property="interestName" destination="LOH-rd-CFJ" id="dIg-t5-mwI"/>
+                <outlet property="moreIcon" destination="N8l-cp-oay" id="0Wg-cf-LEd"/>
+            </connections>
+            <point key="canvasLocation" x="413.768115942029" y="92.410714285714278"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="BackButton" width="72" height="72"/>
+        <image name="EditProfileButton" width="504" height="504"/>
+        <image name="MacDaddy Background_DarkMode" width="1242" height="2208"/>
+    </resources>
+</document>

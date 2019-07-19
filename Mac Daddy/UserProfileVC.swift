@@ -22,10 +22,12 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         self.navigationController?.isNavigationBarHidden = true
         
         /*** Register cell nibs ***/
+        optionsCollection.register(UINib.init(nibName: "HeaderCell", bundle: nil), forCellWithReuseIdentifier: "HeaderCell")
         optionsCollection.register(UINib.init(nibName: "BasicInfoCell", bundle: nil), forCellWithReuseIdentifier: "BasicInfoCell")
         optionsCollection.register(UINib.init(nibName: "GradeStatusCell", bundle: nil), forCellWithReuseIdentifier: "GradeStatusCell")
          optionsCollection.register(UINib.init(nibName: "BioCell", bundle: nil), forCellWithReuseIdentifier: "BioCell")
         optionsCollection.register(UINib.init(nibName: "MapCell", bundle: nil), forCellWithReuseIdentifier: "MapCell")
+        optionsCollection.register(UINib.init(nibName: "InterestCell", bundle: nil), forCellWithReuseIdentifier: "InterestCell")
         optionsCollection.register(UINib.init(nibName: "LogoutCell", bundle: nil), forCellWithReuseIdentifier: "LogoutCell")
         
         
@@ -36,6 +38,7 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         
         //Disappearing cells
         let flowLayout = BouncyLayout(style: .prominent)
+        //let flowLayout = BouncyLayout(style: .crazy)
         self.optionsCollection.setCollectionViewLayout(flowLayout, animated: true)
         
         //Set background based on Mac Status
@@ -60,7 +63,7 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
 
 extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -89,6 +92,41 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
             return cell
+        case 4:
+            //Anonymous public info
+            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "HeaderCell", for: indexPath) as! HeaderCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.setStructure(for: cell)
+            self.formatHeader(for: cell, title: "Anonymous public info")
+            return cell
+        case 5:
+            //Major Cell
+            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "InterestCell", for: indexPath) as! InterestCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.setStructure(for: cell)
+            self.formatInterest(for: cell, iconName: "majorIcon", interestName: "Major", interestField: "Computer science")
+            return cell
+        case 6:
+            //Terms Cell
+            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "InterestCell", for: indexPath) as! InterestCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.formatInterest(for: cell, iconName: "venmoIcon", interestName: "My terms", interestField: "50% discount")
+            self.setStructure(for: cell)
+            return cell
+        case 7:
+            //Visible to friends only
+            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "HeaderCell", for: indexPath) as! HeaderCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.setStructure(for: cell)
+            self.formatHeader(for: cell, title: "Visible to friends only")
+            return cell
+        case 8:
+            //Venmo Cell
+            let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "InterestCell", for: indexPath) as! InterestCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.formatInterest(for: cell, iconName: "venmoIcon", interestName: "Venmo handle", interestField: "lindachen97")
+            self.setStructure(for: cell)
+            return cell
         default:
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "LogoutCell", for: indexPath) as! LogoutCell
             cell.parentViewController = self
@@ -103,6 +141,16 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.layer.borderWidth = 20
         cell.layer.borderColor = UIColor.clear.cgColor
         cell.layer.cornerRadius = 15
+    }
+ 
+    private func formatHeader(for cell: HeaderCell, title: String) {
+        cell.headerTitle.text = title
+    }
+    
+    private func formatInterest(for cell: InterestCell, iconName: String, interestName: String, interestField: String) {
+        cell.interestName.text = interestName
+        cell.interestField.text = interestField
+        //cell.interestIcon.image = UIImage(named: iconName)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -127,8 +175,33 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
             let width = view.bounds.width - 16
             let height: CGFloat = 300
             return CGSize(width: width, height: height)
-            //Logout Cell
+        case 4:
+            //Anonymous Public Info
+            let width = view.bounds.width - 16
+            let height: CGFloat = 60
+            return CGSize(width: width, height: height)
+        case 5:
+            //Major Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 40
+            return CGSize(width: width, height: height)
+        case 6:
+            //Terms Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 40
+            return CGSize(width: width, height: height)
+        case 7:
+            //Visible to friends only
+            let width = view.bounds.width - 16
+            let height: CGFloat = 60
+            return CGSize(width: width, height: height)
+        case 8:
+            //Venmo Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 40
+            return CGSize(width: width, height: height)
         default:
+            //Logout Cell
             let width = view.bounds.width - 16
             let height: CGFloat = 164
             return CGSize(width: width, height: height)
