@@ -33,6 +33,7 @@ class DataHandler {
     static var macStatus = ""
     static var picURL = ""
     static var grade = ""
+    static var shortBio = "" //New from Kevin for ShortBio
     
     //Variables for local matching function
     static var currentMatchID = ""
@@ -48,6 +49,7 @@ class DataHandler {
         UserDefaults.standard.set(self.picURL, forKey: "PicURL")
         UserDefaults.standard.set(self.grade, forKey: "Grade")
         UserDefaults.standard.set(self.macStatus, forKey: "MacStatus")
+        UserDefaults.standard.set(self.shortBio, forKey: "shortBio") //New from Kevin for ShortBio
         UserDefaults.standard.set(self.interests, forKey: "Interests")
         UserDefaults.standard.set(self.friends, forKey: "Friends")
         UserDefaults.standard.set(self.currentMatchID, forKey: "CurrentMatchID")
@@ -60,6 +62,7 @@ class DataHandler {
         self.grade = ""
         self.macStatus = ""
         
+        self.shortBio = "" //New from Kevin for ShortBio
         self.interests = NSDictionary()
         self.friends = NSDictionary()
         self.currentMatchID = ""
@@ -79,6 +82,7 @@ class DataHandler {
         self.picURL = UserDefaults.standard.string(forKey: "PicURL") ?? ""
         self.grade = UserDefaults.standard.string(forKey: "Grade") ?? ""
         self.macStatus = UserDefaults.standard.string(forKey: "MacStatus") ?? ""
+        self.shortBio = UserDefaults.standard.string(forKey: "shortBio") ?? "" //New from Kevin for ShortBio
         self.interests = UserDefaults.standard.dictionary(forKey: "Interests")! as NSDictionary
         self.friends = UserDefaults.standard.dictionary(forKey: "Friends")! as NSDictionary
         self.currentMatchID = UserDefaults.standard.string(forKey: "CurrentMatchID") ?? ""
@@ -102,6 +106,7 @@ class DataHandler {
         grade = ""
         macStatus = ""
         
+        shortBio = "" //New from Kevin for ShortBio
         interests = NSDictionary()
         friends = NSDictionary()
         friendList = [Friend]()
