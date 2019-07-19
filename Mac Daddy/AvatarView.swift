@@ -71,7 +71,7 @@ class AvatarView: UIView {
             avatarObject?.hairLuminosity = Int.randomIntInRange(lower: -50, upper: 50)
             avatarObject?.skinLuminosity = Int.randomIntInRange(lower: -30, upper: 30)
             
-            let randomHair = Int.randomIntInRange(lower: 1, upper: 4)
+            let randomHair = Int.randomIntInRange(lower: 1, upper: 6)
             switch randomHair {
             case 1:
                 hair.image = UIImage(named: avatarObject?.hair ?? "hair1")
@@ -82,8 +82,14 @@ class AvatarView: UIView {
             case 3:
                 hair.image = UIImage(named: "hair3")
                 hairBack.image = nil
-            default:
+            case 4:
                 hair.image = UIImage(named: "hair4")
+                hairBack.image = nil
+            case 5:
+                hair.image = UIImage(named: "hairGrace")
+                hairBack.image = UIImage(named: "hairBack2")
+            default:
+                hair.image = UIImage(named: "hairLia")
                 hairBack.image = nil
             }
             
@@ -98,6 +104,16 @@ class AvatarView: UIView {
             default:
                 face.image = UIImage(named: "face3")
                 faceShadow.image = UIImage(named: "faceShadow3")
+            }
+            
+            let randomNose = Int.randomIntInRange(lower: 1, upper: 3)
+            switch randomNose {
+            case 1:
+                nose.image = UIImage(named: avatarObject?.nose ?? "nose1")
+            case 2:
+                nose.image = UIImage(named: "nose2")
+            default:
+                nose.image = UIImage(named: "nose3")
             }
             
             //Note: left and right correspond to the body of the avatar, not the viewer.
@@ -118,7 +134,7 @@ class AvatarView: UIView {
             }
       
             
-            let randomMouth = Int.randomIntInRange(lower: 1, upper: 3)
+            let randomMouth = Int.randomIntInRange(lower: 1, upper: 5)
             switch randomMouth {
             case 1:
                 mouth.image = UIImage(named: "mouth1")
@@ -126,15 +142,21 @@ class AvatarView: UIView {
             case 2:
                 mouth.image = UIImage(named: "mouth2")
                 mouthShadow.image = UIImage(named: "mouthShadow2")
-            default:
+            case 3:
                 mouth.image = UIImage(named: "mouth3")
                 mouthShadow.image = UIImage(named: "mouthShadow3")
+            case 4:
+                mouth.image = nil
+                mouthShadow.image = UIImage(named: "mouthShadowClosed")
+            default:
+                mouth.image = nil
+                mouthShadow.image = UIImage(named: "mouthShadowPout")
             }
             
             //hair.image = UIImage(named: avatarObject?.hair ?? "hair1")
             //hairBack.image = UIImage(named: avatarObject?.hairBack ?? "hairBack1")
             
-            nose.image = UIImage(named: avatarObject?.nose ?? "nose1")
+//            nose.image = UIImage(named: avatarObject?.nose ?? "nose1")
             //mouth.image = UIImage(named: avatarObject?.mouth ?? "mouth1")
             //mouthShadow.image = UIImage(named: avatarObject?.mouthShadow ?? "mouthShadow1")
             

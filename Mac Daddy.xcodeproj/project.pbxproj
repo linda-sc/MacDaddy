@@ -74,6 +74,10 @@
 		BFD28E5C22DE253600FA48B7 /* NearbyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD28E5A22DE253600FA48B7 /* NearbyCell.xib */; };
 		BFD2CD72219B36D900337148 /* GraphicEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2CD71219B36D900337148 /* GraphicEffects.swift */; };
 		BFD2CD77219B44FA00337148 /* FriendDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2CD76219B44FA00337148 /* FriendDetailVC.swift */; };
+		BFE39CB622E14D2F00C2ABDE /* InterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE39CB422E14D2E00C2ABDE /* InterestCell.swift */; };
+		BFE39CB722E14D2F00C2ABDE /* InterestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE39CB522E14D2E00C2ABDE /* InterestCell.xib */; };
+		BFE39CBB22E160C600C2ABDE /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE39CB922E160C600C2ABDE /* HeaderCell.swift */; };
+		BFE39CBC22E160C600C2ABDE /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE39CBA22E160C600C2ABDE /* HeaderCell.xib */; };
 		BFEB30391F68891E00CD4173 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEB30381F68891E00CD4173 /* UserData.swift */; };
 		BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE185C1FD493960011A34A /* String+Subtring.swift */; };
 /* End PBXBuildFile section */
@@ -150,6 +154,10 @@
 		BFD28E5A22DE253600FA48B7 /* NearbyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearbyCell.xib; sourceTree = "<group>"; };
 		BFD2CD71219B36D900337148 /* GraphicEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicEffects.swift; sourceTree = "<group>"; };
 		BFD2CD76219B44FA00337148 /* FriendDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailVC.swift; sourceTree = "<group>"; };
+		BFE39CB422E14D2E00C2ABDE /* InterestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestCell.swift; sourceTree = "<group>"; };
+		BFE39CB522E14D2E00C2ABDE /* InterestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterestCell.xib; sourceTree = "<group>"; };
+		BFE39CB922E160C600C2ABDE /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		BFE39CBA22E160C600C2ABDE /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
 		BFEB30381F68891E00CD4173 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BFEE185C1FD493960011A34A /* String+Subtring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subtring.swift"; sourceTree = "<group>"; };
 		D193B35518090A922E71EE04 /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,6 +271,8 @@
 				BF58F4D722DE3464008F69FF /* Grade Status */,
 				BF741E5222CCFC3300F9CACE /* Bio */,
 				BF741E5422CCFC6100F9CACE /* Map */,
+				BFE39CB822E160A200C2ABDE /* Headers */,
+				BFE39CB322E14CC600C2ABDE /* Interests */,
 				BF741E5322CCFC4000F9CACE /* Logout */,
 				BF42392C22C130D000340E83 /* CollectionViewFlowLayout.swift */,
 			);
@@ -408,6 +418,24 @@
 			name = FriendDetail;
 			sourceTree = "<group>";
 		};
+		BFE39CB322E14CC600C2ABDE /* Interests */ = {
+			isa = PBXGroup;
+			children = (
+				BFE39CB422E14D2E00C2ABDE /* InterestCell.swift */,
+				BFE39CB522E14D2E00C2ABDE /* InterestCell.xib */,
+			);
+			name = Interests;
+			sourceTree = "<group>";
+		};
+		BFE39CB822E160A200C2ABDE /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				BFE39CB922E160C600C2ABDE /* HeaderCell.swift */,
+				BFE39CBA22E160C600C2ABDE /* HeaderCell.xib */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
 		C4FAAD85A879054E020BFE13 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +523,7 @@
 			files = (
 				BF1082881ED4C7A7000677A3 /* GoogleService-Info.plist in Resources */,
 				BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */,
+				BFE39CBC22E160C600C2ABDE /* HeaderCell.xib in Resources */,
 				BF42392922BD593100340E83 /* BasicInfoCell.xib in Resources */,
 				BF58F4D622DE317A008F69FF /* GradeStatusCell.xib in Resources */,
 				BF310E1A22DC10C1006C7D6D /* AvatarView.xib in Resources */,
@@ -505,6 +534,7 @@
 				BFD28E5C22DE253600FA48B7 /* NearbyCell.xib in Resources */,
 				BF42393322C144A500340E83 /* LogoutCell.xib in Resources */,
 				BF741E5A22CCFCC500F9CACE /* MapCell.xib in Resources */,
+				BFE39CB722E14D2F00C2ABDE /* InterestCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +637,7 @@
 				BFD2CD77219B44FA00337148 /* FriendDetailVC.swift in Sources */,
 				BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */,
 				BF16F4A122ADBE1700BCF369 /* UserRequests.swift in Sources */,
+				BFE39CBB22E160C600C2ABDE /* HeaderCell.swift in Sources */,
 				BFD28E5B22DE253600FA48B7 /* NearbyCell.swift in Sources */,
 				BF42392B22C12CA800340E83 /* UserProfileVC.swift in Sources */,
 				BF57B652228F49D800D500A2 /* InterestsObject.swift in Sources */,
@@ -622,6 +653,7 @@
 				BF2652ED1F16BB9F0013873F /* PreferencesSetupVC.swift in Sources */,
 				BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */,
 				BF3B2E171EE43A67002796DE /* VerifyVC.swift in Sources */,
+				BFE39CB622E14D2F00C2ABDE /* InterestCell.swift in Sources */,
 				BF2652F11F1821F30013873F /* InterestsSetupVC.swift in Sources */,
 				BF42393222C144A500340E83 /* LogoutCell.swift in Sources */,
 				BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */,

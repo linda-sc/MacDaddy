@@ -101,12 +101,14 @@ class ChatSceneVC: UIViewController {
         //Background
         if DataHandler.macStatus == "Daddy" {
             background.image = UIImage(named: "MacDaddy Background_Purple")
-            tabBarBackground.image = UIImage(named: "TabBar_Purple")?.alpha(0.5)
+            tabBarBackground.image = UIImage(named: "TabBar_Purple")?.alpha(1.0)
             
         }else if DataHandler.macStatus == "Baby" {
             background.image = UIImage(named: "MacDaddy Background")
-            tabBarBackground.image = UIImage(named: "TabBar")?.alpha(0.5)
+            tabBarBackground.image = UIImage(named: "TabBar")?.alpha(1.0)
         }
+        tabBarBackground.image = UIImage(named: "MacDaddy Background_DarkMode")
+        background.image = UIImage(named: "MacDaddy Background_DarkMode")
     }
     
     
