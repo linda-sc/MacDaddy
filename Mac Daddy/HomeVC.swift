@@ -29,10 +29,11 @@ class HomeVC: UIViewController {
 //        UserManager.shared.importCurrentUserFromDataHandler()
 //        UserManager.shared.getLocation()
 //        UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
-//
-//        UserData.downloadAllUserObjects {
-//            //let lastActive = UserData.allUserObjects.first?.lastActive?.timeIntervalSinceNow
-//            //print("Active \(lastActive?.stringTimeAgo)")
+        
+        UserData.downloadAllUserObjects {
+            //let lastActive = UserData.allUserObjects.first?.lastActive?.timeIntervalSinceNow
+            //print("Active \(lastActive?.stringTimeAgo)")
+        }
     }
     
     func removeObserver() {
@@ -178,8 +179,7 @@ extension HomeVC {
         testing()
         if let uid = Auth.auth().currentUser?.uid {
             UserRequests().downloadCurrentUserObjectFromFirestore(userId: uid)
-            }
-        
+        }
         
         //Set up delegates and data sources
         tableView.delegate = self

@@ -16,6 +16,12 @@ import Firebase
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 
+//From Besst
+public typealias failureClosure = (_ error: Error) -> Void
+public typealias successVoid = () -> Void
+public typealias successAny = (_ response: Any) -> Void
+let defaultError = NSError(domain: NSURLErrorDomain, code: NSURLErrorUnknown, userInfo: ["NSDebugDescription" : "An error occured. Please try again later."])
+
 class NetworkConstants {
     
     // MARK: - Variables

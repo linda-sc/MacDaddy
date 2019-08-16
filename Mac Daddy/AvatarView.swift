@@ -54,12 +54,62 @@ class AvatarView: UIView {
         contentView.backgroundColor = UIColor.clear
         contentView.isOpaque = false
         
-        self.avatarObject = AvatarObject.loadDefaultAvatar()
-        displayAvatar()
+        //self.avatarObject = AvatarObject.loadDefaultAvatar()
+        //displayRandomAvatar()
+        displayAvatar(avatar: self.avatarObject)
+        
         
     }
     
-    func displayAvatar() {
+    func displayAvatar(avatar: AvatarObject?) {
+        if avatar == nil {
+            displayRandomAvatar()
+        } else {
+            //Pull out all the right elements from the object
+            hair.image = UIImage(named: avatar!.hair ?? "hair1")
+            hairBack.image = UIImage(named: avatar!.hairBack ?? "hairBack1")
+            face.image = UIImage(named: avatar!.face ?? "face1")
+            faceShadow.image = UIImage(named: avatar!.faceShadow ?? "faceShadow1")
+            nose.image = UIImage(named: avatar!.nose ?? "nose1")
+            mouth.image = UIImage(named: avatar!.mouth ?? "mouth1")
+            mouthShadow.image = UIImage(named: avatar!.mouth ?? "mouthShadow1")
+            neck.image = UIImage(named: avatar!.neck ?? "neck1")
+            shirt.image = UIImage(named: avatar!.shirt ?? "shirt1")
+            leftArm.image = UIImage(named: avatar!.leftArm ?? "leftArm1")
+            leftArmShadow.image = UIImage(named: avatar!.leftArmShadow ?? "leftArmShadow1")
+            rightArm.image = UIImage(named: avatar!.rightArm ?? "rightArm1")
+            rightArmShadow.image = UIImage(named: avatar!.rightArmShadow ?? "rightArmShadow1")
+            
+            //Adjust the hair based on lumosity
+            if let hairColor = avatarObject?.baseColor?.toRGB()?.adjust(by: CGFloat(avatarObject?.hairLuminosity ?? 0)) {
+                avatarObject?.hairTone = hairColor.toHex()
+                avatarObject?.eyebrowTone = hairColor.darker(by: 10)?.toHex()
+                hair.setImageColor(color: hairColor)
+                hairBack.setImageColor(color: hairColor.darker(by: 5) ?? hairColor)
+            }
+            
+            //Adjust skin based on lumosity
+            if let skinColor = avatarObject?.baseColor?.toRGB()?.adjust(by: CGFloat(avatarObject?.skinLuminosity ?? 0)) {
+                avatarObject?.skinTone = skinColor.toHex()
+                avatarObject?.skinShadow = skinColor.darker(by: 10)?.toHex()
+                
+                face.setImageColor(color: skinColor)
+                neck.setImageColor(color: skinColor)
+                leftArm.setImageColor(color: skinColor)
+                rightArm.setImageColor(color: skinColor)
+                nose.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
+                mouthShadow.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
+                faceShadow.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
+                leftArmShadow.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
+                rightArmShadow.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
+            }
+            mouth.setImageColor(color: UIColor.white)
+        }
+    }
+    
+    
+    //Fallback for people who don't have avatars.
+    func displayRandomAvatar() {
         //let hairColor = UIColor(red: 0.99, green: 0.24, blue: 0.56, alpha: 1.00)
         //let faceColor = UIColor(red: 0.99, green: 0.50, blue: 0.70, alpha: 1.00)
         

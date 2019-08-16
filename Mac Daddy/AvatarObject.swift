@@ -320,6 +320,136 @@ extension AvatarObject {
         return newAvatar
     }
     
+    static func createRandomAvatar() -> AvatarObject {
+        
+        let newAvatar = AvatarObject()
+
+        //Generate random color
+        let random = Int.randomIntInRange(lower: 0, upper: 4)
+        switch random {
+        case 0:
+            newAvatar.baseColor = ColorStyle.strawberry.baseColor
+        case 1:
+            newAvatar.baseColor = ColorStyle.magic.baseColor
+        case 2:
+            newAvatar.baseColor = ColorStyle.dream.baseColor
+        case 3:
+            newAvatar.baseColor = ColorStyle.royal.baseColor
+        case 4:
+            newAvatar.baseColor = ColorStyle.icy.baseColor
+        default:
+            print("Error picking base color")
+        }
+        
+        //Pick random lumosity
+        newAvatar.hairLuminosity = Int.randomIntInRange(lower: -50, upper: 50)
+        newAvatar.skinLuminosity = Int.randomIntInRange(lower: -30, upper: 30)
+        
+        //Random hairstyle
+        let randomHair = Int.randomIntInRange(lower: 1, upper: 6)
+        switch randomHair {
+        case 1:
+            newAvatar.hair = "hair1"
+            newAvatar.hairBack = "hairBack1"
+        case 2:
+            newAvatar.hair = "hair2"
+            newAvatar.hairBack = ""
+        case 3:
+            newAvatar.hair = "hair3"
+            newAvatar.hairBack = ""
+        case 4:
+            newAvatar.hair = "hair4"
+            newAvatar.hairBack = ""
+        case 5:
+            newAvatar.hair = "hairGrace"
+            newAvatar.hairBack = "hairBack2"
+        default:
+            newAvatar.hair = "hairLia"
+            newAvatar.hairBack = ""
+        }
+        
+        //Random face
+        newAvatar.neck = "neck1"
+        let randomFace = Int.randomIntInRange(lower: 1, upper: 3)
+        switch randomFace {
+        case 1:
+            newAvatar.face = "face1"
+            newAvatar.faceShadow = "faceShadow1"
+        case 2:
+            newAvatar.face = "face2"
+            newAvatar.faceShadow = "faceShadow2"
+        default:
+            newAvatar.face = "face3"
+            newAvatar.faceShadow = "faceShadow3"
+        }
+
+        newAvatar.hairTone = ""
+        newAvatar.skinTone = ""
+        newAvatar.skinShadow = ""
+        newAvatar.eyeTone = ""
+        newAvatar.eyebrowTone = ""
+        
+        newAvatar.eyes = ""
+        newAvatar.irises = ""
+        newAvatar.eyeBags = ""
+        newAvatar.eyeSize = 1.0
+        newAvatar.eyeHeight = 1.0
+        newAvatar.eyeWidth = 1.0
+        
+        //Random nose
+        newAvatar.noseSize = 1.0
+        let randomNose = Int.randomIntInRange(lower: 1, upper: 3)
+        switch randomNose {
+        case 1:
+            newAvatar.nose = "nose1"
+        case 2:
+            newAvatar.nose = "nose2"
+        default:
+            newAvatar.nose = "nose3"
+        }
+        
+        //Random mouth
+        newAvatar.mouthSize = 1.0
+        let randomMouth = Int.randomIntInRange(lower: 1, upper: 5)
+        switch randomMouth {
+        case 1:
+            newAvatar.mouth = "mouth1"
+            newAvatar.mouthShadow = "mouthShadow1"
+        case 2:
+            newAvatar.mouth = "mouth2"
+            newAvatar.mouthShadow = "mouthShadow2"
+        case 3:
+            newAvatar.mouth = "mouth3"
+            newAvatar.mouthShadow = "mouthShadow3"
+        case 4:
+            newAvatar.mouth = "mouth4"
+            newAvatar.mouthShadow = "mouthShadow4"
+        default:
+            newAvatar.mouth = ""
+            newAvatar.mouthShadow = "mouthShadowPout"
+        }
+
+        //Note: left and right correspond to the body of the avatar, not the viewer.
+        let randomBody = Int.randomIntInRange(lower: 1, upper: 2)
+        switch randomBody {
+        case 1:
+            newAvatar.shirt = "shirt1"
+            newAvatar.leftArm = "leftArm1"
+            newAvatar.leftArmShadow = "leftArmShadow1"
+            newAvatar.rightArm = "rightArm1"
+            newAvatar.rightArmShadow = "rightArmShadow1"
+        default:
+            newAvatar.shirt = "shirt3"
+            newAvatar.leftArm = "leftArm3"
+            newAvatar.leftArmShadow = "leftArmShadow3"
+            newAvatar.rightArm = "rightArm3"
+            newAvatar.rightArmShadow = "rightArmShadow3"
+        }
+        
+        
+        return newAvatar
+    }
+    
     
     
 }

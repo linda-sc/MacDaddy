@@ -11,6 +11,7 @@ import UIKit
 class FriendDetailVC: UIViewController {
     
     var friend = Friend()
+    var friendObject = UserObject()
     var reportText = ""
     
     @IBOutlet weak var friendButton: UIButton!
@@ -54,6 +55,20 @@ class FriendDetailVC: UIViewController {
         }else if DataHandler.macStatus == "Baby" {
             background.image = UIImage(named: "MacDaddy Background")
             tabBarBackground.image = UIImage(named: "TabBar")?.alpha(0.5)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //Using a closure function with error handling.
+        //The "result" is the success result returned from the function
+        //If the result is in, then set the friendObject to the downloaded object.
+        //Otherwise, throw an error.
+        UserRequests().fetchUserObject(userID: friend.uid, success: { (result) in
+            if let userObject = result as? UserObject {
+                self.friendObject = userObject
+            }
+        }) { (error) in
+            print("Couldn't fetch user object.")
         }
     }
 
