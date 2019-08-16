@@ -104,6 +104,7 @@ extension UserManager {
         userCopy.profilePicUrl = DataHandler.picURL
         userCopy.grade = DataHandler.grade
         userCopy.status = DataHandler.macStatus
+        userCopy.shortBio = DataHandler.shortBio
         
         //4. Realtime Information
         userCopy.currentMatchID = DataHandler.currentMatchID

@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87BAFC47410F3A0DAA4E095F /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D193B35518090A922E71EE04 /* Pods_Mac_Daddy.framework */; };
 		B373D4C222C6FC8D0051896F /* EditGradeStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */; };
+		B3B8533A22DEF699005E0837 /* EditShortBioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8533922DEF699005E0837 /* EditShortBioVC.swift */; };
 		BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */; };
 		BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */; };
 		BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */; };
@@ -78,14 +80,12 @@
 		BFE39CBC22E160C600C2ABDE /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE39CBA22E160C600C2ABDE /* HeaderCell.xib */; };
 		BFEB30391F68891E00CD4173 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEB30381F68891E00CD4173 /* UserData.swift */; };
 		BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE185C1FD493960011A34A /* String+Subtring.swift */; };
-		FDA3F1FB3524D3B7C6E0D506 /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29912DAA3F2A7BFBA17AB3AF /* Pods_Mac_Daddy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		14DC7512ABC749E41BB33AFF /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
-		29912DAA3F2A7BFBA17AB3AF /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFE9CD662F3407BC8FC89239 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
+		0A551BFF21C83FDF3C190B67 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
 		B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGradeStatusVC.swift; sourceTree = "<group>"; };
+		B3B8533922DEF699005E0837 /* EditShortBioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditShortBioVC.swift; path = ../EditShortBioVC.swift; sourceTree = "<group>"; };
 		BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendChatCell.swift; sourceTree = "<group>"; };
 		BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Express.swift; sourceTree = "<group>"; };
 		BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Core.swift; sourceTree = "<group>"; };
@@ -160,6 +160,8 @@
 		BFE39CBA22E160C600C2ABDE /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
 		BFEB30381F68891E00CD4173 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BFEE185C1FD493960011A34A /* String+Subtring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subtring.swift"; sourceTree = "<group>"; };
+		D193B35518090A922E71EE04 /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E913B4270C369FE8961ED8FC /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDA3F1FB3524D3B7C6E0D506 /* Pods_Mac_Daddy.framework in Frameworks */,
+				87BAFC47410F3A0DAA4E095F /* Pods_Mac_Daddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +195,7 @@
 				BF1082871ED4C7A7000677A3 /* GoogleService-Info.plist */,
 				BF1082731ED4C793000677A3 /* Products */,
 				C4FAAD85A879054E020BFE13 /* Pods */,
-				EFC8EA0C03879FA8CA4A085E /* Frameworks */,
+				CE41A338F9FE50137418D9EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -327,6 +329,7 @@
 			children = (
 				BF8603BF22C19F6F00BA2608 /* BioCell.swift */,
 				BF8603C022C19F6F00BA2608 /* BioCell.xib */,
+				B3B8533922DEF699005E0837 /* EditShortBioVC.swift */,
 			);
 			name = Bio;
 			sourceTree = "<group>";
@@ -436,16 +439,16 @@
 		C4FAAD85A879054E020BFE13 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				14DC7512ABC749E41BB33AFF /* Pods-Mac Daddy.debug.xcconfig */,
-				AFE9CD662F3407BC8FC89239 /* Pods-Mac Daddy.release.xcconfig */,
+				E913B4270C369FE8961ED8FC /* Pods-Mac Daddy.debug.xcconfig */,
+				0A551BFF21C83FDF3C190B67 /* Pods-Mac Daddy.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		EFC8EA0C03879FA8CA4A085E /* Frameworks */ = {
+		CE41A338F9FE50137418D9EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				29912DAA3F2A7BFBA17AB3AF /* Pods_Mac_Daddy.framework */,
+				D193B35518090A922E71EE04 /* Pods_Mac_Daddy.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -457,11 +460,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF1082841ED4C793000677A3 /* Build configuration list for PBXNativeTarget "Mac Daddy" */;
 			buildPhases = (
-				20B62CCEA1CD65DD883467DE /* [CP] Check Pods Manifest.lock */,
+				32141281F3B6A1E3AC0FE423 /* [CP] Check Pods Manifest.lock */,
 				BF10826E1ED4C793000677A3 /* Sources */,
 				BF10826F1ED4C793000677A3 /* Frameworks */,
 				BF1082701ED4C793000677A3 /* Resources */,
-				121B9412F9D9F9F76DCF3FF7 /* [CP] Embed Pods Frameworks */,
+				9448A520736B7DC33A7D485A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -538,7 +541,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		121B9412F9D9F9F76DCF3FF7 /* [CP] Embed Pods Frameworks */ = {
+		32141281F3B6A1E3AC0FE423 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mac Daddy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9448A520736B7DC33A7D485A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -576,28 +601,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		20B62CCEA1CD65DD883467DE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Mac Daddy-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -605,6 +608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B8533A22DEF699005E0837 /* EditShortBioVC.swift in Sources */,
 				BF628E041FCE1FA200824E87 /* Matching.swift in Sources */,
 				BFB2E54A1F71D4FD0096D562 /* ChatInterfaceVC.swift in Sources */,
 				BF1EDC521EE60CAF006CB610 /* WelcomeVC.swift in Sources */,
@@ -792,7 +796,7 @@
 		};
 		BF1082851ED4C793000677A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14DC7512ABC749E41BB33AFF /* Pods-Mac Daddy.debug.xcconfig */;
+			baseConfigurationReference = E913B4270C369FE8961ED8FC /* Pods-Mac Daddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Mac Daddy/Mac Daddy.entitlements";
@@ -812,7 +816,7 @@
 		};
 		BF1082861ED4C793000677A3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFE9CD662F3407BC8FC89239 /* Pods-Mac Daddy.release.xcconfig */;
+			baseConfigurationReference = 0A551BFF21C83FDF3C190B67 /* Pods-Mac Daddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Mac Daddy/Mac Daddy.entitlements";

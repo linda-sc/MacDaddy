@@ -65,5 +65,10 @@ extension DataHandler {
         updateUserData(uid: uid!, values: ["9: Grade": grade])
     }
     
+    //New from Kevin, change to User Object when needed.
+    //Update the user's Short Bio in Firebase.
+    static func updateShortBio(shortBio:String) {
+        updateUserData(uid: uid!, values: ["10: Short Bio": shortBio])
+    }
 }
 
