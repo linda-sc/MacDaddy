@@ -17,10 +17,10 @@ class EditGradeStatusVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var statusSelector: UISegmentedControl!
     
-    var grade = UserManager.shared.currentUser?.grade ?? "Freshman"
+    var grade = UserManager.shared.currentUser?.grade
     var macStatus = UserManager.shared.currentUser?.status ?? "Daddy"
     var isDaddy = true
-    var initialIndex = 2
+    var initialIndex = 0
     
     @IBOutlet weak var picker: UIPickerView!
     var pickerData: [String] = [String]()
@@ -35,6 +35,7 @@ class EditGradeStatusVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         //Set background, put the selector on the previous setting:
         print("STATUS")
         print(UserManager.shared.currentUser?.status ?? "ERROR")
+        print(UserManager.shared.currentUser?.grade ?? "ERROR")
         
         if UserManager.shared.currentUser?.status == "Daddy" {
             background.image = UIImage(named: "MacDaddy Background_Purple")
@@ -101,7 +102,7 @@ class EditGradeStatusVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return pickerData[row]
     }
     
-    // Catpure the picker view selection
+    // Capture the picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
@@ -133,12 +134,16 @@ class EditGradeStatusVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        saveButtonAction {}
+    }
+    
     //could have everything under saveButtonAction func put into saveButtonTapped
     func saveButtonAction(completed: @escaping()-> ()) {
         UserManager.shared.currentUser?.status = macStatus
         UserManager.shared.currentUser?.grade = grade
-        DataHandler.updateMacStatus(status: macStatus)
-        DataHandler.updateGrade(grade: grade)
+       // DataHandler.updateMacStatus(status: macStatus)
+        //DataHandler.updateGrade(grade: grade)
         print ("Grade and status successfully saved")
         completed()
     }

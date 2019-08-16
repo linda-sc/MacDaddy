@@ -44,13 +44,45 @@ class UserRequests: NSObject {
         self.setFirestoreData(ref: ref, values: userData)
     }
     
-    func updateUserInFirestore(userObject: UserObject) {
-        let ref = NetworkConstants().userObjectPath(userId: userObject.uid!)
-        guard let userData = userObject.encodeModelObject() else {
-            print ("Error encoding UserObject")
-            return
+//    func updateUserInFirestore(userObject: UserObject) {
+//        let ref = NetworkConstants().userObjectPath(userId: userObject.uid!)
+//        guard let userData = userObject.encodeModelObject() else {
+//            print ("Error encoding UserObject")
+//            return
+//        }
+//        self.updateFirestoreData(ref: ref, values: userData)
+//    } Undo the / if the function below does not work (and get rid of that function Linda sent)
+    
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    // MARK: 2. Download an existing user object from firestore.
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    func downloadCurrentUserObjectFromFirestore(userId: String) {
+        let ref = NetworkConstants().userObjectPath(userId: userId)
+        ref.getDocument { (document, error) in
+            if let document = document {
+                if document.exists{
+                    //If the object is already there, then download it
+                    print("Document data: \(document.data())")
+                    print("UserObject exists")
+                    if document.data() != nil {
+                        let currentUser = decode(json: document.data(), obj: UserObject.self)
+                        UserManager.shared.currentUser = currentUser
+                        print("Successfully downloaded current user object.")
+                    } else {
+                        print("UserObject data is nil")
+                    }
+                } else {
+                    //If the user has just logged into the new version for the first time, then import their info from DataHandler and make them a new UserObject.
+                    print("UserObject does not exist. Creating UserObject via DataHandler.")
+                    UserManager.shared.importCurrentUserFromDataHandler()
+                    UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
+                    print("Successfully inserted UserObject into Firestore.")
+                    
+                }
+            }
         }
-        self.updateFirestoreData(ref: ref, values: userData)
     }
     
     //////////////////////////////////////////////////

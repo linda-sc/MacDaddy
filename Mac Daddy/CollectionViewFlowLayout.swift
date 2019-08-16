@@ -16,6 +16,7 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return false
+        //return true
     }
     
     override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {

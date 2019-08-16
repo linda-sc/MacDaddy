@@ -75,7 +75,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_DarkMode" translatesAutoresizingMaskIntoConstraints="NO" id="xWv-Aa-Kz1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="896"/>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c5j-UM-hAO" customClass="AvatarView" customModule="Mac_Daddy" customModuleProvider="target">
                                 <rect key="frame" x="20" y="108" width="352" height="344"/>
@@ -167,6 +167,7 @@
                                         </state>
                                         <connections>
                                             <action selector="saveButtonTapped:" destination="pQI-3L-dwP" eventType="touchUpInside" id="p2O-r1-L3E"/>
+                                            <segue destination="8Xl-L7-cIY" kind="unwind" unwindAction="unwindFromEditGradeStatusWithSegue:" id="1eb-Al-YYk"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -200,8 +201,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4w1-qv-wCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8Xl-L7-cIY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-6" y="1382"/>
+            <point key="canvasLocation" x="-546" y="875"/>
         </scene>
         <!--Edit Short BioVC-->
         <scene sceneID="zwD-Do-Mzf">
@@ -249,6 +251,7 @@
                                 <connections>
                                     <action selector="saveButtonTapped:" destination="pQI-3L-dwP" eventType="touchUpInside" id="mIW-l0-FKm"/>
                                     <action selector="saveButtonTapped:" destination="SyZ-Xn-91d" eventType="touchUpInside" id="zIx-PD-gmj"/>
+                                    <segue destination="kmk-Gb-UMt" kind="unwind" unwindAction="unwindFromEditShortBioWithSegue:" id="D0L-C1-UYV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -273,8 +276,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MuW-dv-SUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kmk-Gb-UMt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1031.8840579710145" y="1381.4732142857142"/>
+            <point key="canvasLocation" x="152" y="937"/>
+        </scene>
+        <!--Edit MajorVC-->
+        <scene sceneID="7dj-mr-7ob">
+            <objects>
+                <viewController id="ajo-cN-h4z" customClass="EditMajorVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6oA-DX-Vpo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="k5U-tS-3S8"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hGM-Lj-Ecb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861" y="937"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B3E-m0-L7N">

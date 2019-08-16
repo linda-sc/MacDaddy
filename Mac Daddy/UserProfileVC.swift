@@ -38,6 +38,7 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         
         //Disappearing cells
         let flowLayout = BouncyLayout(style: .prominent)
+        //let flowLayout = CollectionViewFlowLayout()
         //let flowLayout = BouncyLayout(style: .crazy)
         self.optionsCollection.setCollectionViewLayout(flowLayout, animated: true)
         
@@ -232,8 +233,28 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
             performSegue(withIdentifier: "goToEditGradeStatus", sender: collectionView.cellForItem(at: indexPath))
         case 2:
             performSegue(withIdentifier: "goToEditShortBio", sender: collectionView.cellForItem(at: indexPath))
+        case 3:
+            performSegue(withIdentifier: "goToEditMajor", sender: collectionView.cellForItem(at: indexPath))
         default:
             print("Did select item at index path")
+        }
+    }
+    
+    @IBAction func unwindFromEditShortBio(segue: SegueToLeft) {
+        let source = segue.source as! EditShortBioVC
+        if let selectedIndexPath = optionsCollection.indexPathsForSelectedItems?.first {
+            optionsCollection.reloadItems(at: [selectedIndexPath])
+            print("Selected index path: \(selectedIndexPath)")
+            print("Short bio: \(UserManager.shared.currentUser?.shortBio ?? "No bio")")
+        }
+    }
+    
+    @IBAction func unwindFromEditGradeStatus(segue: SegueToLeft) {
+        let source = segue.source as! EditGradeStatusVC
+        if let selectedIndexPath = optionsCollection.indexPathsForSelectedItems?.first {
+            optionsCollection.reloadItems(at: [selectedIndexPath])
+            print("Selected index path: \(selectedIndexPath)")
+            print("Grade: \(UserManager.shared.currentUser?.grade ?? "No grade")")
         }
     }
 }
