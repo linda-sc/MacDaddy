@@ -71,6 +71,7 @@ class DataHandler {
         UserDefaults.standard.set("", forKey: "PicURL")
         UserDefaults.standard.set("", forKey: "Grade")
         UserDefaults.standard.set("", forKey: "MacStatus")
+        UserDefaults.standard.set("", forKey: "shortBio")
         UserDefaults.standard.set(NSDictionary(), forKey: "Interests")
         UserDefaults.standard.set(NSDictionary(), forKey: "Friends")
         UserDefaults.standard.set("", forKey: "CurrentMatchID")
