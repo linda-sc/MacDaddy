@@ -121,38 +121,6 @@ class UserRequests: NSObject {
     
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
-    // MARK: 3. Download the existing current user object from firestore.
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
-    func downloadCurrentUserObjectFromFirestore(userId: String) {
-        let ref = NetworkConstants().userObjectPath(userId: userId)
-        ref.getDocument { (document, error) in
-            if let document = document {
-                if document.exists{
-                    //If the object is already there, then download it
-                    print("Document data: \(document.data())")
-                    print("UserObject exists")
-                    if document.data() != nil {
-                        let currentUser = decode(json: document.data(), obj: UserObject.self)
-                        UserManager.shared.currentUser = currentUser
-                        print("Successfully downloaded current user object.")
-                    } else {
-                        print("UserObject data is nil")
-                    }
-                } else {
-                    //If the user has just logged into the new version for the first time, then import their info from DataHandler and make them a new UserObject.
-                    print("UserObject does not exist. Creating UserObject via DataHandler.")
-                    UserManager.shared.importCurrentUserFromDataHandler()
-                    UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
-                    print("Successfully inserted UserObject into Firestore.")
-
-                }
-            }
-        }
-    }
-    
-    //////////////////////////////////////////////////
-    //////////////////////////////////////////////////
     // MARK: 4. Download any user object from firestore.
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////

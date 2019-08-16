@@ -14,13 +14,16 @@ class BioCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.shortBioContentLabel.text = UserManager.shared.currentUser?.shortBio
+        commonInit()
         // Initialization code
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.shortBioContentLabel.text = UserManager.shared.currentUser?.shortBio
-        //self.shortBioContentLabel.text = DataHandler.shortBio
+        commonInit()
+    }
+    
+    func commonInit(){
+         self.shortBioContentLabel.text = UserManager.shared.currentUser?.shortBio
     }
 }

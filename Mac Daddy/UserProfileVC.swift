@@ -43,21 +43,20 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         self.optionsCollection.setCollectionViewLayout(flowLayout, animated: true)
         
         //Set background based on Mac Status
-        if UserManager.shared.currentUser?.status == "Daddy" {
-            background.image = UIImage(named: "MacDaddy Background_Purple")
-            
-        }else {
-            background.image = UIImage(named: "MacDaddy Background")
-
-        }
+//        if UserManager.shared.currentUser?.status == "Daddy" {
+//            background.image = UIImage(named: "MacDaddy Background_Purple")
+//        }else {
+//            background.image = UIImage(named: "MacDaddy Background")
+//        }
+        
         //Just dark mode.
         background.image = UIImage(named: "MacDaddy Background_DarkMode")
-        
+        self.optionsCollection!.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.optionsCollection!.reloadData()
+        //self.optionsCollection!.reloadData()
         print ("viewWillAppear ACTIVATED!!!")
     }
 }
@@ -80,6 +79,7 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
         case 1:
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "GradeStatusCell", for: indexPath) as! GradeStatusCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            cell.commonInit()
             self.setStructure(for: cell)
             return cell
         case 2:
@@ -87,6 +87,7 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
             //cell.parentViewController = self
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
+            cell.commonInit()
             return cell
         case 3:
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "MapCell", for: indexPath) as! MapCell
@@ -241,16 +242,17 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     @IBAction func unwindFromEditShortBio(segue: SegueToLeft) {
-        let source = segue.source as! EditShortBioVC
+        //let source = segue.source as! EditShortBioVC
         if let selectedIndexPath = optionsCollection.indexPathsForSelectedItems?.first {
-            optionsCollection.reloadItems(at: [selectedIndexPath])
-            print("Selected index path: \(selectedIndexPath)")
             print("Short bio: \(UserManager.shared.currentUser?.shortBio ?? "No bio")")
+            print("Selected index path: \(selectedIndexPath)")
+            optionsCollection.reloadItems(at: [selectedIndexPath])
+            //optionsCollection.reloadData()
         }
     }
     
     @IBAction func unwindFromEditGradeStatus(segue: SegueToLeft) {
-        let source = segue.source as! EditGradeStatusVC
+        //let source = segue.source as! EditGradeStatusVC
         if let selectedIndexPath = optionsCollection.indexPathsForSelectedItems?.first {
             optionsCollection.reloadItems(at: [selectedIndexPath])
             print("Selected index path: \(selectedIndexPath)")

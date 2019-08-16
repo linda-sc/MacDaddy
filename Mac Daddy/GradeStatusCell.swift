@@ -17,20 +17,18 @@ class GradeStatusCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        gradeLabel.text = UserManager.shared.currentUser?.grade?.lowercased()
-        if (UserManager.shared.currentUser?.status == "Daddy") {
-            
-            statusLabel.text = "looking to feed another student."
-        } else {
-            statusLabel.text = "looking for a meal."
-        }
+        commonInit()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        commonInit()
+    }
+    
+    func commonInit() {
         gradeLabel.text = UserManager.shared.currentUser?.grade?.lowercased()
         if (UserManager.shared.currentUser?.status == "Daddy") {
-
+            
             statusLabel.text = "looking to feed another student."
         } else {
             statusLabel.text = "looking for a meal."

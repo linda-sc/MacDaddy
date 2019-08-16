@@ -57,8 +57,6 @@ class AvatarView: UIView {
         //self.avatarObject = AvatarObject.loadDefaultAvatar()
         //displayRandomAvatar()
         displayAvatar(avatar: self.avatarObject)
-        
-        
     }
     
     func displayAvatar(avatar: AvatarObject?) {

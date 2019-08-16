@@ -81,7 +81,6 @@ class HomeVC: UIViewController {
         //Qualities: seen, last message
         for friend in DataHandler.friendList {
             let friendUID = friend.uid
-            
             let friendConvoRef = friendRef.child(friend.convoID)
             
             //DataHandler.convos.append(Convo.init(friendUID: friendUID, lastChat: lastChat, seen: seen))
