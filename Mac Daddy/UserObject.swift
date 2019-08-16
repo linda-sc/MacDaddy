@@ -53,6 +53,8 @@ class UserObject: NSObject, Codable {
     var accountCreationDate: Date?
     var userPlatform: String?
     var credentialsProvider: String?
+    
+    var avatar: AvatarObject?
 
     //2. Onboarding information
     var termsAndCond: Bool?

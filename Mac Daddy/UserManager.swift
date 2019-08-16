@@ -72,7 +72,6 @@ class UserManager: NSObject {
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 extension UserManager {
-    
     //////////////////////////////////////////////////
     // MARK: 1. Function that creates a currentUser
     // object from the DataHandler variables.
@@ -112,8 +111,6 @@ extension UserManager {
         
         UserManager.shared.currentUser = userCopy
     }
-    
-    
 }
 
 

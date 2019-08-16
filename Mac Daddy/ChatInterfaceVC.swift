@@ -24,14 +24,14 @@ class ChatInterfaceVC: JSQMessagesViewController {
        // return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
         
         //Bubble color
-        if DataHandler.macStatus == "Daddy" {
-            //Purple background, hot pink pubbles
-           return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: Constants.colors.hotPink)
-            
-        }else {
-            //Mango background, lavender bubbles
-            return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: Constants.colors.fadedBlue)
-        }
+//        if DataHandler.macStatus == "Daddy" {
+//            //Purple background, hot pink pubbles
+//           return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: Constants.colors.hotPink)
+//
+//        }else {
+//            //Mango background, lavender bubbles
+//            return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: Constants.colors.fadedBlue)
+//        }
         
         //Dark mode:
         let lightShadow = "AAB9FF"
@@ -52,7 +52,6 @@ class ChatInterfaceVC: JSQMessagesViewController {
         print("Removing observers")
     }
     
-
     override func viewWillAppear(_ animated: Bool) {
         print("🤪 ChatInterfaceVC - ViewWillAppear")
         senderId = DataHandler.uid
@@ -80,7 +79,7 @@ class ChatInterfaceVC: JSQMessagesViewController {
         //Displaying the messages from Firebase
         collectionView.reloadData()
         print("🤪 ChatInterfaceVC - Querying and displaying messages from Firebase")
-        query = Constants.refs.databaseConversations.child(friend.convoID).child("chats").queryLimited(toLast: 20)
+        query = Constants.refs.databaseConversations.child(friend.convoID).child("chats").queryLimited(toLast: 40)
         _ = query.observe(.childAdded, with: { [weak self] snapshot in
             
             if  let data        = snapshot.value as? [String: String],
