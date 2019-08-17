@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="UserCell" customModule="Mac_Daddy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="412" height="91"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="412" height="91"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_DarkMode" translatesAutoresizingMaskIntoConstraints="NO" id="MZu-N7-h5v">
+                        <rect key="frame" x="0.0" y="0.0" width="412" height="91"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2bt-ms-R1G" customClass="AvatarView" customModule="Mac_Daddy" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="71" height="71"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="2bt-ms-R1G" secondAttribute="height" multiplier="1:1" id="Fdi-Hn-Th5"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email lol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSM-Ro-s5P">
+                        <rect key="frame" x="92" y="10" width="68" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="grade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMh-wM-OTg">
+                        <rect key="frame" x="92" y="34" width="44" height="20"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" red="0.66666666669999997" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="wSM-Ro-s5P" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="3qN-Fc-J5O"/>
+                <constraint firstItem="bMh-wM-OTg" firstAttribute="leading" secondItem="wSM-Ro-s5P" secondAttribute="leading" id="7A1-8p-ixZ"/>
+                <constraint firstItem="bMh-wM-OTg" firstAttribute="top" secondItem="wSM-Ro-s5P" secondAttribute="bottom" constant="3" id="J6m-ww-B2y"/>
+                <constraint firstItem="2bt-ms-R1G" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Off-js-q6N"/>
+                <constraint firstItem="MZu-N7-h5v" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Vfk-MB-ySA"/>
+                <constraint firstItem="wSM-Ro-s5P" firstAttribute="leading" secondItem="2bt-ms-R1G" secondAttribute="trailing" constant="11" id="WKM-5r-hiy"/>
+                <constraint firstAttribute="bottom" secondItem="MZu-N7-h5v" secondAttribute="bottom" id="a9U-Nv-GqU"/>
+                <constraint firstItem="MZu-N7-h5v" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bgr-ZU-2hd"/>
+                <constraint firstAttribute="bottom" secondItem="2bt-ms-R1G" secondAttribute="bottom" constant="10" id="hz8-f6-VQ1"/>
+                <constraint firstItem="2bt-ms-R1G" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="nXU-Wk-NIl"/>
+                <constraint firstAttribute="trailing" secondItem="MZu-N7-h5v" secondAttribute="trailing" id="yBW-CW-kX7"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="412" height="91"/>
+            <connections>
+                <outlet property="avatar" destination="2bt-ms-R1G" id="QFm-iJ-aM1"/>
+                <outlet property="gradeLabel" destination="bMh-wM-OTg" id="pJd-W8-nhw"/>
+                <outlet property="titleLabel" destination="wSM-Ro-s5P" id="iag-lf-NEU"/>
+            </connections>
+            <point key="canvasLocation" x="400.00000000000006" y="101.45089285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="MacDaddy Background_DarkMode" width="1242" height="2208"/>
+    </resources>
+</document>
