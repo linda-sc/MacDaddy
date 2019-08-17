@@ -18,12 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MacDaddy Background_Purple" translatesAutoresizingMaskIntoConstraints="NO" id="Idg-PT-gNn">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MacDaddy Background_DarkMode" translatesAutoresizingMaskIntoConstraints="NO" id="Idg-PT-gNn">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Z2-zd-84y">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="758"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="S9c-a7-L5R">
                                     <size key="itemSize" width="50" height="50"/>
@@ -42,17 +42,39 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pj8-J3-nSB">
+                                <rect key="frame" x="20" y="74" width="28" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="QJI-v6-mam"/>
+                                    <constraint firstAttribute="width" constant="28" id="zVw-14-uiS"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="BackButton"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="lO6-al-Io9" eventType="touchUpInside" id="RHI-cL-IRJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ge5-2S-qYl">
+                                <rect key="frame" x="68" y="72" width="144" height="36"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3Z2-zd-84y" firstAttribute="top" secondItem="aZN-AN-6s2" secondAttribute="top" id="A9M-D9-5O0"/>
+                            <constraint firstItem="Pj8-J3-nSB" firstAttribute="top" secondItem="aZN-AN-6s2" secondAttribute="topMargin" constant="30" id="2lV-Wk-XaQ"/>
+                            <constraint firstItem="Pj8-J3-nSB" firstAttribute="leading" secondItem="9Q4-yt-wp9" secondAttribute="leading" constant="20" id="3hw-gf-8yD"/>
                             <constraint firstItem="3Z2-zd-84y" firstAttribute="trailing" secondItem="9Q4-yt-wp9" secondAttribute="trailing" id="Gch-As-z5p"/>
+                            <constraint firstItem="Ge5-2S-qYl" firstAttribute="centerY" secondItem="Pj8-J3-nSB" secondAttribute="centerY" id="L27-t0-khd"/>
+                            <constraint firstItem="Ge5-2S-qYl" firstAttribute="leading" secondItem="Pj8-J3-nSB" secondAttribute="trailing" constant="20" id="R9p-8M-5mL"/>
+                            <constraint firstItem="3Z2-zd-84y" firstAttribute="top" secondItem="Ge5-2S-qYl" secondAttribute="bottom" constant="30" id="VGd-Vj-7nK"/>
                             <constraint firstAttribute="bottom" secondItem="3Z2-zd-84y" secondAttribute="bottom" id="WVB-IS-yDE"/>
                             <constraint firstItem="3Z2-zd-84y" firstAttribute="leading" secondItem="9Q4-yt-wp9" secondAttribute="leading" id="iwj-ji-GWO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Q4-yt-wp9"/>
                     </view>
                     <navigationItem key="navigationItem" id="uyu-Ha-13b"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="background" destination="Idg-PT-gNn" id="1Ks-WP-rTi"/>
                         <outlet property="optionsCollection" destination="3Z2-zd-84y" id="U6J-2W-sJs"/>
@@ -218,7 +240,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="1hE-ug-POt">
-                                <rect key="frame" x="20" y="158" width="374" height="60"/>
+                                <rect key="frame" x="20" y="114" width="374" height="60"/>
                                 <color key="backgroundColor" red="0.080238655821917804" green="0.077723672945205477" blue="0.35833154965753422" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="YZA-sh-M4Y"/>
@@ -228,19 +250,19 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="done"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Character count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFh-U9-67F">
-                                <rect key="frame" x="20" y="226" width="124" height="21"/>
+                                <rect key="frame" x="20" y="182" width="124" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.32587264249999998" green="0.32457951600000001" blue="0.57140307739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A little bit about me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-OF-n3D">
-                                <rect key="frame" x="20" y="115" width="270.5" height="36"/>
+                                <rect key="frame" x="20" y="71" width="270.5" height="36"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="30"/>
                                 <color key="textColor" red="0.66939986330000001" green="0.72335834669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RmN-qk-xmC">
-                                <rect key="frame" x="327" y="220" width="57" height="40"/>
+                                <rect key="frame" x="327" y="176" width="57" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4cS-78-LI9"/>
                                 </constraints>
@@ -314,6 +336,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BackButton" width="72" height="72"/>
         <image name="MacDaddy Background_DarkMode" width="1242" height="2208"/>
         <image name="MacDaddy Background_Flipped" width="1226" height="1087"/>
         <image name="MacDaddy Background_Purple" width="1242" height="2208"/>

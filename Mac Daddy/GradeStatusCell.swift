@@ -11,27 +11,34 @@ import UIKit
 class GradeStatusCell: UICollectionViewCell {
 
     @IBOutlet weak var gradeLabel: UILabel!
-    
     @IBOutlet weak var statusLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        commonInit()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        commonInit()
     }
     
-    func commonInit() {
+    func loadForCurrentUser() {
         gradeLabel.text = UserManager.shared.currentUser?.grade?.lowercased()
         if (UserManager.shared.currentUser?.status == "Daddy") {
-            
-            statusLabel.text = "looking to feed another student."
+            statusLabel.text = "ready to feed another student."
         } else {
             statusLabel.text = "looking for a meal."
         }
     }
+    
+    func loadForUser(friend: Friend) {
+        gradeLabel.text = friend.grade.lowercased()
+        if (friend.macStatus == "Daddy") {
+            statusLabel.text = "ready to feed another student."
+        } else {
+            statusLabel.text = "looking for a meal."
+        }
+    }
+    
+    
 }

@@ -59,6 +59,11 @@ class UserProfileVC: UIViewController, UICollectionViewDelegateFlowLayout {
         //self.optionsCollection!.reloadData()
         print ("viewWillAppear ACTIVATED!!!")
     }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -75,11 +80,12 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "BasicInfoCell", for: indexPath) as! BasicInfoCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
+            cell.loadForCurrentUser()
             return cell
         case 1:
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "GradeStatusCell", for: indexPath) as! GradeStatusCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            cell.commonInit()
+            cell.loadForCurrentUser()
             self.setStructure(for: cell)
             return cell
         case 2:
@@ -87,11 +93,12 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
             //cell.parentViewController = self
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
-            cell.commonInit()
+            cell.loadForCurrentUser()
             return cell
         case 3:
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "MapCell", for: indexPath) as! MapCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            cell.updateMap()
             self.setStructure(for: cell)
             return cell
         case 4:

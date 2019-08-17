@@ -78,14 +78,14 @@ class UserRequests: NSObject {
         self.setFirestoreData(ref: ref, values: userData)
     }
     
-//    func updateUserInFirestore(userObject: UserObject) {
-//        let ref = NetworkConstants().userObjectPath(userId: userObject.uid!)
-//        guard let userData = userObject.encodeModelObject() else {
-//            print ("Error encoding UserObject")
-//            return
-//        }
-//        self.updateFirestoreData(ref: ref, values: userData)
-//    } Undo the / if the function below does not work (and get rid of that function Linda sent)
+    func updateUserInFirestore(userObject: UserObject) {
+        let ref = NetworkConstants().userObjectPath(userId: userObject.uid!)
+        guard let userData = userObject.encodeModelObject() else {
+            print ("Error encoding UserObject")
+            return
+        }
+        self.updateFirestoreData(ref: ref, values: userData)
+    }
     
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////

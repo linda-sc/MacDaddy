@@ -19,6 +19,9 @@ class HomeVC: UIViewController {
     @IBOutlet weak var tableView:UITableView!
     @IBOutlet weak var matchBox:UIButton!
 
+
+    
+    
     var currentMatch = Friend()
     var selfListener:ListenerRegistration? = nil
     
@@ -231,6 +234,11 @@ extension HomeVC {
         self.navigationController?.performSegue(withIdentifier: "GoToProfile", sender: nil)
         
         //self.navigationController?.performSegue(withIdentifier: "goToOptions", sender: nil)
+    }
+    
+    @IBAction func worldButtonTapped(_ sender: Any) {
+        self.navigationController?.performSegue(withIdentifier: "GoToWorld", sender: nil)
+        
     }
     
     @IBAction func findMatchButtonPressed(_ sender: Any) {

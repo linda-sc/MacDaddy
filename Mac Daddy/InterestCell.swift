@@ -22,7 +22,6 @@ class InterestCell: UICollectionViewCell {
         let shadeColor = "AAB9FF"
         moreIcon.setImageColor(color: shadeColor.toRGB()!)
         interestIcon.setImageColor(color: shadeColor.toRGB()!)
-
     }
 
 }

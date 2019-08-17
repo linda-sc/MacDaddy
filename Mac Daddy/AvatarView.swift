@@ -57,6 +57,7 @@ class AvatarView: UIView {
         //self.avatarObject = AvatarObject.loadDefaultAvatar()
         //displayRandomAvatar()
         displayAvatar(avatar: self.avatarObject)
+        
     }
     
     func displayAvatar(avatar: AvatarObject?) {
@@ -111,6 +112,7 @@ class AvatarView: UIView {
         //let hairColor = UIColor(red: 0.99, green: 0.24, blue: 0.56, alpha: 1.00)
         //let faceColor = UIColor(red: 0.99, green: 0.50, blue: 0.70, alpha: 1.00)
         
+        self.avatarObject = AvatarObject.createRandomAvatar()
         if avatarObject != nil {
             
             //avatarObject?.baseColor = UIColor.random().toHex()

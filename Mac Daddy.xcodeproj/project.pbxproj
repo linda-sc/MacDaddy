@@ -58,6 +58,10 @@
 		BF741E5922CCFCC500F9CACE /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF741E5722CCFCC500F9CACE /* MapCell.swift */; };
 		BF741E5A22CCFCC500F9CACE /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF741E5822CCFCC500F9CACE /* MapCell.xib */; };
 		BF76918622B6882500D7A5EC /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76918522B6882500D7A5EC /* CodableExtensions.swift */; };
+		BF7CF343230820D9004CEB7A /* World.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7CF342230820D9004CEB7A /* World.storyboard */; };
+		BF7CF3452308215C004CEB7A /* WorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CF3442308215C004CEB7A /* WorldVC.swift */; };
+		BF7CF34923083039004CEB7A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CF34723083039004CEB7A /* UserCell.swift */; };
+		BF7CF34A23083039004CEB7A /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7CF34823083039004CEB7A /* UserCell.xib */; };
 		BF85923520606F200065C8AD /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85923420606F200065C8AD /* Chatting.swift */; };
 		BF8603C122C19F6F00BA2608 /* BioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8603BF22C19F6F00BA2608 /* BioCell.swift */; };
 		BF8603C222C19F6F00BA2608 /* BioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF8603C022C19F6F00BA2608 /* BioCell.xib */; };
@@ -138,6 +142,10 @@
 		BF741E5722CCFCC500F9CACE /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		BF741E5822CCFCC500F9CACE /* MapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
 		BF76918522B6882500D7A5EC /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
+		BF7CF342230820D9004CEB7A /* World.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = World.storyboard; sourceTree = "<group>"; };
+		BF7CF3442308215C004CEB7A /* WorldVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldVC.swift; sourceTree = "<group>"; };
+		BF7CF34723083039004CEB7A /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		BF7CF34823083039004CEB7A /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		BF85923420606F200065C8AD /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 		BF8603BF22C19F6F00BA2608 /* BioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioCell.swift; sourceTree = "<group>"; };
 		BF8603C022C19F6F00BA2608 /* BioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BioCell.xib; sourceTree = "<group>"; };
@@ -214,15 +222,16 @@
 				BF10827C1ED4C793000677A3 /* Assets.xcassets */,
 				BF1082751ED4C793000677A3 /* AppDelegate.swift */,
 				BF1082791ED4C793000677A3 /* Main.storyboard */,
-				BF42392722BD582200340E83 /* User Profile */,
-				BF0A9A6B20169FE400AC1E48 /* Structs.swift */,
-				BFB2E5471F71D4A40096D562 /* Constants.swift */,
 				BF16F49D22ADBBBD00BCF369 /* Network Calls */,
 				BF57B64E228F482700D500A2 /* Model Objects */,
 				BF4C29D6218B654D00589E1B /* DataHandler */,
+				BF0A9A6B20169FE400AC1E48 /* Structs.swift */,
+				BFB2E5471F71D4A40096D562 /* Constants.swift */,
 				BF99DDBD1F1845140069F2C5 /* Launch */,
 				BF1EDC501EE4A027006CB610 /* Login */,
 				BF005BE01FB9FE7300CFE337 /* Home */,
+				BF7CF3412308209E004CEB7A /* World */,
+				BF42392722BD582200340E83 /* User Profile */,
 				BF99DDBC1F1842DD0069F2C5 /* Profile Editing */,
 				BF99DDC11F1E85C30069F2C5 /* Messenger */,
 				BF99DDBE1F1846960069F2C5 /* Effects */,
@@ -352,6 +361,25 @@
 				BFD28E5A22DE253600FA48B7 /* NearbyCell.xib */,
 			);
 			name = Map;
+			sourceTree = "<group>";
+		};
+		BF7CF3412308209E004CEB7A /* World */ = {
+			isa = PBXGroup;
+			children = (
+				BF7CF342230820D9004CEB7A /* World.storyboard */,
+				BF7CF3442308215C004CEB7A /* WorldVC.swift */,
+				BF7CF34623082FF4004CEB7A /* User Cell */,
+			);
+			name = World;
+			sourceTree = "<group>";
+		};
+		BF7CF34623082FF4004CEB7A /* User Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BF7CF34723083039004CEB7A /* UserCell.swift */,
+				BF7CF34823083039004CEB7A /* UserCell.xib */,
+			);
+			name = "User Cell";
 			sourceTree = "<group>";
 		};
 		BF99DDBC1F1842DD0069F2C5 /* Profile Editing */ = {
@@ -523,6 +551,7 @@
 			files = (
 				BF1082881ED4C7A7000677A3 /* GoogleService-Info.plist in Resources */,
 				BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */,
+				BF7CF343230820D9004CEB7A /* World.storyboard in Resources */,
 				BFE39CBC22E160C600C2ABDE /* HeaderCell.xib in Resources */,
 				BF42392922BD593100340E83 /* BasicInfoCell.xib in Resources */,
 				BF58F4D622DE317A008F69FF /* GradeStatusCell.xib in Resources */,
@@ -532,6 +561,7 @@
 				BF10827B1ED4C793000677A3 /* Main.storyboard in Resources */,
 				BF8603C222C19F6F00BA2608 /* BioCell.xib in Resources */,
 				BFD28E5C22DE253600FA48B7 /* NearbyCell.xib in Resources */,
+				BF7CF34A23083039004CEB7A /* UserCell.xib in Resources */,
 				BF42393322C144A500340E83 /* LogoutCell.xib in Resources */,
 				BF741E5A22CCFCC500F9CACE /* MapCell.xib in Resources */,
 				BFE39CB722E14D2F00C2ABDE /* InterestCell.xib in Resources */,
@@ -616,6 +646,7 @@
 				BF85923520606F200065C8AD /* Chatting.swift in Sources */,
 				BFB2E5481F71D4A40096D562 /* Constants.swift in Sources */,
 				BFEB30391F68891E00CD4173 /* UserData.swift in Sources */,
+				BF7CF34923083039004CEB7A /* UserCell.swift in Sources */,
 				BF2652EB1F16B2090013873F /* HomeVC.swift in Sources */,
 				BF5408252057619D00E5A1BB /* AboutVC.swift in Sources */,
 				BFA6564621A5EA5B00A9B99B /* DataHandler_FCM.swift in Sources */,
@@ -662,6 +693,7 @@
 				BF42392F22C132F800340E83 /* BasicInfoCell.swift in Sources */,
 				BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */,
 				BF16F49F22ADBBF800BCF369 /* NetworkConstants.swift in Sources */,
+				BF7CF3452308215C004CEB7A /* WorldVC.swift in Sources */,
 				BF76918622B6882500D7A5EC /* CodableExtensions.swift in Sources */,
 				BF9F50F521BB47CA000FA5C4 /* ChatHandler.swift in Sources */,
 				BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */,

@@ -94,6 +94,7 @@ class EditShortBioVC: UIViewController, UITextViewDelegate {
         print("Prepare for segue called: Saving data...")
         if isValidBio(bio: editShortBioBox.text) {
             UserManager.shared.currentUser?.shortBio = editShortBioBox.text
+            UserRequests().updateUserInFirestore(userObject: UserManager.shared.currentUser!)
         } else {
             UserManager.shared.currentUser?.shortBio = ""
         }

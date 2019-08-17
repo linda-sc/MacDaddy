@@ -29,10 +29,31 @@ class BasicInfoCell: UICollectionViewCell {
         super.layoutSubviews()
         orgTag.layer.cornerRadius = 12
         orgTag.clipsToBounds = true
+    }
+    
+    func loadForCurrentUser() {
         orgTag.text = UserManager.shared.currentUser?.organization
         nameTag.text = UserManager.shared.currentUser?.firstName //Last name not available atm
         emailTag.text = UserManager.shared.currentUser?.email
-        //macStatusTag.text = UserManager.shared.currentUser?.status
-        //gradeTag.text = UserManager.shared.currentUser?.grade
+    }
+    
+    func loadForUser(friend: Friend, userObject: UserObject) {
+        //Friend name
+        nameTag.text = friend.name
+        
+        //Email
+        if friend.anon == "1" {
+            emailTag.text = "???"
+        } else {
+            emailTag.text = friend.email
+        }
+        
+        //Organization
+        if userObject.organization == nil {
+            //All blank user objects represent old users who are all BC students.
+            orgTag.text = "Boston College"
+        } else {
+            orgTag.text = userObject.organization
+        }
     }
 }

@@ -8,12 +8,14 @@
 
 import UIKit
 
-class FriendDetailVC: UIViewController {
+class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
     
     var friend = Friend()
     var friendObject = UserObject()
     var reportText = ""
     
+    @IBOutlet weak var detailCollection: UICollectionView!
+    @IBOutlet weak var detailCollectionLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var friendButton: UIButton!
     @IBOutlet weak var friendPicture: UIImageView!
     @IBOutlet weak var activeBubble: UIImageView!
@@ -25,6 +27,8 @@ class FriendDetailVC: UIViewController {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         ChatHandler.messages = [JSQMessage]()
+        detailCollection.delegate = self
+        detailCollection.dataSource = self
         
         friendButton.setTitle(friend.name, for: .normal)
         if (friend.active == "1") {
@@ -48,14 +52,37 @@ class FriendDetailVC: UIViewController {
         
         
         //Background
-        if DataHandler.macStatus == "Daddy" {
-            background.image = UIImage(named: "MacDaddy Background_Purple")
-            tabBarBackground.image = UIImage(named: "TabBar_Purple")?.alpha(0.5)
-            
-        }else if DataHandler.macStatus == "Baby" {
-            background.image = UIImage(named: "MacDaddy Background")
-            tabBarBackground.image = UIImage(named: "TabBar")?.alpha(0.5)
+//        if DataHandler.macStatus == "Daddy" {
+//            background.image = UIImage(named: "MacDaddy Background_Purple")
+//            tabBarBackground.image = UIImage(named: "TabBar_Purple")?.alpha(0.5)
+//
+//        }else if DataHandler.macStatus == "Baby" {
+//            background.image = UIImage(named: "MacDaddy Background")
+//            tabBarBackground.image = UIImage(named: "TabBar")?.alpha(0.5)
+//        }
+        
+        background.image = UIImage(named: "MacDaddy Background_DarkMode")
+        tabBarBackground.image = UIImage(named: "MacDaddy Background_DarkMode")?.alpha(0.5)
+        
+        //Register Nibs
+        detailCollection.register(UINib.init(nibName: "MapCell", bundle: nil), forCellWithReuseIdentifier: "MapCell")
+        detailCollection.register(UINib.init(nibName: "UserCell", bundle: nil), forCellWithReuseIdentifier: "UserCell")
+        
+        //Set layout
+        if let flow = detailCollection.collectionViewLayout as? UICollectionViewFlowLayout {
+            flow.estimatedItemSize = CGSize(width: 1, height: 1)
         }
+        let flowLayout = BouncyLayout(style: .prominent)
+        self.detailCollection.setCollectionViewLayout(flowLayout, animated: true)
+        
+        
+        /*** Register cell nibs ***/
+        detailCollection.register(UINib.init(nibName: "HeaderCell", bundle: nil), forCellWithReuseIdentifier: "HeaderCell")
+        detailCollection.register(UINib.init(nibName: "BasicInfoCell", bundle: nil), forCellWithReuseIdentifier: "BasicInfoCell")
+        detailCollection.register(UINib.init(nibName: "GradeStatusCell", bundle: nil), forCellWithReuseIdentifier: "GradeStatusCell")
+        detailCollection.register(UINib.init(nibName: "BioCell", bundle: nil), forCellWithReuseIdentifier: "BioCell")
+        detailCollection.register(UINib.init(nibName: "MapCell", bundle: nil), forCellWithReuseIdentifier: "MapCell")
+        detailCollection.register(UINib.init(nibName: "InterestCell", bundle: nil), forCellWithReuseIdentifier: "InterestCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -229,6 +256,168 @@ class FriendDetailVC: UIViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
+}
 
+extension FriendDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch indexPath.row {
+        case 0:
+            let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "BasicInfoCell", for: indexPath) as! BasicInfoCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.setStructure(for: cell)
+            cell.loadForUser(friend: self.friend, userObject: self.friendObject)
+            return cell
+        case 1:
+            let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "GradeStatusCell", for: indexPath) as! GradeStatusCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            cell.loadForUser(friend: self.friend)
+            self.setStructure(for: cell)
+            return cell
+        case 2:
+            let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "BioCell", for: indexPath) as! BioCell
+            //cell.parentViewController = self
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.setStructure(for: cell)
+            cell.loadForUser(user: self.friendObject)
+            return cell
+        case 3:
+            let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "MapCell", for: indexPath) as! MapCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            cell.updateMap()
+            self.setStructure(for: cell)
+            return cell
+        case 4:
+            //Anonymous public info
+            let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "HeaderCell", for: indexPath) as! HeaderCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.setStructure(for: cell)
+            self.formatHeader(for: cell, title: "About")
+            return cell
+        case 5:
+            //Major Cell
+            let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "InterestCell", for: indexPath) as! InterestCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            cell.moreIcon.isHidden = true
+            self.setStructure(for: cell)
+            let major = self.friendObject.majors?.first ?? "Eating and sleeping"
+            self.formatInterest(for: cell, iconName: "majorIcon", interestName: "Major", interestField: major)
+            return cell
+        case 6:
+            //Terms Cell
+            let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "InterestCell", for: indexPath) as! InterestCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            cell.moreIcon.isHidden = true
+            let terms = self.friendObject.terms ?? "I don't know"
+            self.formatInterest(for: cell, iconName: "venmoIcon", interestName: "My terms", interestField: terms)
+            self.setStructure(for: cell)
+            return cell
+        case 7:
+            //Visible to friends only
+            let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "HeaderCell", for: indexPath) as! HeaderCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            self.setStructure(for: cell)
+            self.formatHeader(for: cell, title: "Visible to friends only")
+            return cell
+        default:
+            //Venmo Cell
+            let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "InterestCell", for: indexPath) as! InterestCell
+            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            cell.moreIcon.isHidden = true
+            let venmo = self.friendObject.venmo ?? "???"
+            self.formatInterest(for: cell, iconName: "venmoIcon", interestName: "Venmo handle", interestField: venmo)
+            self.setStructure(for: cell)
+            return cell
+        }
+    }
+    
+    private func setStructure(for cell: UICollectionViewCell) {
+        cell.layer.borderWidth = 20
+        cell.layer.borderColor = UIColor.clear.cgColor
+        cell.layer.cornerRadius = 15
+    }
+    
+    private func formatHeader(for cell: HeaderCell, title: String) {
+        cell.headerTitle.text = title
+    }
+    
+    private func formatInterest(for cell: InterestCell, iconName: String, interestName: String, interestField: String) {
+        cell.interestName.text = interestName
+        cell.interestField.text = interestField
+        //cell.interestIcon.image = UIImage(named: iconName)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch indexPath.row {
+        case 0:
+            //Basic Info Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 200
+            return CGSize(width: width, height: height)
+        case 1:
+            //Grade Status Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 60
+            return CGSize(width: width, height: height)
+        case 2:
+            //Bio Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 100
+            return CGSize(width: width, height: height)
+        case 3:
+            //Map Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 300
+            return CGSize(width: width, height: height)
+        case 4:
+            //Anonymous Public Info
+            let width = view.bounds.width - 16
+            let height: CGFloat = 60
+            return CGSize(width: width, height: height)
+        case 5:
+            //Major Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 40
+            return CGSize(width: width, height: height)
+        case 6:
+            //Terms Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 40
+            return CGSize(width: width, height: height)
+        case 7:
+            //Visible to friends only
+            let width = view.bounds.width - 16
+            let height: CGFloat = 60
+            return CGSize(width: width, height: height)
+        default:
+            //Venmo Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 40
+            return CGSize(width: width, height: height)
+        }
+    }
+    
+    /****************************************************************/
+    // Estimates cell height
+    /****************************************************************/
+    func estimateFrameForText(text: String) -> CGRect {
+        //we make the height arbitrarily large so we don't undershoot height in calculation
+        let height: CGFloat = 1000
+        //Set the width to the width of the text in the cell.
+        let width: CGFloat = 250
+        
+        let size = CGSize(width: width, height: height)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.light)]
+        
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: attributes, context: nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }
