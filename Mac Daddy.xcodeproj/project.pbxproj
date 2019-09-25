@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4CD0A5B907B21A0F6D12A4E4 /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BB3759B9E11E166CCD1DCC /* Pods_Mac_Daddy.framework */; };
 		B373D4C222C6FC8D0051896F /* EditGradeStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */; };
 		BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */; };
 		BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */; };
@@ -43,6 +42,7 @@
 		BF43C5DC1EE72AAC00602357 /* MyPreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43C5DB1EE72AAC00602357 /* MyPreferencesVC.swift */; };
 		BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C29D0218909B100589E1B /* DataHandler_Friends.swift */; };
 		BF4C29D5218B60EA00589E1B /* DataHandler_Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C29D4218B60EA00589E1B /* DataHandler_Observers.swift */; };
+		BF528EE5233AFDF900E7E1E5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF528EE4233AFDF900E7E1E5 /* Message.swift */; };
 		BF5408252057619D00E5A1BB /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5408242057619D00E5A1BB /* AboutVC.swift */; };
 		BF570A7123073C8F001AC839 /* EditShortBioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF570A7023073C8F001AC839 /* EditShortBioVC.swift */; };
 		BF57B64D228F481C00D500A2 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B64C228F481C00D500A2 /* UserObject.swift */; };
@@ -55,6 +55,7 @@
 		BF58F4D622DE317A008F69FF /* GradeStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF58F4D422DE317A008F69FF /* GradeStatusCell.xib */; };
 		BF628E041FCE1FA200824E87 /* Matching.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF628E031FCE1FA100824E87 /* Matching.swift */; };
 		BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7066FB22AD5A5800129EA9 /* UserManager.swift */; };
+		BF70B6612339B4E900E3A47B /* MessageInterfaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70B6602339B4E900E3A47B /* MessageInterfaceVC.swift */; };
 		BF741E5922CCFCC500F9CACE /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF741E5722CCFCC500F9CACE /* MapCell.swift */; };
 		BF741E5A22CCFCC500F9CACE /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF741E5822CCFCC500F9CACE /* MapCell.xib */; };
 		BF76918622B6882500D7A5EC /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76918522B6882500D7A5EC /* CodableExtensions.swift */; };
@@ -84,11 +85,12 @@
 		BFE39CBC22E160C600C2ABDE /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE39CBA22E160C600C2ABDE /* HeaderCell.xib */; };
 		BFEB30391F68891E00CD4173 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEB30381F68891E00CD4173 /* UserData.swift */; };
 		BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE185C1FD493960011A34A /* String+Subtring.swift */; };
+		C499954703A364A3F25BC845 /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8700AA267E9C7ABDD903B933 /* Pods_Mac_Daddy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A5B94D6DBFA965C327EF9D9 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
-		49BB3759B9E11E166CCD1DCC /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8700AA267E9C7ABDD903B933 /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9181238EACD9EB2E686BAD74 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
 		B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGradeStatusVC.swift; sourceTree = "<group>"; };
 		BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendChatCell.swift; sourceTree = "<group>"; };
 		BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Express.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		BF43C5DB1EE72AAC00602357 /* MyPreferencesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPreferencesVC.swift; sourceTree = "<group>"; };
 		BF4C29D0218909B100589E1B /* DataHandler_Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Friends.swift; sourceTree = "<group>"; };
 		BF4C29D4218B60EA00589E1B /* DataHandler_Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Observers.swift; sourceTree = "<group>"; };
+		BF528EE4233AFDF900E7E1E5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BF5408242057619D00E5A1BB /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		BF570A7023073C8F001AC839 /* EditShortBioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditShortBioVC.swift; sourceTree = "<group>"; };
 		BF57B64C228F481C00D500A2 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
@@ -139,6 +142,7 @@
 		BF58F4D422DE317A008F69FF /* GradeStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradeStatusCell.xib; sourceTree = "<group>"; };
 		BF628E031FCE1FA100824E87 /* Matching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matching.swift; sourceTree = "<group>"; };
 		BF7066FB22AD5A5800129EA9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		BF70B6602339B4E900E3A47B /* MessageInterfaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInterfaceVC.swift; sourceTree = "<group>"; };
 		BF741E5722CCFCC500F9CACE /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		BF741E5822CCFCC500F9CACE /* MapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
 		BF76918522B6882500D7A5EC /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
@@ -169,7 +173,7 @@
 		BFE39CBA22E160C600C2ABDE /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
 		BFEB30381F68891E00CD4173 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BFEE185C1FD493960011A34A /* String+Subtring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subtring.swift"; sourceTree = "<group>"; };
-		CBCCD04BBF03C5E1724FBF80 /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
+		C605359BDCF5EF142584CD16 /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,13 +181,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CD0A5B907B21A0F6D12A4E4 /* Pods_Mac_Daddy.framework in Frameworks */,
+				C499954703A364A3F25BC845 /* Pods_Mac_Daddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD121932B6ED860685C35E31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8700AA267E9C7ABDD903B933 /* Pods_Mac_Daddy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF005BE01FB9FE7300CFE337 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,7 +215,7 @@
 				BF1082871ED4C7A7000677A3 /* GoogleService-Info.plist */,
 				BF1082731ED4C793000677A3 /* Products */,
 				C4FAAD85A879054E020BFE13 /* Pods */,
-				D184A177F86017AF1E6F4F10 /* Frameworks */,
+				BD121932B6ED860685C35E31 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -417,6 +429,8 @@
 			children = (
 				BF0F0941218D59E300036842 /* ChatSceneVC.swift */,
 				BF85923420606F200065C8AD /* Chatting.swift */,
+				BF528EE4233AFDF900E7E1E5 /* Message.swift */,
+				BF70B6602339B4E900E3A47B /* MessageInterfaceVC.swift */,
 				BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */,
 				BF9F50F421BB47CA000FA5C4 /* ChatHandler.swift */,
 				BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */,
@@ -467,18 +481,10 @@
 		C4FAAD85A879054E020BFE13 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CBCCD04BBF03C5E1724FBF80 /* Pods-Mac Daddy.debug.xcconfig */,
-				3A5B94D6DBFA965C327EF9D9 /* Pods-Mac Daddy.release.xcconfig */,
+				C605359BDCF5EF142584CD16 /* Pods-Mac Daddy.debug.xcconfig */,
+				9181238EACD9EB2E686BAD74 /* Pods-Mac Daddy.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		D184A177F86017AF1E6F4F10 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				49BB3759B9E11E166CCD1DCC /* Pods_Mac_Daddy.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,11 +494,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF1082841ED4C793000677A3 /* Build configuration list for PBXNativeTarget "Mac Daddy" */;
 			buildPhases = (
-				D55AD8080A786F81E630642D /* [CP] Check Pods Manifest.lock */,
+				D83EAE2CA28F694FC0878711 /* [CP] Check Pods Manifest.lock */,
 				BF10826E1ED4C793000677A3 /* Sources */,
 				BF10826F1ED4C793000677A3 /* Frameworks */,
 				BF1082701ED4C793000677A3 /* Resources */,
-				FCFBC523D6E3AC0223C4686F /* [CP] Embed Pods Frameworks */,
+				7A23C3CBF23296CAB90DA9DC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -571,7 +577,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D55AD8080A786F81E630642D /* [CP] Check Pods Manifest.lock */ = {
+		7A23C3CBF23296CAB90DA9DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/NWPusher/NWPusher.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InputBarAccessoryView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NWPusher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D83EAE2CA28F694FC0878711 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -591,44 +635,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FCFBC523D6E3AC0223C4686F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
-				"${BUILT_PRODUCTS_DIR}/NWPusher/NWPusher.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NWPusher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -670,6 +676,7 @@
 				BF16F4A122ADBE1700BCF369 /* UserRequests.swift in Sources */,
 				BFE39CBB22E160C600C2ABDE /* HeaderCell.swift in Sources */,
 				BFD28E5B22DE253600FA48B7 /* NearbyCell.swift in Sources */,
+				BF70B6612339B4E900E3A47B /* MessageInterfaceVC.swift in Sources */,
 				BF42392B22C12CA800340E83 /* UserProfileVC.swift in Sources */,
 				BF57B652228F49D800D500A2 /* InterestsObject.swift in Sources */,
 				BF8A0E3B1FBB6FF7009EEF4E /* EditProfile.swift in Sources */,
@@ -688,6 +695,7 @@
 				BF2652F11F1821F30013873F /* InterestsSetupVC.swift in Sources */,
 				BF42393222C144A500340E83 /* LogoutCell.swift in Sources */,
 				BF4C29D1218909B100589E1B /* DataHandler_Friends.swift in Sources */,
+				BF528EE5233AFDF900E7E1E5 /* Message.swift in Sources */,
 				BF310E1E22DC2601006C7D6D /* AvatarObject.swift in Sources */,
 				BF1082761ED4C793000677A3 /* AppDelegate.swift in Sources */,
 				BF42392F22C132F800340E83 /* BasicInfoCell.swift in Sources */,
@@ -828,7 +836,7 @@
 		};
 		BF1082851ED4C793000677A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBCCD04BBF03C5E1724FBF80 /* Pods-Mac Daddy.debug.xcconfig */;
+			baseConfigurationReference = C605359BDCF5EF142584CD16 /* Pods-Mac Daddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Mac Daddy/Mac Daddy.entitlements";
@@ -848,7 +856,7 @@
 		};
 		BF1082861ED4C793000677A3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A5B94D6DBFA965C327EF9D9 /* Pods-Mac Daddy.release.xcconfig */;
+			baseConfigurationReference = 9181238EACD9EB2E686BAD74 /* Pods-Mac Daddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Mac Daddy/Mac Daddy.entitlements";

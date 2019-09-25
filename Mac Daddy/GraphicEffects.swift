@@ -8,6 +8,7 @@
 // https://stackoverflow.com/questions/39624675/add-shadow-on-uiview-using-swift-3
 // https://cocoacasts.com/from-hex-to-uicolor-and-back-in-swift
 
+import UIKit
 import Foundation
 
 extension UIColor {
@@ -163,5 +164,21 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return newImage!
     }
+}
+
+extension UIScrollView {
+  
+  var isAtBottom: Bool {
+    return contentOffset.y >= verticalOffsetForBottom
+  }
+  
+  var verticalOffsetForBottom: CGFloat {
+    let scrollViewHeight = bounds.height
+    let scrollContentSizeHeight = contentSize.height
+    let bottomInset = contentInset.bottom
+    let scrollViewBottomOffset = scrollContentSizeHeight + bottomInset - scrollViewHeight
+    return scrollViewBottomOffset
+  }
+  
 }
 

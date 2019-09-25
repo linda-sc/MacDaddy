@@ -19,8 +19,6 @@ class HomeVC: UIViewController {
     @IBOutlet weak var tableView:UITableView!
     @IBOutlet weak var matchBox:UIButton!
 
-
-    
     
     var currentMatch = Friend()
     var selfListener:ListenerRegistration? = nil
@@ -200,6 +198,8 @@ extension HomeVC {
             //backgroundImage = UIImage(named: "MacDaddy Background")
             buttonImage = UIImage(named: "MacDaddy Background_Purple_Flipped")
         }
+        
+        buttonImage = UIImage(named: "MacDaddy Background_Flipped")
         backgroundImage = UIImage(named: "MacDaddy Background_DarkMode")
         
         

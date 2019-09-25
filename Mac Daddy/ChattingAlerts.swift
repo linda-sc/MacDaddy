@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 //All the alert controller stuff:
 extension ChatSceneVC {

@@ -8,8 +8,8 @@
 
 import Foundation
 import Firebase
-import JSQMessagesViewController
+import MessageKit
 
 class ChatHandler {
-    static var messages = [JSQMessage]()
+    static var messages = [Message]()
 }

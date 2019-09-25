@@ -26,7 +26,7 @@ class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        ChatHandler.messages = [JSQMessage]()
+        //ChatHandler.messages = [JSQMessage]()
         detailCollection.delegate = self
         detailCollection.dataSource = self
         
