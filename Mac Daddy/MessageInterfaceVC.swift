@@ -13,7 +13,6 @@ import Photos
 
 class MessageInterfaceVC: MessagesViewController {
 
-    @IBOutlet weak var background: UIImageView!
     
     var friend = Friend()
     var query = DatabaseQuery()
@@ -24,13 +23,12 @@ class MessageInterfaceVC: MessagesViewController {
     let darkShadow = "3F4392"
     
     override func viewDidLoad() {
-        background.image = UIImage(named: "MacDaddy Background_DarkMode")
-        self.becomeFirstResponder()
+        //background.image = UIImage(named: "MacDaddy Background_DarkMode")
         setUpLayout()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-         query.removeAllObservers()
+         query.removeAllObservers() 
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,11 +46,14 @@ class MessageInterfaceVC: MessagesViewController {
         } else {
         }
         
+        extendedLayoutIncludesOpaqueBars = true
         maintainPositionOnKeyboardFrameChanged = true
         messageInputBar.inputTextView.tintColor = darkShadow.toRGB()
         messageInputBar.sendButton.setTitleColor(darkShadow.toRGB(), for: .normal)
+        messageInputBar.becomeFirstResponder()
         
         messageInputBar.delegate = self
+        messageInputBar.isHidden = false
         
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -61,6 +62,8 @@ class MessageInterfaceVC: MessagesViewController {
         
         messageInputBar.leftStackView.alignment = .center
         messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
+        
+        
     }
     
     func queryChats() {
@@ -76,6 +79,7 @@ class MessageInterfaceVC: MessagesViewController {
                 let message = Message(id: id, name: name, content: text)
                 self?.messages.append(message)
                 print("Message: \(message.content)")
+                self?.messagesCollectionView.reloadData()
             }
         })
     }

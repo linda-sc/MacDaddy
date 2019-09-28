@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import MessageKit
+import JSQMessagesViewController
 
 class ChatSceneVC: UIViewController {
    
@@ -36,16 +37,18 @@ class ChatSceneVC: UIViewController {
     //Embed the ChatInterfaceVC inside the scene:
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "embedChatSegue" {
-            if let childVC = segue.destination as? MessageInterfaceVC {
-                           //Some property on ChildVC that needs to be set
-                           childVC.friend = self.friend
-                           //ChatHandler.messages = [Message]()
-                       }
-//            if let childVC = segue.destination as? ChatInterfaceVC {
-//                //Some property on ChildVC that needs to be set
-//                childVC.friend = self.friend
-//                ChatHandler.messages = [JSQMessage]()
-//            }
+            
+//            if let childVC = segue.destination as? MessageInterfaceVC {
+//                           //Some property on ChildVC that needs to be set
+//                           childVC.friend = self.friend
+//                           //ChatHandler.messages = [Message]()
+//                       }
+            
+            if let childVC = segue.destination as? ChatInterfaceVC {
+                //Some property on ChildVC that needs to be set
+                childVC.friend = self.friend
+                ChatHandler.messages = [JSQMessage]()
+            }
         } else if segue.identifier == "showFriendDetail" {
                 let destination = segue.destination as! FriendDetailVC
                 destination.friend = self.friend

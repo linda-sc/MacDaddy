@@ -477,6 +477,17 @@ extension HomeVC {
             self.currentMatch.anon = "1"
             destination.friend = self.currentMatch
 
+            
+        } else if segue.identifier == "goToTempChat"{
+            let destination = segue.destination as! MessageInterfaceVC
+            
+            if let selectedRow = tableView.indexPathForSelectedRow?.row {
+                destination.friend = DataHandler.friendList[selectedRow]
+            } else {
+                destination.friend = self.currentMatch
+            }
+            
+            
         } else {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 tableView.deselectRow(at: selectedIndexPath, animated: true)
