@@ -20,11 +20,17 @@ class WelcomeVC: UIViewController {
     @IBOutlet weak var loading:UIImageView!
     var segueIdentifier = "NONE"
     
+    
+    //When app first starts up
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
-        background.image = UIImage(named: "MacDaddy Background_Purple")
+        print("Welcome VC Loaded.")
         
+        self.navigationController?.isNavigationBarHidden = true
+        background.image = UIImage(named: "MacDaddy Background_DarkMode")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let when = DispatchTime.now() + 2
         animateLoading{
             self.automaticLogin {
@@ -36,7 +42,6 @@ class WelcomeVC: UIViewController {
                 }
             }
         }
-        
     }
     
     func animateLoading(completed: @escaping ()-> ()){
@@ -76,7 +81,7 @@ class WelcomeVC: UIViewController {
             //Unverified information will not be deleted, but it will not be saved.
             FirebaseManager.loginInfo?.saved = false
             print("🔮 Not logged in")
-            self.segueIdentifier = "👉🏼 goToLogin"
+            self.segueIdentifier = "👉🏼 GoToLogin"
             completed()
             
             //If the user is unverified but saved, take them back to the verification page.
@@ -127,7 +132,7 @@ class WelcomeVC: UIViewController {
                             
                             //Otherwise just go to the home screen.
                         }else{
-                            self.segueIdentifier = "skipToHome"
+                            self.segueIdentifier = "SkipToHome"
                             completed()
                         }
                         //If the user is nil somehow, send them back to the login.
@@ -139,7 +144,7 @@ class WelcomeVC: UIViewController {
                     }
                     
                 }else{
-                    self.segueIdentifier = "goToLogin"
+                    self.segueIdentifier = "GoToLogin"
                     print("User not found")
                     completed()
                 }
@@ -148,9 +153,12 @@ class WelcomeVC: UIViewController {
         }else{
             //If you're not already logged in, directly segue to the login screen.
             print("Not logged in")
-            self.segueIdentifier = "goToLogin"
+            self.segueIdentifier = "GoToLogin"
             completed()
         }
     }//End of automaticLogin
+    
+    
+    @IBAction func unwindToWelcome(segue:UIStoryboardSegue) { }
     
 }//End of class

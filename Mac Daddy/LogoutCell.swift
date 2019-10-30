@@ -23,6 +23,11 @@ class LogoutCell: UICollectionViewCell {
     
     @IBAction func logoutTapped(_ sender: Any) {
         print("logoutTapped")
+        FirebaseManager.logout()
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "OnboardingNavigationVC")
+        controller.modalPresentationStyle = .fullScreen
+        parentViewController?.present(controller, animated: true, completion: nil)
     }
     
     @IBAction func backTapped(_ sender: Any) {

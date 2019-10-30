@@ -82,6 +82,7 @@ class UserObject: NSObject, Codable {
     var longitude: Double?
     var message: String?
     var currentLocation: CLLocation?
+    var version: String?
 
     //5. Stats information
     //////////////////////////////////
@@ -159,6 +160,7 @@ class UserObject: NSObject, Codable {
         case latitude
         case longitude
         case message
+        case version
 
         //5. Stats information
         case score
@@ -253,6 +255,7 @@ class UserObject: NSObject, Codable {
         latitude = try container.decodeIfPresent(Double.self, forKey: .latitude)
         longitude = try container.decodeIfPresent(Double.self, forKey: .longitude)
         message = try container.decodeIfPresent(String.self, forKey: .message)
+        version = try container.decodeIfPresent(String.self, forKey: .version)
         
         //Convert the date string into a date object.
         let lastActiveDateString = try container.decodeIfPresent(String.self, forKey: .lastActive)
@@ -332,8 +335,9 @@ class UserObject: NSObject, Codable {
         try container.encodeIfPresent(lastActiveString, forKey: .lastActive)
         try container.encodeIfPresent(latitude, forKey: .latitude)
         try container.encodeIfPresent(longitude, forKey: .longitude)
-        
         try container.encodeIfPresent(message, forKey: .message)
+        try container.encodeIfPresent(version, forKey: .version)
+
         
         //5. Stats information
         try container.encodeIfPresent(score, forKey: .score)

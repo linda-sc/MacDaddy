@@ -107,10 +107,8 @@ class FirebaseManager {
         DataHandler.clearDataHandler()
         DataHandler.clearDefaults()
         
-        
         //Delete the account if it's not verified.
         if user?.isEmailVerified == false {
-            
             user?.delete { error in
                 if let _ = error {
                     print("Error deleting user")
@@ -120,8 +118,8 @@ class FirebaseManager {
             }
         }
         
+        UserManager.shared.currentUser = UserObject()
         print(FirebaseManager.loginInfo ?? "No login info saved")
-        
     }
     
     static func deleteUnverifiedUser(){

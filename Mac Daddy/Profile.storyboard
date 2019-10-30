@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Bq-Pf-wPG">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Bq-Pf-wPG">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -158,10 +156,10 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="2Pe-1E-NCV">
-                                <rect key="frame" x="47" y="343" width="320" height="210"/>
+                                <rect key="frame" x="47" y="341.5" width="320" height="213"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="X5e-VX-L5e">
-                                        <rect key="frame" x="76.5" y="0.0" width="167" height="29"/>
+                                        <rect key="frame" x="71.5" y="0.0" width="177" height="32"/>
                                         <segments>
                                             <segment title="Mac Daddy"/>
                                             <segment title="Mac Baby"/>
@@ -172,13 +170,13 @@
                                         </connections>
                                     </segmentedControl>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHM-1r-PyH" userLabel="Year Picker">
-                                        <rect key="frame" x="0.0" y="39" width="320" height="120"/>
+                                        <rect key="frame" x="0.0" y="42" width="320" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="mrF-6t-P86"/>
                                         </constraints>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-FV-tLi">
-                                        <rect key="frame" x="30" y="170" width="260" height="40"/>
+                                        <rect key="frame" x="30" y="173" width="260" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="2YX-Ve-e3h"/>
                                             <constraint firstAttribute="width" constant="260" id="zBH-r3-NOS"/>
@@ -199,7 +197,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tID-G0-uKN">
-                                <rect key="frame" x="178" y="300.5" width="58.5" height="27.5"/>
+                                <rect key="frame" x="178" y="299" width="58.5" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -332,7 +330,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jf4-en-dbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1032" y="-658"/>
+            <point key="canvasLocation" x="258" y="82"/>
         </scene>
     </scenes>
     <resources>

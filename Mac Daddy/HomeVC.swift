@@ -231,13 +231,15 @@ extension HomeVC {
     //IB Actions
     @IBAction func editProfileTapped(_ sender:UIButton){
         
-        self.navigationController?.performSegue(withIdentifier: "GoToProfile", sender: nil)
+        //self.navigationController?.performSegue(withIdentifier: "GoToProfile", sender: nil)
+        self.performSegue(withIdentifier: "GoToProfile", sender: nil)
         
         //self.navigationController?.performSegue(withIdentifier: "goToOptions", sender: nil)
     }
     
     @IBAction func worldButtonTapped(_ sender: Any) {
-        self.navigationController?.performSegue(withIdentifier: "GoToWorld", sender: nil)
+        self.performSegue(withIdentifier: "GoToWorld", sender: nil)
+        //self.navigationController?.performSegue(withIdentifier: "GoToWorld", sender: nil)
         
     }
     
@@ -477,16 +479,6 @@ extension HomeVC {
             self.currentMatch.anon = "1"
             destination.friend = self.currentMatch
 
-            
-        } else if segue.identifier == "goToTempChat"{
-            let destination = segue.destination as! MessageInterfaceVC
-            
-            if let selectedRow = tableView.indexPathForSelectedRow?.row {
-                destination.friend = DataHandler.friendList[selectedRow]
-            } else {
-                destination.friend = self.currentMatch
-            }
-            
             
         } else {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {

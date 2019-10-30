@@ -15,10 +15,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signinButton: UIButton!
-    @IBOutlet weak var termsStack: UIStackView!
     @IBOutlet weak var checkmarkButton: UIButton!
-    @IBOutlet weak var termsButton: UIButton!
+    @IBOutlet weak var termsLabel: UILabel!
     @IBOutlet weak var infoButton: UIButton!
+    @IBOutlet weak var logoHeight: NSLayoutConstraint!
+    @IBOutlet weak var logoTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var termsLabelHeight: NSLayoutConstraint!
     
     var isSignin:Bool = true
     var termsAgreed:Bool = false
@@ -28,7 +30,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         infoButton.isHidden = true
         self.navigationController?.isNavigationBarHidden = true
         
-        termsStack.isHidden = true
+        termsLabel.isHidden = true
+        checkmarkButton.isHidden = true
         checkmarkButton.setBackgroundImage(UIImage(named: "RedBubble"), for: .normal)
         
         self.emailTextField.delegate = self
@@ -43,12 +46,37 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         return .lightContent
     }
     
+    // MARK: Keyboard
     
     //Makes the keyboard disappear when you press done.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         self.view.endEditing(true)
         return false
+    }
+    
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.logoTopConstraint.constant = 10
+        self.logoHeight.constant = 40
+        UIView.animate(withDuration: 0.3)
+        {
+            self.view.layoutIfNeeded()
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.logoTopConstraint.constant = 30
+        self.logoHeight.constant = 120
+        UIView.animate(withDuration: 0.3)
+        {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     @IBAction func checkmarkButtonTapped(_ sender: Any) {
@@ -59,6 +87,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             checkmarkButton.setBackgroundImage(UIImage(named: "RedBubble"), for: .normal)
         }
     }
+    
+    
+    // MARK: Selector
     @IBAction func signinSelectorChanged(_ sender: UISegmentedControl) {
         //Flip the boolean
         isSignin = !isSignin
@@ -66,24 +97,39 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         if isSignin
         {
             signinButton.setTitle("Sign In", for: .normal )
-            termsStack.isHidden = true
+            termsLabel.isHidden = true
+            checkmarkButton.isHidden = true
+            termsLabelHeight.constant = 0
+            UIView.animate(withDuration: 0.3){
+                self.view.layoutIfNeeded()
+            }
         }
         else
         {
             signinButton.setTitle("Register", for: .normal)
-            termsStack.isHidden = false
+            termsLabel.isHidden = false
+            checkmarkButton.isHidden = false
+            termsLabelHeight.constant = 30
+            UIView.animate(withDuration: 0.3){
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
-    func isValidSchoolEmail(email:String) -> Bool{
+    // MARK: Email check
+    func isValidEmail(email:String) -> Bool{
         var valid = false
         if  email.hasSuffix("@bc.edu")
-            || email.hasSuffix("@besst.io") {
+            || email.hasSuffix("@gmail.com")
+            || email.hasSuffix("@cornell.edu")
+        
+        {
             valid = true
         }
         return valid
     }
     
+    // MARK: Error alerts
     func showErrorAlert(error:String){
         let alert = UIAlertController(title: "Try again?", message: error, preferredStyle: .alert)
         let okButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
@@ -99,6 +145,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     
+    // MARK: Sign In
     func signIn() {
         let email = emailTextField.text
         let password = passwordTextField.text
@@ -118,7 +165,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         FirebaseManager.isLoggedIn = true
                         FirebaseManager.loginInfo = LoginInfo.init(email:email!, password:password!)
                         
-                        self.performSegue(withIdentifier: "goToWelcome", sender: self)
+                        //self.performSegue(withIdentifier: "goToWelcome", sender: self)
+                        self.performSegue(withIdentifier: "UnwindToWelcome", sender: nil)
+                        
                         print("👩🏻‍💻 Successfully logged in with info:")
                         print(FirebaseManager.loginInfo?.email ?? "Email not found")
                         
@@ -133,7 +182,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             }
             
             //If it's not sign in, it's register.
-        } else if isValidSchoolEmail(email: email!) && termsAgreed{
+        } else if isValidEmail(email: email!) && termsAgreed{
             print("Registering...")
             //Register the user with Firebase if the information is valid
             Auth.auth().createUser(withEmail: email!, password: password!) {
@@ -159,7 +208,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     }
                 }
             }
-        }else if !isValidSchoolEmail(email: email!) {
+        }else if !isValidEmail(email: email!) {
             showErrorAlert(error: "Make sure you use a valid school email.")
         } else if !termsAgreed {
             showErrorAlert(error: "Please agree to the privacy policy.")
@@ -167,6 +216,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     
+    // MARK: Buttons
     @IBAction func signinButtonTapped(_ sender: UIButton) {
         signIn()
     }
@@ -175,7 +225,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         if self.emailTextField.text == "" {
             showErrorAlert(error: "Enter your email so we can send you a link to reset your password.")
             
-        }else if !isValidSchoolEmail(email:self.emailTextField.text!) {
+        }else if !isValidEmail(email:self.emailTextField.text!) {
             showErrorAlert(error: "Enter your school email so we can sent you a password reset link.")
             
         }else{
