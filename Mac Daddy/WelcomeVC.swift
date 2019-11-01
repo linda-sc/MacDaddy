@@ -81,13 +81,13 @@ class WelcomeVC: UIViewController {
             //Unverified information will not be deleted, but it will not be saved.
             FirebaseManager.loginInfo?.saved = false
             print("🔮 Not logged in")
-            self.segueIdentifier = "👉🏼 GoToLogin"
+            self.segueIdentifier = "GoToLogin"
             completed()
             
             //If the user is unverified but saved, take them back to the verification page.
         }else if currentUser?.isEmailVerified == false && FirebaseManager.loginInfo?.saved == true {
             print("🔮 Logged in but unverified")
-            self.segueIdentifier = "👉🏼 skipToVerify"
+            self.segueIdentifier = "SkipToVerify"
             completed()
             
             //If the user is logged in with a verified account, skip the verification page.
@@ -108,7 +108,7 @@ class WelcomeVC: UIViewController {
                         //If they haven't entered their name yet, sent them to setup1.
                         if DataHandler.nameExists == false {
                             print(DataHandler.nameExists)
-                            self.segueIdentifier = "skipToSetup1"
+                            self.segueIdentifier = "SkipToNameVC"
                             completed()
                             
                             //If they've entered their name but not their picture, skip to setup2.
@@ -117,11 +117,13 @@ class WelcomeVC: UIViewController {
 //                            completed()
                             
                             //If they've entered their name and picture, skip to setup3.
+                        } else if UserManager.shared.currentUser?.avatar == nil {
+                            self.segueIdentifier = "SkipToAvatarSetup"
+                            completed()
+                        
                         }else if DataHandler.gradeExists == false {
                             self.segueIdentifier = "skipToSetup3"
                             completed()
-                            
-                            
                             
 //                            //If they've entered everything except their interests, skip to setup4.
 //                        }else if DataHandler.interestsExist == false {
@@ -159,6 +161,8 @@ class WelcomeVC: UIViewController {
     }//End of automaticLogin
     
     
-    @IBAction func unwindToWelcome(segue:UIStoryboardSegue) { }
+    @IBAction func unwindToWelcome(segue: UIStoryboardSegue) {
+        print("Unwind to welcome")
+    }
     
 }//End of class

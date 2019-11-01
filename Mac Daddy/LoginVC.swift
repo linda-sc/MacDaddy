@@ -119,10 +119,13 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     // MARK: Email check
     func isValidEmail(email:String) -> Bool{
         var valid = false
-        if  email.hasSuffix("@bc.edu")
-            || email.hasSuffix("@gmail.com")
-            || email.hasSuffix("@cornell.edu")
         
+//        if  email.hasSuffix("@bc.edu")
+//            || email.hasSuffix("@gmail.com")
+//            || email.hasSuffix("@cornell.edu")
+        
+        if email.contains(find: "@")
+            && email.contains(find: ".")
         {
             valid = true
         }
@@ -195,7 +198,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 })
                 
                 if error == nil {
-                    self.performSegue(withIdentifier: "goToVerify", sender:nil)
+                    self.performSegue(withIdentifier: "GoToVerify", sender:nil)
                     FirebaseManager.isLoggedIn = true
                     FirebaseManager.loginInfo = LoginInfo.init(email:email!, password:password!)
                     FirebaseManager.loginInfo?.saved = false
@@ -209,7 +212,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 }
             }
         }else if !isValidEmail(email: email!) {
-            showErrorAlert(error: "Make sure you use a valid school email.")
+            showErrorAlert(error: "Make sure you use a valid email address.")
         } else if !termsAgreed {
             showErrorAlert(error: "Please agree to the privacy policy.")
         }

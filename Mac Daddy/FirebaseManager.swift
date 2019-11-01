@@ -96,7 +96,7 @@ class FirebaseManager {
     
     //Logout function
     //Log out from the account and don't sign back in automatically until the user signs in again.
-    static func logout(){
+    static func logout(completed: @escaping ()-> ()){
         print("Logging out.")
         let user = Auth.auth().currentUser
         self.loginInfo?.saved = false
@@ -109,17 +109,26 @@ class FirebaseManager {
         
         //Delete the account if it's not verified.
         if user?.isEmailVerified == false {
+            
+            
             user?.delete { error in
                 if let _ = error {
-                    print("Error deleting user")
+                    print("Error deleting user:")
+                    print(error)
+                    completed()
                 } else {
                     print("Unverified user successfully deleted")
+                    UserManager.shared.currentUser = UserObject()
+                    print(FirebaseManager.loginInfo ?? "No login info saved")
+                    completed()
                 }
             }
+        } else {
+            print("Email is verified.")
+            UserManager.shared.currentUser = UserObject()
+            print(FirebaseManager.loginInfo ?? "No login info saved")
+            completed()
         }
-        
-        UserManager.shared.currentUser = UserObject()
-        print(FirebaseManager.loginInfo ?? "No login info saved")
     }
     
     static func deleteUnverifiedUser(){

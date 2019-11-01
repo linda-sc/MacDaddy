@@ -40,9 +40,12 @@ class VerifyVC: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
     @IBAction func backButtonTapped(_ sender:UIButton) {
-        self.performSegue(withIdentifier: "backToLogin", sender: self)
-        FirebaseManager.logout()
+        FirebaseManager.logout{
+            print("Start over button tapped.")
+            print("FirebaseManager.logout")
+        }
 
     }
     
@@ -63,12 +66,12 @@ class VerifyVC: UIViewController, UITextFieldDelegate {
             if (Auth.auth().currentUser?.isEmailVerified) == true {
                 DataHandler.moveVerifiedUserToFirestore()
                 DataHandler.updateEmail(email: (Auth.auth().currentUser?.email)!)
-                self.performSegue(withIdentifier: "goToSetup", sender: self)
+                self.performSegue(withIdentifier: "GoToNameVC", sender: self)
                 FirebaseManager.isEmailVerified = true
                 
             }else{
-                self.didYouClick.text = "Did you click the link in your email? You might have to wait a bit for it to appear."
-                self.continueButton.setTitle("I clicked the link!", for: .normal)
+                self.didYouClick.text = "Try again?"
+                self.continueButton.setTitle("I clicked the link", for: .normal)
                 self.loading.stopAnimating()
             }
         }

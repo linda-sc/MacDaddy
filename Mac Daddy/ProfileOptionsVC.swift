@@ -101,9 +101,10 @@ class ProfileOptionsVC: UIViewController, UIImagePickerControllerDelegate, UINav
     
     
     @IBAction func logoutButtonTapped(_ sender:UIButton){
-        FirebaseManager.logout()
-        print("Logging out...")
-        self.performSegue(withIdentifier: "goToLogin", sender: nil)
+        FirebaseManager.logout{
+            print("Logging out...")
+            self.performSegue(withIdentifier: "goToLogin", sender: nil)
+        }
     }
     
     @IBAction func aboutPressed(_ sender: Any) {

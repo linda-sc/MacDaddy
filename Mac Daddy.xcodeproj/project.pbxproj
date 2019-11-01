@@ -55,6 +55,8 @@
 		BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */; };
 		BF58F4D522DE317A008F69FF /* GradeStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58F4D322DE317A008F69FF /* GradeStatusCell.swift */; };
 		BF58F4D622DE317A008F69FF /* GradeStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF58F4D422DE317A008F69FF /* GradeStatusCell.xib */; };
+		BF5B410E236BBBFC0046A94F /* InputNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B410D236BBBFC0046A94F /* InputNameVC.swift */; };
+		BF5B4110236CB4970046A94F /* CreateAvatarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B410F236CB4970046A94F /* CreateAvatarVC.swift */; };
 		BF628E041FCE1FA200824E87 /* Matching.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF628E031FCE1FA100824E87 /* Matching.swift */; };
 		BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7066FB22AD5A5800129EA9 /* UserManager.swift */; };
 		BF70B6612339B4E900E3A47B /* MessageInterfaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70B6602339B4E900E3A47B /* MessageInterfaceVC.swift */; };
@@ -145,6 +147,8 @@
 		BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF58F4D322DE317A008F69FF /* GradeStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeStatusCell.swift; sourceTree = "<group>"; };
 		BF58F4D422DE317A008F69FF /* GradeStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradeStatusCell.xib; sourceTree = "<group>"; };
+		BF5B410D236BBBFC0046A94F /* InputNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameVC.swift; sourceTree = "<group>"; };
+		BF5B410F236CB4970046A94F /* CreateAvatarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAvatarVC.swift; sourceTree = "<group>"; };
 		BF628E031FCE1FA100824E87 /* Matching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matching.swift; sourceTree = "<group>"; };
 		BF7066FB22AD5A5800129EA9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		BF70B6602339B4E900E3A47B /* MessageInterfaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInterfaceVC.swift; sourceTree = "<group>"; };
@@ -250,7 +254,6 @@
 				BF005BE01FB9FE7300CFE337 /* Home */,
 				BF7CF3412308209E004CEB7A /* World */,
 				BF42392722BD582200340E83 /* User Profile */,
-				BF99DDBC1F1842DD0069F2C5 /* Profile Editing */,
 				BF99DDC11F1E85C30069F2C5 /* Messenger */,
 				BF99DDBE1F1846960069F2C5 /* Effects */,
 			);
@@ -273,6 +276,8 @@
 				BF1EDC4E1EE4A015006CB610 /* FirebaseManager.swift */,
 				BF1082771ED4C793000677A3 /* LoginVC.swift */,
 				BF3B2E161EE43A67002796DE /* VerifyVC.swift */,
+				BF5B410D236BBBFC0046A94F /* InputNameVC.swift */,
+				BF5B410F236CB4970046A94F /* CreateAvatarVC.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 		BF4C29D6218B654D00589E1B /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
+				BF99DDBC1F1842DD0069F2C5 /* Profile Editing */,
 				BF528EEA23401AAA00E7E1E5 /* Legacy.storyboard */,
 				BF2652EE1F18057F0013873F /* DataHandler.swift */,
 				BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */,
@@ -679,6 +685,7 @@
 				BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */,
 				BF310E1C22DC122B006C7D6D /* AvatarView.swift in Sources */,
 				BF4C29D5218B60EA00589E1B /* DataHandler_Observers.swift in Sources */,
+				BF5B410E236BBBFC0046A94F /* InputNameVC.swift in Sources */,
 				BF99DDBB1F183F710069F2C5 /* ProfileOptionsVC.swift in Sources */,
 				BF8603C122C19F6F00BA2608 /* BioCell.swift in Sources */,
 				BF2652EF1F18057F0013873F /* DataHandler.swift in Sources */,
@@ -700,6 +707,7 @@
 				BF57B656228F51A600D500A2 /* MatchManager.swift in Sources */,
 				BF57B650228F487000D500A2 /* FriendshipObject.swift in Sources */,
 				BF57B654228F4B2C00D500A2 /* CommunityObject.swift in Sources */,
+				BF5B4110236CB4970046A94F /* CreateAvatarVC.swift in Sources */,
 				BF1EDC4F1EE4A015006CB610 /* FirebaseManager.swift in Sources */,
 				BF0F0942218D59E400036842 /* ChatSceneVC.swift in Sources */,
 				BF2652ED1F16BB9F0013873F /* PreferencesSetupVC.swift in Sources */,
