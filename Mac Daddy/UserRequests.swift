@@ -86,10 +86,37 @@ class UserRequests: NSObject {
         }
         self.updateFirestoreData(ref: ref, values: userData)
     }
+ 
     
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
-    // MARK: 2. Download an existing user object from firestore.
+    // MARK: 2.1 Insert a new gig object into firestore.
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    
+    func insertGigInFirestore(gigObject: GigObject, gigId: String) {
+        let ref = NetworkConstants().gigObjectPath(gigId: gigId)
+        guard let gigData = gigObject.encodeModelObject() else {
+            print ("Error encoding GigObject")
+            return
+        }
+        self.setFirestoreData(ref: ref, values: gigData)
+    }
+
+    func updateGigInFirestore(userObject: UserObject) {
+        let ref = NetworkConstants().userObjectPath(userId: userObject.uid!)
+        guard let userData = userObject.encodeModelObject() else {
+            print ("Error encoding UserObject")
+            return
+        }
+        self.updateFirestoreData(ref: ref, values: userData)
+    }
+
+    
+    
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    // MARK: 3. Download an existing user object from firestore.
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     func downloadCurrentUserObjectFromFirestore(userId: String) {

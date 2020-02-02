@@ -32,6 +32,7 @@ class NetworkConstants {
     // Firebase Tables Names
     private let users = "Users"
     private let userObjects = "UserObjects"
+    private let gigObjects = "GigObjects"
     
     
     // MARK: - Functions
@@ -43,9 +44,17 @@ class NetworkConstants {
         return firestoreRef.collection(userObjects)
     }
     
+    func gigObjectsPath() -> CollectionReference {
+        return firestoreRef.collection(gigObjects)
+    }
+    
     func userObjectPath(userId: String) -> DocumentReference {
         return firestoreRef.collection(userObjects).document(userId)
     }
+    
+    func gigObjectPath(gigId: String) -> DocumentReference {
+         return firestoreRef.collection(gigObjects).document(gigId)
+     }
 }
 
 

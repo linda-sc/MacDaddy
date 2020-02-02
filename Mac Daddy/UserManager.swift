@@ -23,7 +23,7 @@ class UserManager: NSObject {
     var currentUser: UserObject?
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation!
-    
+        
     //Register new user
     //Sign in user
     

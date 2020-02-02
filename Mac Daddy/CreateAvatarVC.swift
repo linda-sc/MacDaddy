@@ -22,6 +22,7 @@ class CreateAvatarVC: UIViewController {
     
     @IBAction func continueButtonTapped(_ sender: Any) {
         print("Continue tapped.")
+        self.performSegue(withIdentifier: "SkipToHome", sender: nil)
     }
     
     @IBAction func avatarTapped(_ sender: Any) {

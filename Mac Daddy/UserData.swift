@@ -16,6 +16,9 @@ class UserData {
     static var allUserObjects = [UserObject]()
     static var blockedUsers = [Friend]()
     
+    static var currentGigs = [GigObject]()
+
+    
     //Here we're going to write a method exclusively for downloading all the users in Firebase.
     //Is this a good idea? I don't know but let's give it a try.
     //Ok I guess this is a good idea because it worked :)
@@ -25,7 +28,57 @@ class UserData {
     //2. Reformat this dictionary into an array of users
     //3. Pass it to Matching functions that will choose a friend and initiate a conversation.
 
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    // MARK: Downloading gig objects
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+
+    static func downloadAllGigObjects(completed: @escaping ()-> ()) {
+        print("🦋 Downloading all UserObjects...")
+        
+        //Overwrite previous data.
+        currentGigs = [GigObject]()
+        
+        DataHandler.db.collection("GigObjects").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("💥 Error getting gigs: \(err)")
+            } else {
+                //Then don't download any new users that have been blocked
+                   for document in querySnapshot!.documents {
+                       print("\(document.documentID) => \(document.data())")
+                       let data = document.data() as NSDictionary
+                       
+                       if (!JSONSerialization.isValidJSONObject(data)) {
+                           print("is not a valid json object")
+                           return
+                       }
+                       
+                    if let gigObject = decode(json: data, obj: GigObject.self) {
+                        currentGigs.append(gigObject)
+
+                    } else {
+                        print("Could not decode gig object")
+                    }
+                       
+                       
+                   }//End of querySnapshot
+                   print("🦋 Downloaded all GigObjects.")
+                   completed()
+            }
+        }
+        
+    }//End of downloading user objects.
     
+    
+    
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    // MARK: Downloading user objects
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+
+
     static func downloadAllUserObjects(completed: @escaping ()-> ()) {
         print("🦋 Downloading all UserObjects...")
         

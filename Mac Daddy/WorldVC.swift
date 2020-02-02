@@ -23,6 +23,7 @@ class WorldVC: UIViewController, UICollectionViewDelegateFlowLayout {
         //Register Nibs
         worldCollection.register(UINib.init(nibName: "MapCell", bundle: nil), forCellWithReuseIdentifier: "MapCell")
         worldCollection.register(UINib.init(nibName: "UserCell", bundle: nil), forCellWithReuseIdentifier: "UserCell")
+                worldCollection.register(UINib.init(nibName: "GigCell", bundle: nil), forCellWithReuseIdentifier: "GigCell")
         
         //Set layout
         if let flow = worldCollection.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -31,13 +32,22 @@ class WorldVC: UIViewController, UICollectionViewDelegateFlowLayout {
         let flowLayout = BouncyLayout(style: .prominent)
         self.worldCollection.setCollectionViewLayout(flowLayout, animated: true)
         
-        UserData.downloadAllUsers {
+//        UserData.downloadAllUsers {
+//            self.worldCollection.reloadData()
+//        }
+        UserData.downloadAllGigObjects {
             self.worldCollection.reloadData()
         }
+        
+        
     }
     
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func postButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "GoToPostGig", sender: nil)
     }
     
 }
@@ -54,8 +64,7 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
             //Map Cell
             return 1
         default:
-            return UserData.allUsers.count
-            //Return all the world messages
+            return UserData.currentGigs.count
         }
     }
     
@@ -68,12 +77,21 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
             return cell
             
         default:
-            let cell = worldCollection.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath) as! UserCell
+//            let cell = worldCollection.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath) as! UserCell
+//            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+//            self.setStructure(for: cell)
+//            cell.titleLabel.text = UserData.allUsers[indexPath.row].name
+//            cell.gradeLabel.text = UserData.allUsers[indexPath.row].grade
+//            return cell
+            
+            let cell = worldCollection.dequeueReusableCell(withReuseIdentifier: "GigCell", for: indexPath) as! GigCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
-            cell.titleLabel.text = UserData.allUsers[indexPath.row].name
-            cell.gradeLabel.text = UserData.allUsers[indexPath.row].grade
+            
+            let gig = UserData.currentGigs[indexPath.row]
+            cell.textLabel.text = gig.text
             return cell
+        
         }
     }
     
@@ -102,8 +120,16 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
             return CGSize(width: width, height: height)
         default:
             //User Cell
+//            let width = view.bounds.width - 16
+//            let height: CGFloat = 60
+//            return CGSize(width: width, height: height)
+            
+            //Gig Cell
             let width = view.bounds.width - 16
-            let height: CGFloat = 60
+            let text = "Selling two large mattresses that are not allowed in BC dorms"
+            //20 from left + 3 from avatar view + 70 avatar view.
+            let margin: CGFloat = 93
+            let height: CGFloat = estimateFrameForText(text: text, width: width, margin: margin).height + 100
             return CGSize(width: width, height: height)
         }
     }
@@ -111,11 +137,11 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
     /****************************************************************/
     // Estimates cell height
     /****************************************************************/
-    func estimateFrameForText(text: String) -> CGRect {
+    func estimateFrameForText(text: String, width: CGFloat, margin: CGFloat) -> CGRect {
         //we make the height arbitrarily large so we don't undershoot height in calculation
         let height: CGFloat = 1000
         //Set the width to the width of the text in the cell.
-        let width: CGFloat = 250
+        let width: CGFloat = width - margin
         
         let size = CGSize(width: width, height: height)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
@@ -127,5 +153,8 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
     }
+    
+    
+    
 }
 
