@@ -98,6 +98,9 @@ class WelcomeVC: UIViewController {
             Auth.auth().signIn(withEmail: info.email, password: info.password) {
                 (user, error) in
                 
+                //Assign uid to UserObject as soon as you log in.
+                UserManager.shared.currentUser?.uid = Auth.auth().currentUser?.uid
+                
                 //Check that user isn't nil
                 if user != nil {
                     print("🙋🏻 User found")

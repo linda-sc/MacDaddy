@@ -42,6 +42,15 @@ extension Encodable {
     
 }
 
+
+extension Encodable {
+    func toJSONData() -> Data? {
+        return try? JSONEncoder().encode(self)
+    }
+}
+
+
+
 //Decoding syntax: let newsFeedResponse = decode(json: response, obj: FetchNewsFeed.self)
 
 func decode<T: Decodable>(json: Any, obj: T.Type) -> T? {

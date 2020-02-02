@@ -54,16 +54,22 @@ class AvatarView: UIView {
         contentView.backgroundColor = UIColor.clear
         contentView.isOpaque = false
         
-        //self.avatarObject = AvatarObject.loadDefaultAvatar()
-        //displayRandomAvatar()
         displayAvatar(avatar: self.avatarObject)
         
     }
     
+    //MARK: Display Avatar from object
     func displayAvatar(avatar: AvatarObject?) {
+        
+        print("DISPLAYING AVATAR")
+        print("Avatar: \(avatar)")
+        print("Base color: \(avatar?.baseColor)")
+
+        
         if avatar == nil {
             displayRandomAvatar()
         } else {
+            
             //Pull out all the right elements from the object
             hair.image = UIImage(named: avatar!.hair ?? "hair1")
             hairBack.image = UIImage(named: avatar!.hairBack ?? "hairBack1")
@@ -107,6 +113,9 @@ class AvatarView: UIView {
     }
     
     
+    //MARK: Display random avatar fallback
+    //Maybe should be gray or something here
+
     //Fallback for people who don't have avatars.
     func displayRandomAvatar() {
         //let hairColor = UIColor(red: 0.99, green: 0.24, blue: 0.56, alpha: 1.00)

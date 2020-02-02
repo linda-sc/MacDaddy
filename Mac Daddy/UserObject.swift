@@ -134,6 +134,7 @@ class UserObject: NSObject, Codable {
         case accountCreationDate
         case userPlatform
         case credentialsProvider
+        case avatar
 
         //2. Onboarding information
         case termsAndCond
@@ -228,8 +229,9 @@ class UserObject: NSObject, Codable {
             }
         }
         
-        
-        
+        //Converting avatar JSON into an avatar object is automatic.
+        avatar = try container.decodeIfPresent(AvatarObject.self, forKey: .avatar)
+
         //2. Onboarding information
         termsAndCond = try container.decodeIfPresent(Bool.self, forKey: .termsAndCond)
         over13 = try container.decodeIfPresent(Bool.self, forKey: .over13)
@@ -308,6 +310,8 @@ class UserObject: NSObject, Codable {
         try container.encodeIfPresent(accountCreationDate, forKey: .accountCreationDate)
         try container.encodeIfPresent(userPlatform, forKey: .userPlatform)
         try container.encodeIfPresent(credentialsProvider, forKey: .credentialsProvider)
+        try container.encodeIfPresent(avatar, forKey: .avatar)
+
         
         //2. Onboarding information
         try container.encodeIfPresent(termsAndCond, forKey: .termsAndCond)
@@ -330,9 +334,14 @@ class UserObject: NSObject, Codable {
         //4. Realtime Information
         try container.encodeIfPresent(currentMatchID, forKey: .currentMatchID)
         try container.encodeIfPresent(active, forKey: .active)
+        
         //Convert the date into a string to make it JSON encodable
         let lastActiveString = lastActive?.dateToDateTimeString()
         try container.encodeIfPresent(lastActiveString, forKey: .lastActive)
+        
+        //Converting avatar object into JSON is automatic.
+        try container.encodeIfPresent(avatar, forKey: .avatar)
+
         try container.encodeIfPresent(latitude, forKey: .latitude)
         try container.encodeIfPresent(longitude, forKey: .longitude)
         try container.encodeIfPresent(message, forKey: .message)

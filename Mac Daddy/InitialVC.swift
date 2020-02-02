@@ -12,6 +12,7 @@ import UIKit
 class InitialVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
+        UserManager.shared.currentUser = UserObject()
         self.performSegue(withIdentifier: "GoToOnboardingStoryboard", sender: self)
               print("Going to onboarding storyboard.")
     }

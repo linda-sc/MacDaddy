@@ -14,7 +14,7 @@ class BasicInfoCell: UICollectionViewCell {
     @IBOutlet weak var orgTag: UILabel!
     @IBOutlet weak var nameTag: UILabel!
     @IBOutlet weak var emailTag: UILabel!
-    @IBOutlet weak var avatarView: UIView!
+    @IBOutlet weak var avatarView: AvatarView!
     
     
     override func awakeFromNib() {
@@ -35,6 +35,8 @@ class BasicInfoCell: UICollectionViewCell {
         orgTag.text = UserManager.shared.currentUser?.organization
         nameTag.text = UserManager.shared.currentUser?.firstName //Last name not available atm
         emailTag.text = UserManager.shared.currentUser?.email
+        avatarView.avatarObject = UserManager.shared.currentUser?.avatar
+        avatarView.displayAvatar(avatar: UserManager.shared.currentUser?.avatar)
     }
     
     func loadForUser(friend: Friend, userObject: UserObject) {

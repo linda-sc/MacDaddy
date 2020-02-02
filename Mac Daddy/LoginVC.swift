@@ -38,7 +38,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         self.emailTextField.tag = 0
         self.passwordTextField.delegate = self
         self.passwordTextField.tag = 1
-        
+                
     }
     
     //Make the status bar white.
@@ -158,13 +158,18 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             print("Signing in...")
             //Sign in the user with Firebase
             Auth.auth().signIn(withEmail: email!, password: password!) {
+                
                 (user, error) in
+                
+                //Assign uid to UserObject as soon as you log in.
+                UserManager.shared.currentUser?.uid = Auth.auth().currentUser?.uid
                 
                 //Sync everything up from Firebase
                 DataHandler.checkData{}
                 
                 if error == nil {
                     if FirebaseManager.isEmailVerified{
+                        
                         FirebaseManager.isLoggedIn = true
                         FirebaseManager.loginInfo = LoginInfo.init(email:email!, password:password!)
                         
@@ -202,6 +207,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     FirebaseManager.isLoggedIn = true
                     FirebaseManager.loginInfo = LoginInfo.init(email:email!, password:password!)
                     FirebaseManager.loginInfo?.saved = false
+                    UserManager.shared.currentUser?.email = email!
+
                     print("Unverified account created")
                     
                 }else{

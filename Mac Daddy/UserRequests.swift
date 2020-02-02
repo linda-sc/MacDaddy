@@ -132,7 +132,9 @@ class UserRequests: NSObject {
                         UserManager.shared.currentUser = currentUser
                         print("Successfully downloaded current user object.")
                     } else {
-                        print("UserObject data is nil")
+                        print("UserObject data is nil. Initializing empty UserObject.")
+                        UserManager.shared.currentUser = UserObject()
+
                     }
                 } else {
                     //If the user has just logged into the new version for the first time, then import their info from DataHandler and make them a new UserObject.

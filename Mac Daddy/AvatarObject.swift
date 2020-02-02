@@ -256,6 +256,8 @@ public enum ColorStyle {
 
 extension AvatarObject {
     
+    
+    //MARK: Load default avatar
     static func loadDefaultAvatar() -> AvatarObject {
         
         let newAvatar = AvatarObject()
@@ -320,6 +322,8 @@ extension AvatarObject {
         return newAvatar
     }
     
+    //MARK: Create random avatar
+
     static func createRandomAvatar() -> AvatarObject {
         
         let newAvatar = AvatarObject()

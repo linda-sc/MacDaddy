@@ -44,6 +44,7 @@ class NetworkConstants {
         return firestoreRef.collection(userObjects)
     }
     
+
     func gigObjectsPath() -> CollectionReference {
         return firestoreRef.collection(gigObjects)
     }
