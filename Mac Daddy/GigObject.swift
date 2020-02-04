@@ -35,6 +35,8 @@ class GigObject: NSObject, Codable {
     var email: String?
     var organization: String?
     var text: String?
+    var timeStamp: Date?
+
     
     var avatar: AvatarObject?
 
@@ -62,6 +64,7 @@ class GigObject: NSObject, Codable {
         case email
         case organization
         case text
+        case timeStamp
 
         case firstName
         case lastName
@@ -104,6 +107,19 @@ class GigObject: NSObject, Codable {
         email = try container.decodeIfPresent(String.self, forKey: .email)
         organization  = try container.decodeIfPresent(String.self, forKey: .organization)
         text  = try container.decodeIfPresent(String.self, forKey: .text)
+        
+        //Convert the date string into a date object.
+         let timeStampString = try container.decodeIfPresent(String.self, forKey: .timeStamp)
+         let dateTimeFormatter = DateFormatter.iso8601Full
+         if let date = dateTimeFormatter.date(from: timeStampString ?? "") {
+             timeStamp = date
+         } else {
+             if timeStampString != nil {
+                 throw DecodingError.dataCorruptedError(forKey: .timeStamp,
+                                                        in: container,
+                                                        debugDescription: "Time stamp date string does not match format expected by formatter.")
+             }
+         }
 
         //3. Custom Information
         firstName = try container.decodeIfPresent(String.self, forKey: .firstName)
@@ -133,6 +149,10 @@ class GigObject: NSObject, Codable {
         try container.encodeIfPresent(email, forKey: .email)
         try container.encodeIfPresent(organization, forKey: .organization)
         try container.encodeIfPresent(text, forKey: .text)
+        
+        //Convert the date into a string to make it JSON encodable
+        let timeStampString = timeStamp?.dateToDateTimeString()
+        try container.encodeIfPresent(timeStampString, forKey: .timeStamp)
 
         //3. Custom Information
         try container.encodeIfPresent(firstName, forKey: .firstName)

@@ -63,6 +63,13 @@ class UserData {
                        
                        
                    }//End of querySnapshot
+                
+                    //Sort gigs by time
+                    currentGigs = currentGigs.sorted(by: {
+                        $0.timeStamp?.compare($1.timeStamp ?? Date()) == .orderedDescending
+                    })
+                
+                
                    print("🦋 Downloaded all GigObjects.")
                    completed()
             }

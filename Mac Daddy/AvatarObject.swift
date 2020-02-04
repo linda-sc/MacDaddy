@@ -15,6 +15,12 @@ class AvatarObject: NSObject, Codable {
     // MARK: I. Variables
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
+    
+    
+    //Categorical: Base color, features styles, clothing
+    //Continuous: Skin lumosity, Hair lumosity
+    
+    
     var uid: String?
     
     var baseColor: String?
@@ -450,10 +456,48 @@ extension AvatarObject {
             newAvatar.rightArmShadow = "rightArmShadow3"
         }
         
-        
         return newAvatar
     }
     
+    
+    func changeBaseColor(){
+        //Generate random color
+        let random = Int.randomIntInRange(lower: 0, upper: 4)
+        switch random {
+        case 0:
+            self.baseColor = ColorStyle.strawberry.baseColor
+        case 1:
+            self.baseColor = ColorStyle.magic.baseColor
+        case 2:
+            self.baseColor = ColorStyle.dream.baseColor
+        case 3:
+            self.baseColor = ColorStyle.royal.baseColor
+        case 4:
+            self.baseColor = ColorStyle.icy.baseColor
+        default:
+            print("Error picking base color")
+        }
+    }
+    
+    func changeShirt(){
+        //Note: left and right correspond to the body of the avatar, not the viewer.
+           let randomBody = Int.randomIntInRange(lower: 1, upper: 2)
+           switch randomBody {
+           case 1:
+               self.shirt = "shirt1"
+               self.leftArm = "leftArm1"
+               self.leftArmShadow = "leftArmShadow1"
+               self.rightArm = "rightArm1"
+               self.rightArmShadow = "rightArmShadow1"
+           default:
+               self.shirt = "shirt3"
+               self.leftArm = "leftArm3"
+               self.leftArmShadow = "leftArmShadow3"
+               self.rightArm = "rightArm3"
+               self.rightArmShadow = "rightArmShadow3"
+           }
+        
+    }
     
     
 }

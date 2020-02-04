@@ -16,4 +16,6 @@ class GigCell: UICollectionViewCell {
     }
 
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
 }

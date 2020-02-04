@@ -35,11 +35,17 @@ class WorldVC: UIViewController, UICollectionViewDelegateFlowLayout {
 //        UserData.downloadAllUsers {
 //            self.worldCollection.reloadData()
 //        }
+//        UserData.downloadAllGigObjects {
+//            self.worldCollection.reloadData()
+//        }
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         UserData.downloadAllGigObjects {
             self.worldCollection.reloadData()
         }
-        
-        
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -90,6 +96,8 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
             
             let gig = UserData.currentGigs[indexPath.row]
             cell.textLabel.text = gig.text
+            cell.dateLabel.text = gig.timeStamp?.getElapsedInterval()
+            
             return cell
         
         }
@@ -125,8 +133,11 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
 //            return CGSize(width: width, height: height)
             
             //Gig Cell
+            let gig = UserData.currentGigs[indexPath.row]
             let width = view.bounds.width - 16
-            let text = "Selling two large mattresses that are not allowed in BC dorms"
+            let text = gig.text ?? ""
+            
+            print()
             //20 from left + 3 from avatar view + 70 avatar view.
             let margin: CGFloat = 93
             let height: CGFloat = estimateFrameForText(text: text, width: width, margin: margin).height + 100

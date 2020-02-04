@@ -58,12 +58,12 @@ class AvatarView: UIView {
         
     }
     
-    //MARK: Display Avatar from object
+    //MARK: Display Avatar from object. Again, only about rendering.
     func displayAvatar(avatar: AvatarObject?) {
         
-        print("DISPLAYING AVATAR")
-        print("Avatar: \(avatar)")
-        print("Base color: \(avatar?.baseColor)")
+        print("DISPLAYING AVATAR...")
+        print("Avatar: \(String(describing: avatar))")
+        print("Base color: \(String(describing: avatar?.baseColor))")
 
         
         if avatar == nil {
@@ -91,6 +91,8 @@ class AvatarView: UIView {
                 avatarObject?.eyebrowTone = hairColor.darker(by: 10)?.toHex()
                 hair.setImageColor(color: hairColor)
                 hairBack.setImageColor(color: hairColor.darker(by: 5) ?? hairColor)
+            } else {
+                print("hair color doesn't exist")
             }
             
             //Adjust skin based on lumosity
@@ -107,13 +109,15 @@ class AvatarView: UIView {
                 faceShadow.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
                 leftArmShadow.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
                 rightArmShadow.setImageColor(color: skinColor.darker(by: 10) ?? skinColor)
+            } else {
+                print("skin color doesn't exist")
             }
             mouth.setImageColor(color: UIColor.white)
         }
     }
     
     
-    //MARK: Display random avatar fallback
+    //MARK: Display random avatar fallback: Only about rendering. NO Object creation here.
     //Maybe should be gray or something here
 
     //Fallback for people who don't have avatars.
@@ -124,11 +128,9 @@ class AvatarView: UIView {
         self.avatarObject = AvatarObject.createRandomAvatar()
         if avatarObject != nil {
             
-            //avatarObject?.baseColor = UIColor.random().toHex()
-            //RANDOM TIME
-            
             avatarObject?.hairLuminosity = Int.randomIntInRange(lower: -50, upper: 50)
             avatarObject?.skinLuminosity = Int.randomIntInRange(lower: -30, upper: 30)
+            
             
             let randomHair = Int.randomIntInRange(lower: 1, upper: 6)
             switch randomHair {

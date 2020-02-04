@@ -31,7 +31,7 @@ import Firebase
 class UserRequests: NSObject {
     
     //////////////////////////////////////////////////
-    // MARK: 1. Inserting data anywhere in Firestore
+    // MARK: 1. Update data anywhere in Firestore
     //////////////////////////////////////////////////
     
     //Update data at any document in Cloud Firestore
@@ -190,5 +190,22 @@ class UserRequests: NSObject {
             failure?(error)
         }
     }
+    
+    
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    // MARK: 5. Save Avatar
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    func saveAvatar(){
+        print("SAVING AVATAR:")
+        if UserManager.shared.currentUser != nil {
+            UserRequests().updateUserInFirestore(userObject: UserManager.shared.currentUser!)
+            print(UserManager.shared.currentUser!.avatar)
+        } else {
+            print("Current user is nil.")
+        }
+    }
+    
 }
 

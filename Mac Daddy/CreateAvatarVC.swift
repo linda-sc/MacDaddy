@@ -26,7 +26,7 @@ class CreateAvatarVC: UIViewController {
     
     @IBAction func continueButtonTapped(_ sender: Any) {
         print("Continue tapped.")
-        saveAvatar()
+        UserRequests().saveAvatar()
         self.performSegue(withIdentifier: "SkipToHome", sender: nil)
     }
     
@@ -50,17 +50,5 @@ class CreateAvatarVC: UIViewController {
         print("Avatar rotated.")
 
     }
-    
-    func saveAvatar(){
-        print("SAVING AVATAR:")
-        if let currentUser = UserManager.shared.currentUser {
-            UserRequests().updateUserInFirestore(userObject: UserManager.shared.currentUser!)
-            print(UserManager.shared.currentUser!.avatar)
-        } else {
-            print("Current user is nil.")
-        }
-        
-    }
-    
     
 }

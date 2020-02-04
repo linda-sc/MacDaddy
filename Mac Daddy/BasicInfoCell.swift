@@ -31,6 +31,7 @@ class BasicInfoCell: UICollectionViewCell {
         orgTag.clipsToBounds = true
     }
     
+    
     func loadForCurrentUser() {
         orgTag.text = UserManager.shared.currentUser?.organization
         nameTag.text = UserManager.shared.currentUser?.firstName //Last name not available atm

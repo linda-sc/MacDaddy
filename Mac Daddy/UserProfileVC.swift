@@ -248,6 +248,15 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
         }
     }
     
+    @IBAction func unwindFromEditAvatar(segue: SegueToLeft) {
+        if let selectedIndexPath = optionsCollection.indexPathsForSelectedItems?.first {
+            print("New Avatar: \(UserManager.shared.currentUser?.avatar ?? AvatarObject())")
+            print("Selected index path: \(selectedIndexPath)")
+            optionsCollection.reloadItems(at: [selectedIndexPath])
+        }
+    }
+
+
     @IBAction func unwindFromEditShortBio(segue: SegueToLeft) {
         //let source = segue.source as! EditShortBioVC
         if let selectedIndexPath = optionsCollection.indexPathsForSelectedItems?.first {

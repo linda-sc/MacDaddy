@@ -56,6 +56,7 @@ class PostGigVC: UIViewController, UITextViewDelegate {
         gigObject.email = email
         gigObject.venmo = venmo
         gigObject.text = text
+        gigObject.timeStamp = Date()
         
         let gigId = self.createGigID()
     
