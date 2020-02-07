@@ -363,19 +363,19 @@ extension AvatarObject {
             newAvatar.hairBack = "hairBack1"
         case 2:
             newAvatar.hair = "hair2"
-            newAvatar.hairBack = ""
+            newAvatar.hairBack = "blankAvatarAsset"
         case 3:
             newAvatar.hair = "hair3"
-            newAvatar.hairBack = ""
+            newAvatar.hairBack = "blankAvatarAsset"
         case 4:
             newAvatar.hair = "hair4"
-            newAvatar.hairBack = ""
+            newAvatar.hairBack = "blankAvatarAsset"
         case 5:
             newAvatar.hair = "hairGrace"
             newAvatar.hairBack = "hairBack2"
         default:
             newAvatar.hair = "hairLia"
-            newAvatar.hairBack = ""
+            newAvatar.hairBack = "blankAvatarAsset"
         }
         
         //Random face
@@ -399,9 +399,9 @@ extension AvatarObject {
         newAvatar.eyeTone = ""
         newAvatar.eyebrowTone = ""
         
-        newAvatar.eyes = ""
-        newAvatar.irises = ""
-        newAvatar.eyeBags = ""
+        newAvatar.eyes = "blankAvatarAsset"
+        newAvatar.irises = "blankAvatarAsset"
+        newAvatar.eyeBags = "blankAvatarAsset"
         newAvatar.eyeSize = 1.0
         newAvatar.eyeHeight = 1.0
         newAvatar.eyeWidth = 1.0
@@ -435,7 +435,7 @@ extension AvatarObject {
             newAvatar.mouth = "mouth4"
             newAvatar.mouthShadow = "mouthShadow4"
         default:
-            newAvatar.mouth = ""
+            newAvatar.mouth = "blankAvatarAsset"
             newAvatar.mouthShadow = "mouthShadowPout"
         }
 

@@ -59,6 +59,7 @@ class AvatarView: UIView {
     }
     
     //MARK: Display Avatar from object. Again, only about rendering.
+    //This is the function that isn't working.
     func displayAvatar(avatar: AvatarObject?) {
         
         print("DISPLAYING AVATAR...")
@@ -87,6 +88,7 @@ class AvatarView: UIView {
             
             //Adjust the hair based on lumosity
             if let hairColor = avatarObject?.baseColor?.toRGB()?.adjust(by: CGFloat(avatarObject?.hairLuminosity ?? 0)) {
+                 print("Setting hair color")
                 avatarObject?.hairTone = hairColor.toHex()
                 avatarObject?.eyebrowTone = hairColor.darker(by: 10)?.toHex()
                 hair.setImageColor(color: hairColor)

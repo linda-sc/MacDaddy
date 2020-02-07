@@ -189,7 +189,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 }
             }
             
-            //If it's not sign in, it's register.
+        //If it's not sign in, it's register.
+        //MARK: Register
         } else if isValidEmail(email: email!) && termsAgreed{
             print("Registering...")
             //Register the user with Firebase if the information is valid
@@ -207,6 +208,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     FirebaseManager.isLoggedIn = true
                     FirebaseManager.loginInfo = LoginInfo.init(email:email!, password:password!)
                     FirebaseManager.loginInfo?.saved = false
+                    UserManager.shared.currentUser?.email = Auth.auth().currentUser?.uid
                     UserManager.shared.currentUser?.email = email!
 
                     print("Unverified account created")

@@ -44,6 +44,7 @@ class WelcomeVC: UIViewController {
         }
     }
     
+    //MARK: Animation
     func animateLoading(completed: @escaping ()-> ()){
         var images = [UIImage]()
         for count in 1...64 {
@@ -70,11 +71,14 @@ class WelcomeVC: UIViewController {
         super.viewDidAppear(animated)
     }
     
+    
+    //MARK: Auto Login
     func automaticLogin(completed: @escaping ()-> ()) {
         
         //Firebase login
         let currentUser = Auth.auth().currentUser
         
+        //MARK: Case 1: No stored login info
         //If the user is unverified and unsaved, go directly to the login scene.
         if currentUser?.isEmailVerified == false && FirebaseManager.loginInfo?.saved == false {
             //You cannot access the home page without a verified account.
@@ -84,62 +88,92 @@ class WelcomeVC: UIViewController {
             self.segueIdentifier = "GoToLogin"
             completed()
             
-            //If the user is unverified but saved, take them back to the verification page.
+        //MARK: Case 2: Logged in but unverified
+        //If the user is unverified but saved, take them back to the verification page.
         }else if currentUser?.isEmailVerified == false && FirebaseManager.loginInfo?.saved == true {
             print("🔮 Logged in but unverified")
             self.segueIdentifier = "SkipToVerify"
             completed()
-            
-            //If the user is logged in with a verified account, skip the verification page.
+        
+        //MARK: Case 3: Logged in and verified
+        //If the user is logged in with a verified account, skip the verification page.
         }else if currentUser?.isEmailVerified == true && FirebaseManager.loginInfo?.saved == true, let info = FirebaseManager.loginInfo{
             print("🔮 User is saved and verified,")
             print("👉🏼 Automatically logging in")
             //Automatic login process:
+            //MARK: Step 1: Firebase login
             Auth.auth().signIn(withEmail: info.email, password: info.password) {
                 (user, error) in
                 
                 //Assign uid to UserObject as soon as you log in.
+                //MARK: Step 2: Use Auth UID to pull user data
                 UserManager.shared.currentUser?.uid = Auth.auth().currentUser?.uid
                 
                 //Check that user isn't nil
                 if user != nil {
                     print("🙋🏻 User found")
                     
+                    let myUid = Auth.auth().currentUser?.uid ?? ""
+                    UserRequests().fetchUserObject(userID: myUid, success: { (result) in
+                        if let userObject = result as? UserObject {
+                             UserManager.shared.currentUser = userObject
+                            
+                            //Redirect using UserManager
+                            if userObject.firstName == nil {
+                                self.segueIdentifier = "SkipToNameVC"
+                                completed()
+
+                            } else if userObject.avatar == nil {
+                                self.segueIdentifier = "SkipToAvatarSetup"
+                                completed()
+
+                            }else{
+                                self.segueIdentifier = "SkipToHome"
+                                completed()
+                            }
+                            
+                        }
+                    }) { (error) in
+                        self.segueIdentifier = "GoToLogin"
+                        completed()
+                        print("Couldn't fetch user object.")
+                    }
+                    
+                    
                     //If they haven't finished the setup yet, send them to where they left off.
+                    //MARK: Step 3: Take DataHandler snapshot (Deprecated!)
                     DataHandler.checkData {
                         
-                        //If they haven't entered their name yet, sent them to setup1.
-                        if DataHandler.nameExists == false {
-                            print(DataHandler.nameExists)
-                            self.segueIdentifier = "SkipToNameVC"
-                            completed()
-                            
-                            //If they've entered their name but not their picture, skip to setup2.
-//                        }else if DataHandler.picExists == false {
-//                            self.segueIdentifier = "skipToSetup2"
+//                        //If they haven't entered their name yet, sent them to setup1.
+//                        if DataHandler.nameExists == false {
+//                            print(DataHandler.nameExists)
+//                            self.segueIdentifier = "SkipToNameVC"
 //                            completed()
-                            
-                            //If they've entered their name and picture, skip to setup3.
-                        } else if UserManager.shared.currentUser?.avatar == nil {
-                            self.segueIdentifier = "SkipToAvatarSetup"
-                            completed()
-                        
-                        }else if DataHandler.gradeExists == false {
-                            self.segueIdentifier = "skipToSetup3"
-                            completed()
-                            
-//                            //If they've entered everything except their interests, skip to setup4.
-//                        }else if DataHandler.interestsExist == false {
-//                            self.segueIdentifier = "skipToSetup4"
+//
+//                            //If they've entered their name but not their picture, skip to setup2.
+////                        }else if DataHandler.picExists == false {
+////                            self.segueIdentifier = "skipToSetup2"
+////                            completed()
+//
+//                            //If they've entered their name and picture, skip to setup3.
+//                        } else if UserManager.shared.currentUser?.avatar == nil {
+//                            self.segueIdentifier = "SkipToAvatarSetup"
 //                            completed()
-//                    
-                            
-                            
-                            //Otherwise just go to the home screen.
-                        }else{
-                            self.segueIdentifier = "SkipToHome"
-                            completed()
-                        }
+//
+//                        }else if DataHandler.gradeExists == false {
+//                            self.segueIdentifier = "skipToSetup3"
+//                            completed()
+//
+////                            //If they've entered everything except their interests, skip to setup4.
+////                        }else if DataHandler.interestsExist == false {
+////                            self.segueIdentifier = "skipToSetup4"
+////                            completed()
+////
+//                            //Otherwise just go to the home screen.
+//                        }else{
+//                            self.segueIdentifier = "SkipToHome"
+//                            completed()
+//                        }
                         //If the user is nil somehow, send them back to the login.
                         
                         //Check data also saves our friends into DH as dictionary
@@ -147,6 +181,7 @@ class WelcomeVC: UIViewController {
                         
                         DataHandler.friendList = DataHandler.friendDictionaryToList(friends: DataHandler.friends as! [String : [String : String]])
                     }
+                
                     
                 }else{
                     self.segueIdentifier = "GoToLogin"
@@ -156,6 +191,7 @@ class WelcomeVC: UIViewController {
             }
             
         }else{
+            //MARK: Case 4: Not logged in for some other reason
             //If you're not already logged in, directly segue to the login screen.
             print("Not logged in")
             self.segueIdentifier = "GoToLogin"

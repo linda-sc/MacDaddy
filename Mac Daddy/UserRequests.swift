@@ -79,7 +79,8 @@ class UserRequests: NSObject {
     }
     
     func updateUserInFirestore(userObject: UserObject) {
-        let ref = NetworkConstants().userObjectPath(userId: userObject.uid!)
+        let uid = userObject.uid ?? Auth.auth().currentUser?.uid ?? ""
+        let ref = NetworkConstants().userObjectPath(userId: uid)
         guard let userData = userObject.encodeModelObject() else {
             print ("Error encoding UserObject")
             return
