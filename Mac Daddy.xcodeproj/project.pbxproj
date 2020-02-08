@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B373D4C222C6FC8D0051896F /* EditGradeStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */; };
-		B397D96E23EF1EF700ABE94F /* EditHandlesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B397D96D23EF1EF700ABE94F /* EditHandlesVC.swift */; };
-		B397D97023EF25E200ABE94F /* HandleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B397D96F23EF25E200ABE94F /* HandleCell.swift */; };
-		B397D97423EF298200ABE94F /* HandleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B397D97323EF298200ABE94F /* HandleCell.xib */; };
 		BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */; };
 		BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */; };
 		BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */; };
@@ -451,8 +448,8 @@
 			isa = PBXGroup;
 			children = (
 				BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */,
-				BF1EDC511EE60CAF006CB610 /* WelcomeVC.swift */,
 				BF528EE8234010A300E7E1E5 /* InitialVC.swift */,
+				BF1EDC511EE60CAF006CB610 /* WelcomeVC.swift */,
 			);
 			name = Launch;
 			sourceTree = "<group>";

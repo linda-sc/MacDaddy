@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HandleCell" id="gTV-IL-0wX" userLabel="HandleCell" customClass="HandleCell" customModule="Mac_Daddy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="305" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="305" height="120"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy Background_DarkMode" translatesAutoresizingMaskIntoConstraints="NO" id="RrD-jO-A8m">
+                        <rect key="frame" x="0.0" y="0.0" width="305" height="120"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Venmo Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxG-8M-F1e">
+                        <rect key="frame" x="20" y="10" width="94" height="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" red="0.32587264249999998" green="0.32457951600000001" blue="0.57140307739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Something" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSE-zC-UgT" userLabel="Handle Content Label">
+                        <rect key="frame" x="20" y="35" width="265" height="72"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.30325236950000001" green="0.31436034019999998" blue="0.89706932110000004" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PxG-8M-F1e" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="02G-F2-QEx"/>
+                <constraint firstAttribute="trailing" secondItem="VSE-zC-UgT" secondAttribute="trailing" constant="20" id="AUo-eM-pve"/>
+                <constraint firstItem="RrD-jO-A8m" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FXx-zN-G5J"/>
+                <constraint firstItem="VSE-zC-UgT" firstAttribute="top" secondItem="PxG-8M-F1e" secondAttribute="bottom" constant="8" id="iKl-wc-lyK"/>
+                <constraint firstAttribute="bottom" secondItem="RrD-jO-A8m" secondAttribute="bottom" id="jj8-bf-R9L"/>
+                <constraint firstAttribute="bottom" secondItem="VSE-zC-UgT" secondAttribute="bottom" constant="20" id="mVL-LW-kHf"/>
+                <constraint firstItem="VSE-zC-UgT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="nze-aQ-iZ7"/>
+                <constraint firstItem="PxG-8M-F1e" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="y2l-3V-lgq"/>
+                <constraint firstItem="RrD-jO-A8m" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yeu-w1-uoI"/>
+                <constraint firstAttribute="trailing" secondItem="RrD-jO-A8m" secondAttribute="trailing" id="z6L-L8-v5n"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="305" height="120"/>
+            <connections>
+                <outlet property="shortBioContentLabel" destination="VSE-zC-UgT" id="j6Y-O5-uP0"/>
+            </connections>
+            <point key="canvasLocation" x="184.78260869565219" y="79.017857142857139"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="MacDaddy Background_DarkMode" width="1242" height="2208"/>
+    </resources>
+</document>
