@@ -58,6 +58,8 @@ class VerifyVC: UIViewController, UITextFieldDelegate {
         DataHandler.user = Auth.auth().currentUser
         DataHandler.uid = Auth.auth().currentUser?.uid
         
+        
+        
         let when = DispatchTime.now() + 1 //seconds
         DispatchQueue.main.asyncAfter(deadline: when) {
             print("Email verification status: ")
@@ -66,6 +68,13 @@ class VerifyVC: UIViewController, UITextFieldDelegate {
             if (Auth.auth().currentUser?.isEmailVerified) == true {
                 DataHandler.moveVerifiedUserToFirestore()
                 DataHandler.updateEmail(email: (Auth.auth().currentUser?.email)!)
+                
+                //Also update User Manager and create UserObject
+                UserManager.shared.currentUser?.uid = Auth.auth().currentUser?.uid
+                if let currentuser = UserManager.shared.currentUser {
+                    UserRequests().insertUserInFirestore(userObject: currentuser)
+                }
+                
                 self.performSegue(withIdentifier: "GoToNameVC", sender: self)
                 FirebaseManager.isEmailVerified = true
                 

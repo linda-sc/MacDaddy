@@ -1342,72 +1342,6 @@
             endingLineNumber = "20"
             landmarkName = "PrivateSetup2VC"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "E20C4629-7480-4D50-AF5B-ACF1E6A10B7D - 410d1b728f7dae53"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mac_Daddy.PrivateSetup2VC.profilePicture.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIImageView&gt;"
-                  moduleName = "Mac Daddy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Linda/Desktop/My%20Apps/Mac%20Daddy/Mac%20Daddy/PrivateSetup2VC.swift"
-                  timestampString = "521230259.046209"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "E20C4629-7480-4D50-AF5B-ACF1E6A10B7D - 4b3fb5de9f793e47"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mac_Daddy.PrivateSetup2VC.profilePicture.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIImageView&gt;"
-                  moduleName = "Mac Daddy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Linda/Desktop/My%20Apps/Mac%20Daddy/Mac%20Daddy/PrivateSetup2VC.swift"
-                  timestampString = "521230259.04903"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "E20C4629-7480-4D50-AF5B-ACF1E6A10B7D - b14d720c300e665e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mac_Daddy.PrivateSetup2VC.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Mac_Daddy.PrivateSetup2VC"
-                  moduleName = "Mac Daddy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Linda/Desktop/My%20Apps/Mac%20Daddy/Mac%20Daddy/PrivateSetup2VC.swift"
-                  timestampString = "521230259.050846"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "224">
-               </Location>
-               <Location
-                  uuid = "E20C4629-7480-4D50-AF5B-ACF1E6A10B7D - 65378258abf5828b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mac_Daddy.PrivateSetup2VC.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Mac_Daddy.PrivateSetup2VC&gt;"
-                  moduleName = "Mac Daddy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Linda/Desktop/My%20Apps/Mac%20Daddy/Mac%20Daddy/PrivateSetup2VC.swift"
-                  timestampString = "521230259.052422"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "164">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1728,6 +1662,38 @@
             startingLineNumber = "123"
             endingLineNumber = "123"
             landmarkName = "AppDelegate"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A95FADA8-836A-4A25-ADCB-F9379D8FCB5F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mac Daddy/VerifyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "VerifyVC"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3AE2F704-4AB2-4C65-A7EB-CA01BDE91ED3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mac Daddy/VerifyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "VerifyVC"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>

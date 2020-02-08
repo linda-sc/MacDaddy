@@ -434,8 +434,8 @@
 			isa = PBXGroup;
 			children = (
 				BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */,
-				BF1EDC511EE60CAF006CB610 /* WelcomeVC.swift */,
 				BF528EE8234010A300E7E1E5 /* InitialVC.swift */,
+				BF1EDC511EE60CAF006CB610 /* WelcomeVC.swift */,
 			);
 			name = Launch;
 			sourceTree = "<group>";
