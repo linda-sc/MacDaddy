@@ -33,9 +33,10 @@ class NetworkConstants {
     private let users = "Users"
     private let userObjects = "UserObjects"
     private let gigObjects = "GigObjects"
+    private let friendshipObjects = "FriendshipObjects"
     
     
-    // MARK: - Functions
+    // MARK: - Collection paths
     func usersPath() -> CollectionReference {
         return firestoreRef.collection(users)
     }
@@ -43,19 +44,27 @@ class NetworkConstants {
     func userObjectsPath() -> CollectionReference {
         return firestoreRef.collection(userObjects)
     }
-    
 
     func gigObjectsPath() -> CollectionReference {
         return firestoreRef.collection(gigObjects)
     }
+   
+    func friendshipObjectsPath() -> CollectionReference {
+        return firestoreRef.collection(friendshipObjects)
+    }
     
+    // MARK: - Document paths
     func userObjectPath(userId: String) -> DocumentReference {
         return firestoreRef.collection(userObjects).document(userId)
     }
     
     func gigObjectPath(gigId: String) -> DocumentReference {
          return firestoreRef.collection(gigObjects).document(gigId)
-     }
+    }
+    
+    func friendshipObjectPath(convoId: String) -> DocumentReference {
+           return firestoreRef.collection(friendshipObjects).document(convoId)
+      }
 }
 
 

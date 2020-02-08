@@ -10,8 +10,6 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-
-
 class VerifyVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var backButton:UIButton!

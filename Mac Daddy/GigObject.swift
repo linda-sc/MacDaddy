@@ -47,7 +47,7 @@ class GigObject: NSObject, Codable {
     var venmo: String?
 
     var score: Int?
-    var likes: Int?
+    var responses: Int?
     var completed: Bool?
 
     //////////////////////////////////////////////////
@@ -74,7 +74,7 @@ class GigObject: NSObject, Codable {
         case avatar
 
         case score
-        case likes
+        case responses
         case completed
     }
 
@@ -129,7 +129,7 @@ class GigObject: NSObject, Codable {
         
         //5. Stats information
         score = try container.decodeIfPresent(Int.self, forKey: .score)
-        likes = try container.decodeIfPresent(Int.self, forKey: .likes)
+        responses = try container.decodeIfPresent(Int.self, forKey: .responses)
         completed = try container.decodeIfPresent(Bool.self, forKey: .completed)
 
     }
@@ -162,7 +162,7 @@ class GigObject: NSObject, Codable {
     
         //5. Stats information
         try container.encodeIfPresent(score, forKey: .score)
-        try container.encodeIfPresent(likes, forKey: .likes)
+        try container.encodeIfPresent(responses, forKey: .responses)
         try container.encodeIfPresent(completed, forKey: .completed)
 
     }

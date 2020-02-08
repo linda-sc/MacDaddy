@@ -51,7 +51,6 @@
 		BF57B650228F487000D500A2 /* FriendshipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B64F228F487000D500A2 /* FriendshipObject.swift */; };
 		BF57B652228F49D800D500A2 /* InterestsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B651228F49D800D500A2 /* InterestsObject.swift */; };
 		BF57B654228F4B2C00D500A2 /* CommunityObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B653228F4B2C00D500A2 /* CommunityObject.swift */; };
-		BF57B656228F51A600D500A2 /* MatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57B655228F51A600D500A2 /* MatchManager.swift */; };
 		BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */; };
 		BF58F4D522DE317A008F69FF /* GradeStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58F4D322DE317A008F69FF /* GradeStatusCell.swift */; };
 		BF58F4D622DE317A008F69FF /* GradeStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF58F4D422DE317A008F69FF /* GradeStatusCell.xib */; };
@@ -87,6 +86,7 @@
 		BFD69E8423E6327700C19D64 /* PostGigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD69E8323E6327700C19D64 /* PostGigVC.swift */; };
 		BFD69E8723E6392500C19D64 /* GigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD69E8523E6392500C19D64 /* GigCell.swift */; };
 		BFD69E8823E6392500C19D64 /* GigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD69E8623E6392500C19D64 /* GigCell.xib */; };
+		BFD69E8C23EF27ED00C19D64 /* FriendshipRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD69E8B23EF27ED00C19D64 /* FriendshipRequests.swift */; };
 		BFE39CB622E14D2F00C2ABDE /* InterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE39CB422E14D2E00C2ABDE /* InterestCell.swift */; };
 		BFE39CB722E14D2F00C2ABDE /* InterestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE39CB522E14D2E00C2ABDE /* InterestCell.xib */; };
 		BFE39CBB22E160C600C2ABDE /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE39CB922E160C600C2ABDE /* HeaderCell.swift */; };
@@ -147,7 +147,6 @@
 		BF57B64F228F487000D500A2 /* FriendshipObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipObject.swift; sourceTree = "<group>"; };
 		BF57B651228F49D800D500A2 /* InterestsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsObject.swift; sourceTree = "<group>"; };
 		BF57B653228F4B2C00D500A2 /* CommunityObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityObject.swift; sourceTree = "<group>"; };
-		BF57B655228F51A600D500A2 /* MatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchManager.swift; sourceTree = "<group>"; };
 		BF5831041EE1ECF200A5D34C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF58F4D322DE317A008F69FF /* GradeStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeStatusCell.swift; sourceTree = "<group>"; };
 		BF58F4D422DE317A008F69FF /* GradeStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradeStatusCell.xib; sourceTree = "<group>"; };
@@ -184,6 +183,7 @@
 		BFD69E8323E6327700C19D64 /* PostGigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGigVC.swift; sourceTree = "<group>"; };
 		BFD69E8523E6392500C19D64 /* GigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GigCell.swift; sourceTree = "<group>"; };
 		BFD69E8623E6392500C19D64 /* GigCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GigCell.xib; sourceTree = "<group>"; };
+		BFD69E8B23EF27ED00C19D64 /* FriendshipRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipRequests.swift; sourceTree = "<group>"; };
 		BFE39CB422E14D2E00C2ABDE /* InterestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestCell.swift; sourceTree = "<group>"; };
 		BFE39CB522E14D2E00C2ABDE /* InterestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterestCell.xib; sourceTree = "<group>"; };
 		BFE39CB922E160C600C2ABDE /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
@@ -274,6 +274,7 @@
 				BF76918522B6882500D7A5EC /* CodableExtensions.swift */,
 				BF16F49E22ADBBF800BCF369 /* NetworkConstants.swift */,
 				BF16F4A022ADBE1700BCF369 /* UserRequests.swift */,
+				BFD69E8B23EF27ED00C19D64 /* FriendshipRequests.swift */,
 			);
 			name = "Network Calls";
 			sourceTree = "<group>";
@@ -338,12 +339,11 @@
 			isa = PBXGroup;
 			children = (
 				BF57B64C228F481C00D500A2 /* UserObject.swift */,
-				BFD69E8123E62F6100C19D64 /* GigObject.swift */,
 				BF7066FB22AD5A5800129EA9 /* UserManager.swift */,
+				BFD69E8123E62F6100C19D64 /* GigObject.swift */,
 				BF57B651228F49D800D500A2 /* InterestsObject.swift */,
 				BF57B653228F4B2C00D500A2 /* CommunityObject.swift */,
 				BF57B64F228F487000D500A2 /* FriendshipObject.swift */,
-				BF57B655228F51A600D500A2 /* MatchManager.swift */,
 			);
 			name = "Model Objects";
 			sourceTree = "<group>";
@@ -691,6 +691,7 @@
 				BFA6564621A5EA5B00A9B99B /* DataHandler_FCM.swift in Sources */,
 				BF310E1822DC0D5D006C7D6D /* AvatarCreatorVC.swift in Sources */,
 				BF570A7123073C8F001AC839 /* EditShortBioVC.swift in Sources */,
+				BFD69E8C23EF27ED00C19D64 /* FriendshipRequests.swift in Sources */,
 				BFD69E8723E6392500C19D64 /* GigCell.swift in Sources */,
 				BF1082781ED4C793000677A3 /* LoginVC.swift in Sources */,
 				BF99DDC01F1846AB0069F2C5 /* Segues.swift in Sources */,
@@ -719,7 +720,6 @@
 				BF0A9A6C20169FE400AC1E48 /* Structs.swift in Sources */,
 				BF58F4D522DE317A008F69FF /* GradeStatusCell.swift in Sources */,
 				B373D4C222C6FC8D0051896F /* EditGradeStatusVC.swift in Sources */,
-				BF57B656228F51A600D500A2 /* MatchManager.swift in Sources */,
 				BF57B650228F487000D500A2 /* FriendshipObject.swift in Sources */,
 				BF57B654228F4B2C00D500A2 /* CommunityObject.swift in Sources */,
 				BF5B4110236CB4970046A94F /* CreateAvatarVC.swift in Sources */,
