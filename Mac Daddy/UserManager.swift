@@ -104,6 +104,7 @@ extension UserManager {
         userCopy.grade = DataHandler.grade
         userCopy.status = DataHandler.macStatus
         userCopy.shortBio = DataHandler.shortBio
+        userCopy.vHandle = DataHandler.vHandle
         
         //4. Realtime Information
         userCopy.currentMatchID = DataHandler.currentMatchID

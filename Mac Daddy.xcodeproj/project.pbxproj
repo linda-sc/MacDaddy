@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B373D4C222C6FC8D0051896F /* EditGradeStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */; };
+		B397D96E23EF1EF700ABE94F /* EditHandlesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B397D96D23EF1EF700ABE94F /* EditHandlesVC.swift */; };
+		B397D97023EF25E200ABE94F /* HandleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B397D96F23EF25E200ABE94F /* HandleCell.swift */; };
+		B397D97423EF298200ABE94F /* HandleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B397D97323EF298200ABE94F /* HandleCell.xib */; };
 		BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */; };
 		BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */; };
 		BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */; };
@@ -100,6 +103,9 @@
 		8700AA267E9C7ABDD903B933 /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9181238EACD9EB2E686BAD74 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
 		B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGradeStatusVC.swift; sourceTree = "<group>"; };
+		B397D96D23EF1EF700ABE94F /* EditHandlesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHandlesVC.swift; sourceTree = "<group>"; };
+		B397D96F23EF25E200ABE94F /* HandleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleCell.swift; sourceTree = "<group>"; };
+		B397D97323EF298200ABE94F /* HandleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HandleCell.xib; sourceTree = "<group>"; };
 		BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendChatCell.swift; sourceTree = "<group>"; };
 		BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Express.swift; sourceTree = "<group>"; };
 		BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler_Core.swift; sourceTree = "<group>"; };
@@ -205,6 +211,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B397D96C23EF1E6B00ABE94F /* Handles */ = {
+			isa = PBXGroup;
+			children = (
+				B397D97323EF298200ABE94F /* HandleCell.xib */,
+				B397D96D23EF1EF700ABE94F /* EditHandlesVC.swift */,
+				B397D96F23EF25E200ABE94F /* HandleCell.swift */,
+			);
+			path = Handles;
+			sourceTree = "<group>";
+		};
 		BD121932B6ED860685C35E31 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +277,7 @@
 				BF1EDC501EE4A027006CB610 /* Login */,
 				BF005BE01FB9FE7300CFE337 /* Home */,
 				BF7CF3412308209E004CEB7A /* World */,
+				B397D96C23EF1E6B00ABE94F /* Handles */,
 				BF42392722BD582200340E83 /* User Profile */,
 				BF99DDC11F1E85C30069F2C5 /* Messenger */,
 				BF99DDBE1F1846960069F2C5 /* Effects */,
@@ -370,8 +387,8 @@
 		BF741E5222CCFC3300F9CACE /* Bio */ = {
 			isa = PBXGroup;
 			children = (
-				BF8603BF22C19F6F00BA2608 /* BioCell.swift */,
 				BF8603C022C19F6F00BA2608 /* BioCell.xib */,
+				BF8603BF22C19F6F00BA2608 /* BioCell.swift */,
 				BF570A7023073C8F001AC839 /* EditShortBioVC.swift */,
 			);
 			name = Bio;
@@ -595,6 +612,7 @@
 				BF8603C222C19F6F00BA2608 /* BioCell.xib in Resources */,
 				BFD28E5C22DE253600FA48B7 /* NearbyCell.xib in Resources */,
 				BF7CF34A23083039004CEB7A /* UserCell.xib in Resources */,
+				B397D97423EF298200ABE94F /* HandleCell.xib in Resources */,
 				BF42393322C144A500340E83 /* LogoutCell.xib in Resources */,
 				BF741E5A22CCFCC500F9CACE /* MapCell.xib in Resources */,
 				BFE39CB722E14D2F00C2ABDE /* InterestCell.xib in Resources */,
@@ -705,6 +723,7 @@
 				BF8603C122C19F6F00BA2608 /* BioCell.swift in Sources */,
 				BF2652EF1F18057F0013873F /* DataHandler.swift in Sources */,
 				BFCC3BF61EE89C5600BD1F1C /* PrivateSetup1VC.swift in Sources */,
+				B397D96E23EF1EF700ABE94F /* EditHandlesVC.swift in Sources */,
 				BF43C5DC1EE72AAC00602357 /* MyPreferencesVC.swift in Sources */,
 				BF42392D22C130D000340E83 /* CollectionViewFlowLayout.swift in Sources */,
 				BFD2CD77219B44FA00337148 /* FriendDetailVC.swift in Sources */,
@@ -712,6 +731,7 @@
 				BF16F4A122ADBE1700BCF369 /* UserRequests.swift in Sources */,
 				BFE39CBB22E160C600C2ABDE /* HeaderCell.swift in Sources */,
 				BFD28E5B22DE253600FA48B7 /* NearbyCell.swift in Sources */,
+				B397D97023EF25E200ABE94F /* HandleCell.swift in Sources */,
 				BF70B6612339B4E900E3A47B /* MessageInterfaceVC.swift in Sources */,
 				BF42392B22C12CA800340E83 /* UserProfileVC.swift in Sources */,
 				BF57B652228F49D800D500A2 /* InterestsObject.swift in Sources */,

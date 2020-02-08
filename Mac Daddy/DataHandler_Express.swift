@@ -70,5 +70,11 @@ extension DataHandler {
     static func updateShortBio(shortBio:String) {
         updateUserData(uid: uid!, values: ["10: Short Bio": shortBio])
     }
+    
+    static func updatevHandle(handle:String) {
+        updateUserData(uid: uid!, values: ["11: vHandle": vHandle])
+    }
+    
+    
 }
 

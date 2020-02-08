@@ -34,6 +34,7 @@ class DataHandler {
     static var picURL = ""
     static var grade = ""
     static var shortBio = "" //New from Kevin for ShortBio
+    static var vHandle = ""
     
     //Variables for local matching function
     static var currentMatchID = ""
@@ -50,6 +51,7 @@ class DataHandler {
         UserDefaults.standard.set(self.grade, forKey: "Grade")
         UserDefaults.standard.set(self.macStatus, forKey: "MacStatus")
         UserDefaults.standard.set(self.shortBio, forKey: "shortBio") //New from Kevin for ShortBio
+        UserDefaults.standard.set(self.vHandle, forKey: "vHandle")
         UserDefaults.standard.set(self.interests, forKey: "Interests")
         UserDefaults.standard.set(self.friends, forKey: "Friends")
         UserDefaults.standard.set(self.currentMatchID, forKey: "CurrentMatchID")
@@ -63,6 +65,7 @@ class DataHandler {
         self.macStatus = ""
         
         self.shortBio = "" //New from Kevin for ShortBio
+        self.vHandle = ""
         self.interests = NSDictionary()
         self.friends = NSDictionary()
         self.currentMatchID = ""
@@ -72,6 +75,7 @@ class DataHandler {
         UserDefaults.standard.set("", forKey: "Grade")
         UserDefaults.standard.set("", forKey: "MacStatus")
         UserDefaults.standard.set("", forKey: "shortBio")
+        UserDefaults.standard.set("", forKey: "vHandle")
         UserDefaults.standard.set(NSDictionary(), forKey: "Interests")
         UserDefaults.standard.set(NSDictionary(), forKey: "Friends")
         UserDefaults.standard.set("", forKey: "CurrentMatchID")
@@ -84,6 +88,7 @@ class DataHandler {
         self.grade = UserDefaults.standard.string(forKey: "Grade") ?? ""
         self.macStatus = UserDefaults.standard.string(forKey: "MacStatus") ?? ""
         self.shortBio = UserDefaults.standard.string(forKey: "shortBio") ?? "" //New from Kevin for ShortBio
+        self.vHandle = UserDefaults.standard.string(forKey: "vHandle") ?? ""
         self.interests = UserDefaults.standard.dictionary(forKey: "Interests")! as NSDictionary
         self.friends = UserDefaults.standard.dictionary(forKey: "Friends")! as NSDictionary
         self.currentMatchID = UserDefaults.standard.string(forKey: "CurrentMatchID") ?? ""
@@ -108,6 +113,7 @@ class DataHandler {
         macStatus = ""
         
         shortBio = "" //New from Kevin for ShortBio
+        vHandle = ""
         interests = NSDictionary()
         friends = NSDictionary()
         friendList = [Friend]()
