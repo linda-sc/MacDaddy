@@ -243,19 +243,23 @@ class AvatarObject: NSObject, Codable {
 //////////////////////////////////////////////////
 
 public enum ColorStyle {
-    case strawberry
+    case sugar
     case magic
     case dream
     case royal
     case icy
+    case glow
+    case shadow
     
     var baseColor: String {
         switch self {
-        case .strawberry: return "f54284"
+        case .sugar: return "f54284"
         case .magic: return "e26ee6"
         case .dream: return "7f64fa"
         case .royal: return "595cff"
         case .icy: return "36d3ff"
+        case .glow: return "##86c5ff"
+        case .shadow: return "#b1afea"
         }
     }
 }
@@ -274,7 +278,7 @@ extension AvatarObject {
         let random = Int.randomIntInRange(lower: 0, upper: 4)
         switch random {
         case 0:
-            newAvatar.baseColor = ColorStyle.strawberry.baseColor
+            newAvatar.baseColor = ColorStyle.sugar.baseColor
         case 1:
             newAvatar.baseColor = ColorStyle.magic.baseColor
         case 2:
@@ -335,10 +339,10 @@ extension AvatarObject {
         let newAvatar = AvatarObject()
 
         //Generate random color
-        let random = Int.randomIntInRange(lower: 0, upper: 4)
+        let random = Int.randomIntInRange(lower: 0, upper: 5)
         switch random {
         case 0:
-            newAvatar.baseColor = ColorStyle.strawberry.baseColor
+            newAvatar.baseColor = ColorStyle.sugar.baseColor
         case 1:
             newAvatar.baseColor = ColorStyle.magic.baseColor
         case 2:
@@ -347,6 +351,8 @@ extension AvatarObject {
             newAvatar.baseColor = ColorStyle.royal.baseColor
         case 4:
             newAvatar.baseColor = ColorStyle.icy.baseColor
+        case 5:
+            newAvatar.baseColor = ColorStyle.glow.baseColor
         default:
             print("Error picking base color")
         }
@@ -462,10 +468,10 @@ extension AvatarObject {
     
     func changeBaseColor(){
         //Generate random color
-        let random = Int.randomIntInRange(lower: 0, upper: 4)
+        let random = Int.randomIntInRange(lower: 0, upper: 5)
         switch random {
         case 0:
-            self.baseColor = ColorStyle.strawberry.baseColor
+            self.baseColor = ColorStyle.sugar.baseColor
         case 1:
             self.baseColor = ColorStyle.magic.baseColor
         case 2:
@@ -474,6 +480,8 @@ extension AvatarObject {
             self.baseColor = ColorStyle.royal.baseColor
         case 4:
             self.baseColor = ColorStyle.icy.baseColor
+        case 5:
+            self.baseColor = ColorStyle.glow.baseColor
         default:
             print("Error picking base color")
         }

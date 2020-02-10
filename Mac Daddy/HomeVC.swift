@@ -25,17 +25,17 @@ class HomeVC: UIViewController {
     
     let friendRef = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("Friends")
     
+    //MARK: Testing new functions on launch
+
     func testing() {
-        //Testing this out
-//        UserManager.shared.importCurrentUserFromDataHandler()
-//        UserManager.shared.getLocation()
-//        UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
-        
         UserData.downloadAllUserObjects {
             //let lastActive = UserData.allUserObjects.first?.lastActive?.timeIntervalSinceNow
             //print("Active \(lastActive?.stringTimeAgo)")
         }
     }
+    
+    //MARK: Firebase observers
+
     
     func removeObserver() {
         if selfListener != nil {
@@ -64,16 +64,7 @@ class HomeVC: UIViewController {
                 self.syncFriends()
                 
         }
-        
 
-//        //Listen for changes in conversations
-//        for friend in DataHandler.friendList {
-//            let friendConvoRef = friendRef.child(friend.convoID)
-//            friendConvoRef.observe(.value, with: { snapshot in
-//                print("👂🏻 HomeVC - addObserver: friendConvoRef Listener fired")
-//                self.syncConvos()
-//            })
-//        }
     }
     
     
@@ -83,8 +74,6 @@ class HomeVC: UIViewController {
         for friend in DataHandler.friendList {
             let friendUID = friend.uid
             let friendConvoRef = friendRef.child(friend.convoID)
-            
-            //DataHandler.convos.append(Convo.init(friendUID: friendUID, lastChat: lastChat, seen: seen))
         }
     }
     
@@ -106,6 +95,9 @@ class HomeVC: UIViewController {
         }
     }
         
+    
+    //MARK: V1 Brainstorming
+
         //Ok this part's gonna be a little tedious but it's really important.
         //We're gonna have to add general time variables:
         //Currently Active, and last active.
@@ -139,7 +131,8 @@ class HomeVC: UIViewController {
 }
 
 
-//All UI stuff goes here
+//MARK: Standard view functions
+
 extension HomeVC {
     
     override func viewWillAppear(_ animated: Bool) {
@@ -161,6 +154,12 @@ extension HomeVC {
 //            let count = value?.count
 //            print("We have \(count ?? 0) conversations.")
 //        })
+        
+        FriendshipRequests().observeMyFriendshipObjects {
+            friendships in
+            UserManager.shared.friendships = friendships
+            self.tableView.reloadData()
+         }
         
     }
     
@@ -213,13 +212,13 @@ extension HomeVC {
         for friend in DataHandler.friendList {
             print("Syncing friendship \(friend.convoID)")
             FriendshipRequests().upgradeFriendToFriendshipObject(friend: friend)
+            viewDidLoadExtension()
         }
                 
-        FriendshipRequests().observeMyFriendshipObjects {
-            friendships in
-            self.tableView.reloadData()
-        }
+        
+        //viewDidLoadExtension()
     }
+    
     
     
     //Make the status bar white.
@@ -234,6 +233,7 @@ extension HomeVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
     }
     
     
@@ -401,8 +401,15 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendChatCell
         
-        print("🍱 Loading friend \(DataHandler.friendList[indexPath.row])")
-        cell.update(with: DataHandler.friendList[indexPath.row])
+        //print("🍱 Loading friend \(DataHandler.friendList[indexPath.row])")
+        let friend = DataHandler.friendList[indexPath.row]
+        let friendship = FriendshipRequests().fetchCachedFriendship(uid: friend.uid)
+        
+        //Update the cell with both the friend and the friendship
+        cell.update(with: friend)
+        if friendship != nil {
+            cell.update(with: friendship!)
+        }
         
         cell.textLabel?.textColor = UIColor.white
         cell.backgroundColor = .clear

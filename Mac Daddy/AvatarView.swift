@@ -58,17 +58,14 @@ class AvatarView: UIView {
         
     }
     
-    //MARK: Display Avatar from object. Again, only about rendering.
+    //MARK: Display Avatar from object. Only rendering.
     //This is the function that isn't working.
     func displayAvatar(avatar: AvatarObject?) {
         
-        print("DISPLAYING AVATAR...")
-        print("Avatar: \(String(describing: avatar))")
-        print("Base color: \(String(describing: avatar?.baseColor))")
-
-        
         if avatar == nil {
+            print("Avatar is nil. Displaying random avatar.")
             displayRandomAvatar()
+            
         } else {
             
             //Pull out all the right elements from the object
@@ -128,6 +125,8 @@ class AvatarView: UIView {
         //let faceColor = UIColor(red: 0.99, green: 0.50, blue: 0.70, alpha: 1.00)
         
         self.avatarObject = AvatarObject.createRandomAvatar()
+        self.avatarObject!.baseColor = ColorStyle.shadow.baseColor
+
         if avatarObject != nil {
             
             avatarObject?.hairLuminosity = Int.randomIntInRange(lower: -50, upper: 50)

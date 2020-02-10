@@ -32,12 +32,6 @@ class WorldVC: UIViewController, UICollectionViewDelegateFlowLayout {
         let flowLayout = BouncyLayout(style: .prominent)
         self.worldCollection.setCollectionViewLayout(flowLayout, animated: true)
         
-//        UserData.downloadAllUsers {
-//            self.worldCollection.reloadData()
-//        }
-//        UserData.downloadAllGigObjects {
-//            self.worldCollection.reloadData()
-//        }
         
         
     }
@@ -94,9 +88,14 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
             
-            let gig = UserData.currentGigs[indexPath.row]
-            cell.textLabel.text = gig.text
-            cell.dateLabel.text = gig.timeStamp?.getElapsedInterval()
+            if indexPath.row > UserData.currentGigs.count {
+                let gig = UserData.currentGigs[indexPath.row]
+                cell.textLabel.text = gig.text
+                cell.dateLabel.text = gig.timeStamp?.getElapsedInterval()
+            } else {
+                print("error at row \(indexPath.row), gigs in array: \(UserData.currentGigs.count)")
+            }
+            
             
             return cell
         

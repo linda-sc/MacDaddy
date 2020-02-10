@@ -122,6 +122,12 @@ class FriendshipRequests: NSObject {
                     print("Error decoding friendship JSON")
                 }
             }
+            
+            //Sort friendships by time
+            friendships = friendships.sorted(by: {
+                $0.lastActive?.compare($1.lastActive ?? Date()) == .orderedDescending
+            })
+            
             completion(friendships)
         }
     }
@@ -134,19 +140,40 @@ class FriendshipRequests: NSObject {
         }
     }
     
-    //MARK: Fetch cached friend
+    //MARK: Fetch cached friends both ways
     func fetchCachedFriendship(uid: String) -> FriendshipObject? {
         if UserManager.shared.friendships == nil {
             print ("Cached friendship could not be found")
-            return
+            return nil
         } else {
-            for friendship in UserManager.shared.friendships {
-                if friendship.members.contains(uid) {
+            guard let friendships = UserManager.shared.friendships else {
+                return nil
+            }
+            for friendship in friendships {
+                if friendship.members == nil {
+                    print("members are nil")
+                } else if friendship.members!.contains(uid) {
                     return friendship
                 }
             }
         }
+        return nil
     }
+    
+    func fetchCachedFriendStruct(uid: String) -> Friend? {
+        if DataHandler.friendList.isEmpty {
+            print ("Cached friendship could not be found")
+            return nil
+        } else {
+            for friend in DataHandler.friendList {
+                if friend.uid == uid {
+                    return friend
+                }
+            }
+        }
+        return nil
+    }
+    
     //MARK: Functions in progress.
     
 //    func friendshipObjectExists(convoId: String) -> Bool {

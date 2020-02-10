@@ -31,9 +31,11 @@ class FriendshipObject: NSObject, Codable {
     var initiatorAvatar: AvatarObject?
     var recieverAvatar: AvatarObject?
 
+    var mostRecentMessage: String?
     var initiatorMostRecentMessage: String?
     var recieverMostRecentMessage: String?
     
+    var lastActive: Date?
     var initiatorLastActive: Date?
     var recieverLastActive: Date?
     
@@ -79,9 +81,11 @@ class FriendshipObject: NSObject, Codable {
         case initatorAvatar
         case recieverAvatar
         
+        case mostRecentMessage
         case initiatorMostRecentMessage
         case recieverMostRecentMessage
         
+        case lastActive
         case initiatorLastActive
         case recieverLastActive
         
@@ -119,6 +123,7 @@ class FriendshipObject: NSObject, Codable {
         self.recieverId = recieverId
         self.archived = false
         self.anon = true
+        self.lastActive = Date()
         
         self.members = [String]()
         self.members?.append(initiatorId)
@@ -145,11 +150,26 @@ class FriendshipObject: NSObject, Codable {
         initiatorAvatar = try container.decodeIfPresent(AvatarObject.self, forKey: .initatorAvatar)
         recieverAvatar = try container.decodeIfPresent(AvatarObject.self, forKey: .recieverAvatar)
         
+        mostRecentMessage = try container.decodeIfPresent(String.self, forKey: .mostRecentMessage)
         initiatorMostRecentMessage = try container.decodeIfPresent(String.self, forKey: .initiatorMostRecentMessage)
+        recieverMostRecentMessage = try container.decodeIfPresent(String.self, forKey: .recieverMostRecentMessage)
+
+        
+        //Convert the date strings into a date objects
+          let lastActiveString = try container.decodeIfPresent(String.self, forKey: .lastActive)
+          let dateTimeFormatter = DateFormatter.iso8601Full
+          if let lastActiveDate = dateTimeFormatter.date(from: lastActiveString ?? "") {
+              lastActive = lastActiveDate
+          } else {
+              if lastActiveString != nil {
+                  throw DecodingError.dataCorruptedError(forKey: .lastActive,
+                                                         in: container,
+                                                         debugDescription: "lastActive date string does not match format expected by formatter.")
+              }
+          }
         
         //Convert the date strings into a date objects
         let initiatorLastActiveString = try container.decodeIfPresent(String.self, forKey: .initiatorLastActive)
-        let dateTimeFormatter = DateFormatter.iso8601Full
         if let initiatorLastActiveDate = dateTimeFormatter.date(from: initiatorLastActiveString ?? "") {
             initiatorLastActive = initiatorLastActiveDate
         } else {
@@ -212,9 +232,11 @@ class FriendshipObject: NSObject, Codable {
         try container.encodeIfPresent(archived, forKey: .archived)
         try container.encodeIfPresent(anon, forKey: .anon)
 
+        try container.encodeIfPresent(mostRecentMessage, forKey: .mostRecentMessage)
         try container.encodeIfPresent(initiatorMostRecentMessage, forKey: .initiatorMostRecentMessage)
         try container.encodeIfPresent(recieverMostRecentMessage, forKey: .recieverMostRecentMessage)
         
+        try container.encodeIfPresent(lastActive, forKey: .initiatorLastActive)
         try container.encodeIfPresent(initiatorLastActive, forKey: .initiatorLastActive)
         try container.encodeIfPresent(recieverLastActive, forKey: .recieverLastActive)
         

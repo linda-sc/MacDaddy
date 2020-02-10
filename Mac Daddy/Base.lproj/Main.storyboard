@@ -79,7 +79,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy FullLogo" translatesAutoresizingMaskIntoConstraints="NO" id="RaI-4Z-TCf">
-                                <rect key="frame" x="150.66666666666666" y="64" width="74.000000000000114" height="50"/>
+                                <rect key="frame" x="150.66666666666666" y="64" width="74" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RaI-4Z-TCf" secondAttribute="height" multiplier="37:25" id="EgM-PN-73O"/>
                                     <constraint firstAttribute="height" constant="50" id="dsr-al-LWT"/>

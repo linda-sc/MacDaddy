@@ -29,6 +29,26 @@ class FriendChatCell: UITableViewCell {
     }
     
     
+    func update(with friendship: FriendshipObject) {
+        //If you're the initiator, pull data for the reciever.
+        if UserManager.shared.currentUser!.uid == friendship.initiatorId {
+            self.avatarView.displayAvatar(avatar: friendship.recieverAvatar)
+            self.activeBubble.isHidden = friendship.recieverActive ?? true
+
+        } else {
+             //If you're the reciever, pull data for the initator.
+            self.avatarView.displayAvatar(avatar: friendship.initiatorAvatar)
+              self.activeBubble.isHidden = friendship.initiatorActive ?? true
+        }
+
+        self.friendChatPreview.text =
+            friendship.mostRecentMessage
+            ??  friendship.lastActive?.getElapsedInterval()
+            ??  friendship.initiatorLastActive?.getElapsedInterval()
+            ??  friendship.recieverLastActive?.getElapsedInterval()
+            ?? "is chatting with you"
+    }
+    
     //Change to friend object once you figure out how the matching works.
     func update(with friend:Friend) {
         
@@ -75,8 +95,6 @@ class FriendChatCell: UITableViewCell {
         
         //Set Labels
         friendName.text = friend.name
-        //friendChatPreview.text = show previous message
-        friendChatPreview.text = "is now chatting with you!"
         
         //So you see if you liked them already or not.
         if (friend.anon == "0") {

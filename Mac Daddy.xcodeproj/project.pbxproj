@@ -62,6 +62,7 @@
 		BF741E5922CCFCC500F9CACE /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF741E5722CCFCC500F9CACE /* MapCell.swift */; };
 		BF741E5A22CCFCC500F9CACE /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF741E5822CCFCC500F9CACE /* MapCell.xib */; };
 		BF76918622B6882500D7A5EC /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76918522B6882500D7A5EC /* CodableExtensions.swift */; };
+		BF7B29DC23F1E84400E1B29B /* HomeVC_V2Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B29DB23F1E84400E1B29B /* HomeVC_V2Extension.swift */; };
 		BF7CF343230820D9004CEB7A /* World.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7CF342230820D9004CEB7A /* World.storyboard */; };
 		BF7CF3452308215C004CEB7A /* WorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CF3442308215C004CEB7A /* WorldVC.swift */; };
 		BF7CF34923083039004CEB7A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CF34723083039004CEB7A /* UserCell.swift */; };
@@ -161,6 +162,7 @@
 		BF741E5722CCFCC500F9CACE /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		BF741E5822CCFCC500F9CACE /* MapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
 		BF76918522B6882500D7A5EC /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
+		BF7B29DB23F1E84400E1B29B /* HomeVC_V2Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC_V2Extension.swift; sourceTree = "<group>"; };
 		BF7CF342230820D9004CEB7A /* World.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = World.storyboard; sourceTree = "<group>"; };
 		BF7CF3442308215C004CEB7A /* WorldVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldVC.swift; sourceTree = "<group>"; };
 		BF7CF34723083039004CEB7A /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				BF2652EA1F16B2090013873F /* HomeVC.swift */,
+				BF7B29DB23F1E84400E1B29B /* HomeVC_V2Extension.swift */,
 				BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */,
 				BF5408242057619D00E5A1BB /* AboutVC.swift */,
 			);
@@ -695,6 +698,7 @@
 				BF1EDC521EE60CAF006CB610 /* WelcomeVC.swift in Sources */,
 				BFD2CD72219B36D900337148 /* GraphicEffects.swift in Sources */,
 				BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */,
+				BF7B29DC23F1E84400E1B29B /* HomeVC_V2Extension.swift in Sources */,
 				BF85923520606F200065C8AD /* Chatting.swift in Sources */,
 				BFD69E8423E6327700C19D64 /* PostGigVC.swift in Sources */,
 				BFB2E5481F71D4A40096D562 /* Constants.swift in Sources */,
