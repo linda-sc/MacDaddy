@@ -17,6 +17,7 @@ class FriendChatCell: UITableViewCell {
     @IBOutlet weak var activeBubble: UIImageView!
     @IBOutlet weak var currentMatchLabel: UILabel!
     @IBOutlet weak var incomingMatchLabel: UILabel!
+    @IBOutlet weak var avatarView: AvatarView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +27,7 @@ class FriendChatCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
     
     //Change to friend object once you figure out how the matching works.
     func update(with friend:Friend) {

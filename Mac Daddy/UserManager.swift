@@ -23,6 +23,7 @@ class UserManager: NSObject {
     var currentUser: UserObject?
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation!
+    var friendships: [FriendshipObject]?
         
     //Register new user
     //Sign in user

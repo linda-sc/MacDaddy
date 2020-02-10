@@ -35,7 +35,7 @@ class UserData {
     //////////////////////////////////////////////////
 
     static func downloadAllGigObjects(completed: @escaping ()-> ()) {
-        print("🦋 Downloading all UserObjects...")
+        print("🦋 Downloading all GigObjects...")
         
         //Overwrite previous data.
         currentGigs = [GigObject]()

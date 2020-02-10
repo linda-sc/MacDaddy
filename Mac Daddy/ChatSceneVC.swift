@@ -121,6 +121,8 @@ class ChatSceneVC: UIViewController {
     }
     
     
+    //MARK: Buttons
+    
     @IBAction func friendButtonTapped(_ sender: Any) {
          self.performSegue(withIdentifier: "showFriendDetail", sender: nil)
     }

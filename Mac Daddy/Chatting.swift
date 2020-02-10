@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-//All the Firebase stuff:
+    //MARK: Extension for ChatScene Network Calls
 extension ChatSceneVC {
     
     //Remove the in-chat observers when the view is gone.
@@ -39,6 +39,8 @@ extension ChatSceneVC {
         }) //End of snapshot
     }
     
+    
+    //MARK: V1 way of checking convo status
     
     func addSavedObserver() {
         
@@ -112,11 +114,12 @@ extension ChatSceneVC {
         
     }
     
+    
+    //MARK: convoStillExists
     //Need escaping because for some reason the checking code doesn't execute in order.
     //This code works.
     //Let's change this so that it checks to see if the status exists.
     //If there's no status then it means the other user deleted the conversation.
-    
     
     func convoStillExists(completed: @escaping ()-> ()) {
         if let _ = Auth.auth().currentUser {
@@ -138,6 +141,7 @@ extension ChatSceneVC {
         //End of if let user condition
     }
     
+    //MARK: getFriendsRealName
 
     func getFriendsRealName(completed: @escaping ()-> ()) {
         DataHandler.db.collection("users").document(self.friend.uid).getDocument { (document, error) in

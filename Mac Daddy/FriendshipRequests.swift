@@ -11,24 +11,73 @@ import Firebase
 
 class FriendshipRequests: NSObject {
     
-    func upgradeConvoToFriendshipObject(convoId: String) {
+    //MARK: Upgrade to FriendshipObject
+    
+    func upgradeFriendToFriendshipObject(friend: Friend) {
         guard (Auth.auth().currentUser?.uid) != nil else { return }
-        let ref = NetworkConstants().friendshipObjectsPath().document(convoId)
+        let ref = NetworkConstants().friendshipObjectsPath().document(friend.convoID)
 
         ref.getDocument { (document, error) in
             if let document = document {
                 if document.exists{
                     print("FriendshipObject exists already. \(String(describing: document.data()))")
                 } else {
-                    print("FriendshipObjects does not exist. Upgrading now...")
+                    print("FriendshipObject does not exist. Upgrading now...")
                     
-                    var upgradedObject = FriendshipObject()
-                    upgradedObject.convoId = convoId
+                    let upgradedObject = FriendshipObject()
+                    upgradedObject.convoId = friend.convoID
                     
+                    
+                    //MARK: Initiator and Reciever
+
+                    //You started the match.
+                    if DataHandler.currentMatchID == friend.uid {
+                        upgradedObject.initiatorId = Auth.auth().currentUser?.uid
+                        upgradedObject.recieverId = friend.uid
+                        
+                    } else {
+                    //They started the match.
+                        upgradedObject.recieverId = Auth.auth().currentUser?.uid
+                        upgradedObject.initiatorId = friend.uid
+                    }
+                    
+                    //MARK: Members
+
+                    var members = [String]()
+                    members.append(upgradedObject.initiatorId!)
+                    members.append(upgradedObject.recieverId!)
+                    upgradedObject.members = members
+                    
+                    //MARK: Anonymity
+
+                    if friend.anon == "1" {
+                        upgradedObject.anon = true
+                    } else {
+                        upgradedObject.anon = false
+                    }
+                    
+                    //MARK: Insert
+                    print("Friendship object: \(upgradedObject)")
                     self.insertNewFriendshipObjectInFirestore(friendship: upgradedObject)
                     
-                }
+                } //End of if document.exists condition
+            }//End of if let document condition
+        }//End of get document call
+    }//End of function
+    
+    
+     //MARK: Insert & Update FriendshipObjects
+    
+    func updateFriendshipObjectInFirestore(friendship: FriendshipObject) {
+        if friendship.convoId != nil {
+            let ref = NetworkConstants().friendshipObjectPath(convoId: friendship.convoId!)
+            guard let friendshipData = friendship.encodeModelObject() else {
+                print ("Error encoding FriendshipObject")
+                return
             }
+            UserRequests().updateFirestoreData(ref: ref, values: friendshipData)
+        } else {
+            print("Friendship convo id is nil. This should not be happening.")
         }
     }
     
@@ -45,31 +94,84 @@ class FriendshipRequests: NSObject {
         }
     }
     
+    //MARK: Download relevant FriendshipObjects
     
-    //MARK: Functions in progress.
-    func friendshipObjectExists(convoId: String) -> Bool {
-        return true
-    }
-
-    func getFriendshipObjectsInFirestore(_ completion:@escaping(_ querySnapshot:[QueryDocumentSnapshot])->Void){
+    func observeMyFriendshipObjects(completion: @escaping (_ friendships: [FriendshipObject])-> ()) {
+        print("👀 - observeMyFriendshipObjects function triggered")
         let ref = NetworkConstants().friendshipObjectsPath()
-        ref.getDocuments { (querySnapshot, err) in
-             if let err = err {
-                 print("Error getting friendshipObjects: \(err)")
-             } else {
-                 if let documents = querySnapshot?.documents{
-                     completion(documents)
-                 }
+        let myUid = Auth.auth().currentUser?.uid ?? ""
+        let query = ref.whereField("members", arrayContains: myUid)
+        
+        var friendships = [FriendshipObject]()
+        
+        query.addSnapshotListener { querySnapshot, error in
+            guard let documents = querySnapshot?.documents else {
+                print("Error fetching my friendships: \(error!)")
+                return
             }
+            for document in documents {
+                
+                let data = document.data() as NSDictionary
+                if (!JSONSerialization.isValidJSONObject(data)) {
+                    print("Data is not a valid json object")
+                    return
+                }
+                if let friendship = decode(json: data, obj: FriendshipObject.self) {
+                    friendships.append(friendship)
+                } else {
+                    print("Error decoding friendship JSON")
+                }
+            }
+            completion(friendships)
         }
     }
     
-    func loadFriendshipObjects() {
-        getFriendshipObjectsInFirestore { (documents) in
-            for document in documents{
-                print("\(document.documentID) => \(document.data())")
+    //Unused reference function in case you forget how to use completion handler
+    func getMyFriendships()  {
+        observeMyFriendshipObjects {
+            friendships in
+            UserManager.shared.friendships = friendships
+        }
+    }
+    
+    //MARK: Fetch cached friend
+    func fetchCachedFriendship(uid: String) -> FriendshipObject? {
+        if UserManager.shared.friendships == nil {
+            print ("Cached friendship could not be found")
+            return
+        } else {
+            for friendship in UserManager.shared.friendships {
+                if friendship.members.contains(uid) {
+                    return friendship
+                }
             }
         }
     }
+    //MARK: Functions in progress.
+    
+//    func friendshipObjectExists(convoId: String) -> Bool {
+//        return true
+//    }
+//
+//    func getFriendshipObjectsInFirestore(_ completion:@escaping(_ querySnapshot:[QueryDocumentSnapshot])->Void){
+//        let ref = NetworkConstants().friendshipObjectsPath()
+//        ref.getDocuments { (querySnapshot, err) in
+//             if let err = err {
+//                 print("Error getting friendshipObjects: \(err)")
+//             } else {
+//                 if let documents = querySnapshot?.documents{
+//                     completion(documents)
+//                 }
+//            }
+//        }
+//    }
+//
+//    func loadFriendshipObjects() {
+//        getFriendshipObjectsInFirestore { (documents) in
+//            for document in documents{
+//                print("\(document.documentID) => \(document.data())")
+//            }
+//        }
+//    }
     
 }

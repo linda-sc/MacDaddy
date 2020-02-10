@@ -18,7 +18,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var background:UIImageView!
     @IBOutlet weak var tableView:UITableView!
     @IBOutlet weak var matchBox:UIButton!
-
+    
     
     var currentMatch = Friend()
     var selfListener:ListenerRegistration? = nil
@@ -209,6 +209,16 @@ extension HomeVC {
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
     
+        
+        for friend in DataHandler.friendList {
+            print("Syncing friendship \(friend.convoID)")
+            FriendshipRequests().upgradeFriendToFriendshipObject(friend: friend)
+        }
+                
+        FriendshipRequests().observeMyFriendshipObjects {
+            friendships in
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -228,6 +238,8 @@ extension HomeVC {
     
     
     
+    //MARK: Buttons to other storyboards
+
     //IB Actions
     @IBAction func editProfileTapped(_ sender:UIButton){
         
@@ -243,6 +255,9 @@ extension HomeVC {
         
     }
     
+    
+    //MARK: Finding a match
+
     @IBAction func findMatchButtonPressed(_ sender: Any) {
         
         // If there is no current match, find a new one!
@@ -367,6 +382,12 @@ extension HomeVC {
 }
 
 
+//MARK: TableView Delegate and Datasource
+//MARK: Pulls from DataHandler.friendList
+//MARK: AND UserManager.shared.friendships
+//DataHandler.friendlist tracks important surface level data like whether or not the friendship exists
+//UserManager.shared.friendships has the heavier FriendObject data.
+
 //TableView UI:
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
@@ -379,6 +400,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     //Which cell goes in what row?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendChatCell
+        
         print("🍱 Loading friend \(DataHandler.friendList[indexPath.row])")
         cell.update(with: DataHandler.friendList[indexPath.row])
         
@@ -449,7 +471,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//Segues:
+//MARK: Segues
+
 extension HomeVC {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

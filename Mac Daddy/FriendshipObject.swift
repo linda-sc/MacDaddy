@@ -19,18 +19,26 @@ class FriendshipObject: NSObject, Codable {
     //////////////////////////////////////////////////
 
     var convoId: String?
+    var members: [String]?
     var initiatorId: String?
     var recieverId: String?
     var archived: Bool?
+    var anon: Bool?
     
     var initiator: UserObject?
     var reciever: UserObject?
+    
+    var initiatorAvatar: AvatarObject?
+    var recieverAvatar: AvatarObject?
 
     var initiatorMostRecentMessage: String?
     var recieverMostRecentMessage: String?
     
     var initiatorLastActive: Date?
     var recieverLastActive: Date?
+    
+    var initiatorActive: Bool?
+    var recieverActive: Bool?
     
     var initiatorLiked: Bool?
     var recieverLiked: Bool?
@@ -40,6 +48,9 @@ class FriendshipObject: NSObject, Codable {
     
     var initiatorNumberUnread: Int?
     var recieverNumberUnread: Int?
+    
+    var initiatorTyping: Bool?
+    var recieverTyping: Bool?
 
     var messages: [String]?
     var totalMessages: Int?
@@ -56,18 +67,26 @@ class FriendshipObject: NSObject, Codable {
     
     enum UserCodingKeys: String, CodingKey {
         case convoId
+        case members
         case initiatorId
         case recieverId
         case archived
+        case anon
         
         case initiator
         case reciever
+        
+        case initatorAvatar
+        case recieverAvatar
         
         case initiatorMostRecentMessage
         case recieverMostRecentMessage
         
         case initiatorLastActive
         case recieverLastActive
+        
+        case initiatorActive
+        case recieverActive
         
         case initiatorLiked
         case recieverLiked
@@ -77,6 +96,9 @@ class FriendshipObject: NSObject, Codable {
         
         case initiatorNumberUnread
         case recieverNumberUnread
+        
+        case initiatorTyping
+        case recieverTyping
         
         case messages
         case totalMessages
@@ -96,6 +118,11 @@ class FriendshipObject: NSObject, Codable {
         self.initiatorId = initiatorId
         self.recieverId = recieverId
         self.archived = false
+        self.anon = true
+        
+        self.members = [String]()
+        self.members?.append(initiatorId)
+        self.members?.append(recieverId)
     }
 
     override init() {}
@@ -109,10 +136,14 @@ class FriendshipObject: NSObject, Codable {
         let container = try decoder.container(keyedBy: UserCodingKeys.self)
         
         convoId = try container.decodeIfPresent(String.self, forKey: .convoId)
+        members = try container.decodeIfPresent([String].self, forKey: .members)
         initiatorId = try container.decodeIfPresent(String.self, forKey: .initiatorId)
         recieverId = try container.decodeIfPresent(String.self, forKey: .recieverId)
         archived = try container.decodeIfPresent(Bool.self, forKey: .archived)
-
+        anon = try container.decodeIfPresent(Bool.self, forKey: .anon)
+        
+        initiatorAvatar = try container.decodeIfPresent(AvatarObject.self, forKey: .initatorAvatar)
+        recieverAvatar = try container.decodeIfPresent(AvatarObject.self, forKey: .recieverAvatar)
         
         initiatorMostRecentMessage = try container.decodeIfPresent(String.self, forKey: .initiatorMostRecentMessage)
         
@@ -141,6 +172,9 @@ class FriendshipObject: NSObject, Codable {
              }
          }
         
+        initiatorActive = try container.decodeIfPresent(Bool.self, forKey: .initiatorActive)
+        recieverActive = try container.decodeIfPresent(Bool.self, forKey: .recieverActive)
+        
         initiatorLiked = try container.decodeIfPresent(Bool.self, forKey: .initiatorLiked)
         recieverLiked = try container.decodeIfPresent(Bool.self, forKey: .recieverLiked)
 
@@ -150,6 +184,8 @@ class FriendshipObject: NSObject, Codable {
         initiatorNumberUnread = try container.decodeIfPresent(Int.self, forKey: .initiatorNumberUnread)
         recieverNumberUnread = try container.decodeIfPresent(Int.self, forKey: .recieverNumberUnread)
         
+        initiatorTyping = try container.decodeIfPresent(Bool.self, forKey: .initiatorTyping)
+        recieverTyping = try container.decodeIfPresent(Bool.self, forKey: .recieverTyping)
 
         totalMessages = try container.decodeIfPresent(Int.self, forKey: .totalMessages)
         totalCharacters = try container.decodeIfPresent(Int.self, forKey: .totalCharacters)
@@ -168,16 +204,22 @@ class FriendshipObject: NSObject, Codable {
         var container = encoder.container(keyedBy: UserCodingKeys.self)
           
         try container.encodeIfPresent(convoId, forKey: .convoId)
+        try container.encodeIfPresent(members, forKey: .members)
         try container.encodeIfPresent(initiatorId, forKey: .initiatorId)
         try container.encodeIfPresent(recieverId, forKey: .recieverId)
+        try container.encodeIfPresent(initiatorAvatar, forKey: .initatorAvatar)
+        try container.encodeIfPresent(recieverAvatar, forKey: .recieverAvatar)
         try container.encodeIfPresent(archived, forKey: .archived)
+        try container.encodeIfPresent(anon, forKey: .anon)
 
-        
         try container.encodeIfPresent(initiatorMostRecentMessage, forKey: .initiatorMostRecentMessage)
         try container.encodeIfPresent(recieverMostRecentMessage, forKey: .recieverMostRecentMessage)
         
         try container.encodeIfPresent(initiatorLastActive, forKey: .initiatorLastActive)
         try container.encodeIfPresent(recieverLastActive, forKey: .recieverLastActive)
+        
+        try container.encodeIfPresent(initiatorActive, forKey: .initiatorActive)
+        try container.encodeIfPresent(recieverActive, forKey: .recieverActive)
         
         try container.encodeIfPresent(initiatorLiked, forKey: .initiatorLiked)
         try container.encodeIfPresent(recieverLiked, forKey: .recieverLiked)
@@ -187,6 +229,9 @@ class FriendshipObject: NSObject, Codable {
         
         try container.encodeIfPresent(initiatorNumberUnread, forKey: .initiatorNumberUnread)
         try container.encodeIfPresent(recieverNumberUnread, forKey: .recieverNumberUnread)
+        
+        try container.encodeIfPresent(initiatorTyping, forKey: .initiatorTyping)
+        try container.encodeIfPresent(recieverTyping, forKey: .recieverTyping)
         
         try container.encodeIfPresent(messages, forKey: .messages)
         try container.encodeIfPresent(totalMessages, forKey: .totalMessages)
