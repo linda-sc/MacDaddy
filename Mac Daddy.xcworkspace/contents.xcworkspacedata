@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/Linda/Desktop/My Apps/Mac Daddy/Mac Daddy/Legacy.storyboard">
-   </FileRef>
-   <FileRef
       location = "group:Mac Daddy.xcodeproj">
    </FileRef>
    <FileRef

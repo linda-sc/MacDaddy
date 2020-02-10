@@ -73,6 +73,8 @@ class UserObject: NSObject, Codable {
     var venmo: String?
     var terms: String?
     var shortBio: String?
+    var vHandle: String?
+    
 
     //4. Realtime Information
     var currentMatchID: String?
@@ -153,6 +155,7 @@ class UserObject: NSObject, Codable {
         case venmo
         case terms
         case shortBio
+        case vHandle
 
         //4. Realtime Information
         case currentMatchID
@@ -249,6 +252,7 @@ class UserObject: NSObject, Codable {
         venmo = try container.decodeIfPresent(String.self, forKey: .venmo)
         terms = try container.decodeIfPresent(String.self, forKey: .terms)
         shortBio = try container.decodeIfPresent(String.self, forKey: .shortBio)
+        vHandle = try container.decodeIfPresent(String.self, forKey: .vHandle)
         
         //4. Realtime Information
         currentMatchID = try container.decodeIfPresent(String.self, forKey: .currentMatchID)
@@ -330,6 +334,7 @@ class UserObject: NSObject, Codable {
         try container.encodeIfPresent(venmo, forKey: .venmo)
         try container.encodeIfPresent(terms, forKey: .terms)
         try container.encodeIfPresent(shortBio, forKey: .shortBio)
+        try container.encodeIfPresent(vHandle, forKey: .vHandle)
         
         //4. Realtime Information
         try container.encodeIfPresent(currentMatchID, forKey: .currentMatchID)
