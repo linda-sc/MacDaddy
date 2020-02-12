@@ -6,29 +6,31 @@
 //  Copyright © 2020 Synestha. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class EditHandlesVC: UIViewController, UITextViewDelegate {
 
+
     @IBOutlet weak var editvHandleBox: UITextView!
     @IBOutlet weak var characterCountLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         editvHandleBox.delegate = self
         editvHandleBox.isScrollEnabled = false
         editvHandleBox.translatesAutoresizingMaskIntoConstraints = false
-        editvHandleBox.layer.cornerRadius = 20
+        editvHandleBox.layer.cornerRadius = 10
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //Set the vHandle to display either your vHandle, or the placeholder text
-        print("SHORT BIO")
+        print("Venmo")
         print(UserManager.shared.currentUser?.vHandle)
         if isValidvHandle(vHandle: UserManager.shared.currentUser?.vHandle ?? "") {
             editvHandleBox.text = UserManager.shared.currentUser?.vHandle
             updateCharCount()
+            
         } else {
             editvHandleBox.text = "Don't leave this lonely box blank!"
         }
@@ -90,7 +92,6 @@ class EditHandlesVC: UIViewController, UITextViewDelegate {
         print("Where the Venmo @? \(valid)")
         return valid
     }
-    
     
     //Make new scenes
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
