@@ -19,6 +19,9 @@ class HomeVC: UIViewController {
     @IBOutlet weak var tableView:UITableView!
     @IBOutlet weak var matchBox:UIButton!
     
+    @IBOutlet weak var friendshipCollection: UICollectionView!
+    @IBOutlet weak var friendshipCollectionLayout: UICollectionViewFlowLayout!
+
     
     var updatedActiveStatusOnce = false
     var currentMatch = Friend()
@@ -401,7 +404,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        //return friends.count
         //return DataHandler.friendList.count
-        return UserManager.shared.friendships?.count
+        return UserManager.shared.friendships?.count ?? 0
     }
     
     //Which cell goes in what row?
@@ -414,19 +417,20 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         //V2 Design: Frienships are more important than friends.
         //Friendship comes first, and if there is also a friend struct, then use it to layer on top.
         let friendship = UserManager.shared.friendships?[indexPath.row]
-        var friendUid = ""
-        if UserManager.shared.currentUser?.uid == friendship?.initiatorId {
-            friendUid = friendship?.recieverId
-        } else {
-            friendUid = friendship?.initiatorId
-        }
-        //let friendship = FriendshipRequests().fetchCachedFriendship(uid: friend.uid)
-        let friend = FriendshipRequests().fetchCachedFriendStruct(uid: friendUid)
-        
-        //Update the cell with both the friend and the friendship
-        cell.update(with: friend)
         if friendship != nil {
+            var friendUid = ""
+            if UserManager.shared.currentUser?.uid == friendship?.initiatorId {
+                friendUid = friendship?.recieverId ?? ""
+            } else {
+                friendUid = friendship?.initiatorId ?? ""
+            }
             cell.update(with: friendship!)
+            //let friendship = FriendshipRequests().fetchCachedFriendship(uid: friend.uid)
+            if let friend = FriendshipRequests().fetchCachedFriendStruct(uid: friendUid) {
+                //Update the cell with both the friend and the friendship
+                cell.update(with: friend)
+
+            }
         }
         
         cell.textLabel?.textColor = UIColor.white
@@ -512,23 +516,28 @@ extension HomeVC {
             //If you're going from the alert controller, go to your current match.
             
             if let selectedRow = tableView.indexPathForSelectedRow?.row {
-                let friendship = UserManager.shared.friendships[selectedRow]
-                destination.friendship = friendship
-                
-                var friendUid = ""
-                if UserManager.shared.currentUser.uid == friendship.initiatorId {
-                    friendUid = friendship.recieverId
-                } else {
-                    friendUid = friendship.initiatorId
+                if let friendship = UserManager.shared.friendships?[selectedRow] {
+                    destination.friendship = friendship
+                    
+                    var friendUid = ""
+                    if UserManager.shared.currentUser?.uid == friendship.initiatorId {
+                        friendUid = friendship.recieverId ?? ""
+                    } else {
+                        friendUid = friendship.initiatorId ?? ""
+                    }
+                    
+                    if let friend = FriendshipRequests().fetchCachedFriendStruct(uid: friendUid) {
+                        destination.friend = friend
+                    }
                 }
-                
-                destination.friend = FriendshipRequests().fetchCachedFriendStruct(uid: friendUid) ?? ""
                 //destination.friend = DataHandler.friendList[selectedRow]
                 
             } else {
                 let friend = self.currentMatch
                 destination.friend = friend
-                destination.friendship = FriendshipRequests().fetchCachedFriendship(uid: friend.uid)
+                if let friendship = FriendshipRequests().fetchCachedFriendship(uid: friend.uid) {
+                    destination.friendship = friendship
+                }
             }
         }
 

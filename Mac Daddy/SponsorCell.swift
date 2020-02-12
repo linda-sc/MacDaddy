@@ -13,6 +13,8 @@ class SponsorCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //This is important.
+        if #available(iOS 12, *) { setupSelfSizingForiOS12(contentView: contentView)}
     }
 
 }

@@ -12,23 +12,34 @@ class SponsorsCollectionCell: UICollectionViewCell {
     
     var parentVC: WorldVC? 
     @IBOutlet weak var sponsorCollection: UICollectionView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        if #available(iOS 12, *) { setupSelfSizingForiOS12(contentView: contentView)}
+
         
         sponsorCollection.delegate = self
         sponsorCollection.dataSource = self
         
         /*** Register cell nibs ***/
         sponsorCollection.register(UINib.init(nibName: "SponsorCell", bundle: nil), forCellWithReuseIdentifier: "SponsorCell")
+        
+        //Set layout
+        if let flow = sponsorCollection.collectionViewLayout as? UICollectionViewFlowLayout {
+             flow.estimatedItemSize = CGSize(width: 1, height: 1)
+        }
+        self.sponsorCollection.setCollectionViewLayout(flowLayout, animated: true)
+
     }
 
 }
 
-extension SponsorsCollectionCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SponsorsCollectionCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -39,9 +50,9 @@ extension SponsorsCollectionCell: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             let width = parentVC?.view.bounds.width ?? 300
-            let height = parentVC?.view.bounds.height ?? 150
+            let height = CGFloat(100)
             return CGSize(width: width, height: height)
-        }
+    }
     
     
 }

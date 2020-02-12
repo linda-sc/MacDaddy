@@ -100,6 +100,8 @@
 		BFE39CBC22E160C600C2ABDE /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE39CBA22E160C600C2ABDE /* HeaderCell.xib */; };
 		BFEB30391F68891E00CD4173 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEB30381F68891E00CD4173 /* UserData.swift */; };
 		BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE185C1FD493960011A34A /* String+Subtring.swift */; };
+		BFFB1A1A23F49B2D00BC6CAA /* FriendshipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFB1A1823F49B2D00BC6CAA /* FriendshipCell.swift */; };
+		BFFB1A1B23F49B2D00BC6CAA /* FriendshipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFB1A1923F49B2D00BC6CAA /* FriendshipCell.xib */; };
 		C499954703A364A3F25BC845 /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8700AA267E9C7ABDD903B933 /* Pods_Mac_Daddy.framework */; };
 /* End PBXBuildFile section */
 
@@ -206,6 +208,8 @@
 		BFE39CBA22E160C600C2ABDE /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
 		BFEB30381F68891E00CD4173 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BFEE185C1FD493960011A34A /* String+Subtring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subtring.swift"; sourceTree = "<group>"; };
+		BFFB1A1823F49B2D00BC6CAA /* FriendshipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipCell.swift; sourceTree = "<group>"; };
+		BFFB1A1923F49B2D00BC6CAA /* FriendshipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendshipCell.xib; sourceTree = "<group>"; };
 		C605359BDCF5EF142584CD16 /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,6 +249,8 @@
 				BF2652EA1F16B2090013873F /* HomeVC.swift */,
 				BF7B29DB23F1E84400E1B29B /* HomeVC_V2Extension.swift */,
 				BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */,
+				BFFB1A1823F49B2D00BC6CAA /* FriendshipCell.swift */,
+				BFFB1A1923F49B2D00BC6CAA /* FriendshipCell.xib */,
 				BF5408242057619D00E5A1BB /* AboutVC.swift */,
 			);
 			name = Home;
@@ -623,6 +629,7 @@
 				BF42392922BD593100340E83 /* BasicInfoCell.xib in Resources */,
 				BF58F4D622DE317A008F69FF /* GradeStatusCell.xib in Resources */,
 				BF310E1A22DC10C1006C7D6D /* AvatarView.xib in Resources */,
+				BFFB1A1B23F49B2D00BC6CAA /* FriendshipCell.xib in Resources */,
 				BF42392622BD564900340E83 /* Profile.storyboard in Resources */,
 				BF10827D1ED4C793000677A3 /* Assets.xcassets in Resources */,
 				BF10827B1ED4C793000677A3 /* Main.storyboard in Resources */,
@@ -732,6 +739,7 @@
 				BF7B29DE23F209C100E1B29B /* NotificationExtensions.swift in Sources */,
 				BF1082781ED4C793000677A3 /* LoginVC.swift in Sources */,
 				BF99DDC01F1846AB0069F2C5 /* Segues.swift in Sources */,
+				BFFB1A1A23F49B2D00BC6CAA /* FriendshipCell.swift in Sources */,
 				BF57B64D228F481C00D500A2 /* UserObject.swift in Sources */,
 				BF741E5922CCFCC500F9CACE /* MapCell.swift in Sources */,
 				BF528EE9234010A300E7E1E5 /* InitialVC.swift in Sources */,

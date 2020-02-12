@@ -77,32 +77,52 @@ class ChatInterfaceVC: JSQMessagesViewController {
         background.image = UIImage(named: "MacDaddy Background_DarkMode")
         self.collectionView.backgroundView = background
 
+//      print("🤪 ChatInterfaceVC - Querying and displaying messages from Firebase")
+
+        query = Constants.refs.databaseConversations.child(friend.convoID).child("chats").queryLimited(toLast: 40)
+       _ = query.observe(.childAdded, with: { [weak self] snapshot in
+
+           if  let data        = snapshot.value as? [String: String],
+               let id          = data["sender_id"],
+               let name        = data["name"],
+               let text        = data["text"],
+               !text.isEmpty
+           {
+               if let message = JSQMessage(senderId: id, displayName: name, text: text)
+               {
+                   ChatHandler.messages.append(message)
+                   print("Appending message...")
+                   self?.finishReceivingMessage()
+               }
+           }
+       })
+        
         collectionView.reloadData()
     }
     
     //MARK: Displaying the messages from Firebase
 
     override func viewDidLoad() {
-        print("🤪 ChatInterfaceVC - Querying and displaying messages from Firebase")
-
-        query = Constants.refs.databaseConversations.child(friend.convoID).child("chats").queryLimited(toLast: 40)
-               _ = query.observe(.childAdded, with: { [weak self] snapshot in
-
-                   if  let data        = snapshot.value as? [String: String],
-                       let id          = data["sender_id"],
-                       let name        = data["name"],
-                       let text        = data["text"],
-                       !text.isEmpty
-                   {
-                       if let message = JSQMessage(senderId: id, displayName: name, text: text)
-                       {
-                           ChatHandler.messages.append(message)
-                           print("Appending message...")
-                           self?.finishReceivingMessage()
-                       }
-                   }
-               })
-        collectionView.reloadData()
+//        print("🤪 ChatInterfaceVC - Querying and displaying messages from Firebase")
+//
+//        query = Constants.refs.databaseConversations.child(friend.convoID).child("chats").queryLimited(toLast: 40)
+//               _ = query.observe(.childAdded, with: { [weak self] snapshot in
+//
+//                   if  let data        = snapshot.value as? [String: String],
+//                       let id          = data["sender_id"],
+//                       let name        = data["name"],
+//                       let text        = data["text"],
+//                       !text.isEmpty
+//                   {
+//                       if let message = JSQMessage(senderId: id, displayName: name, text: text)
+//                       {
+//                           ChatHandler.messages.append(message)
+//                           print("Appending message...")
+//                           self?.finishReceivingMessage()
+//                       }
+//                   }
+//               })
+        //collectionView.reloadData()
     }
     
 
@@ -163,7 +183,11 @@ class ChatInterfaceVC: JSQMessagesViewController {
                        "text": text]
 
         chatsRef.setValue(message)
-        updateFriendshipObjectOnSending(message: message, friendship: self.friendship)
+        
+        if let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text) {
+            updateFriendshipObjectOnSending(message: message, friendship: self.friendship)
+        }
+        
         self.finishSendingMessage()
 
         //Also remember what the last chat was:
@@ -172,18 +196,23 @@ class ChatInterfaceVC: JSQMessagesViewController {
     }
     
     // MARK: - Update FriendshipObject
-    func updateFriendshipObjectOnSending(message: JSQMessage, friendship: FriendshipObject) {
-        if UserManager.shared.currentUser?.uid == friendship.initiatorId {
-            //If you're the initiator
-            friendship.initiatorLastActive = Date()
-            friendship.initiatorMostRecentMessage = message.content
-        } else {
-            friendship.recieverLastActive = Date()
-            friendship.recieverMostRecentMessage = message.content
+    func updateFriendshipObjectOnSending(message: JSQMessage, friendship: FriendshipObject?) {
+        if friendship == nil {
+            print("Error updating friendship. Friendship = nil")
+            return
         }
-        friendship.lastActive = Date()
         
-        FriendshipRequests().updateFriendshipObjectInFirestore(friendship: friendship)
+        if UserManager.shared.currentUser?.uid == friendship?.initiatorId {
+            //If you're the initiator
+            friendship?.initiatorLastActive = Date()
+            friendship?.initiatorMostRecentMessage = message.text
+        } else {
+            friendship?.recieverLastActive = Date()
+            friendship?.recieverMostRecentMessage = message.text
+        }
+        friendship?.lastActive = Date()
+        
+        FriendshipRequests().updateFriendshipObjectInFirestore(friendship: friendship!)
     }
 
 

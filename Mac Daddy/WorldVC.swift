@@ -74,9 +74,9 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
         case 0:
             if indexPath.row == 0 {
                 let cell = worldCollection.dequeueReusableCell(withReuseIdentifier: "MapCell", for: indexPath) as! MapCell
-                               cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-                    self.setStructure(for: cell)
-                    return cell
+                cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+                self.setStructure(for: cell)
+                return cell
                 
             } else if indexPath.row == 1 {
                 

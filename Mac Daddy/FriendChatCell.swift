@@ -10,7 +10,7 @@ import UIKit
 
 class FriendChatCell: UITableViewCell {
 
-    @IBOutlet weak var friendPic:UIImageView!
+//    @IBOutlet weak var friendPic:UIImageView!
     @IBOutlet weak var friendName:UILabel!
     @IBOutlet weak var friendChatPreview:UILabel!
     @IBOutlet weak var heart: UIImageView!
@@ -18,6 +18,8 @@ class FriendChatCell: UITableViewCell {
     @IBOutlet weak var currentMatchLabel: UILabel!
     @IBOutlet weak var incomingMatchLabel: UILabel!
     @IBOutlet weak var avatarView: AvatarView!
+    @IBOutlet weak var elapsedLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,26 +33,36 @@ class FriendChatCell: UITableViewCell {
     
     func update(with friendship: FriendshipObject) {
         
-        let initiatorDidSee = friendship.initiatorSeen ?? false
-        let recieverDidSee = friendship.recieverSeen ?? false
+        
+        let initiatorDidSee = friendship.initiatorSeen ?? true
+        let recieverDidSee = friendship.recieverSeen ?? true
         
         //If you're the initiator, pull data for the reciever.
-        
         if UserManager.shared.currentUser!.uid == friendship.initiatorId {
             self.avatarView.displayAvatar(avatar: friendship.recieverAvatar)
             self.activeBubble.isHidden = friendship.recieverActive ?? true
+            if let time = friendship.recieverLastActive {
+                self.elapsedLabel.text = "Active " + time.getElapsedInterval()
+            } else {
+                self.elapsedLabel.text = "Active during beta testing 2019"
+            }
             
             if initiatorDidSee == false {
-                self.friendChatPreview.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+                self.friendChatPreview.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
             } else {
-                self.friendChatPreview.font = UIFont(name:"HelveticaNeue", size: 16.0)
+                self.friendChatPreview.font = UIFont(name:"HelveticaNeue", size: 15.0)
             }
         } else {
              //If you're the reciever, pull data for the initator.
             self.avatarView.displayAvatar(avatar: friendship.initiatorAvatar)
             self.activeBubble.isHidden = friendship.initiatorActive ?? true
+            if let time = friendship.initiatorLastActive {
+                self.elapsedLabel.text = "Active " + time.getElapsedInterval()
+            } else {
+                self.elapsedLabel.text = "Active during beta testing 2019"
+            }
             
-            if recieverDidSee {
+            if recieverDidSee == false {
                 self.friendChatPreview.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
             } else {
                 self.friendChatPreview.font = UIFont(name:"HelveticaNeue", size: 16.0)
@@ -59,29 +71,26 @@ class FriendChatCell: UITableViewCell {
 
         self.friendChatPreview.text =
             friendship.mostRecentMessage
-            ??  friendship.lastActive?.getElapsedInterval()
-            ??  friendship.initiatorLastActive?.getElapsedInterval()
-            ??  friendship.recieverLastActive?.getElapsedInterval()
-            ?? "is chatting with you"
+            ?? "is chatting with you."
     }
     
     //Change to friend object once you figure out how the matching works.
     func update(with friend:Friend) {
         
-        //Round corners of picture
-        friendPic.layer.cornerRadius = 10
-        friendPic.clipsToBounds = true
+//        //Round corners of picture
+//        friendPic.layer.cornerRadius = 10
+//        friendPic.clipsToBounds = true
         
         //If the friend is anonymous, use one of the default pictures.
         //We haven't implemented pictures yet so let's just leave it like this.
         //if friend.anon == "1" {
-        if true {
-            if friend.macStatus == "Daddy" {
-                friendPic.image = UIImage(named: "MacDaddyLogo_Purple")
-            } else {
-                friendPic.image = UIImage(named: "MacDaddyLogo")
-            }
-        }
+//        if true {
+//            if friend.macStatus == "Daddy" {
+//                friendPic.image = UIImage(named: "MacDaddyLogo_Purple")
+//            } else {
+//                friendPic.image = UIImage(named: "MacDaddyLogo")
+//            }
+//        }
         
         //Highlight your current match
         if (friend.uid == DataHandler.currentMatchID) {
@@ -115,6 +124,8 @@ class FriendChatCell: UITableViewCell {
         //So you see if you liked them already or not.
         if (friend.anon == "0") {
             self.heart.isHidden = false
+            //let heartColor = UIColor(Constants.colors.shadow)
+            //self.heart.setImageColor(color: heartColor)
         } else {
           self.heart.isHidden = true
         }
