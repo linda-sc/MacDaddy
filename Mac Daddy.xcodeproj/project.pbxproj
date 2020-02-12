@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B373D4C222C6FC8D0051896F /* EditGradeStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */; };
+		B3F01AC423F3708D00F41136 /* EditHandlesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B397D96D23EF1EF700ABE94F /* EditHandlesVC.swift */; };
 		BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */; };
 		BF0220F320AF42EB00A3CB8F /* DataHandler_Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */; };
 		BF0220F520AF457A00A3CB8F /* DataHandler_Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0220F420AF457A00A3CB8F /* DataHandler_Core.swift */; };
@@ -223,9 +224,9 @@
 		B397D96C23EF1E6B00ABE94F /* Handles */ = {
 			isa = PBXGroup;
 			children = (
+				B397D96F23EF25E200ABE94F /* HandleCell.swift */,
 				B397D97323EF298200ABE94F /* HandleCell.xib */,
 				B397D96D23EF1EF700ABE94F /* EditHandlesVC.swift */,
-				B397D96F23EF25E200ABE94F /* HandleCell.swift */,
 			);
 			path = Handles;
 			sourceTree = "<group>";
@@ -767,6 +768,7 @@
 				BF005BDF1FB9FE6300CFE337 /* FriendChatCell.swift in Sources */,
 				BF3B2E171EE43A67002796DE /* VerifyVC.swift in Sources */,
 				BFE39CB622E14D2F00C2ABDE /* InterestCell.swift in Sources */,
+				B3F01AC423F3708D00F41136 /* EditHandlesVC.swift in Sources */,
 				BF2652F11F1821F30013873F /* InterestsSetupVC.swift in Sources */,
 				BFD69E8223E62F6100C19D64 /* GigObject.swift in Sources */,
 				BF42393222C144A500340E83 /* LogoutCell.swift in Sources */,

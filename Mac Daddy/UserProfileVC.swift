@@ -133,7 +133,7 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
             //Venmo Cell
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "InterestCell", for: indexPath) as! InterestCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            self.formatInterest(for: cell, iconName: "venmoIcon", interestName: "Venmo handle", interestField: "lindachen97")
+            self.formatInterest(for: cell, iconName: "venmoIcon", interestName: "Venmo handle", interestField: UserManager.shared.currentUser?.vHandle ?? "Venmo")
             self.setStructure(for: cell)
             return cell
         default:
@@ -237,12 +237,28 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
         switch indexPath.row {
         case 0:
             performSegue(withIdentifier: "goToEditAvatar", sender: collectionView.cellForItem(at: indexPath))
+            print("Going to EditAvatar")
         case 1:
             performSegue(withIdentifier: "goToEditGradeStatus", sender: collectionView.cellForItem(at: indexPath))
+            print("Going to GradeStatus")
         case 2:
             performSegue(withIdentifier: "goToEditShortBio", sender: collectionView.cellForItem(at: indexPath))
+            print("Going to EditShortBio")
         case 3:
-            performSegue(withIdentifier: "goToEditMajor", sender: collectionView.cellForItem(at: indexPath))
+            print("Going to case 3")
+        case 4:
+            print("Going to case 4")
+        case 5:
+             //performSegue(withIdentifier: "goToEditMajor", sender: collectionView.cellForItem(at: indexPath))
+             print("Going to case 5") //EditMajorVC not created yet
+        case 6:
+            print("Going to case 6")
+        case 7:
+            print("Going to case 7")
+        case 8:
+            performSegue(withIdentifier: "goToEditHandles", sender: collectionView.cellForItem(at: indexPath))
+            print("Going to case 8")
+            
         default:
             print("Did select item at index path")
         }
@@ -273,6 +289,16 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
             optionsCollection.reloadItems(at: [selectedIndexPath])
             print("Selected index path: \(selectedIndexPath)")
             print("Grade: \(UserManager.shared.currentUser?.grade ?? "No grade")")
+        }
+    }
+    
+    @IBAction func unwindFromEditHandles(segue: SegueToLeft) {
+        //let source = segue.source as! EditHandlesVC
+        if let selectedIndexPath = optionsCollection.indexPathsForSelectedItems?.first {
+            print("Venmo Handle: \(UserManager.shared.currentUser?.shortBio ?? "No Venmo")")
+            print("Selected index path: \(selectedIndexPath)")
+            optionsCollection.reloadItems(at: [selectedIndexPath])
+            //optionsCollection.reloadData()
         }
     }
 }
