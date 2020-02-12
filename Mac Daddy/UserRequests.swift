@@ -221,6 +221,7 @@ class UserRequests: NSObject {
             if let email = UserManager.shared.currentUser?.email {
                 UserManager.shared.currentUser?.organization = getDomain(s: email)
             }
+            UserManager.shared.currentUser?.lastActive = Date()
             UserRequests().updateUserInFirestore(userObject: UserManager.shared.currentUser!)
         } else {
             print("👮🏻‍♀️ Current user is nil.")
@@ -232,6 +233,23 @@ class UserRequests: NSObject {
         let charSet = CharacterSet(charactersIn: "@")
         let v = s.components(separatedBy: charSet)
         return v.last ?? "None"
+    }
+    
+    func hideEmail(email: String) -> String {
+        let charSet = CharacterSet(charactersIn: "@")
+        let parts = email.components(separatedBy: charSet)
+        let username = String(parts.first ?? "?")
+        let suffix = String(parts.last ?? "@???.???")
+        let firstLetter = String(username.first ?? "?")
+        var numRemainingLetters = (username.count) - 1
+        var starrredOut = ""
+        while numRemainingLetters > 0 {
+            starrredOut += "*"
+            numRemainingLetters -= 1
+        }
+        
+        let hiddenEmail = firstLetter + starrredOut + "@" + suffix
+        return hiddenEmail
     }
     
 }

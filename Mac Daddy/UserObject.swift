@@ -85,6 +85,7 @@ class UserObject: NSObject, Codable {
     var currentLocation: CLLocation?
     var message: String?
     var version: String?
+    var badges: Int?
 
     //5. Stats information
     //////////////////////////////////
@@ -166,6 +167,7 @@ class UserObject: NSObject, Codable {
         case currentLocation
         case message
         case version
+        case badges
 
         //5. Stats information
         case score
@@ -268,7 +270,8 @@ class UserObject: NSObject, Codable {
         
         message = try container.decodeIfPresent(String.self, forKey: .message)
         version = try container.decodeIfPresent(String.self, forKey: .version)
-        
+        badges = try container.decodeIfPresent(Int.self, forKey: .badges)
+
         //Convert the date string into a date object.
         let lastActiveDateString = try container.decodeIfPresent(String.self, forKey: .lastActive)
         let dateTimeFormatter = DateFormatter.iso8601Full
@@ -358,6 +361,7 @@ class UserObject: NSObject, Codable {
         
         try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(version, forKey: .version)
+        try container.encodeIfPresent(badges, forKey: .version)
 
         
         //5. Stats information

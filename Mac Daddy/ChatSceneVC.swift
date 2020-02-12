@@ -26,6 +26,7 @@ class ChatSceneVC: UIViewController {
     
     
     var friend = Friend()
+    var friendship = FriendshipObject()
     var friendsRealName = ""
     
     var convoExists = true
@@ -47,6 +48,7 @@ class ChatSceneVC: UIViewController {
             if let childVC = segue.destination as? ChatInterfaceVC {
                 //Some property on ChildVC that needs to be set
                 childVC.friend = self.friend
+                childVC.friendship = self.friendship
                 ChatHandler.messages = [JSQMessage]()
             }
         } else if segue.identifier == "showFriendDetail" {

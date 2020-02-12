@@ -12,23 +12,29 @@ import Firebase
 extension HomeVC {
     
     //MARK: Called in ViewDidLoad
-
+    
     func viewDidLoadExtension() {
 
         UserManager.shared.getLocation()
         UserRequests().checkupUpdates()
+        self.refresh()
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidRecieveUpdatedFriendshipObjects(_:)), name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
     }
     
+    //MARK: Function called when logo tapped
+    func refresh() {
+        if let myFriendships = UserManager.shared.friendships {
+            updateMyLastActiveStatus(friendships: myFriendships)
+            self.updatedActiveStatusOnce = true
+        }
+    }
+
     //MARK: Stuff to do when objects update
 
     @objc func onDidRecieveUpdatedFriendshipObjects(_ notification:Notification) {
         print("FriendshipObjects updated")
         self.tableView.reloadData()
-        if let myFriendships = UserManager.shared.friendships {
-            updateMyLastActiveStatus(friendships: myFriendships)
-        }
     }
     
     //MARK: Update your lastActive status

@@ -236,9 +236,14 @@ class FriendshipObject: NSObject, Codable {
         try container.encodeIfPresent(initiatorMostRecentMessage, forKey: .initiatorMostRecentMessage)
         try container.encodeIfPresent(recieverMostRecentMessage, forKey: .recieverMostRecentMessage)
         
-        try container.encodeIfPresent(lastActive, forKey: .initiatorLastActive)
-        try container.encodeIfPresent(initiatorLastActive, forKey: .initiatorLastActive)
-        try container.encodeIfPresent(recieverLastActive, forKey: .recieverLastActive)
+        //Convert the dates into a strings to make them JSON encodable
+        let lastActiveString = lastActive?.dateToDateTimeString()
+        let initiatorLastActiveString = initiatorLastActive?.dateToDateTimeString()
+        let recieverLastActiveString = recieverLastActive?.dateToDateTimeString()
+        
+        try container.encodeIfPresent(lastActiveString, forKey: .initiatorLastActive)
+        try container.encodeIfPresent(initiatorLastActiveString, forKey: .initiatorLastActive)
+        try container.encodeIfPresent(recieverLastActiveString, forKey: .recieverLastActive)
         
         try container.encodeIfPresent(initiatorActive, forKey: .initiatorActive)
         try container.encodeIfPresent(recieverActive, forKey: .recieverActive)

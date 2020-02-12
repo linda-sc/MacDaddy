@@ -106,8 +106,9 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
             
             if indexPath.row < UserData.currentGigs.count {
                 let gig = UserData.currentGigs[indexPath.row]
-                cell.textLabel.text = gig.text
-                cell.dateLabel.text = gig.timeStamp?.getElapsedInterval()
+//                cell.textLabel.text = gig.text
+//                cell.dateLabel.text = gig.timeStamp?.getElapsedInterval()
+                cell.formatCell(gig: gig)
             } else {
                 print("error at row \(indexPath.row), gigs in array: \(UserData.currentGigs.count)")
             }

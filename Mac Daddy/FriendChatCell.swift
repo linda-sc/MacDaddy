@@ -30,15 +30,31 @@ class FriendChatCell: UITableViewCell {
     
     
     func update(with friendship: FriendshipObject) {
+        
+        let initiatorDidSee = friendship.initiatorSeen ?? false
+        let recieverDidSee = friendship.recieverSeen ?? false
+        
         //If you're the initiator, pull data for the reciever.
+        
         if UserManager.shared.currentUser!.uid == friendship.initiatorId {
             self.avatarView.displayAvatar(avatar: friendship.recieverAvatar)
             self.activeBubble.isHidden = friendship.recieverActive ?? true
-
+            
+            if initiatorDidSee == false {
+                self.friendChatPreview.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+            } else {
+                self.friendChatPreview.font = UIFont(name:"HelveticaNeue", size: 16.0)
+            }
         } else {
              //If you're the reciever, pull data for the initator.
             self.avatarView.displayAvatar(avatar: friendship.initiatorAvatar)
-              self.activeBubble.isHidden = friendship.initiatorActive ?? true
+            self.activeBubble.isHidden = friendship.initiatorActive ?? true
+            
+            if recieverDidSee {
+                self.friendChatPreview.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+            } else {
+                self.friendChatPreview.font = UIFont(name:"HelveticaNeue", size: 16.0)
+            }
         }
 
         self.friendChatPreview.text =

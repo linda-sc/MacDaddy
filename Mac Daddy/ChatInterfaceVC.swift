@@ -17,6 +17,7 @@ class ChatInterfaceVC: JSQMessagesViewController {
 
     var messages = [JSQMessage]()
     var friend = Friend()
+    var friendship : FriendshipObject?
     var query = DatabaseQuery()
 
     //Message Bubble Colors
@@ -65,41 +66,45 @@ class ChatInterfaceVC: JSQMessagesViewController {
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
 
         //Background
-        self.collectionView.backgroundView = background
-        if DataHandler.macStatus == "Daddy" {
-            background.image = UIImage(named: "MacDaddy Background_Purple")
-
-        }else if DataHandler.macStatus == "Baby" {
-            background.image = UIImage(named: "MacDaddy Background")
-        }
+//        self.collectionView.backgroundView = background
+//        if DataHandler.macStatus == "Daddy" {
+//            background.image = UIImage(named: "MacDaddy Background_Purple")
+//
+//        }else if DataHandler.macStatus == "Baby" {
+//            background.image = UIImage(named: "MacDaddy Background")
+//        }
+        
         background.image = UIImage(named: "MacDaddy Background_DarkMode")
         self.collectionView.backgroundView = background
 
-
-        //Displaying the messages from Firebase
         collectionView.reloadData()
+    }
+    
+    //MARK: Displaying the messages from Firebase
 
+    override func viewDidLoad() {
         print("🤪 ChatInterfaceVC - Querying and displaying messages from Firebase")
 
-
         query = Constants.refs.databaseConversations.child(friend.convoID).child("chats").queryLimited(toLast: 40)
-        _ = query.observe(.childAdded, with: { [weak self] snapshot in
+               _ = query.observe(.childAdded, with: { [weak self] snapshot in
 
-            if  let data        = snapshot.value as? [String: String],
-                let id          = data["sender_id"],
-                let name        = data["name"],
-                let text        = data["text"],
-                !text.isEmpty
-            {
-                if let message = JSQMessage(senderId: id, displayName: name, text: text)
-                {
-                    ChatHandler.messages.append(message)
-                    print("Appending message...")
-                    self?.finishReceivingMessage()
-                }
-            }
-        })
+                   if  let data        = snapshot.value as? [String: String],
+                       let id          = data["sender_id"],
+                       let name        = data["name"],
+                       let text        = data["text"],
+                       !text.isEmpty
+                   {
+                       if let message = JSQMessage(senderId: id, displayName: name, text: text)
+                       {
+                           ChatHandler.messages.append(message)
+                           print("Appending message...")
+                           self?.finishReceivingMessage()
+                       }
+                   }
+               })
+        collectionView.reloadData()
     }
+    
 
     //Bubble Factory
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData!
@@ -140,7 +145,8 @@ class ChatInterfaceVC: JSQMessagesViewController {
     }
 
 
-    //Sending messages
+    // MARK: - Sending Messages
+
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!)
     {
         // Because the other user can delete the chat from their end:
@@ -157,11 +163,27 @@ class ChatInterfaceVC: JSQMessagesViewController {
                        "text": text]
 
         chatsRef.setValue(message)
+        updateFriendshipObjectOnSending(message: message, friendship: self.friendship)
         self.finishSendingMessage()
 
         //Also remember what the last chat was:
         let convoRef = Constants.refs.databaseConversations.child(self.friend.convoID)
         convoRef.updateChildValues(["lastChat": text, "lastChatSenderID": senderId])
+    }
+    
+    // MARK: - Update FriendshipObject
+    func updateFriendshipObjectOnSending(message: JSQMessage, friendship: FriendshipObject) {
+        if UserManager.shared.currentUser?.uid == friendship.initiatorId {
+            //If you're the initiator
+            friendship.initiatorLastActive = Date()
+            friendship.initiatorMostRecentMessage = message.content
+        } else {
+            friendship.recieverLastActive = Date()
+            friendship.recieverMostRecentMessage = message.content
+        }
+        friendship.lastActive = Date()
+        
+        FriendshipRequests().updateFriendshipObjectInFirestore(friendship: friendship)
     }
 
 

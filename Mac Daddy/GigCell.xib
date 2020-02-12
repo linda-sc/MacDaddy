@@ -37,6 +37,12 @@
                         <color key="textColor" red="0.66367428559999997" green="0.65467319960000003" blue="0.8789459074" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="c***@bc.edu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zt-Ch-7oW">
+                        <rect key="frame" x="283" y="98" width="73" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.25537772129822867" green="0.23593867566131838" blue="0.33574394707207211" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.1212348565" green="0.11501511189999999" blue="0.21867311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,13 +53,16 @@
                 <constraint firstAttribute="bottom" secondItem="IId-pa-wDK" secondAttribute="bottom" constant="20" id="HYV-dF-s7K"/>
                 <constraint firstItem="tOh-OX-2Qd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="Nfz-5q-yZg"/>
                 <constraint firstAttribute="trailing" secondItem="N2b-Fx-eES" secondAttribute="trailing" id="XGX-Jd-A7T"/>
+                <constraint firstAttribute="bottom" secondItem="8zt-Ch-7oW" secondAttribute="bottom" constant="5" id="Y01-nt-Hwn"/>
                 <constraint firstItem="IId-pa-wDK" firstAttribute="top" secondItem="tOh-OX-2Qd" secondAttribute="bottom" constant="10" id="ZKL-94-Y3m"/>
+                <constraint firstItem="N2b-Fx-eES" firstAttribute="leading" secondItem="8zt-Ch-7oW" secondAttribute="trailing" constant="5" id="sOj-Eu-whb"/>
                 <constraint firstItem="IId-pa-wDK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="zwV-fj-jFV"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="431" height="118"/>
             <connections>
                 <outlet property="dateLabel" destination="tOh-OX-2Qd" id="Aqe-Mt-TDi"/>
+                <outlet property="emailLabel" destination="8zt-Ch-7oW" id="EdB-CO-uAS"/>
                 <outlet property="textLabel" destination="IId-pa-wDK" id="YPg-wK-ESg"/>
             </connections>
             <point key="canvasLocation" x="176.08695652173915" y="102.45535714285714"/>

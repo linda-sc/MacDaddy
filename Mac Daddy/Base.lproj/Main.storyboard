@@ -80,11 +80,15 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy FullLogo" translatesAutoresizingMaskIntoConstraints="NO" id="RaI-4Z-TCf">
                                 <rect key="frame" x="150.66666666666666" y="64" width="74" height="50"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RaI-4Z-TCf" secondAttribute="height" multiplier="37:25" id="EgM-PN-73O"/>
                                     <constraint firstAttribute="height" constant="50" id="dsr-al-LWT"/>
                                     <constraint firstAttribute="width" constant="74" id="khy-vz-oAa"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="btq-ne-Jey" appends="YES" id="4AU-qF-9ex"/>
+                                </connections>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQ9-P7-fEx">
                                 <rect key="frame" x="16" y="214" width="343" height="578"/>
@@ -247,6 +251,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nv0-lP-cAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="btq-ne-Jey">
+                    <connections>
+                        <action selector="logoTapped:" destination="VaT-gO-yOm" id="XJo-2x-Qef"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1984.8" y="1311.576354679803"/>
         </scene>

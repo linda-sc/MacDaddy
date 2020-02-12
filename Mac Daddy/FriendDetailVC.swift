@@ -105,7 +105,7 @@ class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
     }
     
     
-    //BLOCKING AND REPORTING
+    //MARK: BLOCKING AND REPORTING
     @IBAction func displayActionSheet(_ sender: Any) {
         
         // 1
@@ -258,6 +258,8 @@ class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
     }
 }
 
+//MARK: CollectionView
+
 extension FriendDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -328,8 +330,16 @@ extension FriendDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
             let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "InterestCell", for: indexPath) as! InterestCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             cell.moreIcon.isHidden = true
-            let venmo = self.friendObject.venmo ?? "???"
-            self.formatInterest(for: cell, iconName: "venmoIcon", interestName: "Venmo handle", interestField: venmo)
+            
+            //Friends structs currently better at keeping track of anonymity.
+            var venmo = ""
+            if self.friend.anon == "1" {
+                venmo = "???"
+            } else {
+                venmo = self.friendObject.venmo ?? "???"
+            }
+             self.formatInterest(for: cell, iconName: "venmoIcon", interestName: "Venmo handle", interestField: venmo)
+            
             self.setStructure(for: cell)
             return cell
         }

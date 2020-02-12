@@ -46,7 +46,7 @@ class BasicInfoCell: UICollectionViewCell {
         
         //Email
         if friend.anon == "1" {
-            emailTag.text = "???"
+            emailTag.text = UserRequests().hideEmail(email: userObject.email ?? "")
         } else {
             emailTag.text = friend.email
         }
@@ -59,4 +59,5 @@ class BasicInfoCell: UICollectionViewCell {
             orgTag.text = userObject.organization
         }
     }
+    
 }

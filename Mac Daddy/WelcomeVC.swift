@@ -33,15 +33,23 @@ class WelcomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         let when = DispatchTime.now() + 2
         animateLoading{
+            //Move the leading bar 1
             self.automaticLogin {
+                //Move the loading bar 2
                 DataHandler.downloadFriends {
-                    DispatchQueue.main.asyncAfter(deadline: when) {
-                        print("👉🏼 WelcomeVC: \(self.segueIdentifier)")
-                        self.performSegue(withIdentifier: self.segueIdentifier, sender: Any?.self)
-                    }
-                }
-            }
-        }
+                    //Move the loading bar 3
+                    FriendshipRequests().downloadMyFriendshipObjects {
+                        //Move the loading bar 3
+                        friendships in
+                        UserManager.shared.friendships = friendships
+                        DispatchQueue.main.asyncAfter(deadline: when) {
+                            print("👉🏼 WelcomeVC: \(self.segueIdentifier)")
+                           self.performSegue(withIdentifier: self.segueIdentifier, sender: Any?.self)
+                       }
+                    }//End of downloading FriendshipObjects
+                }//End of downloading friend structs
+            }//End of automatic loading
+        }//End of animate loading
     }
     
     //MARK: Animation

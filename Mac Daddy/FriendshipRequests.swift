@@ -97,6 +97,59 @@ class FriendshipRequests: NSObject {
     
     //MARK: Download relevant FriendshipObjects
     
+    func getMyFriendships()  {
+        downloadMyFriendshipObjects {
+            friendships in
+            UserManager.shared.friendships = friendships
+        }
+    }
+    
+    func downloadMyFriendshipObjects(completion: @escaping (_ friendships: [FriendshipObject])-> ()) {
+        
+        guard let myUid = Auth.auth().currentUser?.uid else {
+            print("User not signed in. Returning empty FriendshipObjects.")
+            let emptyFriendships = [FriendshipObject]()
+            completion(emptyFriendships)
+            return
+        }
+        
+        let ref = NetworkConstants().friendshipObjectsPath()
+        let myFriendshipsRef = ref.whereField("members", arrayContains: myUid)
+        
+        var friendships = [FriendshipObject]()
+        
+        myFriendshipsRef.getDocuments { querySnapshot, error in
+            guard let documents = querySnapshot?.documents else {
+                print("Error fetching my friendships: \(error!)")
+                return
+            }
+            for document in documents {
+                
+                let data = document.data() as NSDictionary
+                if (!JSONSerialization.isValidJSONObject(data)) {
+                    print("Data is not a valid json object")
+                    return
+                }
+                if let friendship = decode(json: data, obj: FriendshipObject.self) {
+                    friendships.append(friendship)
+                } else {
+                    print("Error decoding friendship JSON")
+                }
+            }
+            
+            //Sort friendships by time
+            friendships = friendships.sorted(by: {
+                $0.lastActive?.compare($1.lastActive ?? Date()) == .orderedDescending
+            })
+            
+            NotificationCenter.default.post(name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
+            print("Successfully downloaded FriendshipsObjects")
+            completion(friendships)
+        }
+    }
+    
+    
+    
     func observeMyFriendshipObjects(completion: @escaping (_ friendships: [FriendshipObject])-> ()) {
         print("👀 - observeMyFriendshipObjects function triggered")
         let ref = NetworkConstants().friendshipObjectsPath()
@@ -135,13 +188,7 @@ class FriendshipRequests: NSObject {
         }
     }
     
-    //Unused reference function in case you forget how to use completion handler
-    func getMyFriendships()  {
-        observeMyFriendshipObjects {
-            friendships in
-            UserManager.shared.friendships = friendships
-        }
-    }
+    
     
     //MARK: Fetch cached friends both ways
     
@@ -180,29 +227,5 @@ class FriendshipRequests: NSObject {
     
     //MARK: Functions in progress.
     
-//    func friendshipObjectExists(convoId: String) -> Bool {
-//        return true
-//    }
-//
-//    func getFriendshipObjectsInFirestore(_ completion:@escaping(_ querySnapshot:[QueryDocumentSnapshot])->Void){
-//        let ref = NetworkConstants().friendshipObjectsPath()
-//        ref.getDocuments { (querySnapshot, err) in
-//             if let err = err {
-//                 print("Error getting friendshipObjects: \(err)")
-//             } else {
-//                 if let documents = querySnapshot?.documents{
-//                     completion(documents)
-//                 }
-//            }
-//        }
-//    }
-//
-//    func loadFriendshipObjects() {
-//        getFriendshipObjectsInFirestore { (documents) in
-//            for document in documents{
-//                print("\(document.documentID) => \(document.data())")
-//            }
-//        }
-//    }
     
 }

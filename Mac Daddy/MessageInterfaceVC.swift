@@ -11,10 +11,13 @@ import MessageKit
 import Firebase
 import Photos
 
+//MARK: WARNING: THIS IS NOT BEING USED
+
 class MessageInterfaceVC: MessagesViewController {
 
     
     var friend = Friend()
+    //var friendship = FriendshipObject()
     var query = DatabaseQuery()
     
     private var messages: [Message] = []
@@ -117,13 +120,32 @@ class MessageInterfaceVC: MessagesViewController {
                                "text": text]
         
         chatsRef.setValue(message)
+        let messageStruct = Message(id: senderId, name: senderDisplayName, content: text)
+        //updateFriendshipObjectOnSending(message: messageStruct, friendship: self.friendship)
         //self.finishSendingMessage()
         
         //Also remember what the last chat was:
         let convoRef = Constants.refs.databaseConversations.child(self.friend.convoID)
         convoRef.updateChildValues(["lastChat": text, "lastChatSenderID": senderId])
     }
+    
+    // MARK: - Update FriendshipObject
+//    func updateFriendshipObjectOnSending(message: Message, friendship: FriendshipObject) {
+//        if UserManager.shared.currentUser?.uid == friendship.initiatorId {
+//            //If you're the initiator
+//            friendship.initiatorLastActive = Date()
+//            friendship.initiatorMostRecentMessage = message.content
+//        } else {
+//            friendship.recieverLastActive = Date()
+//            friendship.recieverMostRecentMessage = message.content
+//        }
+//        friendship.lastActive = Date()
+//
+//        FriendshipRequests().updateFriendshipObjectInFirestore(friendship: friendship)
+//    }
+    
 }
+
 
 
 // MARK: - MessagesDisplayDelegate

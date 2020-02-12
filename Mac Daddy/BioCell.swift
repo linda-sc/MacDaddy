@@ -27,7 +27,7 @@ class BioCell: UICollectionViewCell {
     
     func loadForUser(user: UserObject) {
         if user.shortBio == nil {
-            self.shortBioContentLabel.text = "Hello, I'm a beta tester!"
+            self.shortBioContentLabel.text = "Hello, I'm a beta tester! My account might not work anymore."
         } else {
             self.shortBioContentLabel.text = user.shortBio
         }
