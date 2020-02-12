@@ -63,6 +63,11 @@
 		BF741E5A22CCFCC500F9CACE /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF741E5822CCFCC500F9CACE /* MapCell.xib */; };
 		BF76918622B6882500D7A5EC /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76918522B6882500D7A5EC /* CodableExtensions.swift */; };
 		BF7B29DC23F1E84400E1B29B /* HomeVC_V2Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B29DB23F1E84400E1B29B /* HomeVC_V2Extension.swift */; };
+		BF7B29DE23F209C100E1B29B /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B29DD23F209C100E1B29B /* NotificationExtensions.swift */; };
+		BF7B29E123F2182B00E1B29B /* SponsorsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B29DF23F2182B00E1B29B /* SponsorsCollectionCell.swift */; };
+		BF7B29E223F2182B00E1B29B /* SponsorsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7B29E023F2182B00E1B29B /* SponsorsCollectionCell.xib */; };
+		BF7B29E523F2193900E1B29B /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B29E323F2193900E1B29B /* SponsorCell.swift */; };
+		BF7B29E623F2193900E1B29B /* SponsorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7B29E423F2193900E1B29B /* SponsorCell.xib */; };
 		BF7CF343230820D9004CEB7A /* World.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7CF342230820D9004CEB7A /* World.storyboard */; };
 		BF7CF3452308215C004CEB7A /* WorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CF3442308215C004CEB7A /* WorldVC.swift */; };
 		BF7CF34923083039004CEB7A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CF34723083039004CEB7A /* UserCell.swift */; };
@@ -163,6 +168,11 @@
 		BF741E5822CCFCC500F9CACE /* MapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
 		BF76918522B6882500D7A5EC /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
 		BF7B29DB23F1E84400E1B29B /* HomeVC_V2Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC_V2Extension.swift; sourceTree = "<group>"; };
+		BF7B29DD23F209C100E1B29B /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
+		BF7B29DF23F2182B00E1B29B /* SponsorsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsCollectionCell.swift; sourceTree = "<group>"; };
+		BF7B29E023F2182B00E1B29B /* SponsorsCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorsCollectionCell.xib; sourceTree = "<group>"; };
+		BF7B29E323F2193900E1B29B /* SponsorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorCell.swift; sourceTree = "<group>"; };
+		BF7B29E423F2193900E1B29B /* SponsorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorCell.xib; sourceTree = "<group>"; };
 		BF7CF342230820D9004CEB7A /* World.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = World.storyboard; sourceTree = "<group>"; };
 		BF7CF3442308215C004CEB7A /* WorldVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldVC.swift; sourceTree = "<group>"; };
 		BF7CF34723083039004CEB7A /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -291,6 +301,7 @@
 				BF16F49E22ADBBF800BCF369 /* NetworkConstants.swift */,
 				BF16F4A022ADBE1700BCF369 /* UserRequests.swift */,
 				BFD69E8B23EF27ED00C19D64 /* FriendshipRequests.swift */,
+				BF7B29DD23F209C100E1B29B /* NotificationExtensions.swift */,
 			);
 			name = "Network Calls";
 			sourceTree = "<group>";
@@ -432,6 +443,10 @@
 				BF7CF34823083039004CEB7A /* UserCell.xib */,
 				BFD69E8523E6392500C19D64 /* GigCell.swift */,
 				BFD69E8623E6392500C19D64 /* GigCell.xib */,
+				BF7B29DF23F2182B00E1B29B /* SponsorsCollectionCell.swift */,
+				BF7B29E023F2182B00E1B29B /* SponsorsCollectionCell.xib */,
+				BF7B29E323F2193900E1B29B /* SponsorCell.swift */,
+				BF7B29E423F2193900E1B29B /* SponsorCell.xib */,
 			);
 			name = "World Cells";
 			sourceTree = "<group>";
@@ -598,6 +613,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF7B29E623F2193900E1B29B /* SponsorCell.xib in Resources */,
+				BF7B29E223F2182B00E1B29B /* SponsorsCollectionCell.xib in Resources */,
 				BF1082881ED4C7A7000677A3 /* GoogleService-Info.plist in Resources */,
 				BF5831051EE1ECF200A5D34C /* LaunchScreen.storyboard in Resources */,
 				BF7CF343230820D9004CEB7A /* World.storyboard in Resources */,
@@ -711,6 +728,7 @@
 				BF570A7123073C8F001AC839 /* EditShortBioVC.swift in Sources */,
 				BFD69E8C23EF27ED00C19D64 /* FriendshipRequests.swift in Sources */,
 				BFD69E8723E6392500C19D64 /* GigCell.swift in Sources */,
+				BF7B29DE23F209C100E1B29B /* NotificationExtensions.swift in Sources */,
 				BF1082781ED4C793000677A3 /* LoginVC.swift in Sources */,
 				BF99DDC01F1846AB0069F2C5 /* Segues.swift in Sources */,
 				BF57B64D228F481C00D500A2 /* UserObject.swift in Sources */,
@@ -721,6 +739,7 @@
 				BF4C29D5218B60EA00589E1B /* DataHandler_Observers.swift in Sources */,
 				BF5B410E236BBBFC0046A94F /* InputNameVC.swift in Sources */,
 				BF99DDBB1F183F710069F2C5 /* ProfileOptionsVC.swift in Sources */,
+				BF7B29E123F2182B00E1B29B /* SponsorsCollectionCell.swift in Sources */,
 				BF8603C122C19F6F00BA2608 /* BioCell.swift in Sources */,
 				BF2652EF1F18057F0013873F /* DataHandler.swift in Sources */,
 				BFCC3BF61EE89C5600BD1F1C /* PrivateSetup1VC.swift in Sources */,
@@ -739,6 +758,7 @@
 				BF58F4D522DE317A008F69FF /* GradeStatusCell.swift in Sources */,
 				B373D4C222C6FC8D0051896F /* EditGradeStatusVC.swift in Sources */,
 				BF57B650228F487000D500A2 /* FriendshipObject.swift in Sources */,
+				BF7B29E523F2193900E1B29B /* SponsorCell.swift in Sources */,
 				BF57B654228F4B2C00D500A2 /* CommunityObject.swift in Sources */,
 				BF5B4110236CB4970046A94F /* CreateAvatarVC.swift in Sources */,
 				BF1EDC4F1EE4A015006CB610 /* FirebaseManager.swift in Sources */,

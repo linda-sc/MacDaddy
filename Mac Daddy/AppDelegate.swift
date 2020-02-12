@@ -56,9 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         print("Application did become active")
 
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if Auth.auth().currentUser != nil {
-            DataHandler.updateActive(active: "1")
-        }
+        
+//        if Auth.auth().currentUser != nil {
+//            DataHandler.updateActive(active: "1")
+//        }
         
     }
 

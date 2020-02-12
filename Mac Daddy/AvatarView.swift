@@ -63,7 +63,6 @@ class AvatarView: UIView {
     func displayAvatar(avatar: AvatarObject?) {
         
         if avatar == nil {
-            print("Avatar is nil. Displaying random avatar.")
             displayRandomAvatar()
             
         } else {

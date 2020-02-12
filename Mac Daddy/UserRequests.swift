@@ -30,6 +30,8 @@ import Firebase
 
 class UserRequests: NSObject {
     
+    public final let VERSION = "2.0"
+    
     //////////////////////////////////////////////////
     // MARK: 1. Update data anywhere in Firestore
     //////////////////////////////////////////////////
@@ -206,6 +208,30 @@ class UserRequests: NSObject {
         } else {
             print("Current user is nil.")
         }
+    }
+    
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    // MARK: 6. Checkup updates
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    func checkupUpdates() {
+        if UserManager.shared.currentUser != nil {
+            UserManager.shared.currentUser?.version = VERSION
+            if let email = UserManager.shared.currentUser?.email {
+                UserManager.shared.currentUser?.organization = getDomain(s: email)
+            }
+            UserRequests().updateUserInFirestore(userObject: UserManager.shared.currentUser!)
+        } else {
+            print("👮🏻‍♀️ Current user is nil.")
+        }
+        
+    }
+    
+    func getDomain(s: String) -> String {
+        let charSet = CharacterSet(charactersIn: "@")
+        let v = s.components(separatedBy: charSet)
+        return v.last ?? "None"
     }
     
 }

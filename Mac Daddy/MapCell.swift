@@ -31,13 +31,15 @@ class MapCell: UICollectionViewCell {
             let distance: Double = 750
             let region = MKCoordinateRegionMakeWithDistance(location.coordinate, distance, distance)
             mapView.setRegion(region, animated: true)
+        } else {
+            print("Failed to update map")
         }
     }
 }
 
 extension MapCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -45,9 +47,5 @@ extension MapCell: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         return cell
     }
-    
-    
-    
-    
     
 }

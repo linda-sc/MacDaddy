@@ -21,6 +21,7 @@ class WorldVC: UIViewController, UICollectionViewDelegateFlowLayout {
         self.navigationController?.isNavigationBarHidden = true
         
         //Register Nibs
+        worldCollection.register(UINib.init(nibName: "SponsorsCollectionCell", bundle: nil), forCellWithReuseIdentifier: "SponsorsCollectionCell")
         worldCollection.register(UINib.init(nibName: "MapCell", bundle: nil), forCellWithReuseIdentifier: "MapCell")
         worldCollection.register(UINib.init(nibName: "UserCell", bundle: nil), forCellWithReuseIdentifier: "UserCell")
                 worldCollection.register(UINib.init(nibName: "GigCell", bundle: nil), forCellWithReuseIdentifier: "GigCell")
@@ -61,8 +62,8 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            //Map Cell
-            return 1
+            //SponsorsCollectionCell + Map Cell
+            return 2
         default:
             return UserData.currentGigs.count
         }
@@ -71,10 +72,25 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            let cell = worldCollection.dequeueReusableCell(withReuseIdentifier: "MapCell", for: indexPath) as! MapCell
-            cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            self.setStructure(for: cell)
-            return cell
+            if indexPath.row == 0 {
+                let cell = worldCollection.dequeueReusableCell(withReuseIdentifier: "MapCell", for: indexPath) as! MapCell
+                               cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+                    self.setStructure(for: cell)
+                    return cell
+                
+            } else if indexPath.row == 1 {
+                
+                let cell = worldCollection.dequeueReusableCell(withReuseIdentifier: "SponsorsCollectionCell", for: indexPath) as! SponsorsCollectionCell
+                cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+                cell.parentVC = self
+                self.setStructure(for: cell)
+                return cell
+            
+            } else {
+                print("Error loading cells")
+                return UICollectionViewCell()
+            }
+             
             
         default:
 //            let cell = worldCollection.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath) as! UserCell
@@ -88,7 +104,7 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
             
-            if indexPath.row > UserData.currentGigs.count {
+            if indexPath.row < UserData.currentGigs.count {
                 let gig = UserData.currentGigs[indexPath.row]
                 cell.textLabel.text = gig.text
                 cell.dateLabel.text = gig.timeStamp?.getElapsedInterval()
@@ -124,6 +140,12 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
             //Map Cell
             let width = view.bounds.width - 16
             let height: CGFloat = 300
+            return CGSize(width: width, height: height)
+            
+        case 1:
+            //Sponsor Cell
+            let width = view.bounds.width - 16
+            let height: CGFloat = 150
             return CGSize(width: width, height: height)
         default:
             //User Cell

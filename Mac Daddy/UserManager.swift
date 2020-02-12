@@ -32,50 +32,52 @@ class UserManager: NSObject {
     // MARK: Converts email string into org tag
     //////////////////////////////////////////////////
     func organizationFromEmail(email: String) -> String {
-        if email.hasSuffix("@bc.edu") {
-            return ("Boston College")
+        return UserRequests().getDomain(s: email)
         
-        } else if email.hasSuffix("@bu.edu") {
-            return ("Boston University")
-            
-        } else if email.hasSuffix("@harvard.edu") {
-            return ("Harvard")
-            
-        } else if email.hasSuffix("@cornell.edu") {
-            return ("Cornell")
-            
-        } else if email.hasSuffix("@brown.edu") {
-            return ("Brown")
-            
-        } else if email.hasSuffix("@berkeley.edu") {
-            return ("Berkeley")
-            
-        } else if email.hasSuffix("@ucla.edu") {
-            return("UCLA")
-        
-        } else if email.hasSuffix("@uchicago.edu") {
-            return("UChicago")
-            
-        } else if email.hasSuffix("@cooper.edu") {
-            return("Cooper")
-        
-        } else {
-            return ("None")
-        }
+//        if email.hasSuffix("@bc.edu") {
+//            return ("Boston College")
+//
+//        } else if email.hasSuffix("@bu.edu") {
+//            return ("Boston University")
+//
+//        } else if email.hasSuffix("@harvard.edu") {
+//            return ("Harvard")
+//
+//        } else if email.hasSuffix("@cornell.edu") {
+//            return ("Cornell")
+//
+//        } else if email.hasSuffix("@brown.edu") {
+//            return ("Brown")
+//
+//        } else if email.hasSuffix("@berkeley.edu") {
+//            return ("Berkeley")
+//
+//        } else if email.hasSuffix("@ucla.edu") {
+//            return("UCLA")
+//
+//        } else if email.hasSuffix("@uchicago.edu") {
+//            return("UChicago")
+//
+//        } else if email.hasSuffix("@cooper.edu") {
+//            return("Cooper")
+//
+//        } else {
+//            return ("")
+//        }
     }
+
+    
 }
 
 
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
-// MARK: This extension contains functions to
-// convert from DataHandler
+// MARK: Extension to convert from DataHandler
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 extension UserManager {
     //////////////////////////////////////////////////
-    // MARK: 1. Function that creates a currentUser
-    // object from the DataHandler variables.
+    // MARK: UserObject from the DataHandler .
     //////////////////////////////////////////////////
     func importCurrentUserFromDataHandler(){
         
@@ -93,6 +95,7 @@ extension UserManager {
         userCopy.organization = organizationFromEmail(email: userCopy.email ?? "")
         userCopy.credentialsProvider = Auth.auth().currentUser?.providerID
         userCopy.userPlatform = "iOS"
+        userCopy.version = "2.0"
         
         //2. Onboarding variables
         userCopy.setup1Complete = DataHandler.nameExists
@@ -124,6 +127,7 @@ extension UserManager {
 extension UserManager: CLLocationManagerDelegate {
     
     func getLocation(){
+        print("Getting location")
         locationManager = CLLocationManager()
         locationManager.delegate = self
     }

@@ -36,7 +36,7 @@ extension DataHandler {
    
                     }
                     self.friendList = newFriendList
-                    print(self.friendList)
+                    //print(self.friendList)
                     completed()
                 }
                 

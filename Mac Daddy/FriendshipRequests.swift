@@ -20,9 +20,10 @@ class FriendshipRequests: NSObject {
         ref.getDocument { (document, error) in
             if let document = document {
                 if document.exists{
-                    print("FriendshipObject exists already. \(String(describing: document.data()))")
+                    print("👍🏼 FriendshipObject exists already.")
+//                    print("FriendshipObject exists already. \(String(describing: document.data()))")
                 } else {
-                    print("FriendshipObject does not exist. Upgrading now...")
+                    print("🤦🏻‍♀️ FriendshipObject does not exist. Upgrading now...")
                     
                     let upgradedObject = FriendshipObject()
                     upgradedObject.convoId = friend.convoID
@@ -128,6 +129,8 @@ class FriendshipRequests: NSObject {
                 $0.lastActive?.compare($1.lastActive ?? Date()) == .orderedDescending
             })
             
+            NotificationCenter.default.post(name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
+            
             completion(friendships)
         }
     }
@@ -141,6 +144,7 @@ class FriendshipRequests: NSObject {
     }
     
     //MARK: Fetch cached friends both ways
+    
     func fetchCachedFriendship(uid: String) -> FriendshipObject? {
         if UserManager.shared.friendships == nil {
             print ("Cached friendship could not be found")

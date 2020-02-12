@@ -38,7 +38,7 @@ class UserData {
         print("🦋 Downloading all GigObjects...")
         
         //Overwrite previous data.
-        currentGigs = [GigObject]()
+        var tempGigs = [GigObject]()
         
         DataHandler.db.collection("GigObjects").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -55,7 +55,7 @@ class UserData {
                        }
                        
                     if let gigObject = decode(json: data, obj: GigObject.self) {
-                        currentGigs.append(gigObject)
+                        tempGigs.append(gigObject)
 
                     } else {
                         print("Could not decode gig object")
@@ -65,7 +65,7 @@ class UserData {
                    }//End of querySnapshot
                 
                     //Sort gigs by time
-                    currentGigs = currentGigs.sorted(by: {
+                    currentGigs = tempGigs.sorted(by: {
                         $0.timeStamp?.compare($1.timeStamp ?? Date()) == .orderedDescending
                     })
                 
@@ -112,6 +112,7 @@ class UserData {
                         let userObject = decode(json: data, obj: UserObject.self)
                         
                         //Immediately convert the coordinates into a location object.
+                        //We don't need this anymore bc codable should do it automatically.
                         if let latitude = userObject?.latitude, let longitude = userObject?.longitude {
                             userObject?.currentLocation = CLLocation(latitude: latitude, longitude: longitude)
                         }

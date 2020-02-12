@@ -82,8 +82,8 @@ class UserObject: NSObject, Codable {
     var lastActive: Date?
     var latitude: Double?
     var longitude: Double?
-    var message: String?
     var currentLocation: CLLocation?
+    var message: String?
     var version: String?
 
     //5. Stats information
@@ -163,6 +163,7 @@ class UserObject: NSObject, Codable {
         case lastActive
         case latitude
         case longitude
+        case currentLocation
         case message
         case version
 
@@ -257,9 +258,14 @@ class UserObject: NSObject, Codable {
         //4. Realtime Information
         currentMatchID = try container.decodeIfPresent(String.self, forKey: .currentMatchID)
         active = try container.decodeIfPresent(Bool.self, forKey: .active)
-        //lastActive = try container.decodeIfPresent(DateFormatter.self, forKey: .lastActive)
         latitude = try container.decodeIfPresent(Double.self, forKey: .latitude)
         longitude = try container.decodeIfPresent(Double.self, forKey: .longitude)
+
+        //Set current location based on latitude and longitude
+        if let thisLatitude = latitude, let thisLongitude = longitude {
+            currentLocation = CLLocation(latitude: thisLatitude, longitude: thisLongitude)
+        }
+        
         message = try container.decodeIfPresent(String.self, forKey: .message)
         version = try container.decodeIfPresent(String.self, forKey: .version)
         
@@ -349,6 +355,7 @@ class UserObject: NSObject, Codable {
 
         try container.encodeIfPresent(latitude, forKey: .latitude)
         try container.encodeIfPresent(longitude, forKey: .longitude)
+        
         try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(version, forKey: .version)
 
