@@ -45,7 +45,7 @@ class UserRequests: NSObject {
                     print("‼️ New values not updating: \(values)")
                 } else {
                     print("🔥☝🏼 Updating Firestore Data at document \(ref.documentID)")
-                    print("     New values: \(values)")
+                    //print("     New values: \(values)")
                 }
             }
         }
@@ -60,7 +60,7 @@ class UserRequests: NSObject {
                     print("‼️ New data not uploading: \(values)")
                 } else {
                     print("🔥☝🏼 Creating Firestore Data at document \(ref.documentID)")
-                    print("      New values: \(values)")
+                    //print("      New values: \(values)")
                 }
             }
         }
@@ -162,7 +162,7 @@ class UserRequests: NSObject {
             ref.getDocument { (document, error) in
                 if let document = document, document.exists {
                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    print("Fetching user document data: \(dataDescription)")
+                    //print("Fetching user document data: \(dataDescription)")
                     if let userData = document.data() {
                         success(userData)
                         print("Successfully downloaded user document")
@@ -204,7 +204,7 @@ class UserRequests: NSObject {
         print("SAVING AVATAR:")
         if UserManager.shared.currentUser != nil {
             UserRequests().updateUserInFirestore(userObject: UserManager.shared.currentUser!)
-            print(UserManager.shared.currentUser!.avatar)
+            //print(UserManager.shared.currentUser!.avatar)
         } else {
             print("Current user is nil.")
         }

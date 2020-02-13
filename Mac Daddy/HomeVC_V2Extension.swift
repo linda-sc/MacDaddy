@@ -22,6 +22,14 @@ extension HomeVC {
         
         //Add observer to trigger reload
         NotificationCenter.default.addObserver(self, selector: #selector(onDidRecieveUpdatedFriendshipObjects(_:)), name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
+        
+        //Set up the observer
+        FriendshipRequests().observeMyFriendshipObjects {
+            friendships in
+            print("👁 FriendshipObject Observer set up")
+
+            //UserManager.shared.friendships = friendships
+        }
     }
     
     func setUpCollectionView() {
@@ -43,7 +51,7 @@ extension HomeVC {
     //MARK: Function called when logo tapped
     func refreshActivity() {
         if let myFriendships = UserManager.shared.friendships {
-            FriendshipRequests().updateMyLastActiveStatusInAllFriendships(becomingActive: true)
+        FriendshipRequests().updateMyLastActiveStatusInAllFriendships(becomingActive: true)
             self.updatedActiveStatusOnce = true
         }
     }
@@ -52,7 +60,7 @@ extension HomeVC {
 
     @objc func onDidRecieveUpdatedFriendshipObjects(_ notification:Notification) {
         print("FriendshipObjects updated")
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
         self.friendshipCollection.reloadData()
     }
     
@@ -61,7 +69,8 @@ extension HomeVC {
     func deleteFriendship(friendship: FriendshipObject) {
         FriendshipRequests().archiveFriendshipObject(friendship: friendship, completion: { (success) in
             if success {
-              UserManager.shared.friendships?.removeAll(where: {$0.convoId == friendship.convoId})
+                UserManager.shared.friendships?.removeAll(where: {$0.convoId == friendship.convoId})
+                self.friendshipCollection.reloadData()
             } else {
                 print("Error deleting friendship")
             }
@@ -91,7 +100,6 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
             if let friend = FriendshipRequests().fetchCachedFriendStruct(uid: friendUid) {
                 cell.update(with: friend)
             }
-            
         }
         
         self.setStructure(for: cell)
@@ -105,7 +113,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-               let width = view.bounds.width
+               let width = view.bounds.width - 32
                let height: CGFloat = 80
                return CGSize(width: width, height: height)
     }
@@ -113,6 +121,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Did select item at.")
+        self.performSegue(withIdentifier: "GoToChatFromFriendship", sender: nil)
     }
     
 }
@@ -124,20 +133,19 @@ extension HomeVC {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-
-        if segue.identifier == "ChatWithFriend" {
+        if segue.identifier == "GoToChatFromFriendship" {
             let destination = segue.destination as! ChatSceneVC
+            
             if let selectedRow = friendshipCollection.indexPathsForSelectedItems?.first?.row {
+                
                 if let friendship = UserManager.shared.friendships?[selectedRow] {
                     destination.friendship = friendship
                     
                     let friendUid = FriendshipRequests().getFriendsUid(friendship: friendship)
-                    
                     if let friend = FriendshipRequests().fetchCachedFriendStruct(uid: friendUid) {
                         destination.friend = friend
                     }
                 }
-                
             } else {
                 let friend = self.currentMatch
                 destination.friend = friend
@@ -145,16 +153,15 @@ extension HomeVC {
                     destination.friendship = friendship
                 }
             }
-        }
-
-        else if segue.identifier == "PresentNewMatch" {
+            
+        } else if segue.identifier == "PresentNewMatch" {
             let destination = segue.destination as! ChatSceneVC
             self.currentMatch.anon = "1"
             destination.friend = self.currentMatch
             //destination.friendship =
             
         } else {
-            if let selectedIndexPath = friendshipCollection.indexPathsForSelectedItems?.first.row {
+            if let selectedIndexPath = friendshipCollection.indexPathsForSelectedItems?.first {
                 friendshipCollection.deselectItem(at: selectedIndexPath, animated: true)
             }
         }
@@ -165,12 +172,12 @@ extension HomeVC {
         self.matchBox.setTitle( "Find a match!", for: .normal)
         
         let source = segue.source as! ChatSceneVC
-        if let selectedIndexPath = friendshipCollection.indexPathsForSelectedItems?.first?.row {
-            UserManager.shared.friendships?[selectedIndexPath.row] = source.friend
+        if let selectedIndexPath = friendshipCollection.indexPathsForSelectedItems?.first {
+            UserManager.shared.friendships?[selectedIndexPath.row] = source.friendship
             friendshipCollection.reloadItems(at: [selectedIndexPath])
 
         } else {
-            let newIndexPath = IndexPath(row: 0, section:0)
+            //let newIndexPath = IndexPath(row: 0, section:0)
             
             //Only add the friend to the list if they are a new friend.
             var newFriend = true
@@ -181,8 +188,8 @@ extension HomeVC {
             }
             if newFriend {
                 DataHandler.friendList.append(source.friend)
-                tableView.insertRows(at: [newIndexPath], with: .bottom)
-                tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: true)
+                //tableView.insertRows(at: [newIndexPath], with: .bottom)
+                //tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: true)
             }
         }
     }

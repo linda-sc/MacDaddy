@@ -217,14 +217,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </tableView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgM-dX-gBi">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgM-dX-gBi">
                                 <rect key="frame" x="15" y="141" width="345" height="65"/>
-                                <color key="backgroundColor" red="0.54901960780000003" green="0.5450980392" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="6s9-sM-8rI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="Find a match!" backgroundImage="MacDaddy Background_DarkMode">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Find a match!">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -249,7 +249,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mnm-Me-2Zm">
-                                <rect key="frame" x="0.0" y="214" width="375" height="578"/>
+                                <rect key="frame" x="16" y="214" width="343" height="578"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kM1-y0-SO1">
                                     <size key="itemSize" width="50" height="50"/>
@@ -284,9 +284,9 @@
                             <constraint firstItem="RaI-4Z-TCf" firstAttribute="top" secondItem="47I-Of-DHz" secondAttribute="bottom" constant="20" id="ilZ-I8-GLR"/>
                             <constraint firstItem="RaI-4Z-TCf" firstAttribute="centerX" secondItem="g59-lB-6dI" secondAttribute="centerX" id="jLs-BH-jMy"/>
                             <constraint firstAttribute="trailing" secondItem="LwG-Hy-0km" secondAttribute="trailing" id="jZm-hS-IdO"/>
-                            <constraint firstAttribute="trailing" secondItem="mnm-Me-2Zm" secondAttribute="trailing" id="lmS-zK-eS5"/>
+                            <constraint firstAttribute="trailing" secondItem="mnm-Me-2Zm" secondAttribute="trailing" constant="16" id="lmS-zK-eS5"/>
                             <constraint firstAttribute="bottom" secondItem="LwG-Hy-0km" secondAttribute="bottom" id="oV0-il-ObR"/>
-                            <constraint firstItem="mnm-Me-2Zm" firstAttribute="leading" secondItem="g59-lB-6dI" secondAttribute="leading" id="rQa-KB-TLd"/>
+                            <constraint firstItem="mnm-Me-2Zm" firstAttribute="leading" secondItem="g59-lB-6dI" secondAttribute="leading" constant="16" id="rQa-KB-TLd"/>
                             <constraint firstItem="Gg9-5q-ao7" firstAttribute="top" secondItem="LwG-Hy-0km" secondAttribute="bottom" constant="8" symbolic="YES" id="vU5-QK-FmK"/>
                             <constraint firstItem="fJs-ew-Wcj" firstAttribute="centerY" secondItem="zH0-pC-a4M" secondAttribute="centerY" id="yzh-4I-9tA"/>
                         </constraints>
@@ -297,10 +297,10 @@
                         <outlet property="friendshipCollection" destination="mnm-Me-2Zm" id="icz-WR-Evb"/>
                         <outlet property="friendshipCollectionLayout" destination="kM1-y0-SO1" id="npe-81-AoD"/>
                         <outlet property="matchBox" destination="bgM-dX-gBi" id="LOc-43-o0v"/>
-                        <outlet property="tableView" destination="SQ9-P7-fEx" id="vN9-Lu-ltp"/>
                         <segue destination="gQl-5B-Gbj" kind="show" identifier="PresentNewMatch" id="mJ5-XA-FbT"/>
                         <segue destination="ECX-T4-9X5" kind="show" identifier="GoToProfile" id="BRn-KA-91S"/>
                         <segue destination="9qu-ZP-wD2" kind="show" identifier="GoToWorld" id="MAS-8X-z5s"/>
+                        <segue destination="gQl-5B-Gbj" kind="show" identifier="GoToChatFromFriendship" id="ECw-gW-1dg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nv0-lP-cAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -696,6 +696,6 @@
         <image name="gear" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qom-aC-Svz"/>
+        <segue reference="ECw-gW-1dg"/>
     </inferredMetricsTieBreakers>
 </document>

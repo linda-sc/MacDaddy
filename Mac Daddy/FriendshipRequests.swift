@@ -11,6 +11,8 @@ import Firebase
 
 class FriendshipRequests: NSObject {
     
+    //static var queryHandle: DatabaseQuery = DatabaseQuery()
+    
     //MARK: Upgrade to FriendshipObject
     
     func upgradeFriendToFriendshipObject(friend: Friend) {
@@ -21,7 +23,6 @@ class FriendshipRequests: NSObject {
             if let document = document {
                 if document.exists{
                     print("👍🏼 FriendshipObject exists already.")
-//                    print("FriendshipObject exists already. \(String(describing: document.data()))")
                 } else {
                     print("🤦🏻‍♀️ FriendshipObject does not exist. Upgrading now...")
                     
@@ -105,6 +106,8 @@ class FriendshipRequests: NSObject {
     }
     
     func downloadMyFriendshipObjects(completion: @escaping (_ friendships: [FriendshipObject])-> ()) {
+        print("💅🏻 - downloadMyFriendshipObjects function called")
+
         
         guard let myUid = Auth.auth().currentUser?.uid else {
             print("User not signed in. Returning empty FriendshipObjects.")
@@ -116,7 +119,7 @@ class FriendshipRequests: NSObject {
         let ref = NetworkConstants().friendshipObjectsPath()
         let myFriendshipsRef = ref.whereField("members", arrayContains: myUid)
         
-        var friendships = [FriendshipObject]()
+        var tempFriendships = [FriendshipObject]()
         
         myFriendshipsRef.getDocuments { querySnapshot, error in
             guard let documents = querySnapshot?.documents else {
@@ -130,25 +133,38 @@ class FriendshipRequests: NSObject {
                     print("Data is not a valid json object")
                     return
                 }
+                
                 if let friendship = decode(json: data, obj: FriendshipObject.self) {
-                    friendships.append(friendship)
+                    if self.friendshipExistsInFriendsList(friendship: friendship) {
+                        tempFriendships.append(friendship)
+                    } else {
+                        print("Skipping old friendship")
+                    }
                 } else {
                     print("Error decoding friendship JSON")
                 }
             }
             
             //Sort friendships by time
-            friendships = friendships.sorted(by: {
+            tempFriendships = tempFriendships.sorted(by: {
                 $0.lastActive?.compare($1.lastActive ?? Date()) == .orderedDescending
             })
             
+            print("UPDATED FRIENDSHIPS:")
+            for friendship in tempFriendships {
+                print(friendship.initiatorId)
+                print(friendship.lastActive?.getElapsedInterval())
+            }
+            
             NotificationCenter.default.post(name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
             print("Successfully downloaded FriendshipsObjects")
-            completion(friendships)
+            UserManager.shared.friendships = tempFriendships
+            completion(tempFriendships)
         }
     }
     
     
+    //MARK: Observe relevant FriendshipObjects
     
     func observeMyFriendshipObjects(completion: @escaping (_ friendships: [FriendshipObject])-> ()) {
         print("👀 - observeMyFriendshipObjects function triggered")
@@ -182,8 +198,9 @@ class FriendshipRequests: NSObject {
             }
             
             //Sort friendships by time
+            let oldDate = Date(timeIntervalSince1970: 0)
             friendships = friendships.sorted(by: {
-                $0.lastActive?.compare($1.lastActive ?? Date()) == .orderedDescending
+                $0.lastActive?.compare($1.lastActive ?? oldDate) == .orderedDescending
             })
             
             NotificationCenter.default.post(name: .onDidRecieveUpdatedFriendshipObjects, object: nil)

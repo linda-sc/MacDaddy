@@ -24,7 +24,6 @@ class ChatSceneVC: UIViewController {
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var activeBubble: UIImageView!
     
-    
     var friend = Friend()
     var friendship = FriendshipObject()
     var friendsRealName = ""
@@ -160,6 +159,7 @@ class ChatSceneVC: UIViewController {
     @IBAction func unwindFromDetail(segue: SegueToLeft) {
         let source = segue.source as! FriendDetailVC
         self.friend = source.friend
+        self.friendship = source.friendship
     }
     
 }

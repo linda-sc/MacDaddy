@@ -35,7 +35,6 @@ class FriendshipCell: UICollectionViewCell {
     //MARK: Update with friend object
     func update(with friendship: FriendshipObject) {
         
-        
         //MARK: 1. Seen and unseen variables
 
         let initiatorDidSee = friendship.initiatorSeen ?? true
@@ -44,7 +43,7 @@ class FriendshipCell: UICollectionViewCell {
         //MARK: 2. Side-specifics...
 
         //MARK: if you're the initiator
-        if UserManager.shared.currentUser!.uid == friendship.initiatorId {
+        if friendship.iAmInitiator() {
         
             self.avatarView.displayAvatar(avatar: friendship.recieverAvatar)
    
@@ -57,11 +56,20 @@ class FriendshipCell: UICollectionViewCell {
             
             if initiatorDidSee == false {
                 self.redBubble.isHidden = false
+                self.messagePreview.textColor = UIColor.white
             } else {
                 self.redBubble.isHidden = true
+                self.messagePreview.textColor = Constants.colors.shadow
+
             }
             
-        } else {
+            if friendship.recieverActive ?? false {
+                self.activeBubble.isHidden = false
+            } else {
+                self.activeBubble.isHidden = true
+            }
+            
+        } else if friendship.iAmReceiver() {
             //MARK: if you're the reciever
             self.avatarView.displayAvatar(avatar: friendship.initiatorAvatar)
 
@@ -75,12 +83,20 @@ class FriendshipCell: UICollectionViewCell {
             
             if recieverDidSee == false {
                 self.redBubble.isHidden = false
+                self.messagePreview.textColor = UIColor.white
             } else {
                 self.redBubble.isHidden = true
+                self.messagePreview.textColor = Constants.colors.shadow
+
             }
             
-            
+            if friendship.initiatorActive ?? false {
+                self.activeBubble.isHidden = false
+            } else {
+                self.activeBubble.isHidden = true
+            }
         }
+    
 
         //MARK: 3. Message preview
 
@@ -110,16 +126,6 @@ class FriendshipCell: UICollectionViewCell {
                 incomingMatchLabel.isHidden = true
                 //Change later
                 emailLabel.isHidden = true
-            }
-            
-            
-            //Show active indicator
-            if friend.active == "0" {
-                activeBubble.isHidden = true
-            } else if friend.active == "1" {
-                activeBubble.isHidden = false
-            } else {
-                activeBubble.isHidden = true
             }
         
             //So you see if you liked them already or not.

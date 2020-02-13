@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import MapKit
+import Firebase
 
 class FriendshipObject: NSObject, Codable {
     
@@ -273,6 +274,45 @@ class FriendshipObject: NSObject, Codable {
         return false
     }
       
+}
+
+
+//MARK: Functions!
+extension FriendshipObject {
+    
+    //MARK: Is seen by me
+    func isSeenByMe() -> Bool {
+        if let myUid = Auth.auth().currentUser?.uid ?? UserManager.shared.currentUser?.uid {
+            
+            if initiatorId == myUid {
+                return initiatorSeen ?? true
+            } else if recieverId == myUid {
+                return recieverSeen ?? true
+            }
+        } else {
+            print("My uid doesn't exist. Cannot check for unread.")
+            return false
+        }
+        return false
+    }
+    
+    func iAmInitiator() -> Bool {
+        if let myUid = Auth.auth().currentUser?.uid ?? UserManager.shared.currentUser?.uid {
+                if initiatorId == myUid {
+                    return true
+                }
+        }
+        return false
+    }
+ 
+    func iAmReceiver() -> Bool {
+         if let myUid = Auth.auth().currentUser?.uid ?? UserManager.shared.currentUser?.uid {
+                 if recieverId == myUid {
+                     return true
+                 }
+         }
+         return false
+     }
     
 }
 

@@ -16,7 +16,7 @@ import Firebase
 class HomeVC: UIViewController {
     
     @IBOutlet weak var background:UIImageView!
-    @IBOutlet weak var tableView:UITableView!
+    //@IBOutlet weak var tableView:UITableView!
     @IBOutlet weak var matchBox:UIButton!
     
     @IBOutlet weak var friendshipCollection: UICollectionView!
@@ -33,14 +33,7 @@ class HomeVC: UIViewController {
 
     
     @IBAction func logoTapped(_ sender: Any) {
-        self.refresh()
-    }
-    
-    func testing() {
-        UserData.downloadAllUserObjects {
-            //let lastActive = UserData.allUserObjects.first?.lastActive?.timeIntervalSinceNow
-            //print("Active \(lastActive?.stringTimeAgo)")
-        }
+        print("Logo tapped")
     }
     
     //MARK: Firebase observers
@@ -69,7 +62,7 @@ class HomeVC: UIViewController {
                     return
                 }
                 print("👂🏻 HomeVC - addObserver: friend Listeners fired")
-                print("querySnapshot documents: \(String(describing: querySnapshot?.documentID))")
+                //print("querySnapshot documents: \(String(describing: querySnapshot?.documentID))")
                 self.syncFriends()
                 
         }
@@ -97,7 +90,8 @@ class HomeVC: UIViewController {
                 DataHandler.orderFriends()
                 
                 DispatchQueue.main.async{
-                    self.tableView.reloadData()
+                    self.friendshipCollection.reloadData()
+                    //self.tableView.reloadData()
                     print("💫 syncFriends: Reloading table data")
                 }
             }
@@ -152,7 +146,6 @@ extension HomeVC {
         matchBox.isEnabled = true
         self.matchBox.setTitle("Find a match!", for: .normal)
         
-        
         //Lets make some code execute whenever the homescreen appears.
         //Then i can hand off the function to kevin
 //        let userID = Auth.auth().currentUser?.uid
@@ -163,12 +156,6 @@ extension HomeVC {
 //            let count = value?.count
 //            print("We have \(count ?? 0) conversations.")
 //        })
-        
-        FriendshipRequests().observeMyFriendshipObjects {
-            friendships in
-            UserManager.shared.friendships = friendships
-            self.tableView.reloadData()
-         }
         
     }
     
@@ -181,17 +168,16 @@ extension HomeVC {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         print("👁 HomeVC - viewDidLoad")
-        DataHandler.updateActive(active: "1")
+        //DataHandler.updateActive(active: "1")
         print("🍱 Here are our friends \(DataHandler.friendList)")
         
-        testing()
         if let uid = Auth.auth().currentUser?.uid {
             UserRequests().downloadCurrentUserObjectFromFirestore(userId: uid)
         }
         
         //Set up delegates and data sources
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         
         //Set background for view and table:
         var backgroundImage:UIImage?
@@ -214,18 +200,15 @@ extension HomeVC {
         background.image = backgroundImage
         matchBox.setBackgroundImage(buttonImage, for: .normal)
         
-        let imageView = UIImageView(image: backgroundImage)
-        self.tableView.backgroundView = imageView
+        //let imageView = UIImageView(image: backgroundImage)
+        //self.tableView.backgroundView = imageView
     
         
         for friend in DataHandler.friendList {
-            print("Syncing friendship \(friend.convoID)")
+            print("Syncing friend and friendship \(friend.convoID)")
             FriendshipRequests().upgradeFriendToFriendshipObject(friend: friend)
             viewDidLoadExtension()
         }
-                
-        
-        //viewDidLoadExtension()
     }
     
     
@@ -242,6 +225,7 @@ extension HomeVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.friendshipCollection.reloadData()
         
     }
     
@@ -327,6 +311,15 @@ extension HomeVC {
     }
     
     func deleteCurrentMatch() {
+        //Added for V2
+        if let friendships = UserManager.shared.friendships {
+            for friendship in friendships {
+                if FriendshipRequests().getFriendsUid(friendship: friendship) == DataHandler.currentMatchID {
+                    self.deleteFriendship(friendship: friendship)
+                }
+            }
+        }
+        
         //Remove match ID locally
         DataHandler.currentMatchID = ""
         //Remove match ID in Firebase
@@ -359,13 +352,6 @@ extension HomeVC {
             UIAlertAction in
             
             print("Friend passed")
-            
-            //Added for V2
-            for friendship in UserManager.shared.friendships {
-                if FriendshipRequests().getFriendsUid(friendship: friendship) == DataHandler.currentMatchID {
-                       self.deleteFriendship(friendship: friendship)
-                }
-            }
             
 
             self.deleteCurrentMatch()
@@ -403,111 +389,115 @@ extension HomeVC {
 //MARK: TableView Delegate and Datasource
 //MARK: Pulls from DataHandler.friendList
 //MARK: AND UserManager.shared.friendships
+
+//MARK: #DEPRECATED
+
 //DataHandler.friendlist tracks important surface level data like whether or not the friendship exists
 //UserManager.shared.friendships has the heavier FriendObject data.
 
 //TableView UI:
-extension HomeVC: UITableViewDelegate, UITableViewDataSource {
-    
-    //How many rows?
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       //return friends.count
-        //return DataHandler.friendList.count
-        return UserManager.shared.friendships?.count ?? 0
-    }
-    
-    //Which cell goes in what row?
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendChatCell
-        
-        //print("🍱 Loading friend \(DataHandler.friendList[indexPath.row])")
-        //let friend = DataHandler.friendList[indexPath.row]
-        
-        //V2 Design: Frienships are more important than friends.
-        //Friendship comes first, and if there is also a friend struct, then use it to layer on top.
-        let friendship = UserManager.shared.friendships?[indexPath.row]
-        if friendship != nil {
-            var friendUid = ""
-            if UserManager.shared.currentUser?.uid == friendship?.initiatorId {
-                friendUid = friendship?.recieverId ?? ""
-            } else {
-                friendUid = friendship?.initiatorId ?? ""
-            }
-            cell.update(with: friendship!)
-            //let friendship = FriendshipRequests().fetchCachedFriendship(uid: friend.uid)
-            if let friend = FriendshipRequests().fetchCachedFriendStruct(uid: friendUid) {
-                //Update the cell with both the friend and the friendship
-                cell.update(with: friend)
-
-            }
-        }
-        
-        cell.textLabel?.textColor = UIColor.white
-        cell.backgroundColor = .clear
-        
-        return cell
-    }
-    
-    //Deleting stuff.
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-
-        let friend = DataHandler.friendList[indexPath.row]
-        
-        //Take out the word "Anonymous"
-        var nickname = ""
-        
-        if friend.anon == "1" {
-            nickname = friend.name.substring(from: 10)
-        } else {
-            nickname = friend.name
-        }
-        
-        //Set up the alert controller
-        let message = "You are about to end your conversation with \(friend.name)."
-        let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: .alert)
-        
-        // Create the actions
-        //Delete a friend: could be your current match, an incoming match, or a friend
-        let okAction = UIAlertAction(title: "Goodbye, \(nickname).", style: UIAlertActionStyle.default) {
-            UIAlertAction in
-            
-            print("Goodbye pressed")
-            
-            let isAnon = (friend.anon == "1")
-
-            //First just delete them normally
-            DataHandler.friendList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            DataHandler.deleteFriend(friend: friend, anon: isAnon)
-            
-            //If that was your current match, take it out, and remove your current match ID.
-            if friend.uid == DataHandler.currentMatchID {
-                DataHandler.updateCurrentMatchID(currentMatchID: "")
-                print("Deleting current match")
-            } else if isAnon {
-                //Else, if you were THEIR current match, remove their current match ID.
-                //Any anonymous friend that is not your current match must be an incoming match
-                self.deleteIncomingMatch(friend: friend)
-                print("Deleting incoming match")
-            }
-            
-        }
-        
-        let cancelAction = UIAlertAction(title: "No, I like \(nickname).", style: UIAlertActionStyle.cancel) {
-            UIAlertAction in
-            print("Cancel Pressed")
-        }
-        
-        // Add the actions
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-
-        if editingStyle == .delete {
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-}
+//extension HomeVC: UITableViewDelegate, UITableViewDataSource {
+//
+//    //How many rows?
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//       //return friends.count
+//        //return DataHandler.friendList.count
+//        return 0
+//        //return UserManager.shared.friendships?.count ?? 0
+//    }
+//
+//    //Which cell goes in what row?
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendChatCell
+//
+//        //print("🍱 Loading friend \(DataHandler.friendList[indexPath.row])")
+//        //let friend = DataHandler.friendList[indexPath.row]
+//
+//        //V2 Design: Frienships are more important than friends.
+//        //Friendship comes first, and if there is also a friend struct, then use it to layer on top.
+//        let friendship = UserManager.shared.friendships?[indexPath.row]
+//        if friendship != nil {
+//            var friendUid = ""
+//            if UserManager.shared.currentUser?.uid == friendship?.initiatorId {
+//                friendUid = friendship?.recieverId ?? ""
+//            } else {
+//                friendUid = friendship?.initiatorId ?? ""
+//            }
+//            cell.update(with: friendship!)
+//            //let friendship = FriendshipRequests().fetchCachedFriendship(uid: friend.uid)
+//            if let friend = FriendshipRequests().fetchCachedFriendStruct(uid: friendUid) {
+//                //Update the cell with both the friend and the friendship
+//                cell.update(with: friend)
+//
+//            }
+//        }
+//
+//        cell.textLabel?.textColor = UIColor.white
+//        cell.backgroundColor = .clear
+//
+//        return cell
+//    }
+//
+//    //Deleting stuff.
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//
+//        let friend = DataHandler.friendList[indexPath.row]
+//
+//        //Take out the word "Anonymous"
+//        var nickname = ""
+//
+//        if friend.anon == "1" {
+//            nickname = friend.name.substring(from: 10)
+//        } else {
+//            nickname = friend.name
+//        }
+//
+//        //Set up the alert controller
+//        let message = "You are about to end your conversation with \(friend.name)."
+//        let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: .alert)
+//
+//        // Create the actions
+//        //Delete a friend: could be your current match, an incoming match, or a friend
+//        let okAction = UIAlertAction(title: "Goodbye, \(nickname).", style: UIAlertActionStyle.default) {
+//            UIAlertAction in
+//
+//            print("Goodbye pressed")
+//
+//            let isAnon = (friend.anon == "1")
+//
+//            //First just delete them normally
+//            DataHandler.friendList.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//
+//            DataHandler.deleteFriend(friend: friend, anon: isAnon)
+//
+//            //If that was your current match, take it out, and remove your current match ID.
+//            if friend.uid == DataHandler.currentMatchID {
+//                DataHandler.updateCurrentMatchID(currentMatchID: "")
+//                print("Deleting current match")
+//            } else if isAnon {
+//                //Else, if you were THEIR current match, remove their current match ID.
+//                //Any anonymous friend that is not your current match must be an incoming match
+//                self.deleteIncomingMatch(friend: friend)
+//                print("Deleting incoming match")
+//            }
+//
+//        }
+//
+//        let cancelAction = UIAlertAction(title: "No, I like \(nickname).", style: UIAlertActionStyle.cancel) {
+//            UIAlertAction in
+//            print("Cancel Pressed")
+//        }
+//
+//        // Add the actions
+//        alert.addAction(okAction)
+//        alert.addAction(cancelAction)
+//
+//        if editingStyle == .delete {
+//            self.present(alert, animated: true, completion: nil)
+//        }
+//    }
+//}
 
 ////MARK: Segues
 //
@@ -601,5 +591,5 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 //        //let source = segue.source as! FriendDetailVC
 //        tableView.reloadData()
 //    }
-}
+//}
 

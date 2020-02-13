@@ -252,6 +252,7 @@
 				BFFB1A1823F49B2D00BC6CAA /* FriendshipCell.swift */,
 				BFFB1A1923F49B2D00BC6CAA /* FriendshipCell.xib */,
 				BF5408242057619D00E5A1BB /* AboutVC.swift */,
+				BF99DDC11F1E85C30069F2C5 /* Messenger */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -295,7 +296,6 @@
 				BF005BE01FB9FE7300CFE337 /* Home */,
 				BF7CF3412308209E004CEB7A /* World */,
 				BF42392722BD582200340E83 /* User Profile */,
-				BF99DDC11F1E85C30069F2C5 /* Messenger */,
 				BF99DDBE1F1846960069F2C5 /* Effects */,
 			);
 			path = "Mac Daddy";
@@ -366,6 +366,8 @@
 				BF0220F220AF42EB00A3CB8F /* DataHandler_Express.swift */,
 				BF4C29D0218909B100589E1B /* DataHandler_Friends.swift */,
 				BF4C29D4218B60EA00589E1B /* DataHandler_Observers.swift */,
+				BF528EE4233AFDF900E7E1E5 /* Message.swift */,
+				BF70B6602339B4E900E3A47B /* MessageInterfaceVC.swift */,
 			);
 			name = Legacy;
 			sourceTree = "<group>";
@@ -494,8 +496,6 @@
 			children = (
 				BF0F0941218D59E300036842 /* ChatSceneVC.swift */,
 				BF85923420606F200065C8AD /* Chatting.swift */,
-				BF528EE4233AFDF900E7E1E5 /* Message.swift */,
-				BF70B6602339B4E900E3A47B /* MessageInterfaceVC.swift */,
 				BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */,
 				BF9F50F421BB47CA000FA5C4 /* ChatHandler.swift */,
 				BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */,

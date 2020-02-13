@@ -12,6 +12,7 @@ class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
     
     var friend = Friend()
     var friendObject = UserObject()
+    var friendship = FriendshipObject()
     var reportText = ""
     
     @IBOutlet weak var detailCollection: UICollectionView!
