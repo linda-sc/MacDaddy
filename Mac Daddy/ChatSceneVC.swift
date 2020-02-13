@@ -53,6 +53,7 @@ class ChatSceneVC: UIViewController {
         } else if segue.identifier == "showFriendDetail" {
                 let destination = segue.destination as! FriendDetailVC
                 destination.friend = self.friend
+                destination.friendship = self.friendship
         }
     }
     

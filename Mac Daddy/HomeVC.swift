@@ -86,7 +86,7 @@ class HomeVC: UIViewController {
             DataHandler.downloadFriends {
                 //Firestore function directly loads into the friendList, and skips the NSDictionary
                 //DataHandler.friendList = DataHandler.friendDictionaryToList(friends: DataHandler.friends as! [String : [String : String]])
-                print("💫 syncFriends: Array stored in DataHandler: \(DataHandler.friendList)")
+                //print("💫 syncFriends: Array stored in DataHandler: \(DataHandler.friendList)")
                 DataHandler.orderFriends()
                 
                 DispatchQueue.main.async{
@@ -203,12 +203,7 @@ extension HomeVC {
         //let imageView = UIImageView(image: backgroundImage)
         //self.tableView.backgroundView = imageView
     
-        
-        for friend in DataHandler.friendList {
-            print("Syncing friend and friendship \(friend.convoID)")
-            FriendshipRequests().upgradeFriendToFriendshipObject(friend: friend)
-            viewDidLoadExtension()
-        }
+        viewDidLoadExtension()
     }
     
     

@@ -25,6 +25,7 @@ class AvatarCreatorVC: UIViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
         //Save avatar to the database
         UserRequests().saveAvatar()
+        FriendshipRequests().updateMyAvatarInAllFriendships()
         self.navigationController?.popViewController(animated: true)
     }
     

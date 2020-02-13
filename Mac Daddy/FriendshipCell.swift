@@ -22,7 +22,7 @@ class FriendshipCell: UICollectionViewCell {
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var redBubble: UIImageView!
     @IBOutlet weak var messagePreview: UILabel!
-    
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var activeBubble: UIImageView!
     
     override func awakeFromNib() {
@@ -103,6 +103,9 @@ class FriendshipCell: UICollectionViewCell {
         self.messagePreview.text =
             friendship.mostRecentMessage
             ?? "is chatting with you."
+        
+           //MARK: 4. Chat last active
+        self.timeLabel.text = friendship.lastActive?.getElapsedInterval()
     }
     
     

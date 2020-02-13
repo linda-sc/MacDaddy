@@ -84,6 +84,7 @@
 		BFA6564621A5EA5B00A9B99B /* DataHandler_FCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6564521A5EA5B00A9B99B /* DataHandler_FCM.swift */; };
 		BFB2E5481F71D4A40096D562 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2E5471F71D4A40096D562 /* Constants.swift */; };
 		BFB2E54A1F71D4FD0096D562 /* ChatInterfaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */; };
+		BFC80D4923F5CCD300AAC744 /* MatchingRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC80D4823F5CCD300AAC744 /* MatchingRequests.swift */; };
 		BFCC3BF61EE89C5600BD1F1C /* PrivateSetup1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC3BF51EE89C5600BD1F1C /* PrivateSetup1VC.swift */; };
 		BFD28E5B22DE253600FA48B7 /* NearbyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD28E5922DE253600FA48B7 /* NearbyCell.swift */; };
 		BFD28E5C22DE253600FA48B7 /* NearbyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD28E5A22DE253600FA48B7 /* NearbyCell.xib */; };
@@ -192,6 +193,7 @@
 		BFB2E5461F71D31E0096D562 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		BFB2E5471F71D4A40096D562 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceVC.swift; sourceTree = "<group>"; };
+		BFC80D4823F5CCD300AAC744 /* MatchingRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingRequests.swift; sourceTree = "<group>"; };
 		BFCC3BF51EE89C5600BD1F1C /* PrivateSetup1VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateSetup1VC.swift; sourceTree = "<group>"; };
 		BFD28E5922DE253600FA48B7 /* NearbyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyCell.swift; sourceTree = "<group>"; };
 		BFD28E5A22DE253600FA48B7 /* NearbyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearbyCell.xib; sourceTree = "<group>"; };
@@ -248,7 +250,6 @@
 			children = (
 				BF2652EA1F16B2090013873F /* HomeVC.swift */,
 				BF7B29DB23F1E84400E1B29B /* HomeVC_V2Extension.swift */,
-				BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */,
 				BFFB1A1823F49B2D00BC6CAA /* FriendshipCell.swift */,
 				BFFB1A1923F49B2D00BC6CAA /* FriendshipCell.xib */,
 				BF5408242057619D00E5A1BB /* AboutVC.swift */,
@@ -308,6 +309,7 @@
 				BF16F49E22ADBBF800BCF369 /* NetworkConstants.swift */,
 				BF16F4A022ADBE1700BCF369 /* UserRequests.swift */,
 				BFD69E8B23EF27ED00C19D64 /* FriendshipRequests.swift */,
+				BFC80D4823F5CCD300AAC744 /* MatchingRequests.swift */,
 				BF7B29DD23F209C100E1B29B /* NotificationExtensions.swift */,
 			);
 			name = "Network Calls";
@@ -358,6 +360,7 @@
 		BF4C29D6218B654D00589E1B /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
+				BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */,
 				BF99DDBC1F1842DD0069F2C5 /* Profile Editing */,
 				BF528EEA23401AAA00E7E1E5 /* Legacy.storyboard */,
 				BF2652EE1F18057F0013873F /* DataHandler.swift */,
@@ -718,6 +721,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC80D4923F5CCD300AAC744 /* MatchingRequests.swift in Sources */,
 				BF628E041FCE1FA200824E87 /* Matching.swift in Sources */,
 				BFB2E54A1F71D4FD0096D562 /* ChatInterfaceVC.swift in Sources */,
 				BF1EDC521EE60CAF006CB610 /* WelcomeVC.swift in Sources */,

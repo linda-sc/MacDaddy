@@ -135,6 +135,12 @@
                             <constraint firstAttribute="width" constant="10" id="ohk-5f-hSB"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:01 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byv-VE-ieg">
+                        <rect key="frame" x="349.5" y="82" width="37.5" height="12"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                        <color key="textColor" red="0.28478924249999998" green="0.2780610624" blue="0.70506821070000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
@@ -146,6 +152,7 @@
                 <constraint firstItem="FZ2-DL-EHE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Hgy-u1-XeA"/>
                 <constraint firstAttribute="bottom" secondItem="T2V-Zj-1Ri" secondAttribute="bottom" id="Hpp-NM-UMa"/>
                 <constraint firstAttribute="trailing" secondItem="9nO-UG-0J6" secondAttribute="trailing" id="Jjt-4K-Y7a"/>
+                <constraint firstAttribute="trailing" secondItem="byv-VE-ieg" secondAttribute="trailing" constant="5" id="LeR-uL-KRg"/>
                 <constraint firstAttribute="bottom" secondItem="EEg-WM-yEX" secondAttribute="bottom" id="Pd0-sd-Wb0"/>
                 <constraint firstItem="9nO-UG-0J6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="RyU-Xp-AaN"/>
                 <constraint firstItem="fn1-me-bNG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aDZ-9U-oyr"/>
@@ -161,6 +168,7 @@
                 <constraint firstItem="8Dv-qL-XV5" firstAttribute="top" secondItem="bNc-RS-maM" secondAttribute="bottom" constant="10" id="qWK-Y3-c7b"/>
                 <constraint firstItem="fn1-me-bNG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qp7-Kf-TtD"/>
                 <constraint firstItem="m87-mg-GSp" firstAttribute="leading" secondItem="9nO-UG-0J6" secondAttribute="leading" constant="-15" id="rsO-gX-hSG"/>
+                <constraint firstAttribute="bottom" secondItem="byv-VE-ieg" secondAttribute="bottom" constant="5" id="vHK-I0-KBK"/>
                 <constraint firstAttribute="bottom" secondItem="FZ2-DL-EHE" secondAttribute="bottom" id="wzV-6G-TE9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -177,6 +185,7 @@
                 <outlet property="messagePreview" destination="43y-VS-8hT" id="PBX-0V-g0F"/>
                 <outlet property="nameLabel" destination="9nO-UG-0J6" id="ixd-l6-GSv"/>
                 <outlet property="redBubble" destination="QBy-Xy-gFV" id="JwT-Uv-rPQ"/>
+                <outlet property="timeLabel" destination="byv-VE-ieg" id="fti-os-Tnm"/>
             </connections>
             <point key="canvasLocation" x="78.260869565217391" y="71.986607142857139"/>
         </collectionViewCell>

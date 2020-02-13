@@ -53,7 +53,7 @@ class FriendChatCell: UITableViewCell {
                 self.friendChatPreview.font = UIFont(name:"HelveticaNeue", size: 15.0)
             }
         } else {
-             //If you're the reciever, pull data for the initator.
+             //If you're the reciever, pull data for the initiator.
             self.avatarView.displayAvatar(avatar: friendship.initiatorAvatar)
             self.activeBubble.isHidden = friendship.initiatorActive ?? true
             if let time = friendship.initiatorLastActive {

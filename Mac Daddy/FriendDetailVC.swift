@@ -158,23 +158,27 @@ class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
             
             print("Goodbye pressed")
             
-            let isAnon = (self.friend.anon == "1")
-            
-            //First just delete them normally
-            DataHandler.deleteFriend(friend: self.friend, anon: isAnon)
-            
-            //If that was your current match, take it out, and remove your current match ID.
-            if self.friend.uid == DataHandler.currentMatchID {
-                DataHandler.updateCurrentMatchID(currentMatchID: "")
-                print("Deleting current match")
-            } else if isAnon {
-                //Else, if you were THEIR current match, remove their current match ID.
-                //Any anonymous friend that is not your current match must be an incoming match
-                 DataHandler.updateUserData(uid: self.friend.uid, values: ["7: MatchID": ""])
-                print("Deleting incoming match")
-            }
-            
-            self.performSegue(withIdentifier: "unwindFromBlock", sender: self)
+    
+            FriendshipRequests().deleteFriendship(friendship: self.friendship, completion: {
+                success in
+                    let isAnon = (self.friend.anon == "1")
+                           
+                   //First just delete them normally
+                   DataHandler.deleteFriend(friend: self.friend, anon: isAnon)
+                   
+                   //If that was your current match, take it out, and remove your current match ID.
+                   if self.friend.uid == DataHandler.currentMatchID {
+                       DataHandler.updateCurrentMatchID(currentMatchID: "")
+                       print("Deleting current match")
+                   } else if isAnon {
+                       //Else, if you were THEIR current match, remove their current match ID.
+                       //Any anonymous friend that is not your current match must be an incoming match
+                        DataHandler.updateUserData(uid: self.friend.uid, values: ["7: MatchID": ""])
+                       print("Deleting incoming match")
+                   }
+                   
+                   self.performSegue(withIdentifier: "unwindFromBlock", sender: self)
+            })
         }
         
         let cancelAction = UIAlertAction(title: "No, I like \(nickname).", style: UIAlertActionStyle.cancel) {

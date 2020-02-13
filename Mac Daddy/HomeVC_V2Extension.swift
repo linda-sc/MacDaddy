@@ -17,19 +17,11 @@ extension HomeVC {
 
         UserManager.shared.getLocation()
         UserRequests().checkupUpdates()
-        self.refreshActivity()
+        self.addGestures()
         setUpCollectionView()
         
         //Add observer to trigger reload
         NotificationCenter.default.addObserver(self, selector: #selector(onDidRecieveUpdatedFriendshipObjects(_:)), name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
-        
-        //Set up the observer
-        FriendshipRequests().observeMyFriendshipObjects {
-            friendships in
-            print("👁 FriendshipObject Observer set up")
-
-            //UserManager.shared.friendships = friendships
-        }
     }
     
     func setUpCollectionView() {
@@ -47,23 +39,41 @@ extension HomeVC {
         self.friendshipCollection.setCollectionViewLayout(flowLayout, animated: true)
         
     }
-    
-    //MARK: Function called when logo tapped
-    func refreshActivity() {
-        if let myFriendships = UserManager.shared.friendships {
-        FriendshipRequests().updateMyLastActiveStatusInAllFriendships(becomingActive: true)
-            self.updatedActiveStatusOnce = true
-        }
-    }
 
     //MARK: Stuff to do when objects update
-
     @objc func onDidRecieveUpdatedFriendshipObjects(_ notification:Notification) {
         print("FriendshipObjects updated")
         //self.tableView.reloadData()
         self.friendshipCollection.reloadData()
     }
     
+    //MARK: Swipe to refresh
+    func addGestures(){
+        let downGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipes(sender:)))
+        downGesture.direction = .down
+        self.friendshipCollection.addGestureRecognizer(downGesture)
+    }
+
+
+    @objc func handleSwipes(sender:UISwipeGestureRecognizer) {
+        if (sender.direction == .down) {
+            print("down gesture")
+            //Reload:
+            FriendshipRequests().downloadMyFriendshipObjects(completion: {
+                friendships in
+                UserManager.shared.friendships = friendships
+                self.friendshipCollection.reloadData()
+                self.refreshActivity()
+            })
+        }
+     }
+    
+    func refreshActivity() {
+        if let myFriendships = UserManager.shared.friendships {
+        FriendshipRequests().updateMyLastActiveStatusInAllFriendships(becomingActive: true)
+            self.updatedActiveStatusOnce = true
+        }
+    }
     
     //MARK: Delete friendship
     func deleteFriendship(friendship: FriendshipObject) {

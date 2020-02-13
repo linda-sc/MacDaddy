@@ -164,7 +164,7 @@ class DataHandler {
                         print("🔥👀 Checking Firestore Data...")
                         
                         let snapshot = document.data()
-                        print("📸 snapshot: \(snapshot ?? [:])")
+                        //print("📸 snapshot: \(snapshot ?? [:])")
                         let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                          print("🔥👀 Data: \(dataDescription)")
                         

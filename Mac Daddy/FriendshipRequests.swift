@@ -336,21 +336,62 @@ class FriendshipRequests: NSObject {
         if let friendships = UserManager.shared.friendships {
             for friendship in friendships {
                        //If I'm the initiator
-                       if friendship.initiatorId == UserManager.shared.currentUser?.uid {
-                           friendship.initiatorLastActive = Date()
-                           friendship.initiatorActive = becomingActive
-                       } else if friendship.recieverId == UserManager.shared.currentUser?.uid{
-                           friendship.recieverLastActive = Date()
-                           friendship.recieverActive = becomingActive
-                       }
-
-                       FriendshipRequests().updateFriendshipObjectInFirestore(friendship: friendship)
-                   }
+                if friendship.iAmInitiator() {
+                    friendship.initiatorLastActive = Date()
+                    friendship.initiatorActive = becomingActive
+                } else if friendship.iAmReceiver() {
+                    friendship.recieverLastActive = Date()
+                    friendship.recieverActive = becomingActive
+                }
+                FriendshipRequests().updateFriendshipObjectInFirestore(friendship: friendship)
+           }
         } else {
             print("No friendships to update.")
             return
         }
-       
+    }
+    
+    func updateMyAvatarInAllFriendships() {
+        if let friendships = UserManager.shared.friendships {
+            for friendship in friendships {
+                if friendship.iAmInitiator() {
+                    friendship.initiatorAvatar = UserManager.shared.currentUser?.avatar
+                } else if friendship.iAmReceiver() {
+                    friendship.recieverAvatar = UserManager.shared.currentUser?.avatar
+                }
+                FriendshipRequests().updateFriendshipObjectInFirestore(friendship: friendship)
+           }
+        } else {
+            print("No friendships to update.")
+            return
+        }
+    }
+    
+    //MARK: Begin New Friendship
+    func beginNewFriendship(friend: UserObject) -> FriendshipObject? {
+        
+        guard friend != nil else {return nil}
+        //First create the local object:
+        var newFriendship = FriendshipObject()
+        let me = UserManager.shared.currentUser
+        
+        newFriendship.lastActive = Date()
+        
+        newFriendship.initiatorId = Auth.auth().currentUser?.uid ?? me?.uid
+        newFriendship.initiatorAvatar = me?.avatar
+        newFriendship.initiatorLastActive = Date()
+        newFriendship.members?.append(me!.uid!)
+        
+        newFriendship.recieverId = friend.uid
+        newFriendship.members?.append(friend.uid!)
+        newFriendship.recieverAvatar = friend.avatar
+        
+        newFriendship.anon = false
+        newFriendship.archived = false
+        
+        self.insertNewFriendshipObjectInFirestore(friendship: newFriendship)
+        //DO NOT append to the local array, because the observer will take care of that for us.
+        return newFriendship
     }
     
 }

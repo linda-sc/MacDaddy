@@ -38,15 +38,34 @@ class WelcomeVC: UIViewController {
                 //Move the loading bar 2
                 DataHandler.downloadFriends {
                     //Move the loading bar 3
+                    //Set up the observer
+                    
+                    //First do this
+                    for friend in DataHandler.friendList {
+                        print("Syncing friend and friendship \(friend.convoID)")
+                        FriendshipRequests().upgradeFriendToFriendshipObject(friend: friend)
+                    }
+                    
+                    //Move the loading bar 4
+                    FriendshipRequests().observeMyFriendshipObjects {
+                        friendships in
+                        print("👁 FriendshipObject Observer triggered")
+                        NotificationCenter.default.post(name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
+                        //UserManager.shared.friendships = friendships
+                    }//End of setting up observer
+                    
                     FriendshipRequests().downloadMyFriendshipObjects {
                         //Move the loading bar 3
                         friendships in
                         UserManager.shared.friendships = friendships
-                        DispatchQueue.main.asyncAfter(deadline: when) {
-                            print("👉🏼 WelcomeVC: \(self.segueIdentifier)")
-                           self.performSegue(withIdentifier: self.segueIdentifier, sender: Any?.self)
-                       }
+                         DispatchQueue.main.asyncAfter(deadline: when) {
+                             print("👉🏼 WelcomeVC: \(self.segueIdentifier)")
+                            self.performSegue(withIdentifier: self.segueIdentifier, sender: Any?.self)
+                        }
                     }//End of downloading FriendshipObjects
+
+                    
+                    
                 }//End of downloading friend structs
             }//End of automatic loading
         }//End of animate loading

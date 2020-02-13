@@ -129,20 +129,6 @@ class MessageInterfaceVC: MessagesViewController {
         convoRef.updateChildValues(["lastChat": text, "lastChatSenderID": senderId])
     }
     
-    // MARK: - Update FriendshipObject
-//    func updateFriendshipObjectOnSending(message: Message, friendship: FriendshipObject) {
-//        if UserManager.shared.currentUser?.uid == friendship.initiatorId {
-//            //If you're the initiator
-//            friendship.initiatorLastActive = Date()
-//            friendship.initiatorMostRecentMessage = message.content
-//        } else {
-//            friendship.recieverLastActive = Date()
-//            friendship.recieverMostRecentMessage = message.content
-//        }
-//        friendship.lastActive = Date()
-//
-//        FriendshipRequests().updateFriendshipObjectInFirestore(friendship: friendship)
-//    }
     
 }
 

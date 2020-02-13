@@ -128,7 +128,7 @@ class UserRequests: NSObject {
             if let document = document {
                 if document.exists{
                     //If the object is already there, then download it
-                    print("Document data: \(document.data())")
+                    //print("Document data: \(document.data())")
                     print("UserObject exists")
                     if document.data() != nil {
                         let currentUser = decode(json: document.data(), obj: UserObject.self)

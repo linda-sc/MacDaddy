@@ -200,7 +200,7 @@ class FriendshipObject: NSObject, Codable {
         recieverLiked = try container.decodeIfPresent(Bool.self, forKey: .recieverLiked)
 
         initiatorSeen = try container.decodeIfPresent(Bool.self, forKey: .initiatorSeen)
-        recieverSeen = try container.decodeIfPresent(Bool.self, forKey: .initiatorSeen)
+        recieverSeen = try container.decodeIfPresent(Bool.self, forKey: .recieverSeen)
  
         initiatorNumberUnread = try container.decodeIfPresent(Int.self, forKey: .initiatorNumberUnread)
         recieverNumberUnread = try container.decodeIfPresent(Int.self, forKey: .recieverNumberUnread)
@@ -242,7 +242,7 @@ class FriendshipObject: NSObject, Codable {
         let initiatorLastActiveString = initiatorLastActive?.dateToDateTimeString()
         let recieverLastActiveString = recieverLastActive?.dateToDateTimeString()
         
-        try container.encodeIfPresent(lastActiveString, forKey: .initiatorLastActive)
+        try container.encodeIfPresent(lastActiveString, forKey: .lastActive)
         try container.encodeIfPresent(initiatorLastActiveString, forKey: .initiatorLastActive)
         try container.encodeIfPresent(recieverLastActiveString, forKey: .recieverLastActive)
         

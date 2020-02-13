@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import MapKit
+import Firebase
 
 //Codable means you can easily switch between object and JSON.
 //Structs are value types, and classes are reference types.
@@ -391,6 +392,25 @@ class UserObject: NSObject, Codable {
             return self.uid == object.uid
         }
         return false
+    }
+    
+    func isMyFriend() -> Bool {
+        for friend in DataHandler.friendList {
+            if self.uid == friend.uid {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isMe() -> Bool {
+        if self.uid == Auth.auth().currentUser?.uid {
+            return true
+        } else if self.uid == UserManager.shared.currentUser?.uid {
+            return true
+        } else {
+            return false
+        }
     }
     
 }
