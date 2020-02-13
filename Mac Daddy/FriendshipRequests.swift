@@ -171,7 +171,11 @@ class FriendshipRequests: NSObject {
                     return
                 }
                 if let friendship = decode(json: data, obj: FriendshipObject.self) {
-                    friendships.append(friendship)
+                    if self.friendshipExistsInFriendsList(friendship: friendship) {
+                        friendships.append(friendship)
+                    } else {
+                        print("Skipping old friendship")
+                    }
                 } else {
                     print("Error decoding friendship JSON")
                 }
@@ -188,6 +192,16 @@ class FriendshipRequests: NSObject {
         }
     }
     
+    
+    func friendshipExistsInFriendsList(friendship: FriendshipObject) -> Bool {
+        var found = false
+        if DataHandler.friendList.isEmpty {return false}
+        if friendship.members == nil {return false}
+        for friend in DataHandler.friendList {
+            if (friendship.members?.contains(friend.uid))! {found = true}
+        }
+        return found
+    }
     
     
     //MARK: Fetch cached friends both ways
@@ -225,7 +239,101 @@ class FriendshipRequests: NSObject {
         return nil
     }
     
-    //MARK: Functions in progress.
+    //MARK: Get the other person's id out
+    func getFriendsUid(friendship: FriendshipObject?) -> String {
+        if friendship == nil {
+            print("Tried to get friends id from empty friendship object")
+            return ""
+        }
+        if let myUid = UserManager.shared.currentUser?.uid {
+            if friendship?.initiatorId == myUid {
+                return friendship?.recieverId ?? ""
+            } else {
+                return friendship?.initiatorId ?? ""
+            }
+        }
+        print("Error getting friend uid. My uid doesn't exist.")
+        return ""
+    }
     
+    //MARK: Archive friendship
+    
+    
+    func archiveFriendshipObject(friendship: FriendshipObject, completion: @escaping (_ success: Bool)-> ()) {
+        self.insertFriendshipObjectInArchives(friendship: friendship, completion: { (success) in
+            if success {
+                self.deleteFriendship(friendship: friendship, completion: { (success) in
+                    if success {
+                        completion(true)
+                    } else {
+                        print("Error removing friendship object.")
+                        completion(false)
+                    }
+                })
+            } else {
+                print("Error inserting into archives. Unable to delete friendship.")
+                completion(false)
+            }
+        })
+        
+    
+    }
+    
+    func insertFriendshipObjectInArchives(friendship: FriendshipObject, completion: @escaping (_ success: Bool)-> ()) {
+        if friendship.convoId != nil {
+            let ref = NetworkConstants().archivedFriendshipPath(convoId: friendship.convoId!)
+            guard let friendshipData = friendship.encodeModelObject() else {
+                print ("Error encoding FriendshipObject")
+                completion(false)
+                return
+            }
+            UserRequests().setFirestoreData(ref: ref, values: friendshipData)
+            completion(true)
+        } else {
+            print("Friendship convo id is nil. This should not be happening.")
+            completion(false)
+        }
+    }
+    
+    
+    //MARK: Delete friendship
+    func deleteFriendship(friendship: FriendshipObject, completion: @escaping (_ success: Bool)->()){
+        if friendship.convoId == nil {
+            print("Cannot delete friendship with empty convoId")
+            completion(false)
+        }
+        NetworkConstants().friendshipObjectPath(convoId: friendship.convoId!).delete() { err in
+            if let err = err {
+                print("Error removing friendship: \(err)")
+                completion(false)
+            } else {
+                print("Document successfully removed!")
+                completion(true)
+            }
+        }
+    }
+    
+    //MARK: Update your lastActive status
+    func updateMyLastActiveStatusInAllFriendships(becomingActive: Bool) {
+        print("Updating my last active status in all friendships")
+        if let friendships = UserManager.shared.friendships {
+            for friendship in friendships {
+                       //If I'm the initiator
+                       if friendship.initiatorId == UserManager.shared.currentUser?.uid {
+                           friendship.initiatorLastActive = Date()
+                           friendship.initiatorActive = becomingActive
+                       } else if friendship.recieverId == UserManager.shared.currentUser?.uid{
+                           friendship.recieverLastActive = Date()
+                           friendship.recieverActive = becomingActive
+                       }
+
+                       FriendshipRequests().updateFriendshipObjectInFirestore(friendship: friendship)
+                   }
+        } else {
+            print("No friendships to update.")
+            return
+        }
+       
+    }
     
 }

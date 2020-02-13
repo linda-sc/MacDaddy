@@ -80,7 +80,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MacDaddy FullLogo" translatesAutoresizingMaskIntoConstraints="NO" id="RaI-4Z-TCf">
-                                <rect key="frame" x="150.66666666666666" y="64" width="74.000000000000114" height="50"/>
+                                <rect key="frame" x="150.66666666666666" y="64" width="74" height="50"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RaI-4Z-TCf" secondAttribute="height" multiplier="37:25" id="EgM-PN-73O"/>
@@ -113,13 +113,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUj-np-Vum">
-                                                    <rect key="frame" x="1" y="2" width="341" height="24"/>
+                                                    <rect key="frame" x="0.0" y="2" width="0.0" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Preview of last message..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahv-AH-gA7">
-                                                    <rect key="frame" x="95" y="28" width="248" height="38"/>
+                                                    <rect key="frame" x="95" y="28" width="248" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -217,7 +217,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </tableView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgM-dX-gBi">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgM-dX-gBi">
                                 <rect key="frame" x="15" y="141" width="345" height="65"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.5450980392" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -248,7 +248,7 @@
                                     <action selector="worldButtonTapped:" destination="VaT-gO-yOm" eventType="touchUpInside" id="7iY-dh-09z"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mnm-Me-2Zm">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mnm-Me-2Zm">
                                 <rect key="frame" x="0.0" y="214" width="375" height="578"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kM1-y0-SO1">
@@ -274,6 +274,7 @@
                             <constraint firstItem="mnm-Me-2Zm" firstAttribute="top" secondItem="bgM-dX-gBi" secondAttribute="bottom" constant="8" id="5jc-MR-3v8"/>
                             <constraint firstItem="zH0-pC-a4M" firstAttribute="leading" secondItem="g59-lB-6dI" secondAttribute="leadingMargin" constant="10" id="99u-YO-kdP"/>
                             <constraint firstAttribute="trailing" secondItem="bgM-dX-gBi" secondAttribute="trailing" constant="15" id="E1u-Ur-qgo"/>
+                            <constraint firstItem="bgM-dX-gBi" firstAttribute="top" secondItem="RaI-4Z-TCf" secondAttribute="bottom" constant="27" id="Lrl-98-Cc1"/>
                             <constraint firstAttribute="trailing" secondItem="fJs-ew-Wcj" secondAttribute="trailing" constant="10" id="Nep-Au-3Em"/>
                             <constraint firstItem="LwG-Hy-0km" firstAttribute="top" secondItem="g59-lB-6dI" secondAttribute="top" id="QNR-Mq-YeH"/>
                             <constraint firstItem="bgM-dX-gBi" firstAttribute="leading" secondItem="g59-lB-6dI" secondAttribute="leading" constant="15" id="RI7-WK-EFI"/>

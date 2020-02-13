@@ -359,6 +359,15 @@ extension HomeVC {
             UIAlertAction in
             
             print("Friend passed")
+            
+            //Added for V2
+            for friendship in UserManager.shared.friendships {
+                if FriendshipRequests().getFriendsUid(friendship: friendship) == DataHandler.currentMatchID {
+                       self.deleteFriendship(friendship: friendship)
+                }
+            }
+            
+
             self.deleteCurrentMatch()
             DataHandler.updateCurrentMatchID(currentMatchID: "")
             
@@ -500,97 +509,97 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//MARK: Segues
-
-extension HomeVC {
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if segue.identifier == "ChatWithFriend" {
-            //You're going through the navigation controller first.
-//            let navVC = segue.destination as? UINavigationController
-//            let destination = navVC?.viewControllers.first as! ChatInterfaceVC
-            let destination = segue.destination as! ChatSceneVC
-            
-            //If you're going from the table, just do it normally.
-            //If you're going from the alert controller, go to your current match.
-            
-            if let selectedRow = tableView.indexPathForSelectedRow?.row {
-                if let friendship = UserManager.shared.friendships?[selectedRow] {
-                    destination.friendship = friendship
-                    
-                    var friendUid = ""
-                    if UserManager.shared.currentUser?.uid == friendship.initiatorId {
-                        friendUid = friendship.recieverId ?? ""
-                    } else {
-                        friendUid = friendship.initiatorId ?? ""
-                    }
-                    
-                    if let friend = FriendshipRequests().fetchCachedFriendStruct(uid: friendUid) {
-                        destination.friend = friend
-                    }
-                }
-                //destination.friend = DataHandler.friendList[selectedRow]
-                
-            } else {
-                let friend = self.currentMatch
-                destination.friend = friend
-                if let friendship = FriendshipRequests().fetchCachedFriendship(uid: friend.uid) {
-                    destination.friendship = friendship
-                }
-            }
-        }
-
-        else if segue.identifier == "PresentNewMatch" {
-            //You're also going through the navigation controller first.
-            
-            //let navVC = segue.destination as? UINavigationController
-            //let destination = navVC?.viewControllers.first as! ChatInterfaceVC
-            let destination = segue.destination as! ChatSceneVC
-            self.currentMatch.anon = "1"
-            destination.friend = self.currentMatch
-
-            
-        } else {
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                tableView.deselectRow(at: selectedIndexPath, animated: true)
-            }
-        }
-    }
-    
-    @IBAction func unwindFromDetail(segue: SegueToLeft) {
-        self.matchBox.isEnabled = true
-        self.matchBox.setTitle( "Find a match!", for: .normal)
-        
-        let source = segue.source as! ChatSceneVC
-        if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            DataHandler.friendList[selectedIndexPath.row] = source.friend
-            tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
-
-        } else {
-            let newIndexPath = IndexPath(row: DataHandler.friendList.count, section:0)
-            
-            //Only add the friend to the list if they are a new friend.
-            var newFriend = true
-            for friend in DataHandler.friendList {
-                if source.friend.convoID == friend.convoID {
-                    newFriend = false
-                }
-            }
-            if newFriend {
-                DataHandler.friendList.append(source.friend)
-                tableView.insertRows(at: [newIndexPath], with: .bottom)
-                tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: true)
-            }
-        }
-    }
-    
-    @IBAction func unwindFromBlock(segue: SegueToLeft) {
-        self.matchBox.isEnabled = true
-        self.matchBox.setTitle( "Find a match!", for: .normal)
-        
-        //let source = segue.source as! FriendDetailVC
-        tableView.reloadData()
-    }
+////MARK: Segues
+//
+//extension HomeVC {
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "ChatWithFriend" {
+//            //You're going through the navigation controller first.
+////            let navVC = segue.destination as? UINavigationController
+////            let destination = navVC?.viewControllers.first as! ChatInterfaceVC
+//            let destination = segue.destination as! ChatSceneVC
+//            
+//            //If you're going from the table, just do it normally.
+//            //If you're going from the alert controller, go to your current match.
+//            
+//            if let selectedRow = tableView.indexPathForSelectedRow?.row {
+//                if let friendship = UserManager.shared.friendships?[selectedRow] {
+//                    destination.friendship = friendship
+//                    
+//                    var friendUid = ""
+//                    if UserManager.shared.currentUser?.uid == friendship.initiatorId {
+//                        friendUid = friendship.recieverId ?? ""
+//                    } else {
+//                        friendUid = friendship.initiatorId ?? ""
+//                    }
+//                    
+//                    if let friend = FriendshipRequests().fetchCachedFriendStruct(uid: friendUid) {
+//                        destination.friend = friend
+//                    }
+//                }
+//                //destination.friend = DataHandler.friendList[selectedRow]
+//                
+//            } else {
+//                let friend = self.currentMatch
+//                destination.friend = friend
+//                if let friendship = FriendshipRequests().fetchCachedFriendship(uid: friend.uid) {
+//                    destination.friendship = friendship
+//                }
+//            }
+//        }
+//
+//        else if segue.identifier == "PresentNewMatch" {
+//            //You're also going through the navigation controller first.
+//            
+//            //let navVC = segue.destination as? UINavigationController
+//            //let destination = navVC?.viewControllers.first as! ChatInterfaceVC
+//            let destination = segue.destination as! ChatSceneVC
+//            self.currentMatch.anon = "1"
+//            destination.friend = self.currentMatch
+//
+//            
+//        } else {
+//            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+//                tableView.deselectRow(at: selectedIndexPath, animated: true)
+//            }
+//        }
+//    }
+//    
+//    @IBAction func unwindFromDetail(segue: SegueToLeft) {
+//        self.matchBox.isEnabled = true
+//        self.matchBox.setTitle( "Find a match!", for: .normal)
+//        
+//        let source = segue.source as! ChatSceneVC
+//        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+//            DataHandler.friendList[selectedIndexPath.row] = source.friend
+//            tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
+//
+//        } else {
+//            let newIndexPath = IndexPath(row: DataHandler.friendList.count, section:0)
+//            
+//            //Only add the friend to the list if they are a new friend.
+//            var newFriend = true
+//            for friend in DataHandler.friendList {
+//                if source.friend.convoID == friend.convoID {
+//                    newFriend = false
+//                }
+//            }
+//            if newFriend {
+//                DataHandler.friendList.append(source.friend)
+//                tableView.insertRows(at: [newIndexPath], with: .bottom)
+//                tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: true)
+//            }
+//        }
+//    }
+//    
+//    @IBAction func unwindFromBlock(segue: SegueToLeft) {
+//        self.matchBox.isEnabled = true
+//        self.matchBox.setTitle( "Find a match!", for: .normal)
+//        
+//        //let source = segue.source as! FriendDetailVC
+//        tableView.reloadData()
+//    }
 }
 

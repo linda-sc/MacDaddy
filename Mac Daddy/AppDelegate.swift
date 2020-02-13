@@ -67,13 +67,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         print("Application will terminate")
 
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        FriendshipRequests().updateMyLastActiveStatusInAllFriendships(becomingActive: false)
+            
         
-//        if Auth.auth().currentUser != nil {
-//            DataHandler.updateActive(active: "0")
-//        }
-        
-            DataHandler.saveDefaults()
-            DataHandler.getDefaults()
+        DataHandler.saveDefaults()
+        DataHandler.getDefaults()
         
         if let _ = Auth.auth().currentUser {
             DataHandler.checkData {}
@@ -84,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         
     }
     
-    //PUSH NOTIFICATIONS
+    //MARK: PUSH NOTIFICATIONS
     func registerForPushNotifications() {
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {

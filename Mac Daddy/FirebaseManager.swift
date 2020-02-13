@@ -119,6 +119,7 @@ class FirebaseManager {
                 } else {
                     print("Unverified user successfully deleted")
                     UserManager.shared.currentUser = UserObject()
+                    UserManager.shared.friendships = [FriendshipObject]()
                     print(FirebaseManager.loginInfo ?? "No login info saved")
                     completed()
                 }
