@@ -17,6 +17,11 @@ extension HomeVC {
 
         UserManager.shared.getLocation()
         UserRequests().checkupUpdates()
+        
+        for friend in DataHandler.friendList {
+            print("Syncing friend and friendship \(friend.convoID)")
+            FriendshipRequests().upgradeFriendToFriendshipObject(friend: friend)
+        }
        
         addGestures()
         setUpCollectionView()
@@ -80,6 +85,8 @@ extension HomeVC {
     
     //MARK: Cleanup?
     func scripts(){
+        
+        FriendshipRequests().healAllCorruptedFriendshipObjects()
         //FriendshipRequests().recoverArchivedFriendships()
 //        for friendship in UserManager.shared.friendships! {
 //            for friend in DataHandler.friendList {
@@ -242,6 +249,7 @@ extension HomeVC {
             }
             if newFriend {
                 DataHandler.friendList.append(source.friend)
+                self.friendshipCollection.reloadData()
                 //tableView.insertRows(at: [newIndexPath], with: .bottom)
                 //tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: true)
             }

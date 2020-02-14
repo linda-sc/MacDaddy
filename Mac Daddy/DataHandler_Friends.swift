@@ -117,14 +117,14 @@ extension DataHandler {
     
     //Update when you go online
     static func updateActivityinFriendsLists(active: String) {
-        print("🌟 Updating activity in friends lists.")
-        for friend in friendList {
-            
-            let friendsOfFriendsRef = db.collection("users").document(friend.uid).collection("friends")
-            let selfInFriendsListRef = friendsOfFriendsRef.document(uid!)
-            
-            updateFirestoreData(ref: selfInFriendsListRef, values: ["Active" : active])
-        }
+        print("🌟 NOT Updating activity in friends lists.")
+//        for friend in friendList {
+//
+//            let friendsOfFriendsRef = db.collection("users").document(friend.uid).collection("friends")
+//            let selfInFriendsListRef = friendsOfFriendsRef.document(uid!)
+//
+//            updateFirestoreData(ref: selfInFriendsListRef, values: ["Active" : active])
+//        }
     }
     
     //Whether you're unmatching someone or just taking them off of your friend list, you delete the data from both your friend list and theirs.

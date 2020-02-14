@@ -26,6 +26,7 @@ class ChatSceneVC: UIViewController {
     
     var friend = Friend()
     var friendship = FriendshipObject()
+    var userObject = UserObject()
     var friendsRealName = ""
     
     var convoExists = true
@@ -54,6 +55,7 @@ class ChatSceneVC: UIViewController {
                 let destination = segue.destination as! FriendDetailVC
                 destination.friend = self.friend
                 destination.friendship = self.friendship
+                destination.userObject = self.userObject
         }
     }
     

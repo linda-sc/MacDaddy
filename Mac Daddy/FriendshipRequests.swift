@@ -58,6 +58,9 @@ class FriendshipRequests: NSObject {
                         upgradedObject.anon = false
                     }
                     
+                     //MARK: Other
+                    upgradedObject.friendshipNickname = ""
+                    
                     //MARK: Insert
                     print("Friendship object: \(upgradedObject)")
                     self.insertNewFriendshipObjectInFirestore(friendship: upgradedObject)
@@ -193,11 +196,13 @@ class FriendshipRequests: NSObject {
                     return
                 }
                 if let friendship = decode(json: data, obj: FriendshipObject.self) {
-                    if self.friendshipExistsInFriendsList(friendship: friendship) {
-                        friendships.append(friendship)
-                    } else {
-                        print("Skipping old friendship: \(friendship.members)")
-                    }
+                    friendships.append(friendship)
+                    
+//                    if self.friendshipExistsInFriendsList(friendship: friendship) {
+//                        friendships.append(friendship)
+//                    } else {
+//                        print("Skipping old friendship: \(friendship.members)")
+//                    }
                 } else {
                     print("Error decoding friendship JSON")
                 }
@@ -209,6 +214,9 @@ class FriendshipRequests: NSObject {
                 $0.lastActive?.compare($1.lastActive ?? oldDate) == .orderedDescending
             })
             
+            print("Observed \(friendships.count) friendships")
+            
+            //UserManager.shared.friendships = friendships
             NotificationCenter.default.post(name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
             
             completion(friendships)
@@ -290,6 +298,7 @@ class FriendshipRequests: NSObject {
     func archiveFriendshipObject(friendship: FriendshipObject, completion: @escaping (_ success: Bool)-> ()) {
         self.insertFriendshipObjectInArchives(friendship: friendship, completion: { (success) in
             if success {
+                //Second order of business: Delete once you're done archiving
                 self.deleteFriendship(friendship: friendship, completion: { (success) in
                     if success {
                         completion(true)
@@ -307,6 +316,7 @@ class FriendshipRequests: NSObject {
     
     }
     
+    //FIrst order of business: archiving
     private func insertFriendshipObjectInArchives(friendship: FriendshipObject, completion: @escaping (_ success: Bool)-> ()) {
         if friendship.convoId != nil {
             let ref = NetworkConstants().archivedFriendshipPath(convoId: friendship.convoId!)
@@ -325,6 +335,7 @@ class FriendshipRequests: NSObject {
     
     
     //MARK: Delete friendship
+    //Third order of business - mechanic for actually deleting friendship
     private func deleteFriendship(friendship: FriendshipObject, completion: @escaping (_ success: Bool)->()){
         if friendship.convoId == nil {
             print("Cannot delete friendship with empty convoId")
@@ -354,6 +365,12 @@ class FriendshipRequests: NSObject {
                     friendship.recieverLastActive = Date()
                     friendship.recieverActive = becomingActive
                 }
+                
+                //Random other stuff to update:
+                if friendship.friendshipNickname == nil {
+                    friendship.friendshipNickname = ""
+                }
+                
                 FriendshipRequests().updateFriendshipObjectInFirestore(friendship: friendship)
            }
         } else {
@@ -389,17 +406,19 @@ class FriendshipRequests: NSObject {
         
         newFriendship.lastActive = Date()
         newFriendship.convoId = convoId
+        newFriendship.members = [String]()
+        newFriendship.members?.append(me!.uid!)
+        newFriendship.members?.append(userObject.uid!)
         
         newFriendship.initiatorId = Auth.auth().currentUser?.uid ?? me?.uid
         newFriendship.initiatorAvatar = me?.avatar
         newFriendship.initiatorLastActive = Date()
-        newFriendship.members?.append(me!.uid!)
+        
         
         newFriendship.recieverId = userObject.uid
-        newFriendship.members?.append(userObject.uid!)
         newFriendship.recieverAvatar = userObject.avatar
         
-        newFriendship.anon = false
+        newFriendship.anon = true
         newFriendship.archived = false
         
         self.insertNewFriendshipObjectInFirestore(friendship: newFriendship)
@@ -422,10 +441,42 @@ class FriendshipRequests: NSObject {
                     }
                 }
             }
-            
         }
-        
-        
+    }
+    
+    func healAllCorruptedFriendshipObjects() {
+        let ref = NetworkConstants().friendshipObjectsPath()
+        ref.getDocuments { (querySnapshot, error) in
+            
+            guard let documents = querySnapshot?.documents else {
+                print("Error fetching my friendships: \(error!)")
+                return
+            }
+            for document in documents {
+                
+                let data = document.data() as NSDictionary
+                if (!JSONSerialization.isValidJSONObject(data)) {
+                    print("Data is not a valid json object")
+                    return
+                }
+                if let friendship = decode(json: data, obj: FriendshipObject.self) {
+                
+                    if friendship.members == nil {
+                        var healedFriendship = friendship
+                        let initiatorId = friendship.initiatorId ?? ""
+                        let receiverId = friendship.recieverId ?? ""
+                        let membersArray = [initiatorId, receiverId]
+                        healedFriendship.members = membersArray
+                        self.updateFriendshipObjectInFirestore(friendship: healedFriendship)
+                        print("Added members array to broken friendship")
+                    }
+                    
+                } else {
+                    print("Error decoding friendship JSON")
+                }
+            }
+        }
+            
     }
 
     

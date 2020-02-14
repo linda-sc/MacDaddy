@@ -11,7 +11,7 @@ import UIKit
 class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
     
     var friend = Friend()
-    var friendObject = UserObject()
+    var userObject = UserObject()
     var friendship = FriendshipObject()
     var reportText = ""
     
@@ -93,7 +93,7 @@ class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
         //Otherwise, throw an error.
         UserRequests().fetchUserObject(userID: friend.uid, success: { (result) in
             if let userObject = result as? UserObject {
-                self.friendObject = userObject
+                self.userObject = userObject
             }
         }) { (error) in
             print("Couldn't fetch user object.")
@@ -277,7 +277,7 @@ extension FriendDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
             let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "BasicInfoCell", for: indexPath) as! BasicInfoCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
-            cell.loadForUser(friend: self.friend, userObject: self.friendObject)
+            cell.loadForUser(friend: self.friend, userObject: self.userObject)
             return cell
         case 1:
             let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "GradeStatusCell", for: indexPath) as! GradeStatusCell
@@ -290,7 +290,7 @@ extension FriendDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
             //cell.parentViewController = self
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
-            cell.loadForUser(user: self.friendObject)
+            cell.loadForUser(user: self.userObject)
             return cell
         case 3:
             let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "MapCell", for: indexPath) as! MapCell
@@ -311,7 +311,7 @@ extension FriendDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             cell.moreIcon.isHidden = true
             self.setStructure(for: cell)
-            let major = self.friendObject.majors?.first ?? "Eating and sleeping"
+            let major = self.userObject.majors?.first ?? "Eating and sleeping"
             self.formatInterest(for: cell, iconName: "majorIcon", interestName: "Major", interestField: major)
             return cell
         case 6:
@@ -319,7 +319,7 @@ extension FriendDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
             let cell = detailCollection.dequeueReusableCell(withReuseIdentifier: "InterestCell", for: indexPath) as! InterestCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             cell.moreIcon.isHidden = true
-            let terms = self.friendObject.terms ?? "I don't know"
+            let terms = self.userObject.terms ?? "I don't know"
             self.formatInterest(for: cell, iconName: "venmoIcon", interestName: "My terms", interestField: terms)
             self.setStructure(for: cell)
             return cell
@@ -341,7 +341,7 @@ extension FriendDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
             if self.friend.anon == "1" {
                 venmo = "???"
             } else {
-                venmo = self.friendObject.venmo ?? "???"
+                venmo = self.userObject.venmo ?? "???"
             }
              self.formatInterest(for: cell, iconName: "venmoIcon", interestName: "Venmo handle", interestField: venmo)
             

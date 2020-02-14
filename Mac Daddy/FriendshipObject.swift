@@ -25,9 +25,15 @@ class FriendshipObject: NSObject, Codable {
     var recieverId: String?
     var archived: Bool?
     var anon: Bool?
+    var friendshipNickname: String?
     
     var initiator: UserObject?
     var reciever: UserObject?
+    
+    var initiatorPseudonym: String?
+    var receiverPseudonym: String?
+    var initiatorName: String?
+    var receiverName: String?
     
     var initiatorAvatar: AvatarObject?
     var recieverAvatar: AvatarObject?
@@ -75,12 +81,17 @@ class FriendshipObject: NSObject, Codable {
         case recieverId
         case archived
         case anon
+        case friendshipNickname
         
         case initiator
         case reciever
         
         case initatorAvatar
         case recieverAvatar
+        case initiatorPseudonym
+        case receiverPseudonym
+        case initiatorName
+        case receiverName
         
         case mostRecentMessage
         case initiatorMostRecentMessage
@@ -125,6 +136,7 @@ class FriendshipObject: NSObject, Codable {
         self.archived = false
         self.anon = true
         self.lastActive = Date()
+        self.friendshipNickname = ""
         
         self.members = [String]()
         self.members?.append(initiatorId)
@@ -147,9 +159,15 @@ class FriendshipObject: NSObject, Codable {
         recieverId = try container.decodeIfPresent(String.self, forKey: .recieverId)
         archived = try container.decodeIfPresent(Bool.self, forKey: .archived)
         anon = try container.decodeIfPresent(Bool.self, forKey: .anon)
+        friendshipNickname = try container.decodeIfPresent(String.self, forKey: .friendshipNickname)
+
         
         initiatorAvatar = try container.decodeIfPresent(AvatarObject.self, forKey: .initatorAvatar)
         recieverAvatar = try container.decodeIfPresent(AvatarObject.self, forKey: .recieverAvatar)
+        initiatorPseudonym = try container.decodeIfPresent(String.self, forKey: .initiatorPseudonym)
+        receiverPseudonym = try container.decodeIfPresent(String.self, forKey: .receiverPseudonym)
+        initiatorName = try container.decodeIfPresent(String.self, forKey: .initiatorName)
+        receiverName = try container.decodeIfPresent(String.self, forKey: .receiverName)
         
         mostRecentMessage = try container.decodeIfPresent(String.self, forKey: .mostRecentMessage)
         initiatorMostRecentMessage = try container.decodeIfPresent(String.self, forKey: .initiatorMostRecentMessage)
@@ -230,9 +248,16 @@ class FriendshipObject: NSObject, Codable {
         try container.encodeIfPresent(recieverId, forKey: .recieverId)
         try container.encodeIfPresent(initiatorAvatar, forKey: .initatorAvatar)
         try container.encodeIfPresent(recieverAvatar, forKey: .recieverAvatar)
+        try container.encodeIfPresent(initiatorPseudonym, forKey: .initiatorPseudonym)
+        try container.encodeIfPresent(initiatorName, forKey: .initiatorName)
+        try container.encodeIfPresent(receiverName, forKey: .receiverName)
+        try container.encodeIfPresent(receiverPseudonym, forKey: .receiverPseudonym)
+        
         try container.encodeIfPresent(archived, forKey: .archived)
         try container.encodeIfPresent(anon, forKey: .anon)
+        try container.encodeIfPresent(friendshipNickname, forKey: .friendshipNickname)
 
+        
         try container.encodeIfPresent(mostRecentMessage, forKey: .mostRecentMessage)
         try container.encodeIfPresent(initiatorMostRecentMessage, forKey: .initiatorMostRecentMessage)
         try container.encodeIfPresent(recieverMostRecentMessage, forKey: .recieverMostRecentMessage)
