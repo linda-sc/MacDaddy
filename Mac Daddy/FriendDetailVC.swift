@@ -159,7 +159,7 @@ class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
             print("Goodbye pressed")
             
     
-            FriendshipRequests().deleteFriendship(friendship: self.friendship, completion: {
+            FriendshipRequests().archiveFriendshipObject(friendship: self.friendship, completion: {
                 success in
                     let isAnon = (self.friend.anon == "1")
                            

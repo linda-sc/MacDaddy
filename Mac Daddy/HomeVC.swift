@@ -18,27 +18,23 @@ class HomeVC: UIViewController {
     @IBOutlet weak var background:UIImageView!
     //@IBOutlet weak var tableView:UITableView!
     @IBOutlet weak var matchBox:UIButton!
-    
     @IBOutlet weak var friendshipCollection: UICollectionView!
     @IBOutlet weak var friendshipCollectionLayout: UICollectionViewFlowLayout!
 
-    
     var updatedActiveStatusOnce = false
     var currentMatch = Friend()
+    var currentMatchObject = UserObject()
+    var currentFriendshipObject = FriendshipObject()
     var selfListener:ListenerRegistration? = nil
     
     let friendRef = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("Friends")
     
-    //MARK: Testing new functions on launch
-
     
     @IBAction func logoTapped(_ sender: Any) {
         print("Logo tapped")
     }
     
     //MARK: Firebase observers
-
-    
     func removeObserver() {
         if selfListener != nil {
             selfListener!.remove()
@@ -64,20 +60,18 @@ class HomeVC: UIViewController {
                 print("👂🏻 HomeVC - addObserver: friend Listeners fired")
                 //print("querySnapshot documents: \(String(describing: querySnapshot?.documentID))")
                 self.syncFriends()
-                
         }
-
     }
     
     
-    func syncConvos() {
-        //Builds a parallel array of conversations in DataHandler
-        //Qualities: seen, last message
-        for friend in DataHandler.friendList {
-            let friendUID = friend.uid
-            let friendConvoRef = friendRef.child(friend.convoID)
-        }
-    }
+//    func syncConvos() {
+//        //Builds a parallel array of conversations in DataHandler
+//        //Qualities: seen, last message
+//        for friend in DataHandler.friendList {
+//            let friendUID = friend.uid
+//            let friendConvoRef = friendRef.child(friend.convoID)
+//        }
+//    }
     
     func syncFriends() {
         //Donwloads and converts Firebase dictionary of friends to DH, then to local list.
@@ -169,8 +163,7 @@ extension HomeVC {
         self.navigationController?.isNavigationBarHidden = true
         print("👁 HomeVC - viewDidLoad")
         //DataHandler.updateActive(active: "1")
-        print("🍱 Here are our friends \(DataHandler.friendList)")
-        
+        //print("🍱 Here are our friends \(DataHandler.friendList)")
         if let uid = Auth.auth().currentUser?.uid {
             UserRequests().downloadCurrentUserObjectFromFirestore(userId: uid)
         }
@@ -184,19 +177,17 @@ extension HomeVC {
         var buttonImage:UIImage?
         
         //if DataHandler.macStatus == "Daddy" {
-        if UserManager.shared.currentUser?.status == "Daddy" {
-            //backgroundImage = UIImage(named: "MacDaddy Background_Purple")
-            //buttonImage = UIImage(named: "MacDaddy Background_Flipped")
-            
-        }else {
-            //backgroundImage = UIImage(named: "MacDaddy Background")
-            //buttonImage = UIImage(named: "MacDaddy Background_Purple_Flipped")
-        }
-        
-        //buttonImage = UIImage(named: "MacDaddy Background_Flipped")
+//        if UserManager.shared.currentUser?.status == "Daddy" {
+//            //backgroundImage = UIImage(named: "MacDaddy Background_Purple")
+//            //buttonImage = UIImage(named: "MacDaddy Background_Flipped")
+//
+//        }else {
+//            //backgroundImage = UIImage(named: "MacDaddy Background")
+//            //buttonImage = UIImage(named: "MacDaddy Background_Purple_Flipped")
+//        }
+//
+        buttonImage = UIImage(named: "MacDaddy Background_Flipped")
         backgroundImage = UIImage(named: "MacDaddy Background_DarkMode")
-        
-        
         background.image = backgroundImage
         matchBox.setBackgroundImage(buttonImage, for: .normal)
         
@@ -205,8 +196,6 @@ extension HomeVC {
     
         viewDidLoadExtension()
     }
-    
-    
     
     //Make the status bar white.
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -223,7 +212,6 @@ extension HomeVC {
         self.friendshipCollection.reloadData()
         
     }
-    
     
     
     //MARK: Buttons to other storyboards
@@ -285,25 +273,38 @@ extension HomeVC {
     }
     
     //Actually initiate the search for a new match:
-    func searchForNewMatch() {
-        //First edit the button UX:
-        matchBox.isEnabled = false
-        self.matchBox.setTitle( "Searching...", for: .normal)
-        
-        //If you're not matched, you'll just get a match.
-        Matching.findMatch {
-            self.currentMatch = Matching.chosenCandidate
-            
-            if self.currentMatch.name == "" {
-                //If you can't find anyone, keep looking...
-                self.matchBox.setTitle( "No matches! Try again later!", for: .normal)
-                self.matchBox.isEnabled = true
-            } else {
-                //If a match is found, start chatting with them!
-                self.performSegue(withIdentifier: "PresentNewMatch", sender: self)
-            }
-        }
-    }
+//    func searchForNewMatch() {
+//        //First edit the button UX:
+//        matchBox.isEnabled = false
+//        self.matchBox.setTitle( "Searching...", for: .normal)
+//        
+//        //If you're not matched, you'll just get a match.
+//        MatchingRequests().selectMatch(completion: {
+//            match in
+//            self.currentMatch = match.uid
+//            if match == nil {
+//                self.matchBox.setTitle( "No matches! Try again later!", for: .normal)
+//                self.matchBox.isEnabled = true
+//            } else {
+//                self.performSegue(withIdentifier: "PresentNewMatch", sender: self)
+//            }
+//        })
+//        
+//        
+////        Matching.findMatch {
+////            self.currentMatch = Matching.chosenCandidate
+////
+////            if self.currentMatch.name == "" {
+////                //If you can't find anyone, keep looking...
+////                self.matchBox.setTitle( "No matches! Try again later!", for: .normal)
+////                self.matchBox.isEnabled = true
+////            } else {
+////                //If a match is found, start chatting with them!
+////                self.performSegue(withIdentifier: "PresentNewMatch", sender: self)
+////            }
+////        }
+//        
+//    }
     
     func deleteCurrentMatch() {
         //Added for V2

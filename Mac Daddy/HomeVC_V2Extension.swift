@@ -17,8 +17,10 @@ extension HomeVC {
 
         UserManager.shared.getLocation()
         UserRequests().checkupUpdates()
-        self.addGestures()
+       
+        addGestures()
         setUpCollectionView()
+        scripts()
         
         //Add observer to trigger reload
         NotificationCenter.default.addObserver(self, selector: #selector(onDidRecieveUpdatedFriendshipObjects(_:)), name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
@@ -39,8 +41,8 @@ extension HomeVC {
         self.friendshipCollection.setCollectionViewLayout(flowLayout, animated: true)
         
     }
-
-    //MARK: Stuff to do when objects update
+    
+    //MARK: When friendship objects update
     @objc func onDidRecieveUpdatedFriendshipObjects(_ notification:Notification) {
         print("FriendshipObjects updated")
         //self.tableView.reloadData()
@@ -48,6 +50,7 @@ extension HomeVC {
     }
     
     //MARK: Swipe to refresh
+    
     func addGestures(){
         let downGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipes(sender:)))
         downGesture.direction = .down
@@ -75,7 +78,47 @@ extension HomeVC {
         }
     }
     
+    //MARK: Cleanup?
+    func scripts(){
+        //FriendshipRequests().recoverArchivedFriendships()
+//        for friendship in UserManager.shared.friendships! {
+//            for friend in DataHandler.friendList {
+//                if friend.uid != friendship.recieverId {
+//                    if friend.uid != friendship.initiatorId {
+//                        FriendshipRequests().archiveFriendshipObject(friendship: friendship, completion: {_ in
+//                                print("Friendship archived.")
+//                        })
+//                    }
+//                }
+//            }
+//        }
+    }
+    
+    //MARK: Search for new match
+    
+     func searchForNewMatch() {
+            //First edit the button UI:
+            matchBox.isEnabled = false
+            self.matchBox.setTitle( "Searching...", for: .normal)
+            
+            //If you're not matched, you'll just get a match.
+            MatchingRequests().selectMatch(random: true, completion: {
+                match in
+                
+                if match == nil {
+                    self.matchBox.setTitle( "No matches! Try again later!", for: .normal)
+                    self.matchBox.isEnabled = true
+                } else {
+                    self.currentMatch = match!.friend
+                    self.currentMatchObject = match!.user
+                    self.currentFriendshipObject = match!.friendship
+                    self.performSegue(withIdentifier: "PresentNewMatch", sender: self)
+                }
+            })
+        }
+    
     //MARK: Delete friendship
+    
     func deleteFriendship(friendship: FriendshipObject) {
         FriendshipRequests().archiveFriendshipObject(friendship: friendship, completion: { (success) in
             if success {
@@ -91,6 +134,7 @@ extension HomeVC {
 
 
 //MARK: CollectionView
+
 extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     
     
@@ -168,7 +212,7 @@ extension HomeVC {
             let destination = segue.destination as! ChatSceneVC
             self.currentMatch.anon = "1"
             destination.friend = self.currentMatch
-            //destination.friendship =
+            destination.friendship = self.currentFriendshipObject
             
         } else {
             if let selectedIndexPath = friendshipCollection.indexPathsForSelectedItems?.first {

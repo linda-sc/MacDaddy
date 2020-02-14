@@ -106,6 +106,7 @@ class FirebaseManager {
         
         DataHandler.clearDataHandler()
         DataHandler.clearDefaults()
+        FriendshipRequests().removeFriendshipObserver()
         
         //Delete the account if it's not verified.
         if user?.isEmailVerified == false {

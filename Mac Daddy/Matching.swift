@@ -6,6 +6,9 @@
 //  Copyright © 2017 Synestha. All rights reserved.
 //
 
+
+//MARK: Deprecated
+
 import Foundation
 import Firebase
 

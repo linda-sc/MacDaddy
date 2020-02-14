@@ -11,7 +11,7 @@ import Firebase
 
 class FriendshipRequests: NSObject {
     
-    //static var queryHandle: DatabaseQuery = DatabaseQuery()
+    //static var queryHandle: ListenerRegistration = ListenerRegistration()
     
     //MARK: Upgrade to FriendshipObject
     
@@ -179,6 +179,12 @@ class FriendshipRequests: NSObject {
                 print("Error fetching my friendships: \(error!)")
                 return
             }
+            
+            if let error = error {
+                print("Error retreiving collection: \(error)")
+                //Automatically detaches listener here.
+            }
+            
             for document in documents {
                 
                 let data = document.data() as NSDictionary
@@ -190,7 +196,7 @@ class FriendshipRequests: NSObject {
                     if self.friendshipExistsInFriendsList(friendship: friendship) {
                         friendships.append(friendship)
                     } else {
-                        print("Skipping old friendship")
+                        print("Skipping old friendship: \(friendship.members)")
                     }
                 } else {
                     print("Error decoding friendship JSON")
@@ -207,6 +213,11 @@ class FriendshipRequests: NSObject {
             
             completion(friendships)
         }
+    }
+    
+    func removeFriendshipObserver(){
+        //FriendshipRequests.queryHandle.remove()
+        //FriendshipRequests.queryHandle = ListenerRegistration()
     }
     
     
@@ -296,7 +307,7 @@ class FriendshipRequests: NSObject {
     
     }
     
-    func insertFriendshipObjectInArchives(friendship: FriendshipObject, completion: @escaping (_ success: Bool)-> ()) {
+    private func insertFriendshipObjectInArchives(friendship: FriendshipObject, completion: @escaping (_ success: Bool)-> ()) {
         if friendship.convoId != nil {
             let ref = NetworkConstants().archivedFriendshipPath(convoId: friendship.convoId!)
             guard let friendshipData = friendship.encodeModelObject() else {
@@ -314,7 +325,7 @@ class FriendshipRequests: NSObject {
     
     
     //MARK: Delete friendship
-    func deleteFriendship(friendship: FriendshipObject, completion: @escaping (_ success: Bool)->()){
+    private func deleteFriendship(friendship: FriendshipObject, completion: @escaping (_ success: Bool)->()){
         if friendship.convoId == nil {
             print("Cannot delete friendship with empty convoId")
             completion(false)
@@ -368,23 +379,25 @@ class FriendshipRequests: NSObject {
     }
     
     //MARK: Begin New Friendship
-    func beginNewFriendship(friend: UserObject) -> FriendshipObject? {
+
+    func beginNewFriendship(userObject: UserObject, convoId: String) -> FriendshipObject? {
         
-        guard friend != nil else {return nil}
+        guard userObject != nil else {return nil}
         //First create the local object:
         var newFriendship = FriendshipObject()
         let me = UserManager.shared.currentUser
         
         newFriendship.lastActive = Date()
+        newFriendship.convoId = convoId
         
         newFriendship.initiatorId = Auth.auth().currentUser?.uid ?? me?.uid
         newFriendship.initiatorAvatar = me?.avatar
         newFriendship.initiatorLastActive = Date()
         newFriendship.members?.append(me!.uid!)
         
-        newFriendship.recieverId = friend.uid
-        newFriendship.members?.append(friend.uid!)
-        newFriendship.recieverAvatar = friend.avatar
+        newFriendship.recieverId = userObject.uid
+        newFriendship.members?.append(userObject.uid!)
+        newFriendship.recieverAvatar = userObject.avatar
         
         newFriendship.anon = false
         newFriendship.archived = false
@@ -393,5 +406,27 @@ class FriendshipRequests: NSObject {
         //DO NOT append to the local array, because the observer will take care of that for us.
         return newFriendship
     }
+    
+    //MARK: Recover Archived Friendships
+    func recoverArchivedFriendships() {
+        for friendship in UserManager.shared.friendships! {
+            let livingRef = NetworkConstants().friendshipObjectsPath().document(friendship.convoId!)
+            let archivesRef = NetworkConstants().archivedFriendshipsPath().document(friendship.convoId!)
+            
+            livingRef.getDocument { (document, error) in
+                if let document = document {
+                    if document.exists{
+                        
+                        self.updateFriendshipObjectInFirestore(friendship: friendship)
+                        archivesRef.delete()
+                    }
+                }
+            }
+            
+        }
+        
+        
+    }
+
     
 }

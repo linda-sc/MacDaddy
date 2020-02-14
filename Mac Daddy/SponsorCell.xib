@@ -17,8 +17,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="169" height="103"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SponsorSample" translatesAutoresizingMaskIntoConstraints="NO" id="J5c-OB-n67">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SponsorSample" translatesAutoresizingMaskIntoConstraints="NO" id="J5c-OB-n67">
                         <rect key="frame" x="0.0" y="0.0" width="169" height="103"/>
+                        <color key="backgroundColor" red="0.3003165974" green="0.28670037040000002" blue="0.4301435596" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="103" id="KKY-PR-ido"/>
+                            <constraint firstAttribute="width" constant="169" id="ykF-VD-zRz"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
@@ -30,10 +35,15 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="169" height="103"/>
+            <connections>
+                <outlet property="imageHeight" destination="KKY-PR-ido" id="Ygj-4k-7BZ"/>
+                <outlet property="imageWidth" destination="ykF-VD-zRz" id="kuX-TZ-MlV"/>
+                <outlet property="sponsorImage" destination="J5c-OB-n67" id="frh-U8-j6d"/>
+            </connections>
             <point key="canvasLocation" x="90.579710144927546" y="107.47767857142857"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="SponsorSample" width="750" height="750"/>
+        <image name="SponsorSample" width="750" height="632"/>
     </resources>
 </document>

@@ -14,12 +14,18 @@ class SponsorsCollectionCell: UICollectionViewCell {
     @IBOutlet weak var sponsorCollection: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+    var sponsors = [
+        SponsorObject(uid: "Cqyvv3GNbgdfTmWzOeNLEy8ZVWU2", imageName: "SponsorSample"),
+        SponsorObject(uid: "Cqyvv3GNbgdfTmWzOeNLEy8ZVWU2", imageName: "MDTeam")
+    ]
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         if #available(iOS 12, *) { setupSelfSizingForiOS12(contentView: contentView)}
 
+        
         
         sponsorCollection.delegate = self
         sponsorCollection.dataSource = self
@@ -31,21 +37,30 @@ class SponsorsCollectionCell: UICollectionViewCell {
         if let flow = sponsorCollection.collectionViewLayout as? UICollectionViewFlowLayout {
              flow.estimatedItemSize = CGSize(width: 1, height: 1)
         }
+        //let flowLayout = BouncyLayout(style: .prominent)
         self.sponsorCollection.setCollectionViewLayout(flowLayout, animated: true)
-
     }
-
 }
 
 extension SponsorsCollectionCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return sponsors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = sponsorCollection.dequeueReusableCell(withReuseIdentifier: "SponsorCell", for: indexPath) as! SponsorCell
+            
+        let sponsor = sponsors[indexPath.row]
+        cell.sponsorImage.image = UIImage(named: sponsor.imageName!)
         cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        setStructure(for: cell)
         return cell
+    }
+    
+    private func setStructure(for cell: UICollectionViewCell) {
+        cell.layer.borderWidth = 20
+        cell.layer.borderColor = UIColor.clear.cgColor
+        cell.layer.cornerRadius = 20
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -54,5 +69,9 @@ extension SponsorsCollectionCell: UICollectionViewDelegate, UICollectionViewData
             return CGSize(width: width, height: height)
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Did select item at")
+    }
     
 }

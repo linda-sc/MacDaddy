@@ -84,6 +84,7 @@
 		BFA6564621A5EA5B00A9B99B /* DataHandler_FCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6564521A5EA5B00A9B99B /* DataHandler_FCM.swift */; };
 		BFB2E5481F71D4A40096D562 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2E5471F71D4A40096D562 /* Constants.swift */; };
 		BFB2E54A1F71D4FD0096D562 /* ChatInterfaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */; };
+		BFC255E523F671B700EF865B /* SponsorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC255E423F671B700EF865B /* SponsorObject.swift */; };
 		BFC80D4923F5CCD300AAC744 /* MatchingRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC80D4823F5CCD300AAC744 /* MatchingRequests.swift */; };
 		BFCC3BF61EE89C5600BD1F1C /* PrivateSetup1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC3BF51EE89C5600BD1F1C /* PrivateSetup1VC.swift */; };
 		BFD28E5B22DE253600FA48B7 /* NearbyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD28E5922DE253600FA48B7 /* NearbyCell.swift */; };
@@ -193,6 +194,7 @@
 		BFB2E5461F71D31E0096D562 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		BFB2E5471F71D4A40096D562 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BFB2E5491F71D4FD0096D562 /* ChatInterfaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceVC.swift; sourceTree = "<group>"; };
+		BFC255E423F671B700EF865B /* SponsorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorObject.swift; sourceTree = "<group>"; };
 		BFC80D4823F5CCD300AAC744 /* MatchingRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingRequests.swift; sourceTree = "<group>"; };
 		BFCC3BF51EE89C5600BD1F1C /* PrivateSetup1VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateSetup1VC.swift; sourceTree = "<group>"; };
 		BFD28E5922DE253600FA48B7 /* NearbyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyCell.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				BFD69E8B23EF27ED00C19D64 /* FriendshipRequests.swift */,
 				BFC80D4823F5CCD300AAC744 /* MatchingRequests.swift */,
 				BF7B29DD23F209C100E1B29B /* NotificationExtensions.swift */,
+				BF1EDC4E1EE4A015006CB610 /* FirebaseManager.swift */,
 			);
 			name = "Network Calls";
 			sourceTree = "<group>";
@@ -318,7 +321,6 @@
 		BF1EDC501EE4A027006CB610 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				BF1EDC4E1EE4A015006CB610 /* FirebaseManager.swift */,
 				BF1082771ED4C793000677A3 /* LoginVC.swift */,
 				BF3B2E161EE43A67002796DE /* VerifyVC.swift */,
 				BF5B410D236BBBFC0046A94F /* InputNameVC.swift */,
@@ -360,6 +362,7 @@
 		BF4C29D6218B654D00589E1B /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
+				BF628E031FCE1FA100824E87 /* Matching.swift */,
 				BF005BDE1FB9FE6300CFE337 /* FriendChatCell.swift */,
 				BF99DDBC1F1842DD0069F2C5 /* Profile Editing */,
 				BF528EEA23401AAA00E7E1E5 /* Legacy.storyboard */,
@@ -381,6 +384,7 @@
 				BF57B64C228F481C00D500A2 /* UserObject.swift */,
 				BF7066FB22AD5A5800129EA9 /* UserManager.swift */,
 				BFD69E8123E62F6100C19D64 /* GigObject.swift */,
+				BFC255E423F671B700EF865B /* SponsorObject.swift */,
 				BF57B651228F49D800D500A2 /* InterestsObject.swift */,
 				BF57B653228F4B2C00D500A2 /* CommunityObject.swift */,
 				BF57B64F228F487000D500A2 /* FriendshipObject.swift */,
@@ -503,7 +507,6 @@
 				BF9F50F421BB47CA000FA5C4 /* ChatHandler.swift */,
 				BF8EC8F020ADD866008CFCCE /* ChattingAlerts.swift */,
 				BFD2CD75219B44DA00337148 /* FriendDetail */,
-				BF628E031FCE1FA100824E87 /* Matching.swift */,
 				BFEB30381F68891E00CD4173 /* UserData.swift */,
 			);
 			name = Messenger;
@@ -722,6 +725,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFC80D4923F5CCD300AAC744 /* MatchingRequests.swift in Sources */,
+				BFC255E523F671B700EF865B /* SponsorObject.swift in Sources */,
 				BF628E041FCE1FA200824E87 /* Matching.swift in Sources */,
 				BFB2E54A1F71D4FD0096D562 /* ChatInterfaceVC.swift in Sources */,
 				BF1EDC521EE60CAF006CB610 /* WelcomeVC.swift in Sources */,

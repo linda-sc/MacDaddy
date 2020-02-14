@@ -49,7 +49,8 @@ class PostGigVC: UIViewController, UITextViewDelegate {
         let email = UserManager.shared.currentUser?.email
         let venmo = UserManager.shared.currentUser?.venmo
         let text = self.answerTextView.text
-        
+        let org = UserManager.shared.currentUser?.organization
+       
         let gigObject = GigObject()
         
         gigObject.uid = uid
@@ -57,6 +58,7 @@ class PostGigVC: UIViewController, UITextViewDelegate {
         gigObject.venmo = venmo
         gigObject.text = text
         gigObject.timeStamp = Date()
+         gigObject.organization = org
         
         let gigId = self.createGigID()
     

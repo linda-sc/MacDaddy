@@ -16,13 +16,21 @@ class MatchingRequests {
         var weight: Int = 1
     }
     
+    //Tripartite structure to hold all three representations
+    struct FriendUserAndFriendship {
+        var friend = Friend()
+        var user = UserObject()
+        var friendship = FriendshipObject()
+    }
     
-    func selectMatch(completion: @escaping (_ match: UserObject)-> ()) {
+    //MARK: Returns all three representations
+    //MARK: Works for both random and specific matches
+    func selectMatch(random: Bool, completion: @escaping (_ match: FriendUserAndFriendship?)-> ()) {
         //Step 1:
         UserData.downloadAllUserObjects {
             //Step 2:
             var candidates = [WeightedCandidate]()
-            let cleanedUsers = removeMeAndMyFriends(users: UserData.allUserObjects)
+            let cleanedUsers = self.removeMeAndMyFriends(users: UserData.allUserObjects)
             
             for user in cleanedUsers {
                 var candidate = WeightedCandidate()
@@ -33,16 +41,25 @@ class MatchingRequests {
             
             let orderedCandidates = candidates.sorted(by: {$0.weight > $1.weight })
             if let chosenUser = orderedCandidates.first?.user {
-                completion(chosenUser)
+                self.createFriendStructAndConvoFromNewMatch(user: chosenUser, completed: {
+                    friend in
+                    
+                    var hybridObject = FriendUserAndFriendship()
+                    hybridObject.friend = friend
+                    hybridObject.user = chosenUser
+                    hybridObject.friendship = FriendshipRequests().beginNewFriendship(userObject: chosenUser, convoId: friend.convoID)!
+                    
+                    completion(hybridObject)
+                })
             } else {
                 print("Error finding match")
-                completion(UserObject())
+                completion(FriendUserAndFriendship())
             }
         }
     }
     
     func removeMeAndMyFriends(users: [UserObject]) -> [UserObject] {
-        let cleanedList = [UserObject]()
+        var cleanedList = [UserObject]()
         for user in users {
             if !user.isMyFriend() && !user.isMe() {
                 cleanedList.append(user)
@@ -53,12 +70,47 @@ class MatchingRequests {
     
     //MARK: Weighting function
     func assignWeight(candidate: UserObject) -> Int {
-        
+        let randInt = Int.random(in: 0 ... 100)
+        return randInt
     }
     
-    static func createConvoID() -> String {
+    //MARK: Create convo ID
+    
+    func createConvoID() -> String {
         let newConvoID = Constants.refs.databaseConversations.childByAutoId()
         return newConvoID.key!
+    }
+    
+    
+    //MARK: Old stuff to preserve V1 architecture
+    //MARK: Creates convo and also
+    //MARK: returns Friend struct linked to it
+    func createFriendStructAndConvoFromNewMatch(user: UserObject, completed: @escaping(_ friend: Friend)->()){
+        var newFriend = Friend()
+        let convoId = createConvoID()
+        
+        newFriend.anon = "1"
+        newFriend.convoID = convoId
+        newFriend.uid = user.uid ?? "Error"
+        newFriend.grade = user.grade ?? "Freshman"
+        newFriend.macStatus = user.status ?? "Baby"
+
+        //Assign a random name!
+        let anonName = "Anonymous " + Constants.fakeNames[Int(arc4random_uniform(UInt32(Constants.fakeNames.count)))]
+        newFriend.name = anonName
+        
+        //Push data to initialize the conversation:
+        let ref = Constants.refs.databaseConversations.child(newFriend.convoID).child("status")
+        let myUID = DataHandler.uid!
+        let friendUID = newFriend.uid
+        let status = [myUID: ["saved": "0"], friendUID: ["saved": "0"]]
+        ref.setValue(status)
+        
+        DataHandler.updatePrimaryA(primaryA: "1")
+        DataHandler.updateFriendData(friend: newFriend, newMatch: true)
+        DataHandler.updateCurrentMatchID(currentMatchID: newFriend.uid)
+        
+        completed(newFriend)
     }
        
     

@@ -146,7 +146,7 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
         case 1:
             //Sponsor Cell
             let width = view.bounds.width - 16
-            let height: CGFloat = 150
+            let height: CGFloat = 120
             return CGSize(width: width, height: height)
         default:
             //User Cell
@@ -159,7 +159,6 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
             let width = view.bounds.width - 16
             let text = gig.text ?? ""
             
-            print()
             //20 from left + 3 from avatar view + 70 avatar view.
             let margin: CGFloat = 93
             let height: CGFloat = estimateFrameForText(text: text, width: width, margin: margin).height + 100
