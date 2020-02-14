@@ -109,7 +109,7 @@ extension HomeVC {
             self.matchBox.setTitle( "Searching...", for: .normal)
             
             //If you're not matched, you'll just get a match.
-            MatchingRequests().selectMatch(random: true, completion: {
+            MatchingRequests().initiateMatch(random: true, completion: {
                 match in
                 
                 if match == nil {
@@ -262,5 +262,10 @@ extension HomeVC {
         
         friendshipCollection.reloadData()
     }
+    
+    @IBAction func unwindFromPostEngagement(segue: SegueToLeft) {
+        friendshipCollection.reloadData()
+    }
+    
 
 }

@@ -183,7 +183,18 @@ extension WorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        if indexPath.section == 0 {return}
+        let gig = UserData.currentGigs[indexPath.row]
+        if let uid = gig.uid {
+            if DataHandler.friendList.contains(obj: uid) {return}
+            if uid != UserManager.shared.currentUser?.uid {
+                MatchingRequests().initiateMatchFromPost(uid: uid, origin: uid, completion: {_ in
+                    self.dismiss(animated: true, completion: {
+                        print("Dismiss completed")
+                    })
+                })
+            }
+        }
     }
     
     

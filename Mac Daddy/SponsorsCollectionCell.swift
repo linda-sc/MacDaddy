@@ -72,6 +72,11 @@ extension SponsorsCollectionCell: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Did select item at")
+        //self.parentVC?.performSegue(withIdentifier: "unwindFromPostEngagement", sender: nil)
+        self.parentVC?.dismiss(animated: true, completion: {
+            print("Dismiss completed")
+        })
+
     }
     
 }

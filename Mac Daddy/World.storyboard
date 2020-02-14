@@ -103,9 +103,11 @@
                         <outlet property="worldCollection" destination="nZg-kh-Tw1" id="Q57-UG-I6c"/>
                         <outlet property="worldCollectionLayout" destination="ee1-hH-qW4" id="nsx-BH-uLa"/>
                         <segue destination="xQt-az-eSI" kind="presentation" identifier="GoToPostGig" id="INP-0Y-gcL"/>
+                        <segue destination="fNN-Tp-b2F" kind="unwind" unwindAction="unwindFromPostEngagementWithSegue:" id="1l4-8H-od6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBu-Ru-c6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="fNN-Tp-b2F" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1102.8985507246377" y="6.6964285714285712"/>
         </scene>

@@ -24,8 +24,8 @@ class MatchingRequests {
     }
     
     //MARK: Returns all three representations
-    //MARK: Works for both random and specific matches
-    func selectMatch(random: Bool, completion: @escaping (_ match: FriendUserAndFriendship?)-> ()) {
+    //MARK: Friend, UserObject, and FriendshipObject
+    func initiateMatch(random: Bool, completion: @escaping (_ match: FriendUserAndFriendship?)-> ()) {
         //Step 1:
         UserData.downloadAllUserObjects {
             //Step 2:
@@ -48,6 +48,7 @@ class MatchingRequests {
                     hybridObject.friend = friend
                     hybridObject.user = chosenUser
                     hybridObject.friendship = FriendshipRequests().beginNewFriendship(userObject: chosenUser, convoId: friend.convoID)!
+                    hybridObject.friendship.origin = "random"
                     
                     completion(hybridObject)
                 })
@@ -55,6 +56,28 @@ class MatchingRequests {
                 print("Error finding match")
                 completion(FriendUserAndFriendship())
             }
+        }
+    }
+    
+    
+    func initiateMatchFromPost(uid: String, origin: String, completion: @escaping (_ match: FriendUserAndFriendship?)-> ()) {
+        
+        UserRequests().fetchUserObject(userID: uid, success: { (result) in
+            if let userObject = result as? UserObject {
+                 self.createFriendStructAndConvoFromNewMatch(user: userObject, completed: {
+                     friend in
+                     
+                     var hybridObject = FriendUserAndFriendship()
+                     hybridObject.friend = friend
+                     hybridObject.user = userObject
+                     hybridObject.friendship = FriendshipRequests().beginNewFriendship(userObject: userObject, convoId: friend.convoID)!
+                     hybridObject.friendship.origin = origin
+                     
+                     completion(hybridObject)
+                 })
+            }
+        }) { (error) in
+            print("Couldn't get match.")
         }
     }
     

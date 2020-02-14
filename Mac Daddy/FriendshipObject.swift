@@ -27,6 +27,8 @@ class FriendshipObject: NSObject, Codable {
     var anon: Bool?
     var friendshipNickname: String?
     
+    var origin: String?
+    
     var initiator: UserObject?
     var reciever: UserObject?
     
@@ -82,6 +84,8 @@ class FriendshipObject: NSObject, Codable {
         case archived
         case anon
         case friendshipNickname
+        
+        case origin
         
         case initiator
         case reciever
@@ -160,6 +164,8 @@ class FriendshipObject: NSObject, Codable {
         archived = try container.decodeIfPresent(Bool.self, forKey: .archived)
         anon = try container.decodeIfPresent(Bool.self, forKey: .anon)
         friendshipNickname = try container.decodeIfPresent(String.self, forKey: .friendshipNickname)
+        
+        origin = try container.decodeIfPresent(String.self, forKey: .origin)
 
         
         initiatorAvatar = try container.decodeIfPresent(AvatarObject.self, forKey: .initatorAvatar)
@@ -256,7 +262,7 @@ class FriendshipObject: NSObject, Codable {
         try container.encodeIfPresent(archived, forKey: .archived)
         try container.encodeIfPresent(anon, forKey: .anon)
         try container.encodeIfPresent(friendshipNickname, forKey: .friendshipNickname)
-
+        try container.encodeIfPresent(origin, forKey: .origin)
         
         try container.encodeIfPresent(mostRecentMessage, forKey: .mostRecentMessage)
         try container.encodeIfPresent(initiatorMostRecentMessage, forKey: .initiatorMostRecentMessage)

@@ -69,6 +69,7 @@ class VerifyVC: UIViewController, UITextFieldDelegate {
                 
                 //Also update User Manager and create UserObject
                 UserManager.shared.currentUser?.uid = Auth.auth().currentUser?.uid
+                UserManager.shared.currentUser?.grade = "person"
                 if let currentuser = UserManager.shared.currentUser {
                     UserRequests().insertUserInFirestore(userObject: currentuser)
                 }

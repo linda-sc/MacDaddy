@@ -53,7 +53,7 @@ class EditGradeStatusVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         self.picker.dataSource = self
         
         // Input data into the Array:
-        pickerData = ["Freshman", "Sophomore", "Junior", "Senior"]
+        pickerData = ["Freshman", "Sophomore", "Junior", "Senior", "Alum", "Professor", "Person"]
         
         var previousRow = 0
         
@@ -64,8 +64,14 @@ class EditGradeStatusVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             previousRow = 1
         } else if grade == "Junior" {
             previousRow = 2
-        } else {
+        } else if grade == "Senior" {
             previousRow = 3
+        } else if grade == "Alum" {
+            previousRow = 4
+        } else if grade == "Professor" {
+            previousRow = 5
+        } else {
+            previousRow = 6
         }
         
         picker.selectRow(previousRow, inComponent: 0, animated: false)
@@ -121,8 +127,17 @@ class EditGradeStatusVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }else if row == 2{
             return NSAttributedString(string: "Junior", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             
-        }else{
+        }else if row == 3{
             return NSAttributedString(string: "Senior", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            
+        }else if row == 4{
+            return NSAttributedString(string: "Alum", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+        
+        }else if row == 5{
+            return NSAttributedString(string: "Professor", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            
+        }else{
+            return NSAttributedString(string: "Person", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             
         }
     }
