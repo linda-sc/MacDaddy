@@ -249,7 +249,7 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
         case 4:
             print("Going to case 4")
         case 5:
-             //performSegue(withIdentifier: "goToEditMajor", sender: collectionView.cellForItem(at: indexPath))
+             performSegue(withIdentifier: "goToEditMajorVC", sender: collectionView.cellForItem(at: indexPath))
              print("Going to case 5") //EditMajorVC not created yet
         case 6:
             print("Going to case 6")

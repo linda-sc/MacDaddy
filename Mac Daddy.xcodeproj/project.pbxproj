@@ -105,6 +105,7 @@
 		BFFB1A1A23F49B2D00BC6CAA /* FriendshipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFB1A1823F49B2D00BC6CAA /* FriendshipCell.swift */; };
 		BFFB1A1B23F49B2D00BC6CAA /* FriendshipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFB1A1923F49B2D00BC6CAA /* FriendshipCell.xib */; };
 		C499954703A364A3F25BC845 /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8700AA267E9C7ABDD903B933 /* Pods_Mac_Daddy.framework */; };
+		E43A8F8923F85B6200530089 /* EditMajorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A8F8823F85B6200530089 /* EditMajorVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -215,6 +216,7 @@
 		BFFB1A1823F49B2D00BC6CAA /* FriendshipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipCell.swift; sourceTree = "<group>"; };
 		BFFB1A1923F49B2D00BC6CAA /* FriendshipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendshipCell.xib; sourceTree = "<group>"; };
 		C605359BDCF5EF142584CD16 /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
+		E43A8F8823F85B6200530089 /* EditMajorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMajorVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +351,7 @@
 				BF741E5122CCFC1B00F9CACE /* Basic Info */,
 				BF58F4D722DE3464008F69FF /* Grade Status */,
 				BF741E5222CCFC3300F9CACE /* Bio */,
+				E43A8F8723F857DF00530089 /* Major */,
 				B397D96C23EF1E6B00ABE94F /* Handles */,
 				BF741E5422CCFC6100F9CACE /* Map */,
 				BFE39CB822E160A200C2ABDE /* Headers */,
@@ -556,6 +559,14 @@
 				9181238EACD9EB2E686BAD74 /* Pods-Mac Daddy.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E43A8F8723F857DF00530089 /* Major */ = {
+			isa = PBXGroup;
+			children = (
+				E43A8F8823F85B6200530089 /* EditMajorVC.swift */,
+			);
+			path = Major;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -792,6 +803,7 @@
 				BF528EE5233AFDF900E7E1E5 /* Message.swift in Sources */,
 				BF310E1E22DC2601006C7D6D /* AvatarObject.swift in Sources */,
 				BF1082761ED4C793000677A3 /* AppDelegate.swift in Sources */,
+				E43A8F8923F85B6200530089 /* EditMajorVC.swift in Sources */,
 				BF42392F22C132F800340E83 /* BasicInfoCell.swift in Sources */,
 				BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */,
 				BF16F49F22ADBBF800BCF369 /* NetworkConstants.swift in Sources */,
