@@ -17,7 +17,7 @@ class EditGradeStatusVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var statusSelector: UISegmentedControl!
     
-    var grade = UserManager.shared.currentUser?.grade
+    var grade = UserManager.shared.currentUser?.grade ?? "Person"
     var macStatus = UserManager.shared.currentUser?.status ?? "Daddy"
     var isDaddy = true
     var initialIndex = 0
