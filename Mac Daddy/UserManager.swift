@@ -171,13 +171,13 @@ extension UserManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.last
-        UserManager.shared.currentUser?.latitude = currentLocation?.coordinate.latitude
-        UserManager.shared.currentUser?.longitude = currentLocation?.coordinate.longitude
+        UserManager.shared.currentUser?.latitude = currentLocation?.coordinate.latitude ?? 0.0
+        UserManager.shared.currentUser?.longitude = currentLocation?.coordinate.longitude ?? 0.0
         UserManager.shared.currentUser?.currentLocation = locations.last
         
-        print("CURRENT LOCATION = \(currentLocation?.coordinate.latitude) \(currentLocation?.coordinate.longitude)")
+        print("CURRENT LOCATION = \(UserManager.shared.currentUser?.latitude) \(UserManager.shared.currentUser?.longitude)")
         
-        UserRequests().insertUserInFirestore(userObject: UserManager.shared.currentUser!)
+        UserRequests().updateUserInFirestore(userObject: UserManager.shared.currentUser!)
         //sortBasedOnSegmentPressed()
     }
     

@@ -66,6 +66,7 @@ class AvatarView: UIView {
             displayRandomAvatar()
             
         } else {
+            self.avatarObject = avatar
             
             //Pull out all the right elements from the object
             hair.image = UIImage(named: avatar!.hair ?? "hair1")
@@ -84,7 +85,7 @@ class AvatarView: UIView {
             
             //Adjust the hair based on lumosity
             if let hairColor = avatarObject?.baseColor?.toRGB()?.adjust(by: CGFloat(avatarObject?.hairLuminosity ?? 0)) {
-                 print("Setting hair color")
+                //print("Setting hair color")
                 avatarObject?.hairTone = hairColor.toHex()
                 avatarObject?.eyebrowTone = hairColor.darker(by: 10)?.toHex()
                 hair.setImageColor(color: hairColor)

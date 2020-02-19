@@ -64,6 +64,12 @@ class MatchingRequests {
         
         UserRequests().fetchUserObject(userID: uid, success: { (result) in
             if let userObject = result as? UserObject {
+                
+                if userObject.isMyFriend() {
+                    print("You are already friends with \(userObject.firstName)")
+                    return
+                }
+                
                  self.createFriendStructAndConvoFromNewMatch(user: userObject, completed: {
                      friend in
                      
@@ -108,7 +114,7 @@ class MatchingRequests {
     //MARK: Old stuff to preserve V1 architecture
     //MARK: Creates convo and also
     //MARK: returns Friend struct linked to it
-    func createFriendStructAndConvoFromNewMatch(user: UserObject, completed: @escaping(_ friend: Friend)->()){
+    func createFriendStructAndConvoFromNewMatch(user: UserObject, completed: @escaping(_ friend: Friend )->()){
         var newFriend = Friend()
         let convoId = createConvoID()
         

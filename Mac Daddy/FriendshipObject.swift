@@ -207,10 +207,10 @@ class FriendshipObject: NSObject, Codable {
 
         //Convert the date strings into a date objects
          let recieverLastActiveString = try container.decodeIfPresent(String.self, forKey: .recieverLastActive)
-         if let recieverLastActiveDate = dateTimeFormatter.date(from: initiatorLastActiveString ?? "") {
+         if let recieverLastActiveDate = dateTimeFormatter.date(from: recieverLastActiveString ?? "") {
              recieverLastActive = recieverLastActiveDate
          } else {
-             if initiatorLastActiveString != nil {
+             if recieverLastActiveString != nil {
                  throw DecodingError.dataCorruptedError(forKey: .recieverLastActive,
                                                         in: container,
                                                         debugDescription: "RecieverLastActive date string does not match format expected by formatter.")

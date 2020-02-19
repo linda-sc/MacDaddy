@@ -15,8 +15,9 @@ class UserData {
     static var allUsers = [Friend]()
     static var allUserObjects = [UserObject]()
     static var blockedUsers = [Friend]()
-    
     static var currentGigs = [GigObject]()
+    static var usersSortedByDistance = [UserAndDistance]()
+    
 
     
     //Here we're going to write a method exclusively for downloading all the users in Firebase.
@@ -128,7 +129,7 @@ class UserData {
                         }
                         
                     }//End of querySnapshot
-                    print("🦋 Downloaded all UserObjects: \(allUserObjects)")
+                    //print("🦋 Downloaded all UserObjects: \(allUserObjects)")
                     completed()
                 }//End of blockedUsers closure
             }
@@ -167,7 +168,7 @@ class UserData {
                         }
                         
                     }//End of querySnapshot
-                    print("🦋 Downloaded all users: \(allUsers)")
+                    //print("🦋 Downloaded all users: \(allUsers)")
                     completed()
                 }//End of blockedUsers closure
             }
@@ -222,5 +223,13 @@ class UserData {
         return friendStruct
     }
 }//End of user data.
+
+
+//MARK: Structs for sorting
+
+struct UserAndDistance {
+    var user = UserObject()
+    var distanceFromMe = 0.0
+}
 
 

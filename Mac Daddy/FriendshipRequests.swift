@@ -417,6 +417,7 @@ class FriendshipRequests: NSObject {
         
         newFriendship.recieverId = userObject.uid
         newFriendship.recieverAvatar = userObject.avatar
+        newFriendship.recieverLastActive = userObject.lastActive
         
         newFriendship.anon = true
         newFriendship.archived = false

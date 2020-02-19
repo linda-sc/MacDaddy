@@ -28,7 +28,8 @@ extension Encodable {
             do {
                 let objectDict = try JSONSerialization.jsonObject(with: objectData, options: .mutableContainers) as! RawJSON
                 if (!JSONSerialization.isValidJSONObject(objectData)) {
-                    print("Encoding error: is not a valid json object")
+                    print("🧠 Encoding error: is not a valid json object ")
+                    print(objectData)
                 }
                 
                 return objectDict

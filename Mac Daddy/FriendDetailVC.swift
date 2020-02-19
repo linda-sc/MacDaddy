@@ -94,6 +94,7 @@ class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
         UserRequests().fetchUserObject(userID: friend.uid, success: { (result) in
             if let userObject = result as? UserObject {
                 self.userObject = userObject
+                self.detailCollection.reloadData()
             }
         }) { (error) in
             print("Couldn't fetch user object.")
