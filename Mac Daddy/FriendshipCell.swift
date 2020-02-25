@@ -30,6 +30,8 @@ class FriendshipCell: UICollectionViewCell {
         // Initialization code
         //This is important.
         if #available(iOS 12, *) { setupSelfSizingForiOS12(contentView: contentView)}
+        incomingMatchLabel.isHidden = true
+        currentMatchLabel.isHidden = true
     }
     
     //MARK: Update with friend object
@@ -104,8 +106,13 @@ class FriendshipCell: UICollectionViewCell {
             friendship.mostRecentMessage
             ?? "is chatting with you."
         
-           //MARK: 4. Chat last active
+        //MARK: 4. Chat last active
         self.timeLabel.text = friendship.lastActive?.getElapsedInterval()
+        
+        //MARK: 5. Origin
+        if friendship.origin == "random" {
+            incomingMatchLabel.isHidden = false
+        }
     }
     
     
@@ -118,11 +125,11 @@ class FriendshipCell: UICollectionViewCell {
                 currentMatchLabel.isHidden = false
                 incomingMatchLabel.isHidden = true
                 
-            //Show incoming matches
+            //Hide labels if friend is not anon
             } else if (friend.anon == "1"){
                 emailLabel.isHidden = true
                 currentMatchLabel.isHidden = true
-                incomingMatchLabel.isHidden = false
+                //incomingMatchLabel.isHidden = false
             } else {
             //Else if the match is a friend then hide labels
                 currentMatchLabel.isHidden = true

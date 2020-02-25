@@ -164,7 +164,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="100"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-jD-IFw">
-                                                    <rect key="frame" x="259.5" y="1" width="86.5" height="17"/>
+                                                    <rect key="frame" x="259" y="1" width="86.5" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.54820233039999999" green="0.54555531930000001" blue="0.91828600890000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

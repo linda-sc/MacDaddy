@@ -59,6 +59,7 @@ class HomeVC: UIViewController {
                 }
                 print("👂🏻 HomeVC - addObserver: friend Listeners fired")
                 //print("querySnapshot documents: \(String(describing: querySnapshot?.documentID))")
+                NotificationCenter.default.post(name: .onDidRecieveUpdatedFriendStructs, object: nil)
                 self.syncFriends()
         }
     }
@@ -349,11 +350,22 @@ extension HomeVC {
             
             print("Friend passed")
             
-
+            let friendUid = DataHandler.currentMatchID
+            if let convoId = FriendshipRequests().fetchConvoIdFromFriendsList(friendUid: friendUid) {
+                FriendshipRequests().fetchFriendshipObject(convoId: convoId, success: { (result) in
+                        if let friendship = result as? FriendshipObject {
+                            self.deleteFriendship(friendship: friendship)
+                            print("Friend deleted in Cloud Firestore")
+                        }
+                }) { (error) in
+                    print("Couldn't fetch user object.")
+                }
+            }
+    
             self.deleteCurrentMatch()
             DataHandler.updateCurrentMatchID(currentMatchID: "")
-            
-            print("Friend deleted in Firebase")
+            print("Friend deleted in Firebase RTDB")
+                        
             self.searchForNewMatch()
             
         }
@@ -362,7 +374,8 @@ extension HomeVC {
             UIAlertAction in
             
             Matching.saveCurrentMatch(friend: self.currentMatch)
-            self.performSegue(withIdentifier: "ChatWithFriend", sender: self)
+//            self.performSegue(withIdentifier: "ChatWithFriend", sender: self)
+            self.performSegue(withIdentifier: "GoToChatFromFriendship", sender: self)
             print("Save Pressed")
         }
         //Don't do anything

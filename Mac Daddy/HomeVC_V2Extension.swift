@@ -29,6 +29,29 @@ extension HomeVC {
         
         //Add observer to trigger reload
         NotificationCenter.default.addObserver(self, selector: #selector(onDidRecieveUpdatedFriendshipObjects(_:)), name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
+        //Add observer to trigger reload
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidRecieveUpdatedFriendStructs(_:)), name: .onDidRecieveUpdatedFriendStructs, object: nil)
+    }
+    
+    //MARK: Called in ViewWillAppear
+
+    func viewWillAppearExtension() {
+        removeFriendshipObserver()
+        setUpFriendshipObserver()
+    }
+    
+    func viewWillDisappearExtension(){
+        removeFriendshipObserver()
+
+    }
+    
+    func setUpFriendshipObserver() {
+        if FriendshipRequests.queryHandle != nil { return }
+        FriendshipRequests().observeMyFriendshipObjects { _ in}
+    }
+    
+    func removeFriendshipObserver(){
+        FriendshipRequests().removeFriendshipObserver()
     }
     
     func setUpCollectionView() {
@@ -51,8 +74,17 @@ extension HomeVC {
     @objc func onDidRecieveUpdatedFriendshipObjects(_ notification:Notification) {
         print("FriendshipObjects updated")
         //self.tableView.reloadData()
+        //self.buildHybridObjects()
         self.friendshipCollection.reloadData()
     }
+    
+    //MARK: When friend structs update
+
+    @objc func onDidRecieveUpdatedFriendStructs(_ notification:Notification) {
+        //self.buildHybridObjects()
+        self.friendshipCollection.reloadData()
+    }
+    
     
     //MARK: Swipe to refresh
     
@@ -85,20 +117,7 @@ extension HomeVC {
     
     //MARK: Cleanup?
     func scripts(){
-        
-        FriendshipRequests().healAllCorruptedFriendshipObjects()
-        //FriendshipRequests().recoverArchivedFriendships()
-//        for friendship in UserManager.shared.friendships! {
-//            for friend in DataHandler.friendList {
-//                if friend.uid != friendship.recieverId {
-//                    if friend.uid != friendship.initiatorId {
-//                        FriendshipRequests().archiveFriendshipObject(friendship: friendship, completion: {_ in
-//                                print("Friendship archived.")
-//                        })
-//                    }
-//                }
-//            }
-//        }
+            
     }
     
     //MARK: Search for new match
@@ -129,7 +148,8 @@ extension HomeVC {
     func deleteFriendship(friendship: FriendshipObject) {
         FriendshipRequests().archiveFriendshipObject(friendship: friendship, completion: { (success) in
             if success {
-                UserManager.shared.friendships?.removeAll(where: {$0.convoId == friendship.convoId})
+                let convoId = friendship.convoId
+                UserManager.shared.friendships?.removeAll(where: {$0.convoId == convoId})
                 self.friendshipCollection.reloadData()
             } else {
                 print("Error deleting friendship")
@@ -143,14 +163,14 @@ extension HomeVC {
 //MARK: CollectionView
 
 extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    
+
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return UserManager.shared.friendships?.count ?? 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         let cell = friendshipCollection.dequeueReusableCell(withReuseIdentifier: "FriendshipCell", for: indexPath) as! FriendshipCell
         cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         if let friendship = UserManager.shared.friendships?[indexPath.row] {
@@ -160,31 +180,33 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
             let friendUid = FriendshipRequests().getFriendsUid(friendship: friendship)
             if let friend = FriendshipRequests().fetchCachedFriendStruct(uid: friendUid) {
                 cell.update(with: friend)
+            } else {
+                print("Friend struct- could not be found.")
             }
         }
-        
+
         self.setStructure(for: cell)
         return cell
     }
-    
+
     private func setStructure(for cell: UICollectionViewCell) {
           cell.layer.borderWidth = 20
           cell.layer.borderColor = UIColor.clear.cgColor
           cell.layer.cornerRadius = 20
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                let width = view.bounds.width - 32
                let height: CGFloat = 80
                return CGSize(width: width, height: height)
     }
 
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Did select item at.")
         self.performSegue(withIdentifier: "GoToChatFromFriendship", sender: nil)
     }
-    
+
 }
 
 

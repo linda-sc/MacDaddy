@@ -47,8 +47,7 @@ class MatchingRequests {
                     var hybridObject = FriendUserAndFriendship()
                     hybridObject.friend = friend
                     hybridObject.user = chosenUser
-                    hybridObject.friendship = FriendshipRequests().beginNewFriendship(userObject: chosenUser, convoId: friend.convoID)!
-                    hybridObject.friendship.origin = "random"
+                    hybridObject.friendship = FriendshipRequests().beginNewFriendship(userObject: chosenUser, convoId: friend.convoID, origin: "random")!
                     
                     completion(hybridObject)
                 })
@@ -76,8 +75,7 @@ class MatchingRequests {
                      var hybridObject = FriendUserAndFriendship()
                      hybridObject.friend = friend
                      hybridObject.user = userObject
-                     hybridObject.friendship = FriendshipRequests().beginNewFriendship(userObject: userObject, convoId: friend.convoID)!
-                     hybridObject.friendship.origin = origin
+                    hybridObject.friendship = FriendshipRequests().beginNewFriendship(userObject: userObject, convoId: friend.convoID, origin: origin)!
                      
                      completion(hybridObject)
                  })

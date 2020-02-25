@@ -17,4 +17,7 @@ extension Notification.Name {
     //Triggered by FriendshipRequests
     //Triggers HomeVC V2 Extension to reload table.
     static let onDidRecieveUpdatedFriendshipObjects = Notification.Name("onDidRecieveUpdatedFriendshipObjects")
+    
+    //MARK: Did download updated Friend Structs
+    static let onDidRecieveUpdatedFriendStructs = Notification.Name("onDidRecieveUpdatedFriendStructs")
 }

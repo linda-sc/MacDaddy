@@ -32,7 +32,7 @@ class EditShortBioVC: UIViewController, UITextViewDelegate {
             editShortBioBox.text = "Don't leave this lonely box blank!"
         }
     }
-    
+
     func textViewDidBeginEditing(_ textView: UITextView) {
         //If there is placeholder text, then make the bio empty. Otherwise don't.
         if editShortBioBox.text == "Don't leave this lonely box blank!" {

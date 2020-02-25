@@ -11,7 +11,7 @@ import Firebase
 
 class FriendshipRequests: NSObject {
     
-    //static var queryHandle: ListenerRegistration = ListenerRegistration()
+    static var queryHandle: ListenerRegistration? = nil
     
     //MARK: Upgrade to FriendshipObject
     
@@ -177,7 +177,7 @@ class FriendshipRequests: NSObject {
         
         var friendships = [FriendshipObject]()
         
-        query.addSnapshotListener { querySnapshot, error in
+        FriendshipRequests.self.queryHandle = query.addSnapshotListener { querySnapshot, error in
             guard let documents = querySnapshot?.documents else {
                 print("Error fetching my friendships: \(error!)")
                 return
@@ -215,8 +215,8 @@ class FriendshipRequests: NSObject {
             })
             
             print("Observed \(friendships.count) friendships")
-            
-            //UserManager.shared.friendships = friendships
+            print("Updating UM and posting Notification")
+            UserManager.shared.friendships = friendships
             NotificationCenter.default.post(name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
             
             completion(friendships)
@@ -224,8 +224,8 @@ class FriendshipRequests: NSObject {
     }
     
     func removeFriendshipObserver(){
-        //FriendshipRequests.queryHandle.remove()
-        //FriendshipRequests.queryHandle = ListenerRegistration()
+        FriendshipRequests.queryHandle?.remove()
+        FriendshipRequests.queryHandle = nil
     }
     
     
@@ -239,6 +239,63 @@ class FriendshipRequests: NSObject {
         return found
     }
     
+      //MARK: Observe ALL FriendshipObjects
+        
+        func observeAllFriendshipObjects(completion: @escaping (_ friendships: [FriendshipObject])-> ()) {
+            print("👀 - observeMyFriendshipObjects function triggered")
+            let ref = NetworkConstants().friendshipObjectsPath()
+            let myUid = Auth.auth().currentUser?.uid ?? ""
+            
+            var friendships = [FriendshipObject]()
+            
+            ref.addSnapshotListener { querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("Error fetching my friendships: \(error!)")
+                    return
+                }
+                
+                if let error = error {
+                    print("Error retreiving collection: \(error)")
+                    //Automatically detaches listener here.
+                }
+                
+                for document in documents {
+                    
+                    let data = document.data() as NSDictionary
+                    if (!JSONSerialization.isValidJSONObject(data)) {
+                        print("Data is not a valid json object")
+                        return
+                    }
+                    if let friendship = decode(json: data, obj: FriendshipObject.self) {
+                        
+                        if friendship.members?.contains(myUid) ?? false {
+                            friendships.append(friendship)
+                        }
+                        
+    //                    if self.friendshipExistsInFriendsList(friendship: friendship) {
+    //                        friendships.append(friendship)
+    //                    } else {
+    //                        print("Skipping old friendship: \(friendship.members)")
+    //                    }
+                    } else {
+                        print("Error decoding friendship JSON")
+                    }
+                }
+                
+                //Sort friendships by time
+                let oldDate = Date(timeIntervalSince1970: 0)
+                friendships = friendships.sorted(by: {
+                    $0.lastActive?.compare($1.lastActive ?? oldDate) == .orderedDescending
+                })
+                
+                print("Observed \(friendships.count) friendships")
+                
+                //UserManager.shared.friendships = friendships
+                NotificationCenter.default.post(name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
+                
+                completion(friendships)
+            }
+        }
     
     //MARK: Fetch cached friends both ways
     
@@ -299,7 +356,10 @@ class FriendshipRequests: NSObject {
         self.insertFriendshipObjectInArchives(friendship: friendship, completion: { (success) in
             if success {
                 //Second order of business: Delete once you're done archiving
-                self.deleteFriendship(friendship: friendship, completion: { (success) in
+                if friendship.convoId == nil {
+                    completion(false)
+                }
+                self.deleteFriendship(friendship: friendship, convoId: friendship.convoId!, completion: { (success) in
                     if success {
                         completion(true)
                     } else {
@@ -336,12 +396,13 @@ class FriendshipRequests: NSObject {
     
     //MARK: Delete friendship
     //Third order of business - mechanic for actually deleting friendship
-    private func deleteFriendship(friendship: FriendshipObject, completion: @escaping (_ success: Bool)->()){
-        if friendship.convoId == nil {
-            print("Cannot delete friendship with empty convoId")
-            completion(false)
-        }
-        NetworkConstants().friendshipObjectPath(convoId: friendship.convoId!).delete() { err in
+    private func deleteFriendship(friendship: FriendshipObject?, convoId: String, completion: @escaping (_ success: Bool)->()){
+//        if friendship?.convoId == nil {
+//            print("Cannot delete friendship with empty convoId")
+//            completion(false)
+//        }
+        let id = friendship?.convoId ?? convoId
+        NetworkConstants().friendshipObjectPath(convoId: id).delete() { err in
             if let err = err {
                 print("Error removing friendship: \(err)")
                 completion(false)
@@ -397,7 +458,7 @@ class FriendshipRequests: NSObject {
     
     //MARK: Begin New Friendship
 
-    func beginNewFriendship(userObject: UserObject, convoId: String) -> FriendshipObject? {
+    func beginNewFriendship(userObject: UserObject, convoId: String, origin: String) -> FriendshipObject? {
         
         guard userObject != nil else {return nil}
         //First create the local object:
@@ -421,6 +482,7 @@ class FriendshipRequests: NSObject {
         
         newFriendship.anon = true
         newFriendship.archived = false
+        newFriendship.origin = origin
         
         self.insertNewFriendshipObjectInFirestore(friendship: newFriendship)
         //DO NOT append to the local array, because the observer will take care of that for us.
@@ -479,6 +541,66 @@ class FriendshipRequests: NSObject {
         }
             
     }
-
     
+    //MARK: Fetch friendship from convoId
+    func fetchCachedFriendshipFromConvoId(id: String) -> FriendshipObject? {
+        if UserManager.shared.friendships == nil {return nil}
+        for friendship in UserManager.shared.friendships! {
+            if friendship.convoId == id {
+                return friendship
+            }
+        }
+        return nil
+    }
+    
+    // MARK: Fetch convoId from friendsList
+    func fetchConvoIdFromFriendsList(friendUid: String) -> String? {
+        for friend in DataHandler.friendList {
+            if friend.uid == friendUid {
+                return friend.convoID
+            }
+        }
+        return nil
+    }
+
+    // MARK: Download any FSO from firestore.
+       //////////////////////////////////////////////////
+       //////////////////////////////////////////////////
+       func downloadFriendshipDocument(convoId: String, success: @escaping successAny, failure: @escaping failureClosure) {
+           if convoId != "" {
+            let ref = NetworkConstants().friendshipObjectPath(convoId: convoId)
+               ref.getDocument { (document, error) in
+                   if let document = document, document.exists {
+                       let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                       //print("Fetching user document data: \(dataDescription)")
+                       if let friendshipData = document.data() {
+                           success(friendshipData)
+                           print("Successfully downloaded friendship document")
+                       } else {
+                           print("Friendship document data is nil")
+                           failure(defaultError)
+                       }
+                   } else {
+                       print("Friendship document does not exist")
+                       failure(defaultError)
+                   }
+               }
+           }
+       }
+       
+       //Pairs with previous method
+       func fetchFriendshipObject(convoId: String, success: successAny? = nil, failure: failureClosure? = nil) {
+           self.downloadFriendshipDocument(convoId: convoId, success: { (friendshipData) in
+               if let friendshipObject = decode(json: friendshipData, obj: FriendshipObject.self) {
+                   success?(friendshipObject)
+                   print("Successfully fetched friendship object")
+               } else {
+                   print("Friendship document data is corrupted")
+                   failure?(defaultError)
+               }
+           }) { (error) in
+               print("Friendship not found")
+               failure?(error)
+           }
+       }
 }

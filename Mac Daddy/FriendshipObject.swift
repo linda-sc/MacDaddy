@@ -345,5 +345,15 @@ extension FriendshipObject {
          return false
      }
     
+    func myFriendsUid() -> String? {
+        if self.iAmInitiator() {
+            return self.initiatorId
+        } else if self.iAmReceiver() {
+            return self.recieverId
+        } else {
+            return nil
+        }
+    }
+    
 }
 

@@ -58,6 +58,7 @@
 		BF5B410E236BBBFC0046A94F /* InputNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B410D236BBBFC0046A94F /* InputNameVC.swift */; };
 		BF5B4110236CB4970046A94F /* CreateAvatarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B410F236CB4970046A94F /* CreateAvatarVC.swift */; };
 		BF628E041FCE1FA200824E87 /* Matching.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF628E031FCE1FA100824E87 /* Matching.swift */; };
+		BF69B53A240481E900CD7421 /* HomeVC_HybridCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69B539240481E900CD7421 /* HomeVC_HybridCollection.swift */; };
 		BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7066FB22AD5A5800129EA9 /* UserManager.swift */; };
 		BF70B6612339B4E900E3A47B /* MessageInterfaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70B6602339B4E900E3A47B /* MessageInterfaceVC.swift */; };
 		BF741E5922CCFCC500F9CACE /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF741E5722CCFCC500F9CACE /* MapCell.swift */; };
@@ -104,13 +105,13 @@
 		BFEE185D1FD493960011A34A /* String+Subtring.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE185C1FD493960011A34A /* String+Subtring.swift */; };
 		BFFB1A1A23F49B2D00BC6CAA /* FriendshipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFB1A1823F49B2D00BC6CAA /* FriendshipCell.swift */; };
 		BFFB1A1B23F49B2D00BC6CAA /* FriendshipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFFB1A1923F49B2D00BC6CAA /* FriendshipCell.xib */; };
-		C499954703A364A3F25BC845 /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8700AA267E9C7ABDD903B933 /* Pods_Mac_Daddy.framework */; };
 		E43A8F8923F85B6200530089 /* EditMajorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43A8F8823F85B6200530089 /* EditMajorVC.swift */; };
+		FBF423040A80BF0824D00FBC /* Pods_Mac_Daddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA63F1DF82FD5807F3D81495 /* Pods_Mac_Daddy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8700AA267E9C7ABDD903B933 /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9181238EACD9EB2E686BAD74 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
+		1B37B8AFA3166496974111B3 /* Pods-Mac Daddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.release.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.release.xcconfig"; sourceTree = "<group>"; };
+		1E2793F9AB03245BA72648A1 /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
 		B373D4C122C6FC8D0051896F /* EditGradeStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGradeStatusVC.swift; sourceTree = "<group>"; };
 		B397D96D23EF1EF700ABE94F /* EditHandlesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHandlesVC.swift; sourceTree = "<group>"; };
 		B397D96F23EF25E200ABE94F /* HandleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleCell.swift; sourceTree = "<group>"; };
@@ -168,6 +169,7 @@
 		BF5B410D236BBBFC0046A94F /* InputNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameVC.swift; sourceTree = "<group>"; };
 		BF5B410F236CB4970046A94F /* CreateAvatarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAvatarVC.swift; sourceTree = "<group>"; };
 		BF628E031FCE1FA100824E87 /* Matching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matching.swift; sourceTree = "<group>"; };
+		BF69B539240481E900CD7421 /* HomeVC_HybridCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC_HybridCollection.swift; sourceTree = "<group>"; };
 		BF7066FB22AD5A5800129EA9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		BF70B6602339B4E900E3A47B /* MessageInterfaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInterfaceVC.swift; sourceTree = "<group>"; };
 		BF741E5722CCFCC500F9CACE /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
@@ -215,7 +217,7 @@
 		BFEE185C1FD493960011A34A /* String+Subtring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subtring.swift"; sourceTree = "<group>"; };
 		BFFB1A1823F49B2D00BC6CAA /* FriendshipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipCell.swift; sourceTree = "<group>"; };
 		BFFB1A1923F49B2D00BC6CAA /* FriendshipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendshipCell.xib; sourceTree = "<group>"; };
-		C605359BDCF5EF142584CD16 /* Pods-Mac Daddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mac Daddy.debug.xcconfig"; path = "Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy.debug.xcconfig"; sourceTree = "<group>"; };
+		CA63F1DF82FD5807F3D81495 /* Pods_Mac_Daddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mac_Daddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43A8F8823F85B6200530089 /* EditMajorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMajorVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,13 +226,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C499954703A364A3F25BC845 /* Pods_Mac_Daddy.framework in Frameworks */,
+				FBF423040A80BF0824D00FBC /* Pods_Mac_Daddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9236D1BE8BDE1D00B80A6E48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA63F1DF82FD5807F3D81495 /* Pods_Mac_Daddy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B397D96C23EF1E6B00ABE94F /* Handles */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,19 +251,12 @@
 			path = Handles;
 			sourceTree = "<group>";
 		};
-		BD121932B6ED860685C35E31 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8700AA267E9C7ABDD903B933 /* Pods_Mac_Daddy.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		BF005BE01FB9FE7300CFE337 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				BF2652EA1F16B2090013873F /* HomeVC.swift */,
 				BF7B29DB23F1E84400E1B29B /* HomeVC_V2Extension.swift */,
+				BF69B539240481E900CD7421 /* HomeVC_HybridCollection.swift */,
 				BFFB1A1823F49B2D00BC6CAA /* FriendshipCell.swift */,
 				BFFB1A1923F49B2D00BC6CAA /* FriendshipCell.xib */,
 				BF5408242057619D00E5A1BB /* AboutVC.swift */,
@@ -271,7 +274,7 @@
 				BF1082871ED4C7A7000677A3 /* GoogleService-Info.plist */,
 				BF1082731ED4C793000677A3 /* Products */,
 				C4FAAD85A879054E020BFE13 /* Pods */,
-				BD121932B6ED860685C35E31 /* Frameworks */,
+				9236D1BE8BDE1D00B80A6E48 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -555,8 +558,8 @@
 		C4FAAD85A879054E020BFE13 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C605359BDCF5EF142584CD16 /* Pods-Mac Daddy.debug.xcconfig */,
-				9181238EACD9EB2E686BAD74 /* Pods-Mac Daddy.release.xcconfig */,
+				1E2793F9AB03245BA72648A1 /* Pods-Mac Daddy.debug.xcconfig */,
+				1B37B8AFA3166496974111B3 /* Pods-Mac Daddy.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -576,11 +579,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF1082841ED4C793000677A3 /* Build configuration list for PBXNativeTarget "Mac Daddy" */;
 			buildPhases = (
-				D83EAE2CA28F694FC0878711 /* [CP] Check Pods Manifest.lock */,
+				E8CA0520F99980D739EC34D4 /* [CP] Check Pods Manifest.lock */,
 				BF10826E1ED4C793000677A3 /* Sources */,
 				BF10826F1ED4C793000677A3 /* Frameworks */,
 				BF1082701ED4C793000677A3 /* Resources */,
-				7A23C3CBF23296CAB90DA9DC /* [CP] Embed Pods Frameworks */,
+				B4E8BE481A4E6D192D4F2E4F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -664,7 +667,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7A23C3CBF23296CAB90DA9DC /* [CP] Embed Pods Frameworks */ = {
+		B4E8BE481A4E6D192D4F2E4F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -679,7 +682,9 @@
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/NWPusher/NWPusher.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/abseil/absl.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -695,7 +700,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NWPusher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/absl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -706,7 +713,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mac Daddy/Pods-Mac Daddy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D83EAE2CA28F694FC0878711 /* [CP] Check Pods Manifest.lock */ = {
+		E8CA0520F99980D739EC34D4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -808,6 +815,7 @@
 				BF8EC8F120ADD866008CFCCE /* ChattingAlerts.swift in Sources */,
 				BF16F49F22ADBBF800BCF369 /* NetworkConstants.swift in Sources */,
 				BF7CF3452308215C004CEB7A /* WorldVC.swift in Sources */,
+				BF69B53A240481E900CD7421 /* HomeVC_HybridCollection.swift in Sources */,
 				BF76918622B6882500D7A5EC /* CodableExtensions.swift in Sources */,
 				BF9F50F521BB47CA000FA5C4 /* ChatHandler.swift in Sources */,
 				BF7066FC22AD5A5800129EA9 /* UserManager.swift in Sources */,
@@ -866,7 +874,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -884,6 +892,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 			};
 			name = Debug;
 		};
@@ -924,7 +933,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -936,13 +945,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		BF1082851ED4C793000677A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C605359BDCF5EF142584CD16 /* Pods-Mac Daddy.debug.xcconfig */;
+			baseConfigurationReference = 1E2793F9AB03245BA72648A1 /* Pods-Mac Daddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Mac Daddy/Mac Daddy.entitlements";
@@ -951,6 +961,7 @@
 				DEVELOPMENT_TEAM = GTCC98NN7E;
 				INFOPLIST_FILE = "Mac Daddy/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.synestha.Mac-Daddy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -962,7 +973,7 @@
 		};
 		BF1082861ED4C793000677A3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9181238EACD9EB2E686BAD74 /* Pods-Mac Daddy.release.xcconfig */;
+			baseConfigurationReference = 1B37B8AFA3166496974111B3 /* Pods-Mac Daddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Mac Daddy/Mac Daddy.entitlements";
@@ -971,6 +982,7 @@
 				DEVELOPMENT_TEAM = GTCC98NN7E;
 				INFOPLIST_FILE = "Mac Daddy/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.synestha.Mac-Daddy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

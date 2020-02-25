@@ -174,10 +174,11 @@ class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
                    } else if isAnon {
                        //Else, if you were THEIR current match, remove their current match ID.
                        //Any anonymous friend that is not your current match must be an incoming match
-                        DataHandler.updateUserData(uid: self.friend.uid, values: ["7: MatchID": ""])
-                       print("Deleting incoming match")
+                        if (self.friendship.origin == "random" || self.friendship.origin == nil) {
+                            DataHandler.updateUserData(uid: self.friend.uid, values: ["7: MatchID": ""])
+                            print("Deleting incoming match")
+                        }
                    }
-                   
                    self.performSegue(withIdentifier: "unwindFromBlock", sender: self)
             })
         }

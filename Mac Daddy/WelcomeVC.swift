@@ -47,12 +47,13 @@ class WelcomeVC: UIViewController {
                     }
                     
                     //Move the loading bar 4
-                    FriendshipRequests().observeMyFriendshipObjects {
+                    //FriendshipRequests().observeMyFriendshipObjects {
+                    FriendshipRequests().downloadMyFriendshipObjects {
                         friendships in
                         print("👁 FriendshipObject Observer triggered")
                         NotificationCenter.default.post(name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
-                        //UserManager.shared.friendships = friendships
-                    }//End of setting up observer
+                        UserManager.shared.friendships = friendships
+                    }//End of setting up firebase snapshot?
                     
                     FriendshipRequests().downloadMyFriendshipObjects {
                         //Move the loading bar 3
