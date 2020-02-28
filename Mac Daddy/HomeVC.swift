@@ -32,7 +32,10 @@ class HomeVC: UIViewController {
     
     @IBAction func logoTapped(_ sender: Any) {
         print("Logo tapped")
+        self.friendshipCollection.reloadData()
     }
+    
+    
     
     //MARK: Firebase observers
     func removeObserver() {
@@ -151,14 +154,16 @@ extension HomeVC {
 //            let count = value?.count
 //            print("We have \(count ?? 0) conversations.")
 //        })
-        
+        viewWillAppearExtension()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         removeObserver()
+        viewWillDisappearExtension()
     }
     
     
+    //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
@@ -214,19 +219,19 @@ extension HomeVC {
         
     }
     
-    
     //MARK: Buttons to other storyboards
-
+    
     //IB Actions
     @IBAction func editProfileTapped(_ sender:UIButton){
-        
         //self.navigationController?.performSegue(withIdentifier: "GoToProfile", sender: nil)
-        self.performSegue(withIdentifier: "GoToProfile", sender: nil)
-        
         //self.navigationController?.performSegue(withIdentifier: "goToOptions", sender: nil)
+
+        //removeFriendshipObserver()
+        self.performSegue(withIdentifier: "GoToProfile", sender: nil)
     }
     
     @IBAction func worldButtonTapped(_ sender: Any) {
+        //removeFriendshipObserver()
         self.performSegue(withIdentifier: "GoToWorld", sender: nil)
         //self.navigationController?.performSegue(withIdentifier: "GoToWorld", sender: nil)
         
@@ -307,6 +312,8 @@ extension HomeVC {
 //        
 //    }
     
+    //MARK: Deleting your current match
+    
     func deleteCurrentMatch() {
         //Added for V2
         if let friendships = UserManager.shared.friendships {
@@ -329,10 +336,14 @@ extension HomeVC {
         //This is redundant because the observer will pick up on this anyway and sync the friends
     }
     
+    //MARK: Delete an incoming match
+    
     func deleteIncomingMatch(friend: Friend){
         DataHandler.updateUserData(uid: friend.uid, values: ["7: MatchID": ""])
     }
     
+    
+    //MARK: New Match Alert
     func newMatchAlert() {
         //Alert controller pops up saying: You can only initiate one match at a time.
         //You have three options: Friend your current match, delete your current match, or cancel.
@@ -344,7 +355,7 @@ extension HomeVC {
         let alert = UIAlertController(title: "You can only initiate one new match at a time.", message: message, preferredStyle: .alert)
         
         // Create the actions
-        //Pass: Delete your current match
+        //MARK: Pass: Delete your current match
         let passAction = UIAlertAction(title: "Goodbye, \(nickname).", style: UIAlertActionStyle.default) {
             UIAlertAction in
             
@@ -369,7 +380,7 @@ extension HomeVC {
             self.searchForNewMatch()
             
         }
-        //Save your current match by pressing the like button
+        //MARK: Save your current match by pressing the like button
         let saveAction = UIAlertAction(title: "I want to be friends!", style: UIAlertActionStyle.default) {
             UIAlertAction in
             
@@ -378,7 +389,7 @@ extension HomeVC {
             self.performSegue(withIdentifier: "GoToChatFromFriendship", sender: self)
             print("Save Pressed")
         }
-        //Don't do anything
+        //MARK: Don't do anything
         let cancelAction = UIAlertAction(title: "I'm not ready to decide.", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
             print("Cancel Pressed")

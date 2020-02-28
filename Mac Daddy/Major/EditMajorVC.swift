@@ -4,6 +4,7 @@
 //
 //  Created by Shane Barys on 2/15/20.
 //  Copyright © 2020 Synestha. All rights reserved.
+
 //
 
 import Foundation
@@ -17,6 +18,8 @@ class EditMajorVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var majorLabel: UILabel!
     
     var majors = UserManager.shared.currentUser?.majors
+    //MARK: Remember that majors is an array
+    //MARK: Use the function UserRequests().saveProfileChanges() to automaticall push any changes in UserManager to the database.
     
     var pickerData = ["African and African Diaspora Studies",
                          "Art History",

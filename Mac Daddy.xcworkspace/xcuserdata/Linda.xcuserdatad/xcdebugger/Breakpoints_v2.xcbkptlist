@@ -1461,8 +1461,8 @@
             timestampString = "587614374.102192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "application(_:didReceiveRemoteNotification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1509,8 +1509,8 @@
             filePath = "Mac Daddy/HomeVC_V2Extension.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "setStructure(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1525,8 +1525,8 @@
             filePath = "Mac Daddy/HomeVC_V2Extension.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
             <Locations>
@@ -1573,8 +1573,8 @@
             filePath = "Mac Daddy/HomeVC_V2Extension.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "setStructure(for:)"
             landmarkType = "7">
          </BreakpointContent>

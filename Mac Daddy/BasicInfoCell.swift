@@ -43,6 +43,7 @@ class BasicInfoCell: UICollectionViewCell {
     func loadForUser(friend: Friend, userObject: UserObject) {
         //Friend name
         nameTag.text = friend.name
+        avatarView.displayAvatar(avatar: userObject.avatar)
         
         //Email
         if friend.anon == "1" {

@@ -23,6 +23,7 @@ class ChatSceneVC: UIViewController {
     
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var activeBubble: UIImageView!
+    @IBOutlet weak var avatarView: AvatarView!
     
     var friend = Friend()
     var friendship = FriendshipObject()
@@ -72,6 +73,15 @@ class ChatSceneVC: UIViewController {
         print("🤪 ChatScene VC - ViewDidLoad")
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        
+        var avatar: AvatarObject?
+        if self.friendship.iAmInitiator() {
+            avatar = self.friendship.recieverAvatar
+        } else if self.friendship.iAmReceiver() {
+            avatar = self.friendship.initiatorAvatar
+        }
+        self.avatarView.displayAvatar(avatar: avatar)
+        
         
         nameButton.setTitle(friend.name, for: .normal)
         if (friend.active == "1") {

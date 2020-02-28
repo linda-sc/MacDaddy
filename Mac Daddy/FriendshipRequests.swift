@@ -170,7 +170,10 @@ class FriendshipRequests: NSObject {
     //MARK: Observe relevant FriendshipObjects
     
     func observeMyFriendshipObjects(completion: @escaping (_ friendships: [FriendshipObject])-> ()) {
-        print("👀 - observeMyFriendshipObjects function triggered")
+        
+        if FriendshipRequests.queryHandle != nil { return }
+        
+        print("👀🧜‍♀️ - observeMyFriendshipObjects function triggered")
         let ref = NetworkConstants().friendshipObjectsPath()
         let myUid = Auth.auth().currentUser?.uid ?? ""
         let query = ref.whereField("members", arrayContains: myUid)
@@ -196,13 +199,14 @@ class FriendshipRequests: NSObject {
                     return
                 }
                 if let friendship = decode(json: data, obj: FriendshipObject.self) {
-                    friendships.append(friendship)
+                    //friendships.append(friendship)
                     
-//                    if self.friendshipExistsInFriendsList(friendship: friendship) {
-//                        friendships.append(friendship)
-//                    } else {
-//                        print("Skipping old friendship: \(friendship.members)")
-//                    }
+                    if self.friendshipExistsInFriendsList(friendship: friendship) {
+                        friendships.append(friendship)
+                    } else {
+                        print("Skipping old friendship: \(friendship.members)")
+                    }
+                    
                 } else {
                     print("Error decoding friendship JSON")
                 }
@@ -215,15 +219,18 @@ class FriendshipRequests: NSObject {
             })
             
             print("Observed \(friendships.count) friendships")
-            print("Updating UM and posting Notification")
-            UserManager.shared.friendships = friendships
+            print("Posting Notification")
+            //UserManager.shared.friendships = friendships
             NotificationCenter.default.post(name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
             
             completion(friendships)
         }
     }
     
+    
+    //MARK: Remove Observer
     func removeFriendshipObserver(){
+        print("😴😴😴 - Removing observer")
         FriendshipRequests.queryHandle?.remove()
         FriendshipRequests.queryHandle = nil
     }
@@ -460,9 +467,8 @@ class FriendshipRequests: NSObject {
 
     func beginNewFriendship(userObject: UserObject, convoId: String, origin: String) -> FriendshipObject? {
         
-        guard userObject != nil else {return nil}
         //First create the local object:
-        var newFriendship = FriendshipObject()
+        let newFriendship = FriendshipObject()
         let me = UserManager.shared.currentUser
         
         newFriendship.lastActive = Date()

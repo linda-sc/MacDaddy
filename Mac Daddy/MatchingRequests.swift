@@ -41,7 +41,7 @@ class MatchingRequests {
             
             let orderedCandidates = candidates.sorted(by: {$0.weight > $1.weight })
             if let chosenUser = orderedCandidates.first?.user {
-                self.createFriendStructAndConvoFromNewMatch(user: chosenUser, completed: {
+                self.createFriendStructAndConvoFromNewMatch(user: chosenUser, random: true, completed: {
                     friend in
                     
                     var hybridObject = FriendUserAndFriendship()
@@ -64,20 +64,24 @@ class MatchingRequests {
         UserRequests().fetchUserObject(userID: uid, success: { (result) in
             if let userObject = result as? UserObject {
                 
+                //Stop if it's you or your friend.
+                if userObject.uid == Auth.auth().currentUser?.uid {return}
                 if userObject.isMyFriend() {
                     print("You are already friends with \(userObject.firstName)")
                     return
                 }
                 
-                 self.createFriendStructAndConvoFromNewMatch(user: userObject, completed: {
+                self.createFriendStructAndConvoFromNewMatch(user: userObject, random: false, completed: {
                      friend in
                      
-                     var hybridObject = FriendUserAndFriendship()
-                     hybridObject.friend = friend
-                     hybridObject.user = userObject
+                    var hybridObject = FriendUserAndFriendship()
+                    hybridObject.friend = friend
+                    hybridObject.user = userObject
                     hybridObject.friendship = FriendshipRequests().beginNewFriendship(userObject: userObject, convoId: friend.convoID, origin: origin)!
                      
-                     completion(hybridObject)
+                    //Just for backup
+                    DataHandler.friendList.append(friend)
+                    completion(hybridObject)
                  })
             }
         }) { (error) in
@@ -112,7 +116,7 @@ class MatchingRequests {
     //MARK: Old stuff to preserve V1 architecture
     //MARK: Creates convo and also
     //MARK: returns Friend struct linked to it
-    func createFriendStructAndConvoFromNewMatch(user: UserObject, completed: @escaping(_ friend: Friend )->()){
+    func createFriendStructAndConvoFromNewMatch(user: UserObject, random: Bool, completed: @escaping(_ friend: Friend )->()){
         var newFriend = Friend()
         let convoId = createConvoID()
         
@@ -133,10 +137,14 @@ class MatchingRequests {
         let status = [myUID: ["saved": "0"], friendUID: ["saved": "0"]]
         ref.setValue(status)
         
-        DataHandler.updatePrimaryA(primaryA: "1")
-        DataHandler.updateFriendData(friend: newFriend, newMatch: true)
-        DataHandler.updateCurrentMatchID(currentMatchID: newFriend.uid)
+        if random {
+            DataHandler.updatePrimaryA(primaryA: "1")
+            DataHandler.updateCurrentMatchID(currentMatchID: newFriend.uid)
+        }
         
+        DataHandler.updateFriendData(friend: newFriend, newMatch: true)
+
+
         completed(newFriend)
     }
        

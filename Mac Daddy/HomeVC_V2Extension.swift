@@ -18,10 +18,6 @@ extension HomeVC {
         UserManager.shared.getLocation()
         UserRequests().checkupUpdates()
         
-        for friend in DataHandler.friendList {
-            print("Syncing friend and friendship \(friend.convoID)")
-            FriendshipRequests().upgradeFriendToFriendshipObject(friend: friend)
-        }
        
         addGestures()
         setUpCollectionView()
@@ -31,9 +27,11 @@ extension HomeVC {
         NotificationCenter.default.addObserver(self, selector: #selector(onDidRecieveUpdatedFriendshipObjects(_:)), name: .onDidRecieveUpdatedFriendshipObjects, object: nil)
         //Add observer to trigger reload
         NotificationCenter.default.addObserver(self, selector: #selector(onDidRecieveUpdatedFriendStructs(_:)), name: .onDidRecieveUpdatedFriendStructs, object: nil)
+    
+        
     }
     
-    //MARK: Called in ViewWillAppear
+    //MARK: Other View Functions
 
     func viewWillAppearExtension() {
         removeFriendshipObserver()
@@ -42,15 +40,25 @@ extension HomeVC {
     
     func viewWillDisappearExtension(){
         removeFriendshipObserver()
-
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        removeFriendshipObserver()
+    }
+        
+    
+    //MARK: Setting up observers.
     func setUpFriendshipObserver() {
         if FriendshipRequests.queryHandle != nil { return }
-        FriendshipRequests().observeMyFriendshipObjects { _ in}
+        print("Setting up friendship observer")
+        FriendshipRequests().observeMyFriendshipObjects { friendships in
+            print("Updating UM")
+            UserManager.shared.friendships = friendships
+        }
     }
     
     func removeFriendshipObserver(){
+        print("Removing friendship observer")
         FriendshipRequests().removeFriendshipObserver()
     }
     

@@ -22,6 +22,8 @@ class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var activeBubble: UIImageView!
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var tabBarBackground: UIImageView!
+    @IBOutlet weak var avatarView: AvatarView!
+    
     
     
     override func viewDidLoad() {
@@ -51,6 +53,13 @@ class FriendDetailVC: UIViewController, UICollectionViewDelegateFlowLayout {
         
         DataHandler.updateActive(active: "1")
         
+        var avatar: AvatarObject?
+        if self.friendship.iAmInitiator() {
+            avatar = self.friendship.recieverAvatar
+        } else if self.friendship.iAmReceiver() {
+            avatar = self.friendship.initiatorAvatar
+        }
+        self.avatarView.displayAvatar(avatar: avatar)
         
         //Background
 //        if DataHandler.macStatus == "Daddy" {

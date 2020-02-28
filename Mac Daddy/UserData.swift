@@ -47,7 +47,7 @@ class UserData {
             } else {
                 //Then don't download any new users that have been blocked
                    for document in querySnapshot!.documents {
-                       print("\(document.documentID) => \(document.data())")
+                       //print("\(document.documentID) => \(document.data())")
                        let data = document.data() as NSDictionary
                        
                        if (!JSONSerialization.isValidJSONObject(data)) {
@@ -102,7 +102,7 @@ class UserData {
                 downloadBlockedUsers {
                     //Then don't download any new users that have been blocked
                     for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
+                        //print("\(document.documentID) => \(document.data())")
                         let data = document.data() as NSDictionary
                         
                         if (!JSONSerialization.isValidJSONObject(data)) {

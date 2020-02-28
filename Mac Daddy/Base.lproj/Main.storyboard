@@ -87,9 +87,6 @@
                                     <constraint firstAttribute="height" constant="50" id="dsr-al-LWT"/>
                                     <constraint firstAttribute="width" constant="74" id="khy-vz-oAa"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="btq-ne-Jey" appends="YES" id="4AU-qF-9ex"/>
-                                </connections>
                             </imageView>
                             <tableView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQ9-P7-fEx">
                                 <rect key="frame" x="16" y="214" width="343" height="578"/>
@@ -139,7 +136,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Active 1h ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47h-xM-MMg">
-                                                    <rect key="frame" x="128.5" y="60" width="343" height="15"/>
+                                                    <rect key="frame" x="129" y="60" width="343" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.54820233039999999" green="0.54555531930000001" blue="0.91828600890000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -164,7 +161,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="100"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-jD-IFw">
-                                                    <rect key="frame" x="259" y="1" width="86.5" height="17"/>
+                                                    <rect key="frame" x="259" y="1" width="86" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.54820233039999999" green="0.54555531930000001" blue="0.91828600890000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -268,17 +265,25 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fv-6v-MT0">
+                                <rect key="frame" x="86" y="44" width="219" height="77"/>
+                                <connections>
+                                    <action selector="logoTapped:" destination="VaT-gO-yOm" eventType="touchUpInside" id="r8P-vE-YVp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mnm-Me-2Zm" firstAttribute="top" secondItem="bgM-dX-gBi" secondAttribute="bottom" constant="8" id="5jc-MR-3v8"/>
                             <constraint firstItem="zH0-pC-a4M" firstAttribute="leading" secondItem="g59-lB-6dI" secondAttribute="leadingMargin" constant="10" id="99u-YO-kdP"/>
                             <constraint firstAttribute="trailing" secondItem="bgM-dX-gBi" secondAttribute="trailing" constant="15" id="E1u-Ur-qgo"/>
+                            <constraint firstItem="fJs-ew-Wcj" firstAttribute="leading" secondItem="0fv-6v-MT0" secondAttribute="trailing" constant="20" id="LaQ-1O-UTV"/>
                             <constraint firstItem="bgM-dX-gBi" firstAttribute="top" secondItem="RaI-4Z-TCf" secondAttribute="bottom" constant="27" id="Lrl-98-Cc1"/>
                             <constraint firstAttribute="trailing" secondItem="fJs-ew-Wcj" secondAttribute="trailing" constant="10" id="Nep-Au-3Em"/>
                             <constraint firstItem="LwG-Hy-0km" firstAttribute="top" secondItem="g59-lB-6dI" secondAttribute="top" id="QNR-Mq-YeH"/>
                             <constraint firstItem="bgM-dX-gBi" firstAttribute="leading" secondItem="g59-lB-6dI" secondAttribute="leading" constant="15" id="RI7-WK-EFI"/>
                             <constraint firstItem="LwG-Hy-0km" firstAttribute="leading" secondItem="g59-lB-6dI" secondAttribute="leading" id="S38-FS-6dh"/>
+                            <constraint firstItem="bgM-dX-gBi" firstAttribute="top" secondItem="0fv-6v-MT0" secondAttribute="bottom" constant="20" id="ZAm-Q4-7dD"/>
                             <constraint firstAttribute="bottom" secondItem="mnm-Me-2Zm" secondAttribute="bottom" constant="20" id="a2T-aB-yJu"/>
                             <constraint firstItem="zH0-pC-a4M" firstAttribute="top" secondItem="47I-Of-DHz" secondAttribute="bottom" constant="10" id="dYg-JQ-hg8"/>
                             <constraint firstItem="RaI-4Z-TCf" firstAttribute="top" secondItem="47I-Of-DHz" secondAttribute="bottom" constant="20" id="ilZ-I8-GLR"/>
@@ -286,8 +291,10 @@
                             <constraint firstAttribute="trailing" secondItem="LwG-Hy-0km" secondAttribute="trailing" id="jZm-hS-IdO"/>
                             <constraint firstAttribute="trailing" secondItem="mnm-Me-2Zm" secondAttribute="trailing" constant="16" id="lmS-zK-eS5"/>
                             <constraint firstAttribute="bottom" secondItem="LwG-Hy-0km" secondAttribute="bottom" id="oV0-il-ObR"/>
+                            <constraint firstItem="0fv-6v-MT0" firstAttribute="leading" secondItem="zH0-pC-a4M" secondAttribute="trailing" constant="20" id="ocm-YO-2VE"/>
                             <constraint firstItem="mnm-Me-2Zm" firstAttribute="leading" secondItem="g59-lB-6dI" secondAttribute="leading" constant="16" id="rQa-KB-TLd"/>
                             <constraint firstItem="Gg9-5q-ao7" firstAttribute="top" secondItem="LwG-Hy-0km" secondAttribute="bottom" constant="8" symbolic="YES" id="vU5-QK-FmK"/>
+                            <constraint firstItem="0fv-6v-MT0" firstAttribute="top" secondItem="47I-Of-DHz" secondAttribute="bottom" id="xsY-4X-CI5"/>
                             <constraint firstItem="fJs-ew-Wcj" firstAttribute="centerY" secondItem="zH0-pC-a4M" secondAttribute="centerY" id="yzh-4I-9tA"/>
                         </constraints>
                     </view>
@@ -304,11 +311,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nv0-lP-cAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="btq-ne-Jey">
-                    <connections>
-                        <action selector="logoTapped:" destination="VaT-gO-yOm" id="XJo-2x-Qef"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1984.8" y="1311.576354679803"/>
         </scene>
@@ -454,6 +456,7 @@
                     <navigationItem key="navigationItem" id="FbB-Se-x9z"/>
                     <connections>
                         <outlet property="activeBubble" destination="2cZ-un-l3N" id="9ys-MU-Ejp"/>
+                        <outlet property="avatarView" destination="YLb-DG-Ejy" id="3s2-su-Hfn"/>
                         <outlet property="backButton" destination="Qjp-yk-soK" id="JFa-8O-Cz7"/>
                         <outlet property="background" destination="5fg-xm-TZc" id="EaA-mc-zb4"/>
                         <outlet property="heartButton" destination="wZ2-Va-cpg" id="kzC-3U-TtN"/>
@@ -605,6 +608,7 @@
                     <navigationItem key="navigationItem" id="9Hk-UV-6k7"/>
                     <connections>
                         <outlet property="activeBubble" destination="aos-1g-PWj" id="07W-5p-7Je"/>
+                        <outlet property="avatarView" destination="9aB-MI-88s" id="LV9-hu-gxN"/>
                         <outlet property="background" destination="Rze-54-Mgt" id="9jM-P3-rYe"/>
                         <outlet property="detailCollection" destination="ork-Ln-EHO" id="13r-dn-2Mz"/>
                         <outlet property="detailCollectionLayout" destination="fwA-4v-DOa" id="8s4-RF-vof"/>

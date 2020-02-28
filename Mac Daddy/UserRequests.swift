@@ -197,7 +197,7 @@ class UserRequests: NSObject {
     
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
-    // MARK: 5. Save Avatar
+    // MARK: 5. Save individual components
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////
     func saveAvatar(){
@@ -209,6 +209,17 @@ class UserRequests: NSObject {
             print("Current user is nil.")
         }
     }
+    
+    func saveProfileChanges(){
+        print("SAVING PROFILE CHANGES:")
+        if UserManager.shared.currentUser != nil {
+            UserRequests().updateUserInFirestore(userObject: UserManager.shared.currentUser!)
+            //print(UserManager.shared.currentUser!.avatar)
+        } else {
+            print("Current user is nil.")
+        }
+    }
+    
     
     //////////////////////////////////////////////////
     //////////////////////////////////////////////////

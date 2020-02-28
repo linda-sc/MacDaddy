@@ -110,9 +110,23 @@ class FriendshipCell: UICollectionViewCell {
         self.timeLabel.text = friendship.lastActive?.getElapsedInterval()
         
         //MARK: 5. Origin
-        if friendship.origin == "random" {
+        let anon = friendship.anon ?? true
+        if friendship.origin == "random" && anon {
             incomingMatchLabel.isHidden = false
+        } else {
+            incomingMatchLabel.isHidden = true
         }
+        
+        if (friendship.origin != "random" && friendship.origin != nil) {
+            emailLabel.isHidden = false
+            
+            if friendship.iAmInitiator() {
+                emailLabel.text = "Your discussion"
+            } else if friendship.iAmReceiver() {
+                emailLabel.text = "Response to you"
+            }
+        }
+        
     }
     
     
@@ -126,12 +140,7 @@ class FriendshipCell: UICollectionViewCell {
                 incomingMatchLabel.isHidden = true
                 
             //Hide labels if friend is not anon
-            } else if (friend.anon == "1"){
-                emailLabel.isHidden = true
-                currentMatchLabel.isHidden = true
-                //incomingMatchLabel.isHidden = false
             } else {
-            //Else if the match is a friend then hide labels
                 currentMatchLabel.isHidden = true
                 incomingMatchLabel.isHidden = true
                 //Change later

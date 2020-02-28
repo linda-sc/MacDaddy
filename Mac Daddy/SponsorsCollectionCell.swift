@@ -15,7 +15,7 @@ class SponsorsCollectionCell: UICollectionViewCell {
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     var sponsors = [
-        SponsorObject(uid: "Cqyvv3GNbgdfTmWzOeNLEy8ZVWU2", imageName: "SponsorSample"),
+        SponsorObject(uid: "0gAOgLoCSUehRTsIj6sqUh8JFO32", imageName: "SponsorSample"),
         SponsorObject(uid: "Cqyvv3GNbgdfTmWzOeNLEy8ZVWU2", imageName: "MDTeam")
     ]
     
@@ -73,10 +73,13 @@ extension SponsorsCollectionCell: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Did select item at")
         //self.parentVC?.performSegue(withIdentifier: "unwindFromPostEngagement", sender: nil)
-        self.parentVC?.dismiss(animated: true, completion: {
-            print("Dismiss completed")
-        })
-
+        if let sponsorId = self.sponsors[indexPath.row].uid {
+            MatchingRequests().initiateMatchFromPost(uid: sponsorId, origin: sponsorId, completion: {_ in
+                 self.parentVC?.dismiss(animated: true, completion: {
+                    print("Dismiss completed")
+                })
+            })
+        }
     }
     
 }
