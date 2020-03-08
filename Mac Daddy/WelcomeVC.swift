@@ -162,9 +162,14 @@ class WelcomeVC: UIViewController {
                             
                         }
                     }) { (error) in
-                        self.segueIdentifier = "GoToLogin"
+                        //MARK: V1 Accounts logging in without a user object
+                        UserManager.shared.importCurrentUserFromDataHandler()
+                        UserManager.shared.currentUser?.email = info.email
+                        UserManager.shared.currentUser?.organization = UserManager.shared.organizationFromEmail(email: info.email)
+                           
+                        self.segueIdentifier = "SkipToNameVC"
                         completed()
-                        print("Couldn't fetch user object.")
+                        print("User object doesn't exist. Upgrading account...")
                     }
                     
                     
