@@ -12,10 +12,10 @@ target 'Mac Daddy' do
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Storage'
-  pod 'Firebase/Firestore'
+  	pod 'Firebase/Firestore'
 	pod 'Firebase/Messaging'
-	pod 'MessageKit'
-  pod 'JSQMessagesViewController'
+	# pod 'MessageKit'
+  	pod 'JSQMessagesViewController'
 	pod 'NWPusher', '~> 0.7.0'
 
 end

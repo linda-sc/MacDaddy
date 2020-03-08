@@ -8,7 +8,7 @@
 
 import Foundation
 import Firebase
-import MessageKit
+//import MessageKit
 import JSQMessagesViewController
 
 class ChatHandler {
