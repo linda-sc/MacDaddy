@@ -113,7 +113,7 @@ extension UserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
             let cell = optionsCollection.dequeueReusableCell(withReuseIdentifier: "InterestCell", for: indexPath) as! InterestCell
             cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             self.setStructure(for: cell)
-            self.formatInterest(for: cell, iconName: "majorIcon", interestName: "Major", interestField: "Computer science")
+            self.formatInterest(for: cell, iconName: "majorIcon", interestName: "Major", interestField: UserManager.shared.currentUser?.majors?.joined(separator: ", ") ?? "No major")
             return cell
         case 6:
             //Terms Cell
